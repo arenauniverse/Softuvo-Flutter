@@ -82,13 +82,17 @@ class _LoginViewState extends State<LoginView> {
               ),
               TextFormField(
                 cursorColor: AppTheme.blackColor,
-                validator: (value) {
+                /*  validator: (value) {
                   if (value == null || value == "") {
                     return "Enter Valid Contraseña";
                   }
                 },
-                onFieldSubmitted: (v) {},
+                onFieldSubmitted: (v) {},*/
                 decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye_rounded,
+                      color: AppTheme.blackColor,
+                    ),
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
@@ -122,6 +126,12 @@ class _LoginViewState extends State<LoginView> {
                           color: AppTheme.backgroundColor,
                           fontWeight: FontWeight.w500,
                           fontFamily: AppTheme.appFont)),
+                ),
+              ),
+              Center(
+                child: Text(
+                  'Recuperar contraseña',
+                  style: TextStyle(fontSize: 13.0, color: AppTheme.blueColor),
                 ),
               )
             ],
