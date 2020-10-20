@@ -1,16 +1,13 @@
-import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginView extends StatefulWidget {
+class RegisterView extends StatefulWidget {
   @override
-  _LoginViewState createState() => _LoginViewState();
+  _RegisterViewState createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +35,7 @@ class _LoginViewState extends State<LoginView> {
                 height: SizeConfig.blockSizeVertical * 3,
               ),
               Text(
-                'Inicio de sesion',
+                'Crear usuario',
                 style: TextStyle(
                     fontFamily: AppTheme.appFont,
                     fontWeight: FontWeight.w600,
@@ -49,11 +46,11 @@ class _LoginViewState extends State<LoginView> {
               ),
               Row(
                 children: [
-                  Text("No tiene cuenta? "),
+                  Text("Ya tienes cuenta? "),
                   GestureDetector(
                     onTap: () {},
                     child: Text(
-                      "Crear usuario",
+                      "Iniciar Sesión",
                       style: TextStyle(color: AppTheme.blueColor),
                     ),
                   )
@@ -66,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                 cursorColor: Colors.black,
                 validator: (value) {
                   if (value == null || value == "") {
-                    return "Enter Valid Email";
+                    return "Enter Valid Nombre y Apellido";
                   }
                 },
                 onFieldSubmitted: (v) {},
@@ -75,10 +72,25 @@ class _LoginViewState extends State<LoginView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 2),
-                    labelText: "Email",
+                    labelText: "Nombre y Apellido",
                     labelStyle: TextStyle(
                         fontFamily: AppTheme.appFont,
                         fontSize: 15.0,
+                        color: AppTheme.blackColor)),
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.next,
+              ),
+              TextFormField(
+                cursorColor: AppTheme.blackColor,
+                decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2,
+                        bottom: SizeConfig.blockSizeVertical * 2,
+                        left: SizeConfig.blockSizeVertical * 2),
+                    labelText: "Email",
+                    labelStyle: TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: AppTheme.appFont,
                         color: AppTheme.blackColor)),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
@@ -92,20 +104,56 @@ class _LoginViewState extends State<LoginView> {
                 },
                 onFieldSubmitted: (v) {},*/
                 decoration: InputDecoration(
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye_rounded,
-                      color: AppTheme.blackColor,
-                    ),
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 2),
-                    labelText: "Contraseña",
+                    labelText: "Fecha de Nacimiento",
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
                         color: AppTheme.blackColor)),
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+              ),
+              TextFormField(
+                cursorColor: AppTheme.blackColor,
+                /*  validator: (value) {
+                  if (value == null || value == "") {
+                    return "Enter Valid Contraseña";
+                  }
+                },
+                onFieldSubmitted: (v) {},*/
+                decoration: InputDecoration(
+                    // suffixIcon: Icon(
+                    //   Icons.remove_red_eye_rounded,
+                    //   color: AppTheme.blackColor,
+                    // ),
+                    contentPadding: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2,
+                        bottom: SizeConfig.blockSizeVertical * 2,
+                        left: SizeConfig.blockSizeVertical * 2),
+                    labelText: "Pais",
+                    labelStyle: TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: AppTheme.appFont,
+                        color: AppTheme.blackColor)),
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+              ),
+              TextFormField(
+                cursorColor: AppTheme.blackColor,
+                decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2,
+                        bottom: SizeConfig.blockSizeVertical * 2,
+                        left: SizeConfig.blockSizeVertical * 2),
+                    labelText: "Repetir contraseña",
+                    labelStyle: TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: AppTheme.appFont,
+                        color: AppTheme.blackColor)),
+                keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
               ),
               SizedBox(
@@ -124,7 +172,7 @@ class _LoginViewState extends State<LoginView> {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(22.0),
                   ),
-                  child: Text("Ingresar",
+                  child: Text("Registrar",
                       style: TextStyle(
                           color: AppTheme.whiteColor,
                           fontWeight: FontWeight.w500,

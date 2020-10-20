@@ -1,10 +1,7 @@
-import 'package:arena_sports_app/LogIn/Login_View.dart';
-import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'LoginSignUpListing/LoginSgnupListingView.dart';
+
 import 'Splash/SplashView.dart';
 
 void main() {
@@ -18,7 +15,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       theme: ThemeData(
           fontFamily: AppTheme.appFont,
           textTheme: TextTheme(
@@ -29,8 +26,9 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppTheme.whiteColor,
           primaryColor: AppTheme.greyColor),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/splash",
-      getPages: [
+      home: Splash(),
+      //initialRoute: "/splash",
+      /* getPages: [
         GetPage(
           name: '/loginListing',
           page: () => LoginSignUpListingView(),
@@ -51,7 +49,7 @@ class MyApp extends StatelessWidget {
           name: '/profile',
           page: () => MyProfileView(),
         )
-      ],
+      ],*/
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import '../SizeConfig.dart';
 
 class Splash extends StatefulWidget {
@@ -16,7 +15,11 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
        Future.delayed(const Duration(milliseconds: 2000), () {
-      Get.off(TestView());
+         Navigator.push(
+           context,
+           MaterialPageRoute(builder: (context) => TestView()),
+         );
+      /*Get.off(TestView());*/
     });
     super.initState();
   }

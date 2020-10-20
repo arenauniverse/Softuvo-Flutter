@@ -1,10 +1,10 @@
+import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:get/get.dart';
 
 class MyProfileView extends StatefulWidget {
   @override
@@ -39,7 +39,8 @@ class _MyProfileViewState extends State<MyProfileView> {
           ],
           leading: GestureDetector(
             onTap: () {
-              Get.back();
+              Navigator.pop(context);
+          //    Get.back();
             },
             child: Icon(
               Icons.arrow_back_ios,

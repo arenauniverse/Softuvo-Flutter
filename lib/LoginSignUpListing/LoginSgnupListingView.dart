@@ -1,11 +1,11 @@
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
+import 'package:arena_sports_app/Register/Register_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import '../theme.dart';
 
 class TestView extends StatefulWidget {
@@ -34,10 +34,9 @@ class _TestViewState extends State<TestView> {
   }
 
   void _showModalSheet() {
-    Get.bottomSheet(LoginSignUpListingView(),
-        elevation: 20.0, isScrollControlled: true
-        );
-    /*  showModalBottomSheet(
+    /* Get.bottomSheet(LoginSignUpListingView(),
+        elevation: 20.0, isScrollControlled: true);*/
+    showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -46,7 +45,7 @@ class _TestViewState extends State<TestView> {
         context: context,
         builder: (builder) {
           return LoginSignUpListingView();
-        });*/
+        });
   }
 }
 
@@ -60,12 +59,12 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      /*  decoration: BoxDecoration(
           color: AppTheme.whiteColor,
           borderRadius: new BorderRadius.only(
             topLeft: const Radius.circular(25.0),
             topRight: const Radius.circular(25.0),
-          )),
+          )),*/
       height: SizeConfig.blockSizeVertical * 79,
       width: SizeConfig.blockSizeHorizontal,
       child: SingleChildScrollView(
@@ -80,7 +79,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                 alignment: Alignment.topRight,
                 child: GestureDetector(
                   onTap: () {
-                    Get.back();
+                    Navigator.pop(context);
                   },
                   child: Container(
                     child: Stack(
@@ -146,7 +145,12 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
                       onPress: () {
-                        Get.to(MyProfileView());
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyProfileView()),
+                        );
+                        //     Get.to(MyProfileView());
                       },
                       title: 'Ingresar por Google',
                       image: SvgPicture.asset('assets/googleIcon.svg'),
@@ -158,7 +162,11 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
                       onPress: () {
-                        Get.to(LoginView(), popGesture: false);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginView()),
+                        );
+                        //     Get.to(LoginView(), popGesture: false);
                       },
                       title: 'Ingresar por Apple',
                       image: SvgPicture.asset('assets/appleIcon.svg'),
@@ -190,8 +198,11 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                           horizontal: SizeConfig.blockSizeHorizontal * 28,
                           vertical: SizeConfig.blockSizeVertical * 1.9),
                       onPressed: () {
-                        Get.toNamed('profile');
-                        /*Get.to(MyProfileView());*/
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterView()),
+                        );
                       },
                       color: AppTheme.blackColor,
                       shape: RoundedRectangleBorder(
