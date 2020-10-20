@@ -25,17 +25,13 @@ class _LoginViewState extends State<LoginView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child:GestureDetector(
+             GestureDetector(
                   onTap: () {
                     Get.back();
                   },
                   child: Icon(Icons.arrow_back_ios,size: 20.0,),
                 ),
-              ),
+
               SizedBox(
                 height: SizeConfig.blockSizeVertical * 3,
               ),

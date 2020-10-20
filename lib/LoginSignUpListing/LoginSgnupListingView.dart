@@ -35,29 +35,7 @@ class _TestViewState extends State<TestView> {
 
   void _showModalSheet() {
     Get.bottomSheet(LoginSignUpListingView(),
-        elevation: 20.0,
-        backgroundColor: Colors.red,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(25.0),
-                topLeft: Radius.circular(25.0))),
-        isScrollControlled: true
-        /*   Container(
-          child: Wrap(
-            children: <Widget>[
-              ListTile(
-                  leading: Icon(Icons.music_note),
-                  title: Text('Music'),
-                  onTap: () => {}
-              ),
-              ListTile(
-                leading: Icon(Icons.videocam),
-                title: Text('Video'),
-                onTap: () => {},
-              ),
-            ],
-          ),
-        )*/
+        elevation: 20.0, isScrollControlled: true
         );
     /*  showModalBottomSheet(
         isScrollControlled: true,
@@ -180,7 +158,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
                       onPress: () {
-                        Get.to(LoginView());
+                        Get.to(LoginView(), popGesture: false);
                       },
                       title: 'Ingresar por Apple',
                       image: SvgPicture.asset('assets/appleIcon.svg'),
