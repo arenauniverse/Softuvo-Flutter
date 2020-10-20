@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:get/get.dart';
 
 class MyProfileView extends StatefulWidget {
   @override
@@ -24,16 +25,27 @@ class _MyProfileViewState extends State<MyProfileView> {
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
           actions: [
-            Container(
-              padding: EdgeInsets.only(
-                  top: SizeConfig.blockSizeVertical * 3,
-                  right: SizeConfig.blockSizeHorizontal * 3),
-              child: Text("Salir",
-                  style: TextStyle(
-                      color: AppTheme.blueColor, fontWeight: FontWeight.w600)),
+            GestureDetector(
+              child: Container(
+                padding: EdgeInsets.only(
+                    top: SizeConfig.blockSizeVertical * 3,
+                    right: SizeConfig.blockSizeHorizontal * 3),
+                child: Text("Salir",
+                    style: TextStyle(
+                        color: AppTheme.blueColor,
+                        fontWeight: FontWeight.w600)),
+              ),
             )
           ],
-          leading: Icon(Icons.arrow_back_ios),
+          leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Icon(
+              Icons.arrow_back_ios,
+              size: 20.0,
+            ),
+          ),
           /*Container(
           padding: EdgeInsets.only(
               top: SizeConfig.blockSizeVertical * 3,
@@ -162,10 +174,12 @@ class _MyProfileViewState extends State<MyProfileView> {
                   ),
                 ),
               ),
-              SizedBox(
+              /* SizedBox(
                 height: SizeConfig.blockSizeVertical * 1.5,
-              ),
+              ),*/
               Container(
+                margin:
+                    EdgeInsets.only(top: SizeConfig.blockSizeVertical * 1.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
@@ -251,10 +265,12 @@ class _MyProfileViewState extends State<MyProfileView> {
                   ),
                 ),
               ),
-              SizedBox(
+              /*SizedBox(
                 height: SizeConfig.blockSizeVertical * 1.5,
-              ),
+              ),*/
               Container(
+                margin:
+                    EdgeInsets.only(top: SizeConfig.blockSizeVertical * 1.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,

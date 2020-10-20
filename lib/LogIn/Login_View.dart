@@ -29,7 +29,12 @@ class _LoginViewState extends State<LoginView> {
                 onTap: () {
                   Get.back();
                 },
-                child: SvgPicture.asset('assets/backArrow.svg'),
+                child:GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Icon(Icons.arrow_back_ios,size: 20.0,),
+                ),
               ),
               SizedBox(
                 height: SizeConfig.blockSizeVertical * 3,
@@ -103,7 +108,7 @@ class _LoginViewState extends State<LoginView> {
                         fontFamily: AppTheme.appFont,
                         color: AppTheme.blackColor)),
                 keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
+                textInputAction: TextInputAction.done,
               ),
               SizedBox(
                 height: SizeConfig.blockSizeVertical * 2,

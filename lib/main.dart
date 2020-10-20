@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
@@ -28,16 +29,20 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppTheme.whiteColor,
           primaryColor: AppTheme.greyColor),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/profile",
+      initialRoute: "/splash",
       getPages: [
         GetPage(
-          name: '/login',
+          name: '/loginListing',
           page: () => LoginSignUpListingView(),
         ),
-        /* GetPage(
-          name: '/signup',
-          page: () => SignUpView(),
-        ),*/
+        GetPage(
+          name: 'login',
+          page: () => LoginView(),
+        ),
+        GetPage(
+          name: '/test',
+          page: () => TestView(),
+        ),
         GetPage(
           name: '/splash',
           page: () => Splash(),

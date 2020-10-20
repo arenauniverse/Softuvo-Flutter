@@ -1,6 +1,7 @@
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
+import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,7 +34,32 @@ class _TestViewState extends State<TestView> {
   }
 
   void _showModalSheet() {
-    showModalBottomSheet(
+    Get.bottomSheet(LoginSignUpListingView(),
+        elevation: 20.0,
+        backgroundColor: Colors.red,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(25.0),
+                topLeft: Radius.circular(25.0))),
+        isScrollControlled: true
+        /*   Container(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                  leading: Icon(Icons.music_note),
+                  title: Text('Music'),
+                  onTap: () => {}
+              ),
+              ListTile(
+                leading: Icon(Icons.videocam),
+                title: Text('Video'),
+                onTap: () => {},
+              ),
+            ],
+          ),
+        )*/
+        );
+    /*  showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -42,7 +68,7 @@ class _TestViewState extends State<TestView> {
         context: context,
         builder: (builder) {
           return LoginSignUpListingView();
-        });
+        });*/
   }
 }
 
@@ -56,22 +82,29 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+          color: AppTheme.whiteColor,
+          borderRadius: new BorderRadius.only(
+            topLeft: const Radius.circular(25.0),
+            topRight: const Radius.circular(25.0),
+          )),
       height: SizeConfig.blockSizeVertical * 79,
       width: SizeConfig.blockSizeHorizontal,
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 2,
-                    right: SizeConfig.blockSizeHorizontal * 5),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    /* onTap: () {
-                      Get.back();
-                    },*/
+      child: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                  top: SizeConfig.blockSizeVertical * 2,
+                  right: SizeConfig.blockSizeHorizontal * 5),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Container(
                     child: Stack(
                       children: [
                         SvgPicture.asset('assets/closeIcon.svg'),
@@ -79,8 +112,10 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                           top: 5.0,
                           left: 8.0,
                           bottom: 5.0,
-                          child: SvgPicture.asset(
-                            'assets/cross.svg',
+                          child: GestureDetector(
+                            child: SvgPicture.asset(
+                              'assets/cross.svg',
+                            ),
                           ),
                         )
                       ],
@@ -88,39 +123,33 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                   ),
                 ),
               ),
-              Center(
-                child: Container(
-                  margin:
-                      EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
-                  child: SvgPicture.asset('assets/ArenaLogin.svg'),
-                ),
+            ),
+            Center(
+              child: Container(
+                margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
+                child: SvgPicture.asset('assets/ArenaLogin.svg'),
               ),
-              SizedBox(
-                height: SizeConfig.blockSizeVertical * 1,
+            ),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 1,
+            ),
+            Center(
+              child: Container(
+                child: SvgPicture.asset('assets/SportLogin.svg'),
               ),
-              Center(
-                child: Container(
-                  child: SvgPicture.asset('assets/SportLogin.svg'),
-                ),
-              ),
-              SizedBox(
-                height: SizeConfig.blockSizeVertical * 5,
-              ),
-              Text(
-                "Bienvenidos a Arena Sports",
-                style: TextStyle(
-                    fontFamily: AppTheme.appFont,
-                    color: AppTheme.blackColor,
-                    fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: SizeConfig.blockSizeVertical * 3,
-              ),
-            ],
-          ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 26),
+            ),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 5,
+            ),
+            Text(
+              "Bienvenidos a Arena Sports",
+              style: TextStyle(
+                  fontFamily: AppTheme.appFont,
+                  color: AppTheme.blackColor,
+                  fontWeight: FontWeight.w600),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 5),
               child: Column(
                 children: [
                   Container(
@@ -138,7 +167,9 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         vertical: SizeConfig.blockSizeVertical * 2,
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
-                      onPress: () {},
+                      onPress: () {
+                        Get.to(MyProfileView());
+                      },
                       title: 'Ingresar por Google',
                       image: SvgPicture.asset('assets/googleIcon.svg'),
                       bottonColor: AppTheme.googleColor,
@@ -180,7 +211,10 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       padding: EdgeInsets.symmetric(
                           horizontal: SizeConfig.blockSizeHorizontal * 28,
                           vertical: SizeConfig.blockSizeVertical * 1.9),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed('profile');
+                        /*Get.to(MyProfileView());*/
+                      },
                       color: AppTheme.blackColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(22.0),
@@ -194,9 +228,9 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                   )
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

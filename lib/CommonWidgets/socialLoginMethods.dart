@@ -2,9 +2,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+
 final GoogleSignIn googleSignIn = GoogleSignIn();
-
-
 
 Future<GoogleSignInAccount> login() async {
   GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -23,8 +22,6 @@ Future<GoogleSignInAccount> login() async {
   });
   return getCredentials;
 }
-
-
 
 /*
 Future<FacebookLogin> _handleFBSignIn() async {
@@ -59,7 +56,7 @@ Future<FacebookLogin> _handleFBSignIn() async {
               _fnamecontroller.text = fbuser.firstName;
               _lnamecontroller.text = fbuser.lastName;
             });
-          });*//*
+          });*/ /*
 
       } else {
         print("Error");
