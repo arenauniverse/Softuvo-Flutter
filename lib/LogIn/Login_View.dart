@@ -123,7 +123,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   child: Text("Ingresar",
                       style: TextStyle(
-                          color: AppTheme.backgroundColor,
+                          color: AppTheme.whiteColor,
                           fontWeight: FontWeight.w500,
                           fontFamily: AppTheme.appFont)),
                 ),

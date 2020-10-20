@@ -1,12 +1,16 @@
+import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import 'LoginSignUpListing/LoginSgnupListingView.dart';
 import 'Splash/SplashView.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.black, // navigation bar color
+    statusBarColor: Colors.white, // status bar color
+  ));
   runApp(MyApp());
 }
 
@@ -20,11 +24,11 @@ class MyApp extends StatelessWidget {
               button: TextStyle(
             fontFamily: AppTheme.appFont,
           )),
-          backgroundColor: AppTheme.backgroundColor,
-          scaffoldBackgroundColor: AppTheme.backgroundColor,
+          backgroundColor: AppTheme.whiteColor,
+          scaffoldBackgroundColor: AppTheme.whiteColor,
           primaryColor: AppTheme.greyColor),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/splash",
+      initialRoute: "/profile",
       getPages: [
         GetPage(
           name: '/login',
@@ -37,6 +41,10 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/splash',
           page: () => Splash(),
+        ),
+        GetPage(
+          name: '/profile',
+          page: () => MyProfileView(),
         )
       ],
     );

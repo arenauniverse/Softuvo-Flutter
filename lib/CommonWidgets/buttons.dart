@@ -31,7 +31,7 @@ class ButtonsWidget extends StatelessWidget {
           Expanded(
             child: Text(title,
                 style: TextStyle(
-                    color: AppTheme.backgroundColor,
+                    color: AppTheme.whiteColor,
                     fontWeight: FontWeight.w500,
                     fontFamily: AppTheme.appFont)),
           ),

@@ -1,12 +1,10 @@
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
-import 'package:arena_sports_app/ForgetPassword/ForgetPasswordView.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
 import '../theme.dart';
 
 class TestView extends StatefulWidget {
@@ -189,7 +187,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       ),
                       child: Text("Registrarse",
                           style: TextStyle(
-                              color: AppTheme.backgroundColor,
+                              color: AppTheme.whiteColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppTheme.appFont)),
                     ),
