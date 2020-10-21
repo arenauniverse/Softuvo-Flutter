@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
@@ -37,7 +38,7 @@ class _RegisterViewState extends State<RegisterView> {
               Container(
                 margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
                 child: Text(
-                  'Crear usuario',
+                  Strings.createUser,
                   style: TextStyle(
                       fontFamily: AppTheme.appFont,
                       fontWeight: FontWeight.w600,
@@ -61,7 +62,7 @@ class _RegisterViewState extends State<RegisterView> {
                       );
                     },
                     child: Text(
-                      "Iniciar Sesión",
+                      Strings.login,
                       style: TextStyle(
                           color: AppTheme.blueColor,
                           fontWeight: FontWeight.w500),
@@ -85,7 +86,7 @@ class _RegisterViewState extends State<RegisterView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 1),
-                    labelText: "Nombre y Apellido",
+                    labelText: Strings.name,
                     labelStyle: TextStyle(
                         fontFamily: AppTheme.appFont,
                         fontSize: 15.0,
@@ -100,7 +101,7 @@ class _RegisterViewState extends State<RegisterView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 1),
-                    labelText: "Email",
+                    labelText: Strings.emailText,
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
@@ -129,7 +130,7 @@ class _RegisterViewState extends State<RegisterView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 1),
-                    labelText: "Fecha de Nacimiento",
+                    labelText: Strings.dob,
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
@@ -154,7 +155,7 @@ class _RegisterViewState extends State<RegisterView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 1),
-                    labelText: "Pais",
+                    labelText: Strings.parents,
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
@@ -173,7 +174,7 @@ class _RegisterViewState extends State<RegisterView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 1),
-                    labelText: "Contraseña",
+                    labelText: Strings.password,
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
@@ -192,7 +193,7 @@ class _RegisterViewState extends State<RegisterView> {
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
                         left: SizeConfig.blockSizeVertical * 1),
-                    labelText: "Repetir contraseña",
+                    labelText: Strings.repeatPassword,
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
@@ -218,7 +219,7 @@ class _RegisterViewState extends State<RegisterView> {
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                   ),
-                  child: Text("Registrar",
+                  child: Text(Strings.register,
                       style: TextStyle(
                           color: AppTheme.whiteColor,
                           fontWeight: FontWeight.w500,

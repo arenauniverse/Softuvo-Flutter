@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/ForgetPassword/ForgetPasswordView.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
@@ -14,6 +15,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -43,7 +45,7 @@ class _LoginViewState extends State<LoginView> {
                   height: SizeConfig.blockSizeVertical * 3,
                 ),
                 Text(
-                  'Inicio de sesion',
+                  Strings.loginText,
                   style: TextStyle(
                       fontFamily: AppTheme.appFont,
                       fontWeight: FontWeight.w600,
@@ -55,7 +57,7 @@ class _LoginViewState extends State<LoginView> {
                 Row(
                   children: [
                     Text(
-                      "No tiene cuenta? ",
+                      Strings.notRegisted,
                       style: TextStyle(fontWeight: FontWeight.w500),
                     ),
                     GestureDetector(
@@ -67,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                         );
                       },
                       child: Text(
-                        "Crear usuario",
+                        Strings.createUser,
                         style: TextStyle(
                             color: AppTheme.blueColor,
                             fontWeight: FontWeight.w500),
@@ -91,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
                           top: SizeConfig.blockSizeVertical * 2,
                           bottom: SizeConfig.blockSizeVertical * 2,
                           left: SizeConfig.blockSizeVertical * 1),
-                      labelText: "Email",
+                      labelText: Strings.Email,
                       labelStyle: TextStyle(
                           fontFamily: AppTheme.appFont,
                           fontSize: 15.0,
@@ -116,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
                           top: SizeConfig.blockSizeVertical * 2,
                           bottom: SizeConfig.blockSizeVertical * 2,
                           left: SizeConfig.blockSizeVertical * 1),
-                      labelText: "Contraseña",
+                      labelText: Strings.password,
                       labelStyle: TextStyle(
                           fontSize: 15.0,
                           fontFamily: AppTheme.appFont,
@@ -144,7 +146,7 @@ class _LoginViewState extends State<LoginView> {
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(25.0),
                     ),
-                    child: Text("Ingresar",
+                    child: Text(Strings.loginButtonText,
                         style: TextStyle(
                             color: AppTheme.whiteColor,
                             fontWeight: FontWeight.w500,
@@ -161,7 +163,7 @@ class _LoginViewState extends State<LoginView> {
                   },
                   child: Center(
                     child: Text(
-                      'Recuperar contraseña',
+                      Strings.registerUser,
                       style: TextStyle(
                           fontSize: 14.0,
                           color: AppTheme.blueColor,

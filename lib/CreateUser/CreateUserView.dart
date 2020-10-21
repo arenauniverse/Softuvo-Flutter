@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                       margin: EdgeInsets.only(
                           left: SizeConfig.blockSizeHorizontal * 15),
                       child: Text(
-                        "Crear usuario",
+                        Strings.createUser,
                         style: TextStyle(
                             fontFamily: AppTheme.appFont,
                             fontWeight: FontWeight.w600,
@@ -102,7 +103,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                               top: SizeConfig.blockSizeVertical * 2,
                               bottom: SizeConfig.blockSizeVertical * 2,
                               left: SizeConfig.blockSizeVertical * 1),
-                          labelText: "Nombre y Apellido",
+                          labelText: Strings.name,
                           labelStyle: TextStyle(
                               fontFamily: AppTheme.appFont,
                               fontSize: 15.0,
@@ -117,7 +118,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                               top: SizeConfig.blockSizeVertical * 2,
                               bottom: SizeConfig.blockSizeVertical * 2,
                               left: SizeConfig.blockSizeVertical * 1),
-                          labelText: "Email",
+                          labelText: Strings.Email,
                           labelStyle: TextStyle(
                               fontSize: 15.0,
                               fontFamily: AppTheme.appFont,
@@ -142,7 +143,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                               top: SizeConfig.blockSizeVertical * 2,
                               bottom: SizeConfig.blockSizeVertical * 2,
                               left: SizeConfig.blockSizeVertical * 1),
-                          labelText: "Fecha de Nacimiento",
+                          labelText: Strings.dob,
                           labelStyle: TextStyle(
                               fontSize: 15.0,
                               fontFamily: AppTheme.appFont,
@@ -163,7 +164,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                               top: SizeConfig.blockSizeVertical * 2,
                               bottom: SizeConfig.blockSizeVertical * 2,
                               left: SizeConfig.blockSizeVertical * 1),
-                          labelText: "Telefono ",
+                          labelText: Strings.phone,
                           labelStyle: TextStyle(
                               fontSize: 15.0,
                               fontFamily: AppTheme.appFont,
@@ -188,7 +189,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(25.0),
                     ),
-                    child: Text("Guardar",
+                    child: Text(Strings.save,
                         style: TextStyle(
                             color: AppTheme.whiteColor,
                             fontWeight: FontWeight.w500,

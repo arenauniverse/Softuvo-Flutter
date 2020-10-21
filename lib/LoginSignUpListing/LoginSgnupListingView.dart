@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
@@ -20,7 +21,7 @@ class _TestViewState extends State<TestView> {
       body: GestureDetector(
         child: Center(
             child: Text(
-          "ARENA",
+          Strings.arena,
           style: TextStyle(
               fontFamily: AppTheme.appFont,
               color: AppTheme.blackColor,
@@ -113,7 +114,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
               height: SizeConfig.blockSizeVertical * 5,
             ),
             Text(
-              "Bienvenidos a Arena Sports",
+              Strings.listingText,
               style: TextStyle(
                   fontFamily: AppTheme.appFont,
                   color: AppTheme.blackColor,
@@ -128,7 +129,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
                       onPress: () {},
-                      title: 'Ingresar por Facebook',
+                      title:  Strings.fbText,
                       image: SvgPicture.asset('assets/fbIcon.svg'),
                       bottonColor: AppTheme.fbColor,
                     ),
@@ -146,7 +147,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         );
                         //     Get.to(MyProfileView());
                       },
-                      title: 'Ingresar por Google',
+                      title:  Strings.googleText,
                       image: SvgPicture.asset(
                         'assets/googleIcon.svg',
                         height: 21,
@@ -165,7 +166,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         );
                         //     Get.to(LoginView(), popGesture: false);
                       },
-                      title: 'Ingresar por Apple',
+                      title:  Strings.appleText,
                       image: SvgPicture.asset('assets/appleIcon.svg'),
                       bottonColor: AppTheme.blackColor,
                     ),
@@ -181,7 +182,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                           MaterialPageRoute(builder: (context) => LoginView()),
                         );
                       },
-                      title: 'Ingresar por Email',
+                      title:  Strings.emailText,
                       image: SvgPicture.asset('assets/mailIcon.svg'),
                       bottonColor: AppTheme.blackColor,
                     ),
@@ -210,7 +211,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
-                      child: Text("Registrarse",
+                      child: Text( Strings.registerButtonText,
                           style: TextStyle(
                               color: AppTheme.whiteColor,
                               fontWeight: FontWeight.w500,
