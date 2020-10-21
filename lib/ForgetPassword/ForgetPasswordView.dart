@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../SizeConfig.dart';
 import '../theme.dart';
@@ -29,7 +28,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       IconButton(
                           icon: Icon(Icons.arrow_back),
                           onPressed: () {
-                            Get.back();
+                            Navigator.pop(context);
                           }),
                       Text(
                         "FORGOT PASSWORD",
@@ -131,11 +130,13 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                                     // Navigator.pop(context);
                                   }
                                 },
-                                child: Text("CONTINUE",
-                                 /*   style: TextStyle(
+                                child: Text(
+                                  "CONTINUE",
+                                  /*   style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.white,
-                                        fontFamily: AppTheme.fontLato)*/),
+                                        fontFamily: AppTheme.fontLato)*/
+                                ),
                               ),
                             ),
                             SizedBox(

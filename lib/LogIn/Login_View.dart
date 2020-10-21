@@ -74,7 +74,7 @@ class _LoginViewState extends State<LoginView> {
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Email",
                     labelStyle: TextStyle(
                         fontFamily: AppTheme.appFont,
@@ -99,7 +99,7 @@ class _LoginViewState extends State<LoginView> {
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Contraseña",
                     labelStyle: TextStyle(
                         fontSize: 15.0,
@@ -122,7 +122,7 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () {},
                   color: AppTheme.blackColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(22.0),
+                    borderRadius: new BorderRadius.circular(25.0),
                   ),
                   child: Text("Ingresar",
                       style: TextStyle(

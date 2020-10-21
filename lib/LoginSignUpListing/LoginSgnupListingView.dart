@@ -153,7 +153,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         //     Get.to(MyProfileView());
                       },
                       title: 'Ingresar por Google',
-                      image: SvgPicture.asset('assets/googleIcon.svg'),
+                      image: SvgPicture.asset('assets/googleIcon.svg',height: 21,),
                       bottonColor: AppTheme.googleColor,
                     ),
                   ),
@@ -206,7 +206,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       },
                       color: AppTheme.blackColor,
                       shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(22.0),
+                        borderRadius: new BorderRadius.circular(25.0),
                       ),
                       child: Text("Registrarse",
                           style: TextStyle(

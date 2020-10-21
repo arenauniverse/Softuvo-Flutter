@@ -20,21 +20,19 @@ class ButtonsWidget extends StatelessWidget {
       onPressed: onPress,
       color: bottonColor,
       shape: RoundedRectangleBorder(
-        borderRadius: new BorderRadius.circular(22.0),
+        borderRadius: new BorderRadius.circular(25.0),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        /*  mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,*/
         children: [
           image,
-          SizedBox(width: SizeConfig.blockSizeHorizontal * 5),
-          Expanded(
-            child: Text(title,
-                style: TextStyle(
-                    color: AppTheme.whiteColor,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: AppTheme.appFont)),
-          ),
+          SizedBox(width: SizeConfig.blockSizeHorizontal * 8,),
+          Text(title,
+              style: TextStyle(
+                  color: AppTheme.whiteColor,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: AppTheme.appFont)),
         ],
       ),
     );

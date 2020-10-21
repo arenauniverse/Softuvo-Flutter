@@ -1,6 +1,7 @@
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class RegisterView extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _RegisterViewState extends State<RegisterView> {
       body: Container(
         margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 8.0,
-            left: SizeConfig.blockSizeHorizontal * 7,
+            left: SizeConfig.blockSizeHorizontal * 8,
             right: SizeConfig.blockSizeHorizontal * 7),
         child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
@@ -31,15 +32,15 @@ class _RegisterViewState extends State<RegisterView> {
                   size: 20.0,
                 ),
               ),
-              SizedBox(
-                height: SizeConfig.blockSizeVertical * 3,
-              ),
-              Text(
-                'Crear usuario',
-                style: TextStyle(
-                    fontFamily: AppTheme.appFont,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 24),
+              Container(
+                margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
+                child: Text(
+                  'Crear usuario',
+                  style: TextStyle(
+                      fontFamily: AppTheme.appFont,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24),
+                ),
               ),
               SizedBox(
                 height: SizeConfig.blockSizeVertical * 2,
@@ -71,7 +72,7 @@ class _RegisterViewState extends State<RegisterView> {
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Nombre y Apellido",
                     labelStyle: TextStyle(
                         fontFamily: AppTheme.appFont,
@@ -86,7 +87,7 @@ class _RegisterViewState extends State<RegisterView> {
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Email",
                     labelStyle: TextStyle(
                         fontSize: 15.0,
@@ -104,16 +105,24 @@ class _RegisterViewState extends State<RegisterView> {
                 },
                 onFieldSubmitted: (v) {},*/
                 decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.date_range_outlined,
+                      color: AppTheme.blackColor,
+                    ),
+                    /*SvgPicture.asset(
+                      'assets/dateTimeIcon.svg',
+                      height: 20.0,
+                    ),*/
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Fecha de Nacimiento",
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
                         color: AppTheme.blackColor)),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
               TextFormField(
@@ -125,43 +134,63 @@ class _RegisterViewState extends State<RegisterView> {
                 },
                 onFieldSubmitted: (v) {},*/
                 decoration: InputDecoration(
-                    // suffixIcon: Icon(
-                    //   Icons.remove_red_eye_rounded,
-                    //   color: AppTheme.blackColor,
-                    // ),
+                    suffixIcon: Icon(
+                      Icons.keyboard_arrow_down_sharp,
+                      color: AppTheme.blackColor,
+                    ),
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Pais",
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
                         color: AppTheme.blackColor)),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
               ),
               TextFormField(
                 cursorColor: AppTheme.blackColor,
                 decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye_rounded,
+                      color: AppTheme.blackColor,
+                    ),
                     contentPadding: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeVertical * 2),
+                        left: SizeConfig.blockSizeVertical * 1),
+                    labelText: "Contraseña",
+                    labelStyle: TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: AppTheme.appFont,
+                        color: AppTheme.blackColor)),
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.done,
+              ),
+              TextFormField(
+                cursorColor: AppTheme.blackColor,
+                decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye_rounded,
+                      color: AppTheme.blackColor,
+                    ),
+                    contentPadding: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2,
+                        bottom: SizeConfig.blockSizeVertical * 2,
+                        left: SizeConfig.blockSizeVertical * 1),
                     labelText: "Repetir contraseña",
                     labelStyle: TextStyle(
                         fontSize: 15.0,
                         fontFamily: AppTheme.appFont,
                         color: AppTheme.blackColor)),
-                keyboardType: TextInputType.emailAddress,
+                keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
-              ),
-              SizedBox(
-                height: SizeConfig.blockSizeVertical * 2,
               ),
               Container(
                 margin: EdgeInsets.symmetric(
-                  vertical: SizeConfig.blockSizeVertical * 3,
+                  vertical: SizeConfig.blockSizeVertical * 4,
                 ),
                 child: RaisedButton(
                   padding: EdgeInsets.symmetric(
@@ -170,7 +199,7 @@ class _RegisterViewState extends State<RegisterView> {
                   onPressed: () {},
                   color: AppTheme.blackColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(22.0),
+                    borderRadius: new BorderRadius.circular(25.0),
                   ),
                   child: Text("Registrar",
                       style: TextStyle(
@@ -179,12 +208,6 @@ class _RegisterViewState extends State<RegisterView> {
                           fontFamily: AppTheme.appFont)),
                 ),
               ),
-              Center(
-                child: Text(
-                  'Recuperar contraseña',
-                  style: TextStyle(fontSize: 13.0, color: AppTheme.blueColor),
-                ),
-              )
             ],
           ),
         ),

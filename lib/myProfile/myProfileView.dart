@@ -40,7 +40,7 @@ class _MyProfileViewState extends State<MyProfileView> {
           leading: GestureDetector(
             onTap: () {
               Navigator.pop(context);
-          //    Get.back();
+              //    Get.back();
             },
             child: Icon(
               Icons.arrow_back_ios,
@@ -79,8 +79,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                     Positioned(
                       child: Container(
                         margin: EdgeInsets.only(
-                            top: SizeConfig.blockSizeVertical * 14.25),
-                        width: SizeConfig.blockSizeHorizontal * 29,
+                            top: SizeConfig.blockSizeVertical * 12),
+                        width: SizeConfig.blockSizeHorizontal * 26,
                         //height: SizeConfig.blockSizeVertical * 25,
                         alignment: Alignment.centerRight,
                         child: CircleAvatar(
