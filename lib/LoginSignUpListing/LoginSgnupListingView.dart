@@ -59,12 +59,6 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      /*  decoration: BoxDecoration(
-          color: AppTheme.whiteColor,
-          borderRadius: new BorderRadius.only(
-            topLeft: const Radius.circular(25.0),
-            topRight: const Radius.circular(25.0),
-          )),*/
       height: SizeConfig.blockSizeVertical * 79,
       width: SizeConfig.blockSizeHorizontal,
       child: SingleChildScrollView(
@@ -153,7 +147,10 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         //     Get.to(MyProfileView());
                       },
                       title: 'Ingresar por Google',
-                      image: SvgPicture.asset('assets/googleIcon.svg',height: 21,),
+                      image: SvgPicture.asset(
+                        'assets/googleIcon.svg',
+                        height: 21,
+                      ),
                       bottonColor: AppTheme.googleColor,
                     ),
                   ),
@@ -178,8 +175,13 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         vertical: SizeConfig.blockSizeVertical * 2,
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
-                      onPress: () {},
-                      title: 'Ingresar por email',
+                      onPress: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginView()),
+                        );
+                      },
+                      title: 'Ingresar por Email',
                       image: SvgPicture.asset('assets/mailIcon.svg'),
                       bottonColor: AppTheme.blackColor,
                     ),

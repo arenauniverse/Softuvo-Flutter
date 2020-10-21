@@ -1,4 +1,6 @@
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
+import 'package:arena_sports_app/ForgetPassword/ForgetPasswordView.dart';
+import 'package:arena_sports_app/Register/Register_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
@@ -49,12 +51,17 @@ class _LoginViewState extends State<LoginView> {
               ),
               Row(
                 children: [
-                  Text("No tiene cuenta? "),
+                  Text("No tiene cuenta? ",  style: TextStyle(fontWeight: FontWeight.w500),),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterView()),
+                      );
+                    },
                     child: Text(
                       "Crear usuario",
-                      style: TextStyle(color: AppTheme.blueColor),
+                      style: TextStyle(color: AppTheme.blueColor,fontWeight: FontWeight.w500),
                     ),
                   )
                 ],
@@ -131,10 +138,18 @@ class _LoginViewState extends State<LoginView> {
                           fontFamily: AppTheme.appFont)),
                 ),
               ),
-              Center(
-                child: Text(
-                  'Recuperar contraseña',
-                  style: TextStyle(fontSize: 13.0, color: AppTheme.blueColor),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ForgetPasswordView()),
+                  );
+                },
+                child: Center(
+                  child: Text(
+                    'Recuperar contraseña',
+                    style: TextStyle(fontSize: 14.0, color: AppTheme.blueColor,fontWeight: FontWeight.w600),
+                  ),
                 ),
               )
             ],

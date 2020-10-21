@@ -3,6 +3,7 @@ import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../SizeConfig.dart';
 
@@ -14,11 +15,15 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   @override
   void initState() {
-       Future.delayed(const Duration(milliseconds: 2000), () {
-         Navigator.push(
-           context,
-           MaterialPageRoute(builder: (context) => TestView()),
-         );
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black, // navigation bar color
+      statusBarColor: Colors.white, // status bar color
+    ));
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TestView()),
+      );
       /*Get.off(TestView());*/
     });
     super.initState();
@@ -44,7 +49,6 @@ class _SplashState extends State<Splash> {
             height: SizeConfig.blockSizeVertical * 5,
             child: SvgPicture.asset('assets/Sport.svg'),
           ),
-
         ],
       ),
     );

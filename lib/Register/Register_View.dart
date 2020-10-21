@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
@@ -47,12 +48,22 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               Row(
                 children: [
-                  Text("Ya tienes cuenta? "),
+                  Text(
+                    "Ya tienes cuenta? ",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginView()),
+                      );
+                    },
                     child: Text(
                       "Iniciar Sesión",
-                      style: TextStyle(color: AppTheme.blueColor),
+                      style: TextStyle(
+                          color: AppTheme.blueColor,
+                          fontWeight: FontWeight.w500),
                     ),
                   )
                 ],

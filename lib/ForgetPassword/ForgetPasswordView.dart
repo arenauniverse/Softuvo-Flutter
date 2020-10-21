@@ -13,140 +13,117 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
+      body: Container(
+        margin: EdgeInsets.only(
+          top: SizeConfig.blockSizeVertical * 8.0,
+          /*  left: SizeConfig.blockSizeHorizontal * 7,
+            right: SizeConfig.blockSizeHorizontal * 7*/
+        ),
         child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding:
-                    EdgeInsets.only(top: SizeConfig.blockSizeHorizontal * 10),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 7,
+                        right: SizeConfig.blockSizeHorizontal * 7),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        // Get.back();
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 20.0,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 10),
+                    child: Text(
+                      "Recuperar contraseña",
+                      style: TextStyle(
+                          fontFamily: AppTheme.appFont,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
+                    ),
+                  )
+                ],
+              ),
+              Container(
+                margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
+                child: Divider(
+                  color: Color(0xFF000000),
+                ),
+              ),
+              /* SizedBox(
+                height: SizeConfig.blockSizeVertical * 3,
+              ),
+              Text(
+                'Recuperar contraseña',
+                style: TextStyle(
+                    fontFamily: AppTheme.appFont,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 24),
+              ),*/
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 2,
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    left: SizeConfig.blockSizeHorizontal * 7,
+                    right: SizeConfig.blockSizeHorizontal * 7),
+                child: TextFormField(
+                  cursorColor: Colors.black,
+                  validator: (value) {
+                    if (value == null || value == "") {
+                      return "Enter Valid Email";
+                    }
+                  },
+                  onFieldSubmitted: (v) {},
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 2,
+                          bottom: SizeConfig.blockSizeVertical * 2,
+                          left: SizeConfig.blockSizeVertical * 1),
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                          fontFamily: AppTheme.appFont,
+                          fontSize: 15.0,
+                          color: AppTheme.blackColor)),
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                ),
+              ),
+              SizedBox(
+                height: SizeConfig.blockSizeVertical * 2,
+              ),
+              Center(
                 child: Container(
-                  child: Row(
-                    children: [
-                      IconButton(
-                          icon: Icon(Icons.arrow_back),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          }),
-                      Text(
-                        "FORGOT PASSWORD",
+                  margin: EdgeInsets.symmetric(
+                    vertical: SizeConfig.blockSizeVertical * 3,
+                  ),
+                  child: RaisedButton(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.blockSizeHorizontal * 34,
+                        vertical: SizeConfig.blockSizeVertical * 2),
+                    onPressed: () {},
+                    color: AppTheme.blackColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(25.0),
+                    ),
+                    child: Text("Recuperar",
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 14),
-                      )
-                    ],
+                            color: AppTheme.whiteColor,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: AppTheme.appFont)),
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: SizeConfig.blockSizeHorizontal * 2,
-                    right: SizeConfig.blockSizeHorizontal * 2),
-                child: Card(
-                  elevation: 8.0,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 4,
-                        left: SizeConfig.blockSizeHorizontal * 5,
-                        right: SizeConfig.blockSizeHorizontal * 4),
-                    child: Container(
-                        height: SizeConfig.blockSizeVertical * 88,
-                        width: SizeConfig.blockSizeHorizontal * 100,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Reset Your,",
-                              style: TextStyle(
-                                  fontSize: 22.0, fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical * 0.5,
-                            ),
-                            Text(
-                              "Password",
-                              style: TextStyle(
-                                  fontSize: 16, color: AppTheme.greyColor),
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical * 3,
-                            ),
-                            Text(
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                              style: TextStyle(color: Colors.grey.shade600),
-                              textAlign: TextAlign.start,
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical * 4,
-                            ),
-                            TextFormField(
-                              cursorColor: Colors.black,
-                              validator: (value) {
-                                if (value == null || value == "") {
-                                  return "Enter Email Address";
-                                }
-                              },
-                              onFieldSubmitted: (v) {},
-                              decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(4)),
-                                    borderSide: BorderSide(
-                                      width: 0.8,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  contentPadding: EdgeInsets.only(
-                                      top: SizeConfig.blockSizeVertical * 2,
-                                      bottom: SizeConfig.blockSizeVertical * 2,
-                                      left: SizeConfig.blockSizeVertical * 2),
-                                  border: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Colors.black, width: 1.0),
-                                  ),
-                                  labelText: "Email",
-                                  labelStyle: TextStyle(fontSize: 14.0)),
-                              keyboardType: TextInputType.emailAddress,
-                              textInputAction: TextInputAction.done,
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical * 4,
-                            ),
-                            Center(
-                              child: RaisedButton(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                        SizeConfig.blockSizeHorizontal * 31,
-                                    vertical:
-                                        SizeConfig.blockSizeVertical * 1.7),
-                                onPressed: () {
-                                  FocusScope.of(context).unfocus();
-                                  if (_formKey.currentState.validate()) {
-                                    // if(validateEmail());
-                                    // Get.to(LoginScreenView());
-                                  } else {
-                                    // Navigator.pop(context);
-                                  }
-                                },
-                                child: Text(
-                                  "CONTINUE",
-                                  /*   style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.white,
-                                        fontFamily: AppTheme.fontLato)*/
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: SizeConfig.blockSizeVertical * 4,
-                            ),
-                          ],
-                        )),
-                  ),
-                ),
-              )
             ],
           ),
         ),
