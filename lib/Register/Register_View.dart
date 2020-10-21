@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
@@ -17,7 +18,7 @@ class _RegisterViewState extends State<RegisterView> {
         margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 8.0,
             left: SizeConfig.blockSizeHorizontal * 8,
-            right: SizeConfig.blockSizeHorizontal * 7),
+            right: SizeConfig.blockSizeHorizontal * 8),
         child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
           child: Column(
@@ -205,9 +206,14 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 child: RaisedButton(
                   padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.blockSizeHorizontal * 34,
+                      horizontal: SizeConfig.blockSizeHorizontal * 32,
                       vertical: SizeConfig.blockSizeVertical * 2),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CreateUserView()),
+                    );
+                  },
                   color: AppTheme.blackColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),

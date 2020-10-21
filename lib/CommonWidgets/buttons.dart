@@ -27,7 +27,9 @@ class ButtonsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,*/
         children: [
           image,
-          SizedBox(width: SizeConfig.blockSizeHorizontal * 8,),
+          SizedBox(
+            width: SizeConfig.blockSizeHorizontal * 8,
+          ),
           Text(title,
               style: TextStyle(
                   color: AppTheme.whiteColor,
