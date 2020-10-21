@@ -19,6 +19,7 @@ class _MyProfileViewState extends State<MyProfileView> {
     return Scaffold(
         backgroundColor: AppTheme.backGroundColor,
         appBar: AppBar(
+          brightness: Brightness.light,
           backgroundColor: AppTheme.whiteColor,
           title: Text(
             "Mi Perfil",
@@ -125,7 +126,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 21,
+                height: SizeConfig.blockSizeVertical * 18,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -185,7 +186,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 29,
+                height: SizeConfig.blockSizeVertical * 25,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -276,7 +277,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 50,
+                height: SizeConfig.blockSizeVertical * 42,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -285,7 +286,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Legal",
+                      Text("LEGAL",
                           style: TextStyle(
                               fontWeight: FontWeight.w800, fontSize: 15.0)),
                       SizedBox(height: SizeConfig.blockSizeVertical * 2.5),

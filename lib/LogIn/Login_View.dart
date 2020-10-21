@@ -1,11 +1,15 @@
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
+import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
+import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/ForgetPassword/ForgetPasswordView.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginView extends StatefulWidget {
@@ -62,6 +66,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        FocusScope.of(context).unfocus();
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -81,6 +86,10 @@ class _LoginViewState extends State<LoginView> {
                   height: SizeConfig.blockSizeVertical * 2,
                 ),
                 TextFormField(
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(1),
+                  ],
+                  controller: Controllers.loginEmail,
                   cursorColor: Colors.black,
                   validator: (value) {
                     if (value == null || value == "") {
@@ -102,6 +111,8 @@ class _LoginViewState extends State<LoginView> {
                   textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
+                  obscureText: true,
+                  controller: Controllers.loginPassword,
                   cursorColor: AppTheme.blackColor,
                   validator: (value) {
                     if (value == null || value == "") {
@@ -138,8 +149,24 @@ class _LoginViewState extends State<LoginView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 34,
                         vertical: SizeConfig.blockSizeVertical * 2),
                     onPressed: () {
+                      FocusScope.of(context).unfocus();
                       if (_formKey.currentState.validate()) {
-                        print("true");
+                        if (validateEmail(
+                          Controllers.loginEmail.text,
+                        )) {
+                          if (Controllers.loginPassword.text.length >= 8) {
+                            toast(
+                                context: context,
+                                msg: ErrorMessages.loginSuccess);
+                          } else {
+                            toast(
+                                context: context,
+                                msg: ErrorMessages.shortPassword);
+                          }
+                        } else {
+                          toast(
+                              context: context, msg: ErrorMessages.wrongEmail);
+                        }
                       }
                     },
                     color: AppTheme.blackColor,
@@ -155,6 +182,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    FocusScope.of(context).unfocus();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -170,7 +198,7 @@ class _LoginViewState extends State<LoginView> {
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -179,3 +207,5 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+
+

@@ -1,7 +1,6 @@
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'Splash/SplashView.dart';
 
 void main() {
@@ -15,20 +14,23 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          fontFamily: AppTheme.appFont,
-          textTheme: TextTheme(
-              button: TextStyle(
-            fontFamily: AppTheme.appFont,
-          )),
-          backgroundColor: AppTheme.whiteColor,
-          scaffoldBackgroundColor: AppTheme.whiteColor,
-          primaryColor: AppTheme.greyColor),
-      debugShowCheckedModeBanner: false,
-      home: Splash(),
-      //initialRoute: "/splash",
-      /* getPages: [
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        sized: true,
+        value: SystemUiOverlayStyle.dark,
+        child: MaterialApp(
+          theme: ThemeData(
+              fontFamily: AppTheme.appFont,
+              textTheme: TextTheme(
+                  button: TextStyle(
+                fontFamily: AppTheme.appFont,
+              )),
+              backgroundColor: AppTheme.whiteColor,
+              scaffoldBackgroundColor: AppTheme.whiteColor,
+              primaryColor: AppTheme.greyColor),
+          debugShowCheckedModeBanner: false,
+          home: Splash(),
+          //initialRoute: "/splash",
+          /* getPages: [
         GetPage(
           name: '/loginListing',
           page: () => LoginSignUpListingView(),
@@ -50,6 +52,6 @@ class MyApp extends StatelessWidget {
           page: () => MyProfileView(),
         )
       ],*/
-    );
+        ));
   }
 }

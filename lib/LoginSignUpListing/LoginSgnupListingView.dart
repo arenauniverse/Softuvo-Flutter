@@ -18,18 +18,41 @@ class _TestViewState extends State<TestView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GestureDetector(
-        child: Center(
-            child: Text(
-          Strings.arena,
-          style: TextStyle(
-              fontFamily: AppTheme.appFont,
-              color: AppTheme.blackColor,
-              fontSize: 40.0),
-        )),
-        onTap: () {
-          _showModalSheet();
-        },
+      body: Column(
+        children: [
+          GestureDetector(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                margin: EdgeInsets.only(
+                    top: SizeConfig.blockSizeVertical * 10,
+                    left: SizeConfig.blockSizeHorizontal * 8,
+                    bottom: SizeConfig.blockSizeVertical * 3),
+                child: SvgPicture.asset('assets/ArenaLogin.svg'),
+              ),
+            ),
+            onTap: () {
+              _showModalSheet();
+            },
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              child: Text(
+                "Please click on Arena to continue",
+                style: TextStyle(
+                  fontFamily: AppTheme.appFont,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+              margin: EdgeInsets.only(
+                left: SizeConfig.blockSizeHorizontal * 8,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -121,7 +144,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                   fontWeight: FontWeight.w600),
             ),
             Padding(
-              padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 5),
+              padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
               child: Column(
                 children: [
                   Container(
@@ -129,7 +152,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
                       onPress: () {},
-                      title:  Strings.fbText,
+                      title: Strings.fbText,
                       image: SvgPicture.asset('assets/fbIcon.svg'),
                       bottonColor: AppTheme.fbColor,
                     ),
@@ -147,7 +170,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         );
                         //     Get.to(MyProfileView());
                       },
-                      title:  Strings.googleText,
+                      title: Strings.googleText,
                       image: SvgPicture.asset(
                         'assets/googleIcon.svg',
                         height: 21,
@@ -166,7 +189,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         );
                         //     Get.to(LoginView(), popGesture: false);
                       },
-                      title:  Strings.appleText,
+                      title: Strings.appleText,
                       image: SvgPicture.asset('assets/appleIcon.svg'),
                       bottonColor: AppTheme.blackColor,
                     ),
@@ -182,7 +205,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                           MaterialPageRoute(builder: (context) => LoginView()),
                         );
                       },
-                      title:  Strings.emailText,
+                      title: Strings.emailText,
                       image: SvgPicture.asset('assets/mailIcon.svg'),
                       bottonColor: AppTheme.blackColor,
                     ),
@@ -211,7 +234,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
-                      child: Text( Strings.registerButtonText,
+                      child: Text(Strings.registerButtonText,
                           style: TextStyle(
                               color: AppTheme.whiteColor,
                               fontWeight: FontWeight.w500,

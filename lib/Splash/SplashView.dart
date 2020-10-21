@@ -20,10 +20,12 @@ class _SplashState extends State<Splash> {
       statusBarColor: Colors.white, // status bar color
     ));
     Future.delayed(const Duration(milliseconds: 2000), () {
-      Navigator.push(
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (BuildContext context) => TestView()));
+      /* Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TestView()),
-      );
+      );*/
       /*Get.off(TestView());*/
     });
     super.initState();
