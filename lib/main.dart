@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,28 +31,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: Splash(),
           //initialRoute: "/splash",
-          /* getPages: [
-        GetPage(
-          name: '/loginListing',
-          page: () => LoginSignUpListingView(),
-        ),
-        GetPage(
-          name: 'login',
-          page: () => LoginView(),
-        ),
-        GetPage(
-          name: '/test',
-          page: () => TestView(),
-        ),
-        GetPage(
-          name: '/splash',
-          page: () => Splash(),
-        ),
-        GetPage(
-          name: '/profile',
-          page: () => MyProfileView(),
-        )
-      ],*/
         ));
   }
 }
+

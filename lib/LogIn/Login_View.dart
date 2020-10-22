@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
@@ -11,6 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+
+import '../Repos.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -19,6 +25,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
   bool _autoValidate = false;
   @override
   Widget build(BuildContext context) {
@@ -87,7 +94,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 TextFormField(
                   inputFormatters: [
-                    LengthLimitingTextInputFormatter(1),
+                    LengthLimitingTextInputFormatter(30),
                   ],
                   controller: Controllers.loginEmail,
                   cursorColor: Colors.black,
@@ -149,23 +156,21 @@ class _LoginViewState extends State<LoginView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 34,
                         vertical: SizeConfig.blockSizeVertical * 2),
                     onPressed: () {
+                      QueryResult queryResult;
                       FocusScope.of(context).unfocus();
                       if (_formKey.currentState.validate()) {
                         if (validateEmail(
                           Controllers.loginEmail.text,
                         )) {
                           if (Controllers.loginPassword.text.length >= 8) {
-                            toast(
-                                context: context,
-                                msg: ErrorMessages.loginSuccess);
+                            LoginUser(
+                                context: context, queryResult: queryResult);
                           } else {
                             toast(
-                                context: context,
-                                msg: ErrorMessages.shortPassword);
+                                context: context, msg: Messages.shortPassword);
                           }
                         } else {
-                          toast(
-                              context: context, msg: ErrorMessages.wrongEmail);
+                          toast(context: context, msg: Messages.wrongEmail);
                         }
                       }
                     },
@@ -206,6 +211,41 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+
+  Future LoginUser({BuildContext context, QueryResult queryResult}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Dialogs.showLoadingDialog(context, _addLoader);
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client
+            .mutate(
+          MutationOptions(
+              documentNode: gql(
+            addMutation.login(
+              email: Controllers.loginEmail.text,
+              keyword: Controllers.loginPassword.text,
+            ),
+          )),
+        )
+            .then((value) {
+          queryResult = value;
+          if (!queryResult.hasException) {
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(context: context, msg: Messages.loginSuccess);
+            /*    Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CreateUserView()),
+          );*/
+          } else {
+            print("dbas" + queryResult.exception.toString());
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(context: context, msg: queryResult.exception.toString());
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: "No Internet Connection", context: context);
+    }
+  }
 }
-
-

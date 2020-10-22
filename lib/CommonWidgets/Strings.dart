@@ -1,3 +1,7 @@
+
+import 'package:arena_sports_app/Repos.dart';
+
+QueryMutation addMutation = QueryMutation();
 class Strings {
   static String arena = 'ARENA';
   static String listingText = 'Bienvenidos a Arena Sports';

@@ -55,33 +55,31 @@ class DatePickerState extends State<DatePicker> {
             });
           },
           child: AbsorbPointer(
+            absorbing: true,
             child: TextFormField(
               controller: controller,
               cursorColor: AppTheme.blackColor,
-              validator: (value) {
-                if (value == null || value == "") {
-                  return "Enter Valid Nacimineto";
-                }
-              },
+
               //  onFieldSubmitted: (v) {},
               decoration: InputDecoration(
-                  suffixIcon: Icon(
-                    Icons.date_range_outlined,
-                    color: AppTheme.blackColor,
-                  ),
-                  /*SvgPicture.asset(
+                suffixIcon: Icon(
+                  Icons.date_range_outlined,
+                  color: AppTheme.blackColor,
+                ),
+                /*SvgPicture.asset(
                             'assets/dateTimeIcon.svg',
                             height: 20.0,
                           ),*/
-                  contentPadding: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 2,
-                      bottom: SizeConfig.blockSizeVertical * 2,
-                      left: SizeConfig.blockSizeVertical * 1),
-                  labelText: Strings.dob,
+                contentPadding: EdgeInsets.only(
+                    top: SizeConfig.blockSizeVertical * 5,
+                    bottom: SizeConfig.blockSizeVertical * 2,
+                    left: SizeConfig.blockSizeVertical * 1),
+                /* labelText: Strings.dob,
                   labelStyle: TextStyle(
                       fontSize: 15.0,
                       fontFamily: AppTheme.appFont,
-                      color: AppTheme.blackColor)),
+                      color: AppTheme.blackColor)*/
+              ),
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
             ),

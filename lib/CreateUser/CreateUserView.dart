@@ -227,21 +227,21 @@ class _CreateUserViewState extends State<CreateUserView> {
                                 if (validateMobile(
                                     Controllers.createUserPhone.text)) {
                                   toast(
-                                      msg: ErrorMessages.createUserSuccess,
+                                      msg: Messages.createUserSuccess,
                                       context: context);
                                 } else {
                                   toast(
-                                      msg: ErrorMessages.validPhone,
+                                      msg: Messages.validPhone,
                                       context: context);
                                 }
                               } else {
                                 toast(
-                                    msg: ErrorMessages.validDob,
+                                    msg: Messages.validDob,
                                     context: context);
                               }
                             } else {
                               toast(
-                                  msg: ErrorMessages.wrongEmail,
+                                  msg: Messages.wrongEmail,
                                   context: context);
                             }
                           }

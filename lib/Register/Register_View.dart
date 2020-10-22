@@ -1,15 +1,20 @@
+import 'dart:io';
+
 import 'package:arena_sports_app/CommonWidgets/DatePicker.dart';
+import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
+import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:intl/intl.dart';
 
 class RegisterView extends StatefulWidget {
@@ -19,7 +24,8 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   final _formKey = GlobalKey<FormState>();
-  var setDateTime;
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
+  var setDateTime, dateTimeFormat;
   List<ListItem> _dropdownItems = [
     ListItem(1, "First Value"),
     ListItem(2, "Second Item"),
@@ -32,6 +38,8 @@ class _RegisterViewState extends State<RegisterView> {
 
   void initState() {
     super.initState();
+    Controllers.dob.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
+    dateTimeFormat = DateFormat("dd/MM/yyyy").format(DateTime.now());
     _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
     _selectedItem = _dropdownMenuItems[0].value;
   }
@@ -169,6 +177,8 @@ class _RegisterViewState extends State<RegisterView> {
                       setDateTime = dateTime;
                       Controllers.dob.text =
                           DateFormat("dd-MM-yyyy").format(setDateTime);
+                      dateTimeFormat =
+                          DateFormat("dd/MM/yyyy").format(setDateTime);
                     },
                     initialDate: setDateTime,
                     controller: Controllers.dob,
@@ -322,56 +332,44 @@ class _RegisterViewState extends State<RegisterView> {
                     padding: EdgeInsets.symmetric(
                         horizontal: SizeConfig.blockSizeHorizontal * 32,
                         vertical: SizeConfig.blockSizeVertical * 2),
-                    onPressed: () {
+                    onPressed: () async {
+                      QueryResult getResult;
                       FocusScope.of(context).unfocus();
                       if (_formKey.currentState.validate()) {
-                        if (Controllers.name.text.isNotEmpty) {
+                        if (Controllers.name.text.isNotEmpty &&
+                            Controllers.name.text.length >= 6) {
                           if (validateEmail((Controllers.registerEmail.text))) {
                             if (Controllers.dob.text.isNotEmpty) {
-                              toast(
-                                  msg: ErrorMessages.validDob,
-                                  context: context);
                               if (Controllers
                                       .registerPassword.text.isNotEmpty &&
                                   Controllers.registerPassword.text.length >=
                                       8) {
                                 if (Controllers.repeatPassword.text ==
                                     Controllers.registerPassword.text) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CreateUserView()),
-                                  );
-                                  /* toast(
-                                      msg: ErrorMessages.registerSuccess,
-                                      context: context);*/
-                                } else {
-                                  toast(
-                                      msg: ErrorMessages.repeatPasswordNotMatch,
-                                      context: context);
+                                  RegisterUser(
+                                      context: context,
+                                      dateTimeFormat: dateTimeFormat,
+                                      queryResult: getResult);
                                 }
                               } else {
                                 toast(
-                                    msg: ErrorMessages.shortPassword,
+                                    msg: Messages.repeatPasswordNotMatch,
                                     context: context);
                               }
                             } else {
                               toast(
-                                  msg: ErrorMessages.validDob,
+                                  msg: Messages.shortPassword,
                                   context: context);
                             }
                           } else {
-                            toast(
-                                msg: ErrorMessages.wrongEmail,
-                                context: context);
+                            toast(msg: Messages.validDob, context: context);
                           }
+                        } else {
+                          toast(msg: Messages.wrongEmail, context: context);
                         }
+                      } else {
+                        toast(msg: Messages.validateName, context: context);
                       }
-                      /*  Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CreateUserView()),
-                      );*/
                     },
                     color: AppTheme.blackColor,
                     shape: RoundedRectangleBorder(
@@ -390,6 +388,49 @@ class _RegisterViewState extends State<RegisterView> {
         ),
       ),
     );
+  }
+
+  Future RegisterUser(
+      {BuildContext context,
+      String dateTimeFormat,
+      QueryResult queryResult}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client
+            .mutate(
+          MutationOptions(
+              documentNode: gql(
+            addMutation.register(
+                name: Controllers.name.text,
+                email: Controllers.registerEmail.text,
+                birthday: dateTimeFormat,
+                country: 'India',
+                emailConfirm: Controllers.registerEmail.text,
+                keyword: Controllers.registerPassword.text,
+                keywordConfirm: Controllers.repeatPassword.text),
+          )),
+        )
+            .then((value) {
+          Dialogs.showLoadingDialog(context, _addLoader);
+          queryResult = value;
+          if (!queryResult.hasException) {
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(msg: Messages.registerSuccess, context: context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CreateUserView()),
+            );
+          } else {
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(context: context, msg: queryResult.exception.toString());
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: "No Internet Connection", context: context);
+    }
   }
 }
 

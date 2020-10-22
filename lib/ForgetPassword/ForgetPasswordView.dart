@@ -125,7 +125,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                           } else {
                             toast(
                                 context: context,
-                                msg: ErrorMessages.wrongEmail);
+                                msg: Messages.wrongEmail);
                           }
                         }
                       },
