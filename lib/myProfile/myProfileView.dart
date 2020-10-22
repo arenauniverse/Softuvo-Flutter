@@ -1,5 +1,6 @@
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
+import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -329,7 +330,13 @@ class _MyProfileViewState extends State<MyProfileView> {
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Terms_Conditions_View()),
+                          );
+                        },
                         child: Row(
                           children: [
                             Text("Terminos y condiciones"),
