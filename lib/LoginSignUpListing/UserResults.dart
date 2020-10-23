@@ -1,5 +1,7 @@
 class UserResults{
 var token;
 var profile;
-  UserResults(this.token,this.profile);
+var googleToken;
+var googleProfile;
+  UserResults({this.token,this.profile,this.googleProfile,this.googleToken});
 }

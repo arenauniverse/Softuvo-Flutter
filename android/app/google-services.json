@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "407257143872",
+    "firebase_url": "https://fir-login-e96ee.firebaseio.com",
+    "project_id": "fir-login-e96ee",
+    "storage_bucket": "fir-login-e96ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407257143872:android:1d65cf4e9e1d686c481da5",
+        "android_client_info": {
+          "package_name": "com.softuvo.arena_sports_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407257143872-rqicnb5rgj8g074tm5d4vs5bekbe3rr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softuvo.arena_sports_app",
+            "certificate_hash": "8fa56177cb9c284ca07859f43dbfc98404f9a1a0"
+          }
+        },
+        {
+          "client_id": "407257143872-v137susnhrsm5q0dv0uok1pfm00li7cl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7a07agZxPubQx4myoDr1NxbzUmT8v2pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407257143872-v137susnhrsm5q0dv0uok1pfm00li7cl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "407257143872-kpcfdv713n648v1qdh7ti28cnoa5r55k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Softuvo.fireBaseLogin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407257143872:android:f1eae62da582a84a481da5",
+        "android_client_info": {
+          "package_name": "com.softuvo.bb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407257143872-v137susnhrsm5q0dv0uok1pfm00li7cl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7a07agZxPubQx4myoDr1NxbzUmT8v2pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407257143872-v137susnhrsm5q0dv0uok1pfm00li7cl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "407257143872-kpcfdv713n648v1qdh7ti28cnoa5r55k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Softuvo.fireBaseLogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

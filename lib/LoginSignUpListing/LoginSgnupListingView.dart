@@ -6,6 +6,7 @@ import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
@@ -18,7 +19,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import '../theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class TestView extends StatefulWidget {
+/*class TestView extends StatefulWidget {
   @override
   _TestViewState createState() => _TestViewState();
 }
@@ -65,22 +66,7 @@ class _TestViewState extends State<TestView> {
       ),
     );
   }
-
-  void _showModalSheet() {
-    /* Get.bottomSheet(LoginSignUpListingView(),
-        elevation: 20.0, isScrollControlled: true);*/
-    showModalBottomSheet(
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(25.0),
-                topLeft: Radius.circular(25.0))),
-        context: context,
-        builder: (builder) {
-          return LoginSignUpListingView();
-        });
-  }
-}
+}*/
 
 class LoginSignUpListingView extends StatefulWidget {
   @override
@@ -88,7 +74,6 @@ class LoginSignUpListingView extends StatefulWidget {
 }
 
 class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
-  final _formKey = GlobalKey<FormState>();
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
   @override
   Widget build(BuildContext context) {
@@ -176,12 +161,8 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         horizontal: SizeConfig.blockSizeHorizontal * 10),
                     child: ButtonsWidget(
                       onPress: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyProfileView()),
-                        );
-                        //     Get.to(MyProfileView());
+                        QueryResult queryResult;
+                        googleLogin(context: context, queryResult: queryResult);
                       },
                       title: Strings.googleText,
                       image: SvgPicture.asset(
@@ -270,7 +251,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
         Dialogs.showLoadingDialog(context, _addLoader);
         SocialLogin().fbLogin(context: context).then((value) async {
           if (value != null) {
-            saveFbDetails(data: value.profile);
+            SharedPreferenceData().saveFbDetails(data: value.profile);
             GraphQLClient _client = graphQLConfiguration.clientToQuery();
             QueryResult result = await _client
                 .mutate(
@@ -282,7 +263,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                 .then((value) {
               queryResult = value;
               if (!queryResult.hasException) {
-                savefbToken(data: value.data);
+                SharedPreferenceData().savefbToken(data: value.data);
                 Navigator.of(_addLoader.currentContext, rootNavigator: true)
                     .pop();
                 toast(context: context, msg: Messages.fbLoginSuccess);
@@ -293,10 +274,9 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
               }
             });
           } else {
+            var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            toast(
-                context: context,
-                msg: "Something went wrong. Please login again");
+            toast(context: context, msg: errorMessage[2]);
           }
         });
       }
@@ -305,13 +285,41 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
     }
   }
 
-  savefbToken({Map<String, dynamic> data}) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('fbToken', json.encode(data));
-  }
-
-  saveFbDetails({Map<String, dynamic> data}) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('fbData', json.encode(data));
+  Future googleLogin({BuildContext context, QueryResult queryResult}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Dialogs.showLoadingDialog(context, _addLoader);
+        SocialLogin().googleLogin().then((value) async {
+          if (value != null) {
+            SharedPreferenceData().saveGoogleDetails(data: value.googleProfile);
+            GraphQLClient _client = graphQLConfiguration.clientToQuery();
+            QueryResult result = await _client
+                .mutate(
+              MutationOptions(
+                  documentNode: gql(
+                addMutation.googleLogin(token: value.googleToken),
+              )),
+            )
+                .then((value) {
+              queryResult = value;
+              if (!queryResult.hasException) {
+                SharedPreferenceData().saveGoogleToken(data: value.data);
+                Navigator.of(_addLoader.currentContext, rootNavigator: true)
+                    .pop();
+                toast(context: context, msg: Messages.fbLoginSuccess);
+              } else {
+                var errorMessage = queryResult.exception.toString().split(':');
+                Navigator.of(_addLoader.currentContext, rootNavigator: true)
+                    .pop();
+                toast(context: context, msg: errorMessage[2]);
+              }
+            });
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: "No Internet Connection", context: context);
+    }
   }
 }

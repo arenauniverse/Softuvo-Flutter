@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SocialLogin {
   Future<UserResults> fbLogin({BuildContext context}) async {
@@ -30,7 +31,19 @@ class SocialLogin {
         }
         break;
     }
-    var results = UserResults(token, profile);
+    var results = UserResults(token: token, profile: profile);
+    return results;
+  }
+
+  Future<UserResults> googleLogin() async {
+    GoogleSignIn _googleSignIn = GoogleSignIn();
+    var results;
+    await _googleSignIn.signIn().then((GoogleSignInAccount acc) async {
+      await acc.authentication.then((GoogleSignInAuthentication auth) async {
+        results = UserResults(googleProfile: acc, googleToken: auth.accessToken);
+        print("res" + results.toString());
+      });
+    });
     return results;
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
+import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _SplashState extends State<Splash> {
     ));
     Future.delayed(const Duration(milliseconds: 2000), () {
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => TestView()));
+          MaterialPageRoute(builder: (BuildContext context) => UserDahboardView()));
       /* Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TestView()),

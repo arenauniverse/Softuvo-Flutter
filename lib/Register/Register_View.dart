@@ -296,7 +296,7 @@ class _RegisterViewState extends State<RegisterView> {
                           fontFamily: AppTheme.appFont,
                           color: AppTheme.blackColor)),
                   keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
                   obscureText: true,
@@ -350,26 +350,26 @@ class _RegisterViewState extends State<RegisterView> {
                                       context: context,
                                       dateTimeFormat: dateTimeFormat,
                                       queryResult: getResult);
+                                } else {
+                                  toast(
+                                      msg: Messages.repeatPasswordNotMatch,
+                                      context: context);
                                 }
                               } else {
                                 toast(
-                                    msg: Messages.repeatPasswordNotMatch,
+                                    msg: Messages.shortPassword,
                                     context: context);
                               }
                             } else {
-                              toast(
-                                  msg: Messages.shortPassword,
-                                  context: context);
+                              toast(msg: Messages.validDob, context: context);
                             }
                           } else {
-                            toast(msg: Messages.validDob, context: context);
+                            toast(msg: Messages.wrongEmail, context: context);
                           }
                         } else {
-                          toast(msg: Messages.wrongEmail, context: context);
+                          toast(msg: Messages.validateName, context: context);
                         }
-                      } else {
-                        toast(msg: Messages.validateName, context: context);
-                      }
+                      } else {}
                     },
                     color: AppTheme.blackColor,
                     shape: RoundedRectangleBorder(
@@ -397,6 +397,7 @@ class _RegisterViewState extends State<RegisterView> {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Dialogs.showLoadingDialog(context, _addLoader);
         GraphQLClient _client = graphQLConfiguration.clientToQuery();
         QueryResult result = await _client
             .mutate(
@@ -413,7 +414,6 @@ class _RegisterViewState extends State<RegisterView> {
           )),
         )
             .then((value) {
-          Dialogs.showLoadingDialog(context, _addLoader);
           queryResult = value;
           if (!queryResult.hasException) {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
@@ -423,8 +423,9 @@ class _RegisterViewState extends State<RegisterView> {
               MaterialPageRoute(builder: (context) => CreateUserView()),
             );
           } else {
+            var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            toast(context: context, msg: queryResult.exception.toString());
+            toast(context: context, msg: errorMessage[2]);
           }
         });
       }

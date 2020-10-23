@@ -38,6 +38,18 @@ class QueryMutation {
                 }""";
   }
 
+
+  String googleLogin({String token}) {
+    return """mutation {
+                signUp(
+                  mechanism: GOOGLE
+                  mechanismToken: "$token"
+                 ){
+                  authorization
+                 }
+                }""";
+  }
+
   String register(
       {String name,
       String country,
