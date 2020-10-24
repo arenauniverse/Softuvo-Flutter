@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
@@ -155,9 +156,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         child: Row(
@@ -215,9 +215,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         onTap: () {},
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -246,9 +245,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -306,9 +304,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -325,9 +322,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {
@@ -350,9 +346,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -369,9 +364,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -388,9 +382,8 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      Divider(
-                        color: AppTheme.blackColor,
-                      ),
+                      GetDivider
+                        (),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},

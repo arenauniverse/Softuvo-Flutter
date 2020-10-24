@@ -38,7 +38,6 @@ class QueryMutation {
                 }""";
   }
 
-
   String googleLogin({String token}) {
     return """mutation {
                 signUp(
@@ -97,7 +96,10 @@ email
 }""";
   }
 
-  String forgotPassword({String email, String emailConfirm,}) {
+  String forgotPassword({
+    String email,
+    String emailConfirm,
+  }) {
     return """mutation {
      forgetPassword(
      email: "$email",

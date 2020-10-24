@@ -19,55 +19,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import '../theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/*class TestView extends StatefulWidget {
-  @override
-  _TestViewState createState() => _TestViewState();
-}
-
-class _TestViewState extends State<TestView> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          GestureDetector(
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                margin: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 10,
-                    left: SizeConfig.blockSizeHorizontal * 8,
-                    bottom: SizeConfig.blockSizeVertical * 3),
-                child: SvgPicture.asset('assets/ArenaLogin.svg'),
-              ),
-            ),
-            onTap: () {
-              _showModalSheet();
-            },
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              child: Text(
-                "Please click on Arena to continue",
-                style: TextStyle(
-                  fontFamily: AppTheme.appFont,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-              margin: EdgeInsets.only(
-                left: SizeConfig.blockSizeHorizontal * 8,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}*/
-
 class LoginSignUpListingView extends StatefulWidget {
   @override
   _LoginSignUpListingViewState createState() => _LoginSignUpListingViewState();

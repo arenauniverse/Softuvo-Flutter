@@ -1,4 +1,3 @@
-
 import 'package:arena_sports_app/Stats/Alineacion.dart';
 import 'package:arena_sports_app/Stats/Estadisticas.dart';
 import 'package:arena_sports_app/Stats/InfoScreen.dart';
@@ -27,11 +26,10 @@ class _SampleState extends State<Sample> with SingleTickerProviderStateMixin {
       statusBarColor: Colors.transparent, // status bar color
     ));
     _tabController = TabController(vsync: this, length: 5, initialIndex: 0);
-
   }
+
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       /*appBar: AppBar(
@@ -51,13 +49,12 @@ class _SampleState extends State<Sample> with SingleTickerProviderStateMixin {
       ),*/
       body: Container(
         color: Colors.transparent,
-        child:
-        Container(
+        child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.only(
-                topLeft:Radius.circular(30.0),
-                topRight:Radius.circular(30.0),
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
               ),
               boxShadow: [
                 BoxShadow(
@@ -67,129 +64,182 @@ class _SampleState extends State<Sample> with SingleTickerProviderStateMixin {
                 )
               ],
             ),
-            margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical*4,horizontal: SizeConfig.blockSizeHorizontal*3),
-            child:
-
-        SingleChildScrollView(
-          child:
-          Stack(
-            alignment: Alignment.topRight,
-              children: <Widget>[
+            margin: EdgeInsets.symmetric(
+                vertical: SizeConfig.blockSizeVertical * 4,
+                horizontal: SizeConfig.blockSizeHorizontal * 3),
+            child: SingleChildScrollView(
+              child: Stack(alignment: Alignment.topRight, children: <Widget>[
                 Container(
-                  width: SizeConfig.blockSizeHorizontal*9,
-                    height: SizeConfig.blockSizeHorizontal*8,
-                  alignment: Alignment.center,
-                    decoration:  BoxDecoration(
-                        color:Colors.black12,
-                        shape: BoxShape.circle,
+                    width: SizeConfig.blockSizeHorizontal * 9,
+                    height: SizeConfig.blockSizeHorizontal * 8,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.black12,
+                      shape: BoxShape.circle,
                     ),
-                    margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical*2.35,right: SizeConfig.blockSizeHorizontal*3),
-                    child: Icon(Icons.close,color: Colors.black38,)
-                ),
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2.35,
+                        right: SizeConfig.blockSizeHorizontal * 3),
+                    child: Icon(
+                      Icons.close,
+                      color: Colors.black38,
+                    )),
                 Column(
-              children: <Widget> [
-
-                Container(
-            decoration: BoxDecoration(
-              color: Colors.black38,
-              borderRadius: new BorderRadius.all(
-                Radius.circular(4.0),
-              )),
-                    margin: EdgeInsets.only(top:SizeConfig.blockSizeVertical*2.25),
-                    alignment: Alignment.center,
-                   width: SizeConfig.blockSizeHorizontal*12,
-                    height: SizeConfig.blockSizeVertical*0.5,
-                  child: SizedBox(),
-                ),
-            Container(
-            decoration:  BoxDecoration(
-                color:Colors.pink,
-                borderRadius: new BorderRadius.all(
-                  Radius.circular(5.0),
-                )
-            ),
-            margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical*3.75),
-            padding: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical*0.225,horizontal: SizeConfig.blockSizeHorizontal*1.75),
-            child: Text("EN VIVO",style: TextStyle(fontWeight: FontWeight.w400,fontSize: SizeConfig.blockSizeVertical*1.825),)
-        ),
-                Container(
-                    margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical*2.25),
-                  alignment: Alignment.center,
-                  child:Text(StringConstants.LEAGUE,style: TextStyle(fontSize: SizeConfig.blockSizeVertical*2.5,fontWeight: FontWeight.bold),)
-                ),
-                Container(
-                  margin: EdgeInsets.only(top:SizeConfig.blockSizeVertical*1.5),
-                    alignment: Alignment.center,
-                    child:Text("Semi Final - Segundo Partido",style: TextStyle(fontSize: SizeConfig.blockSizeVertical*1.925,fontWeight: FontWeight.w400,color: Colors.grey),)
-                ),
-                Stack(
-                  alignment: Alignment.center,
                   children: <Widget>[
                     Container(
-                      width: SizeConfig.blockSizeHorizontal*40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                              margin: EdgeInsets.only(top:SizeConfig.blockSizeVertical*1.5),
-                              alignment: Alignment.center,
-                              child:Text("2",style: TextStyle(fontSize: SizeConfig.blockSizeVertical*3.25,fontWeight: FontWeight.w800,color: Colors.black),)
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(top:SizeConfig.blockSizeVertical*1.5),
-                              alignment: Alignment.center,
-                              child:Text(" : ",style: TextStyle(fontSize: SizeConfig.blockSizeVertical*3.25,fontWeight: FontWeight.bold,color: Colors.black26),)
-                          ),
-                          Container(
-                              margin: EdgeInsets.only(top:SizeConfig.blockSizeVertical*1.5),
-                              alignment: Alignment.center,
-                              child:Text("6",style: TextStyle(fontSize: SizeConfig.blockSizeVertical*3.25,fontWeight: FontWeight.w800,color: Colors.black),)
-                          ),
-                        ],
-                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.black38,
+                          borderRadius: new BorderRadius.all(
+                            Radius.circular(4.0),
+                          )),
+                      margin: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 2.25),
+                      alignment: Alignment.center,
+                      width: SizeConfig.blockSizeHorizontal * 12,
+                      height: SizeConfig.blockSizeVertical * 0.5,
+                      child: SizedBox(),
                     ),
-                Container(
-                  margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical*2),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
+                    Container(
+                        decoration: BoxDecoration(
+                            color: Colors.pink,
+                            borderRadius: new BorderRadius.all(
+                              Radius.circular(5.0),
+                            )),
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 3.75),
+                        padding: EdgeInsets.symmetric(
+                            vertical: SizeConfig.blockSizeVertical * 0.225,
+                            horizontal: SizeConfig.blockSizeHorizontal * 1.75),
+                        child: Text(
+                          "EN VIVO",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: SizeConfig.blockSizeVertical * 1.825),
+                        )),
+                    Container(
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 2.25),
+                        alignment: Alignment.center,
+                        child: Text(
+                          StringConstants.LEAGUE,
+                          style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 2.5,
+                              fontWeight: FontWeight.bold),
+                        )),
+                    Container(
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 1.5),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Semi Final - Segundo Partido",
+                          style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 1.925,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.grey),
+                        )),
+                    Stack(alignment: Alignment.center, children: <Widget>[
                       Container(
-                        width: SizeConfig.blockSizeHorizontal*12,
-                          height: SizeConfig.blockSizeHorizontal*12,
-                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*2),
-                          child: Image.asset("assets/images/barcelona.png")),
+                        width: SizeConfig.blockSizeHorizontal * 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                                margin: EdgeInsets.only(
+                                    top: SizeConfig.blockSizeVertical * 1.5),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "2",
+                                  style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.blockSizeVertical * 3.25,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black),
+                                )),
+                            Container(
+                                margin: EdgeInsets.only(
+                                    top: SizeConfig.blockSizeVertical * 1.5),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  " : ",
+                                  style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.blockSizeVertical * 3.25,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black26),
+                                )),
+                            Container(
+                                margin: EdgeInsets.only(
+                                    top: SizeConfig.blockSizeVertical * 1.5),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "6",
+                                  style: TextStyle(
+                                      fontSize:
+                                          SizeConfig.blockSizeVertical * 3.25,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black),
+                                )),
+                          ],
+                        ),
+                      ),
                       Container(
-                          width: SizeConfig.blockSizeHorizontal*12,
-                          height: SizeConfig.blockSizeHorizontal*12,
-                          margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*2),
-                          child: Image.asset("assets/images/teamlogo.png")),
-                    ],
-                  ),
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 2),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Container(
+                                width: SizeConfig.blockSizeHorizontal * 12,
+                                height: SizeConfig.blockSizeHorizontal * 12,
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 2),
+                                child:
+                                    Image.asset("assets/images/barcelona.png")),
+                            Container(
+                                width: SizeConfig.blockSizeHorizontal * 12,
+                                height: SizeConfig.blockSizeHorizontal * 12,
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 2),
+                                child:
+                                    Image.asset("assets/images/teamlogo.png")),
+                          ],
+                        ),
+                      ),
+                    ]),
+                    Container(
+                        margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 0.5),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "60'",
+                          style: TextStyle(
+                              fontSize: SizeConfig.blockSizeVertical * 2.15,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black),
+                        )),
+                    Container(
+                        height: SizeConfig.blockSizeVertical * 13,
+                        margin: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 2.5,
+                        ),
+                        child: Image.asset("assets/images/stadium.png")),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.blockSizeHorizontal * 1),
+                      alignment: Alignment.center,
+                      child: _vowTabs(),
+                    )
+                  ],
                 ),
-                ]),
-                Container(
-                    margin: EdgeInsets.only(top:SizeConfig.blockSizeVertical*0.5),
-                    alignment: Alignment.center,
-                    child:Text("60'",style: TextStyle(fontSize: SizeConfig.blockSizeVertical*2.15,fontWeight: FontWeight.w500,color: Colors.black),)
-                ),
-                Container(
-                    height: SizeConfig.blockSizeVertical*13,
-                    margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical*2.5,),
-                    child: Image.asset("assets/images/stadium.png")),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal*1),
-                    alignment: Alignment.center,
-                    child: _vowTabs(),
-                )
-              ],
-            ),
-          ]),
-        )),
+              ]),
+            )),
       ),
     );
   }
-  Widget _vowTabs()
-  {
+
+  Widget _vowTabs() {
     return ListView(
       shrinkWrap: true,
       physics: ClampingScrollPhysics(),
@@ -208,29 +258,64 @@ class _SampleState extends State<Sample> with SingleTickerProviderStateMixin {
               indicatorColor: Colors.black87,
               indicatorWeight: 2.75,
               labelPadding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.blockSizeHorizontal*3.2,
-              vertical: SizeConfig.blockSizeVertical*0.25,
-            ),
-
+                horizontal: SizeConfig.blockSizeHorizontal * 3.2,
+                vertical: SizeConfig.blockSizeVertical * 0.25,
+              ),
               unselectedLabelColor: Colors.black54,
               tabs: <Widget>[
                 Container(
-                    child: Text("Info",style: TextStyle(fontSize:SizeConfig.blockSizeVertical*1.5,fontWeight: FontWeight.w500,),),),
-               Container(
-                 padding: EdgeInsets.only(right: SizeConfig.blockSizeHorizontal*1.75),
-                      child: Text("Alineacion",style: TextStyle(fontSize:SizeConfig.blockSizeVertical*1.5,fontWeight: FontWeight.w500,),),),
+                  child: Text(
+                    "Info",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeVertical * 1.5,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
                 Container(
-                  padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal*0.25),
-                      child: Text("Estadisticas",style: TextStyle(fontSize:SizeConfig.blockSizeVertical*1.5,fontWeight: FontWeight.w500,),),),
+                  padding: EdgeInsets.only(
+                      right: SizeConfig.blockSizeHorizontal * 1.75),
+                  child: Text(
+                    "Alineacion",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeVertical * 1.5,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
                 Container(
-                      child: Text("Tracker",style: TextStyle(fontSize:SizeConfig.blockSizeVertical*1.5,fontWeight: FontWeight.w500,),),),
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 0.25),
+                  child: Text(
+                    "Estadisticas",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeVertical * 1.5,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
                 Container(
-                      child: Text("H2H",style: TextStyle(fontSize:SizeConfig.blockSizeVertical*1.5,fontWeight: FontWeight.w500,),)),
+                  child: Text(
+                    "Tracker",
+                    style: TextStyle(
+                      fontSize: SizeConfig.blockSizeVertical * 1.5,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                Container(
+                    child: Text(
+                  "H2H",
+                  style: TextStyle(
+                    fontSize: SizeConfig.blockSizeVertical * 1.5,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )),
               ],
             )),
         Container(
-          height: SizeConfig.blockSizeVertical*40,
-          padding: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical*1),
+          height: SizeConfig.blockSizeVertical * 40,
+          padding: EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
           child: TabBarView(
             controller: _tabController,
             children: <Widget>[

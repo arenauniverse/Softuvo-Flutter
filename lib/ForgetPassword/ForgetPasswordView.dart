@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
+import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
@@ -68,10 +69,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 ),
                 Container(
                   margin:
-                  EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
-                  child: Divider(
-                    color: Color(0xFF000000),
-                  ),
+                      EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
+                  child: GetDivider()
                 ),
                 /* SizedBox(
                   height: SizeConfig.blockSizeVertical * 3,
@@ -125,17 +124,15 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       padding: EdgeInsets.symmetric(
                           horizontal: SizeConfig.blockSizeHorizontal * 34,
                           vertical: SizeConfig.blockSizeVertical * 2),
-                      onPressed: ()
-                      async {
+                      onPressed: () async {
                         QueryResult getResult;
                         FocusScope.of(context).unfocus();
                         if (_formKey.currentState.validate()) {
-                          if (validateEmail((Controllers.forgetPassEmail.text))) {
+                          if (validateEmail(
+                              (Controllers.forgetPassEmail.text))) {
                             forgotPassword(
-                                context: context,
-                                queryResult: getResult);
-                          }
-                          else {
+                                context: context, queryResult: getResult);
+                          } else {
                             toast(msg: Messages.wrongEmail, context: context);
                           }
                         }
@@ -160,9 +157,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     );
   }
 
-  Future forgotPassword(
-      {BuildContext context,
-        QueryResult queryResult}) async {
+  Future forgotPassword({BuildContext context, QueryResult queryResult}) async {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
@@ -172,17 +167,19 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             .mutate(
           MutationOptions(
               documentNode: gql(
-                addMutation.forgotPassword(
-                    email: Controllers.forgetPassEmail.text,
-                    emailConfirm: Controllers.forgetPassEmail.text),
-              )),
+            addMutation.forgotPassword(
+                email: Controllers.forgetPassEmail.text,
+                emailConfirm: Controllers.forgetPassEmail.text),
+          )),
         )
             .then((value) {
-
           queryResult = value;
           if (!queryResult.hasException) {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-              toast(msg: "Password reset link has been set your email, Please check your mail.", context: context);
+            toast(
+                msg:
+                    "Password reset link has been set your email, Please check your mail.",
+                context: context);
             Navigator.pop(context);
           } else {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();

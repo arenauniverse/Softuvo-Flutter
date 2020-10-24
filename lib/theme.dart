@@ -10,6 +10,7 @@ class AppTheme {
   static final whiteColor = Color(0xFFFFFFFF);
   static final borderColor = Color(0xFFEB5757);
   static final toggleColor = Color(0xFFC1C2C4);
+  static final greenColor = Color(0XFF27AE60);
   // Fonts
   static final String appFont = "SFUIText";
 }
