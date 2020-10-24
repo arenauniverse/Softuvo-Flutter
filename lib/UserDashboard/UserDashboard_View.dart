@@ -18,7 +18,6 @@ class _UserDahboardViewState extends State<UserDahboardView> {
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
-      print("index" + _currentIndex.toString());
     });
   }
 
@@ -59,13 +58,12 @@ class _UserDahboardViewState extends State<UserDahboardView> {
             child: Container(
               color: Colors.white,
               height: SizeConfig.blockSizeVertical * 23,
+              width: SizeConfig.blockSizeHorizontal * 100,
               child: Column(
                 children: [
                   Container(
                       margin: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 8,
-                          left: SizeConfig.blockSizeHorizontal * 4,
-                          right: SizeConfig.blockSizeHorizontal * 4,
                           bottom: SizeConfig.blockSizeVertical * 2),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +77,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           Container(
                             margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 0.5,
-                              left: SizeConfig.blockSizeHorizontal * 23,
+                              left: SizeConfig.blockSizeHorizontal * 28,
                             ),
                             child: Text(
                               "Live",
@@ -87,6 +85,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                   fontSize: 16, fontWeight: FontWeight.w600),
                             ),
                           ),
+                          SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
                           FlutterSwitch(
                             activeColor: AppTheme.blueColor,
                             inactiveColor: AppTheme.toggleColor,
@@ -105,7 +104,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           SizedBox(width: SizeConfig.blockSizeHorizontal * 3),
                           Container(
                             child: CircleAvatar(
-                              radius: 18,
+                              radius: 16,
                               backgroundColor: AppTheme.greyColor,
                               child: SvgPicture.asset(
                                   'assets/searchIcon.svg'), /*Icon(
@@ -164,19 +163,23 @@ class _UserDahboardViewState extends State<UserDahboardView> {
           ),
           Container(
             margin: EdgeInsets.only(
-                top: SizeConfig.blockSizeVertical * 26,
-                left: SizeConfig.blockSizeHorizontal * 4,
-                right: SizeConfig.blockSizeHorizontal * 4,
+                top: SizeConfig.blockSizeVertical * 22,
+                left: SizeConfig.blockSizeHorizontal * 2,
+                right: SizeConfig.blockSizeHorizontal * 2,
                 bottom: SizeConfig.blockSizeVertical * 2),
             child: ListView(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "EN VIVO",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+                    Container(
+                      child: Text(
+                        "EN VIVO",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w800, fontSize: 16),
+                      ),
+                      margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 2),
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -526,25 +529,31 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                     Container(
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Noticias",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w800, fontSize: 16),
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  "Ver todos",
+                          Container(
+                            margin: EdgeInsets.only(
+                                right: SizeConfig.blockSizeHorizontal * 2,
+                                left: SizeConfig.blockSizeHorizontal * 2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Noticias",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: AppTheme.blueColor),
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16),
                                 ),
-                                onTap: () {},
-                              )
-                            ],
+                                GestureDetector(
+                                  child: Text(
+                                    "Ver todos",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: AppTheme.blueColor),
+                                  ),
+                                  onTap: () {},
+                                )
+                              ],
+                            ),
                           ),
                           Divider(
                             color: AppTheme.blackColor,
@@ -609,69 +618,68 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    right: SizeConfig.blockSizeHorizontal * 2),
+                                    right: SizeConfig.blockSizeHorizontal * 3),
                                 height: 80,
                                 child: Image.asset(
                                   'assets/newsImage.png',
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              /*SvgPicture.asset(
-                                'assets/newsImage.svg',
-                                width: SizeConfig.blockSizeHorizontal * 8,
-                              ),*/
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Koeman le comunica a \n Sergio  Busquets su ",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: SizeConfig.blockSizeVertical * 1),
-                                    child: Row(
-                                      children: [
-                                        Stack(
-                                          children: [
-                                            SvgPicture.asset(
-                                              'assets/Rectangle.svg',
-                                              width: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  8,
-                                            ),
-                                            Positioned(
-                                              top: 5.0,
-                                              left: 2.0,
-                                              bottom: 5.0,
-                                              child: GestureDetector(
-                                                child: SvgPicture.asset(
-                                                  'assets/Shape.svg',
-                                                  width: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      7,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: 3.0,
-                                        ),
-                                        Text("ESPN"),
-                                        SizedBox(
-                                          width: 8.0,
-                                        ),
-                                        Text(
-                                          "58 min",
-                                          style: TextStyle(
-                                              color: AppTheme.greyColor),
-                                        ),
-                                      ],
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Koeman le comunica a Sergio  Busquets su ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600),
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top:
+                                              SizeConfig.blockSizeVertical * 1),
+                                      child: Row(
+                                        children: [
+                                          Stack(
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/Rectangle.svg',
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    8,
+                                              ),
+                                              Positioned(
+                                                top: 5.0,
+                                                left: 2.0,
+                                                bottom: 5.0,
+                                                child: GestureDetector(
+                                                  child: SvgPicture.asset(
+                                                    'assets/Shape.svg',
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        7,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 3.0,
+                                          ),
+                                          Text("ESPN"),
+                                          SizedBox(
+                                            width: 8.0,
+                                          ),
+                                          Text(
+                                            "58 min",
+                                            style: TextStyle(
+                                                color: AppTheme.greyColor),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -683,7 +691,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    right: SizeConfig.blockSizeHorizontal * 2),
+                                    right: SizeConfig.blockSizeHorizontal * 3),
                                 height: 80,
                                 child: Image.asset(
                                   'assets/newsImage.png',
@@ -694,58 +702,61 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                 'assets/newsImage.svg',
                                 width: SizeConfig.blockSizeHorizontal * 8,
                               ),*/
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Koeman le comunica a \n Sergio  Busquets su ",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: SizeConfig.blockSizeVertical * 1),
-                                    child: Row(
-                                      children: [
-                                        Stack(
-                                          children: [
-                                            SvgPicture.asset(
-                                              'assets/Rectangle.svg',
-                                              width: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  8,
-                                            ),
-                                            Positioned(
-                                              top: 5.0,
-                                              left: 2.0,
-                                              bottom: 5.0,
-                                              child: GestureDetector(
-                                                child: SvgPicture.asset(
-                                                  'assets/Shape.svg',
-                                                  width: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      7,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: 3.0,
-                                        ),
-                                        Text("ESPN"),
-                                        SizedBox(
-                                          width: 8.0,
-                                        ),
-                                        Text(
-                                          "58 min",
-                                          style: TextStyle(
-                                              color: AppTheme.greyColor),
-                                        ),
-                                      ],
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Koeman le comunica a Sergio  Busquets su ",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600),
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          top:
+                                              SizeConfig.blockSizeVertical * 1),
+                                      child: Row(
+                                        children: [
+                                          Stack(
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/Rectangle.svg',
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    8,
+                                              ),
+                                              Positioned(
+                                                top: 5.0,
+                                                left: 2.0,
+                                                bottom: 5.0,
+                                                child: GestureDetector(
+                                                  child: SvgPicture.asset(
+                                                    'assets/Shape.svg',
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        7,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 3.0,
+                                          ),
+                                          Text("ESPN"),
+                                          SizedBox(
+                                            width: 8.0,
+                                          ),
+                                          Text(
+                                            "58 min",
+                                            style: TextStyle(
+                                                color: AppTheme.greyColor),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -807,6 +818,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
+                                left: SizeConfig.blockSizeHorizontal * 2,
+                                right: SizeConfig.blockSizeHorizontal * 2,
                                 top: SizeConfig.blockSizeVertical * 2),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -939,8 +952,6 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           right: SizeConfig.blockSizeHorizontal * 2,
                           top: SizeConfig.blockSizeVertical * 2),
                       margin: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 1,
-                          right: SizeConfig.blockSizeHorizontal * 1,
                           top: SizeConfig.blockSizeVertical * 2),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -950,25 +961,31 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Partidos",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w800, fontSize: 16),
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  "Ver todos",
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: SizeConfig.blockSizeHorizontal * 2,
+                                right: SizeConfig.blockSizeHorizontal * 2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Partidos",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: AppTheme.blueColor),
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16),
                                 ),
-                                onTap: () {},
-                              )
-                            ],
+                                GestureDetector(
+                                  child: Text(
+                                    "Ver todos",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: AppTheme.blueColor),
+                                  ),
+                                  onTap: () {},
+                                )
+                              ],
+                            ),
                           ),
                           Divider(
                             color: AppTheme.blackColor,
@@ -979,6 +996,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                 fontSize: 16, color: AppTheme.greyColor),
                           ),
                           ListView.builder(
+                              physics: ClampingScrollPhysics(),
                               itemCount: 2,
                               shrinkWrap: true,
                               itemBuilder: (BuildContext ctxt, int index) {
@@ -1146,30 +1164,38 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Traspasos",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w800, fontSize: 16),
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  "Ver todos",
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 2,
+                              right: SizeConfig.blockSizeHorizontal * 2,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Traspasos",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: AppTheme.blueColor),
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16),
                                 ),
-                                onTap: () {},
-                              )
-                            ],
+                                GestureDetector(
+                                  child: Text(
+                                    "Ver todos",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: AppTheme.blueColor),
+                                  ),
+                                  onTap: () {},
+                                )
+                              ],
+                            ),
                           ),
                           Divider(
                             color: AppTheme.blackColor,
                           ),
                           ListView.builder(
+                              physics: ClampingScrollPhysics(),
                               itemCount: 1,
                               shrinkWrap: true,
                               itemBuilder: (BuildContext ctxt, int index) {
@@ -1288,25 +1314,32 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Partidos",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w800, fontSize: 16),
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  "Ver todos",
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 2,
+                              right: SizeConfig.blockSizeHorizontal * 2,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Partidos",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
-                                      color: AppTheme.blueColor),
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 16),
                                 ),
-                                onTap: () {},
-                              )
-                            ],
+                                GestureDetector(
+                                  child: Text(
+                                    "Ver todos",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: AppTheme.blueColor),
+                                  ),
+                                  onTap: () {},
+                                )
+                              ],
+                            ),
                           ),
                           Divider(
                             color: AppTheme.blackColor,
@@ -1319,6 +1352,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           ListView.builder(
                               itemCount: 2,
                               shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
                               itemBuilder: (BuildContext ctxt, int index) {
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
