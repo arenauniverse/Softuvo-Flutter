@@ -16,13 +16,6 @@ class UserDahboardView extends StatefulWidget {
 
 class _UserDahboardViewState extends State<UserDahboardView> {
   bool status = false;
-  int _currentIndex = 0;
-
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
 
   @override
   void initState() {
@@ -41,32 +34,6 @@ class _UserDahboardViewState extends State<UserDahboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: AppTheme.greyColor,
-        selectedItemColor: AppTheme.blackColor,
-        type: BottomNavigationBarType.fixed,
-        onTap: onTabTapped,
-        items: [
-          BottomNavigationBarItem(
-              title: Text(""), icon: SvgPicture.asset('assets/tab1.svg')),
-          BottomNavigationBarItem(
-              title: Text(""),
-              icon: SvgPicture.asset(
-                'assets/tab2.svg',
-                color: AppTheme.greyColor,
-              )),
-          BottomNavigationBarItem(
-              title: Text(""), icon: SvgPicture.asset('assets/tab3.svg')),
-          BottomNavigationBarItem(
-              title: Text(""),
-              icon: SvgPicture.asset('assets/tab4.svg',
-                  color: AppTheme.greyColor)),
-          BottomNavigationBarItem(
-              title: Text(""),
-              icon: SvgPicture.asset('assets/tab5.svg',
-                  color: AppTheme.greyColor)),
-        ],
-      ),
       backgroundColor: AppTheme.backGroundColor,
       body: Stack(
         children: [
@@ -98,7 +65,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                         Container(
                           margin: EdgeInsets.only(
                             top: SizeConfig.blockSizeVertical * 0.5,
-                            left: SizeConfig.blockSizeHorizontal * 32,
+                            left: SizeConfig.blockSizeHorizontal * 30,
                           ),
                           child: Text(
                             "Live",
@@ -120,12 +87,12 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                             setState(() {
                               status = val;
                             });
-                            if (val) {
+                          /*  if (val) {
                               _showFeedModalSheet();
-                            }
+                            }*/
                           },
                         ),
-                        SizedBox(width: SizeConfig.blockSizeHorizontal * 3),
+                        SizedBox(width: SizeConfig.blockSizeHorizontal * 5),
                         Container(
                           child: CircleAvatar(
                             radius: 16,
@@ -1426,11 +1393,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                     margin: EdgeInsets.only(
                                         right:
                                             SizeConfig.blockSizeHorizontal * 2,
-                                        left:
-                                            SizeConfig.blockSizeHorizontal * 2,
-                                        top: SizeConfig.blockSizeVertical * 0.5,
-                                        bottom: SizeConfig.blockSizeVertical *
-                                            0.5)),
+                                        left: SizeConfig.blockSizeHorizontal *
+                                            2)),
                                 Container(
                                   child: Text(
                                     "UEFA Champions League",

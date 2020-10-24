@@ -9,6 +9,8 @@ import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/ForgetPassword/ForgetPasswordView.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
+import 'package:arena_sports_app/UserDashboard/NavigationFiles.dart';
+import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -26,6 +28,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
+  bool passwordVisible = true;
   bool _autoValidate = false;
   @override
   Widget build(BuildContext context) {
@@ -45,12 +48,17 @@ class _LoginViewState extends State<LoginView> {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
+                    Controllers.loginEmail.clear();
+                    Controllers.loginPassword.clear();
                     // Get.back();
                   },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 20.0,
-                  ),
+                  child: Container(
+                    padding: EdgeInsets.all(2),
+                    child: SvgPicture.asset(
+                      'assets/backArrow.svg',
+                      width: 12,
+                    ),
+                  )
                 ),
                 SizedBox(
                   height: SizeConfig.blockSizeVertical * 3,
@@ -118,7 +126,7 @@ class _LoginViewState extends State<LoginView> {
                   textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
-                  obscureText: true,
+                  obscureText: passwordVisible,
                   controller: Controllers.loginPassword,
                   cursorColor: AppTheme.blackColor,
                   validator: (value) {
@@ -126,11 +134,19 @@ class _LoginViewState extends State<LoginView> {
                       return "Enter Valid Contraseña";
                     }
                   },
-                  /*      onFieldSubmitted: (v) {},*/
                   decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye_rounded,
-                        color: AppTheme.blackColor,
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            passwordVisible = !passwordVisible;
+                          });
+                        },
+                        child: Icon(
+                          passwordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: AppTheme.blackColor,
+                        ),
                       ),
                       contentPadding: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 2,
@@ -233,10 +249,13 @@ class _LoginViewState extends State<LoginView> {
           if (!queryResult.hasException) {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
             toast(context: context, msg: Messages.loginSuccess);
-            /*    Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CreateUserView()),
-          );*/
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NavigationScreens()),
+            );
+              Controllers.loginEmail.clear();
+              Controllers.loginPassword.clear();
+
           } else {
             print("dbas" + queryResult.exception.toString());
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();

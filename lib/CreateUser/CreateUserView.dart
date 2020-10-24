@@ -7,6 +7,7 @@ import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
 import '../SizeConfig.dart';
@@ -40,15 +41,17 @@ class _CreateUserViewState extends State<CreateUserView> {
                           left: SizeConfig.blockSizeHorizontal * 7,
                           right: SizeConfig.blockSizeHorizontal * 7),
                       child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          // Get.back();
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 20.0,
-                        ),
-                      ),
+                          onTap: () {
+                            Navigator.pop(context);
+                            // Get.back();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            child: SvgPicture.asset(
+                              'assets/backArrow.svg',
+                              width: 12,
+                            ),
+                          )),
                     ),
                     Center(
                       child: Container(
@@ -234,14 +237,10 @@ class _CreateUserViewState extends State<CreateUserView> {
                                       context: context);
                                 }
                               } else {
-                                toast(
-                                    msg: Messages.validDob,
-                                    context: context);
+                                toast(msg: Messages.validDob, context: context);
                               }
                             } else {
-                              toast(
-                                  msg: Messages.wrongEmail,
-                                  context: context);
+                              toast(msg: Messages.wrongEmail, context: context);
                             }
                           }
                         }

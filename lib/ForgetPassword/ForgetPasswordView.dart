@@ -7,6 +7,7 @@ import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../Repos.dart';
@@ -44,15 +45,18 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                           left: SizeConfig.blockSizeHorizontal * 7,
                           right: SizeConfig.blockSizeHorizontal * 7),
                       child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          // Get.back();
-                        },
-                        child: Icon(
-                          Icons.arrow_back_ios,
-                          size: 20.0,
-                        ),
-                      ),
+                          onTap: () {
+                            Navigator.pop(context);
+                            Controllers.forgetPassEmail.clear();
+                            // Get.back();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            child: SvgPicture.asset(
+                              'assets/backArrow.svg',
+                              width: 12,
+                            ),
+                          )),
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -68,10 +72,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   ],
                 ),
                 Container(
-                  margin:
-                      EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
-                  child: GetDivider()
-                ),
+                    margin:
+                        EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
+                    child: GetDivider()),
                 /* SizedBox(
                   height: SizeConfig.blockSizeVertical * 3,
                 ),
@@ -108,7 +111,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                             fontSize: 15.0,
                             color: AppTheme.blackColor)),
                     keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
+                    textInputAction: TextInputAction.done,
                     controller: Controllers.forgetPassEmail,
                   ),
                 ),
@@ -181,6 +184,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     "Password reset link has been set your email, Please check your mail.",
                 context: context);
             Navigator.pop(context);
+            Controllers.forgetPassEmail.clear();
           } else {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
             toast(context: context, msg: queryResult.exception.toString());

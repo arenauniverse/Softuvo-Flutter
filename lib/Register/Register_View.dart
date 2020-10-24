@@ -26,6 +26,8 @@ class _RegisterViewState extends State<RegisterView> {
   final _formKey = GlobalKey<FormState>();
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
   var setDateTime, dateTimeFormat;
+  bool passwordVisible = true;
+  bool repeatPasswordVisible = true;
   List<ListItem> _dropdownItems = [
     ListItem(1, "First Value"),
     ListItem(2, "Second Item"),
@@ -74,15 +76,22 @@ class _RegisterViewState extends State<RegisterView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                    // Get.back();
-                  },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 20.0,
-                  ),
-                ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Controllers.registerEmail.clear;
+                      Controllers.name.clear;
+                      Controllers.registerPassword.clear;
+                      Controllers.repeatPassword.clear;
+                      _dropdownMenuItems.clear();
+                      // Get.back();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(2),
+                      child: SvgPicture.asset(
+                        'assets/backArrow.svg',
+                        width: 12,
+                      ),
+                    )),
                 Container(
                   margin:
                       EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
@@ -273,7 +282,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                 )*/
                 TextFormField(
-                  obscureText: true,
+                  obscureText: passwordVisible,
                   controller: Controllers.registerPassword,
                   validator: (value) {
                     if (value == null || value == "") {
@@ -282,9 +291,18 @@ class _RegisterViewState extends State<RegisterView> {
                   },
                   cursorColor: AppTheme.blackColor,
                   decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye_rounded,
-                        color: AppTheme.blackColor,
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            passwordVisible = !passwordVisible;
+                          });
+                        },
+                        child: Icon(
+                          passwordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: AppTheme.blackColor,
+                        ),
                       ),
                       contentPadding: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 2,
@@ -299,7 +317,7 @@ class _RegisterViewState extends State<RegisterView> {
                   textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
-                  obscureText: true,
+                  obscureText: repeatPasswordVisible,
                   controller: Controllers.repeatPassword,
                   validator: (value) {
                     if (value == null || value == "") {
@@ -308,9 +326,18 @@ class _RegisterViewState extends State<RegisterView> {
                   },
                   cursorColor: AppTheme.blackColor,
                   decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye_rounded,
-                        color: AppTheme.blackColor,
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          setState(() {
+                            repeatPasswordVisible = !repeatPasswordVisible;
+                          });
+                        },
+                        child: Icon(
+                          repeatPasswordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: AppTheme.blackColor,
+                        ),
                       ),
                       contentPadding: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 2,
@@ -407,7 +434,7 @@ class _RegisterViewState extends State<RegisterView> {
                 name: Controllers.name.text,
                 email: Controllers.registerEmail.text,
                 birthday: dateTimeFormat,
-                country: 'India',
+                country: 'Canada',
                 emailConfirm: Controllers.registerEmail.text,
                 keyword: Controllers.registerPassword.text,
                 keywordConfirm: Controllers.repeatPassword.text),
@@ -422,6 +449,11 @@ class _RegisterViewState extends State<RegisterView> {
               context,
               MaterialPageRoute(builder: (context) => CreateUserView()),
             );
+            Controllers.registerEmail.clear;
+            Controllers.name.clear;
+            Controllers.registerPassword.clear;
+            Controllers.repeatPassword.clear;
+            _dropdownMenuItems.clear();
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();

@@ -26,12 +26,22 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
         )),
         centerTitle: true,
         leading: Container(
-          margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 7),
-          child: Icon(
+            margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 7),
+            child: GestureDetector(
+              child: Container(
+                  padding: EdgeInsets.all(2),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 30.0,
+                  )),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ) /*Icon(
             Icons.arrow_back_ios,
-            size: 20.0,
-          ),
-        ),
+            size: 30.0,
+          ),*/
+            ),
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
@@ -271,7 +281,7 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
                       width: 5.0,
                     ),
                   )),
-              height: SizeConfig.blockSizeVertical * 17,
+              height: SizeConfig.blockSizeVertical * 15,
             ),
           ),
         ],

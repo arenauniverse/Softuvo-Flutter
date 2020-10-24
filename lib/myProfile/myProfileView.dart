@@ -41,15 +41,16 @@ class _MyProfileViewState extends State<MyProfileView> {
             )
           ],
           leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-              //    Get.back();
-            },
-            child: Icon(
-              Icons.arrow_back_ios,
-              size: 20.0,
-            ),
-          ),
+              onTap: () {
+                Navigator.pop(context);
+                //    Get.back();
+              },
+              child:Container(
+                  padding: EdgeInsets.all(2),
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 30.0,
+                  )),),
           /*Container(
           padding: EdgeInsets.only(
               top: SizeConfig.blockSizeVertical * 3,
@@ -156,8 +157,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         child: Row(
@@ -215,8 +215,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         onTap: () {},
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -245,8 +244,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -304,8 +302,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -322,8 +319,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {
@@ -346,8 +342,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -364,8 +359,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
@@ -382,8 +376,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         ),
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
-                      GetDivider
-                        (),
+                      GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},

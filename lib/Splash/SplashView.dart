@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
+import 'package:arena_sports_app/UserDashboard/NavigationFiles.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,8 +22,10 @@ class _SplashState extends State<Splash> {
       statusBarColor: Colors.white, // status bar color
     ));
     Future.delayed(const Duration(milliseconds: 2000), () {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => UserDahboardView()));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => NavigationScreens()));
       /* Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TestView()),
