@@ -96,6 +96,15 @@ email
 }
 }""";
   }
+
+  String forgotPassword({String email, String emailConfirm,}) {
+    return """mutation {
+     forgetPassword(
+     email: "$email",
+     emailConfirm: "$emailConfirm"
+      )
+}""";
+  }
 }
 
 /*class AlertDialogWindow extends StatefulWidget {

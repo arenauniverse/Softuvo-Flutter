@@ -1,8 +1,14 @@
+import 'dart:io';
+
+import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
+import '../Repos.dart';
 import '../SizeConfig.dart';
 import '../theme.dart';
 
@@ -13,6 +19,7 @@ class ForgetPasswordView extends StatefulWidget {
 
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -61,7 +68,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 ),
                 Container(
                   margin:
-                      EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
+                  EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
                   child: Divider(
                     color: Color(0xFF000000),
                   ),
@@ -103,6 +110,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                             color: AppTheme.blackColor)),
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
+                    controller: Controllers.forgetPassEmail,
                   ),
                 ),
                 SizedBox(
@@ -117,15 +125,18 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       padding: EdgeInsets.symmetric(
                           horizontal: SizeConfig.blockSizeHorizontal * 34,
                           vertical: SizeConfig.blockSizeVertical * 2),
-                      onPressed: () {
+                      onPressed: ()
+                      async {
+                        QueryResult getResult;
                         FocusScope.of(context).unfocus();
                         if (_formKey.currentState.validate()) {
-                          if (validateEmail(Controllers.forgetPassEmail.text)) {
-                            Navigator.pop(context);
-                          } else {
-                            toast(
+                          if (validateEmail((Controllers.forgetPassEmail.text))) {
+                            forgotPassword(
                                 context: context,
-                                msg: Messages.wrongEmail);
+                                queryResult: getResult);
+                          }
+                          else {
+                            toast(msg: Messages.wrongEmail, context: context);
                           }
                         }
                       },
@@ -147,5 +158,40 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
         ),
       ),
     );
+  }
+
+  Future forgotPassword(
+      {BuildContext context,
+        QueryResult queryResult}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Dialogs.showLoadingDialog(context, _addLoader);
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client
+            .mutate(
+          MutationOptions(
+              documentNode: gql(
+                addMutation.forgotPassword(
+                    email: Controllers.forgetPassEmail.text,
+                    emailConfirm: Controllers.forgetPassEmail.text),
+              )),
+        )
+            .then((value) {
+
+          queryResult = value;
+          if (!queryResult.hasException) {
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+              toast(msg: "Password reset link has been set your email, Please check your mail.", context: context);
+            Navigator.pop(context);
+          } else {
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(context: context, msg: queryResult.exception.toString());
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: "No Internet Connection", context: context);
+    }
   }
 }
