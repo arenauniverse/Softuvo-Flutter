@@ -37,12 +37,20 @@ class _NavigationScreensState extends State<NavigationScreens> {
         onTap: onTabTapped,
         items: [
           BottomNavigationBarItem(
-              title: Text(""), icon: SvgPicture.asset('assets/tab1.svg')),
+              title: Text(""),
+              icon: SvgPicture.asset(
+                'assets/tab1.svg',
+                color: _currentIndex == 0
+                    ? AppTheme.blackColor
+                    : AppTheme.greyColor,
+              )),
           BottomNavigationBarItem(
               title: Text(""),
               icon: SvgPicture.asset(
                 'assets/tab2.svg',
-                color: AppTheme.greyColor,
+                color: _currentIndex == 1
+                    ? AppTheme.blackColor
+                    : AppTheme.greyColor,
               )),
           BottomNavigationBarItem(
             title: Text(""),
@@ -57,12 +65,20 @@ class _NavigationScreensState extends State<NavigationScreens> {
           /*SvgPicture.asset('assets/tab3.svg')*/
           BottomNavigationBarItem(
               title: Text(""),
-              icon: SvgPicture.asset('assets/tab4.svg',
-                  color: AppTheme.greyColor)),
+              icon: SvgPicture.asset(
+                'assets/tab4.svg',
+                color: _currentIndex == 3
+                    ? AppTheme.blackColor
+                    : AppTheme.greyColor,
+              )),
           BottomNavigationBarItem(
               title: Text(""),
-              icon: SvgPicture.asset('assets/tab5.svg',
-                  color: AppTheme.greyColor)),
+              icon: SvgPicture.asset(
+                'assets/tab5.svg',
+                color: _currentIndex == 4
+                    ? AppTheme.blackColor
+                    : AppTheme.greyColor,
+              )),
         ],
       ),
       backgroundColor: AppTheme.backGroundColor,
