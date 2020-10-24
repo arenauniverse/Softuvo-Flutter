@@ -3,6 +3,7 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Splash/SplashView.dart';
+import 'UserDashboard/NavigationFiles.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: AppTheme.whiteColor,
               primaryColor: AppTheme.greyColor),
           debugShowCheckedModeBanner: false,
-          home: Splash(),
+          home: NavigationScreens(),
           //initialRoute: "/splash",
         ));
   }

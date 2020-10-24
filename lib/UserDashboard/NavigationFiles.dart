@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/UserDashboard/arenaBottomSheet.dart';
 import 'package:arena_sports_app/theme.dart';
@@ -19,27 +20,15 @@ class _NavigationScreensState extends State<NavigationScreens> {
 
   final widgetOptions = [
     UserDahboardView(),
-    Text('Add new beer'),
+    Text('Add new screen'),
     ArenaBottomSheet(),
-    Text('Add new beer'),
+    Text('Add new screen'),
     Text('Favourites'),
   ];
 
-  Widget getBottomSheet() {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(25.0),
-                topLeft: Radius.circular(25.0))),
-        context: context,
-        builder: (builder) {
-          return ArenaBottomSheet();
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: AppTheme.greyColor,
@@ -56,7 +45,16 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: AppTheme.greyColor,
               )),
           BottomNavigationBarItem(
-              title: Text(""), icon: SvgPicture.asset('assets/tab3.svg')),
+            title: Text(""),
+            icon: FloatingActionButton(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                onPressed: () {
+                  _showModalSheet();
+                },
+                child: SvgPicture.asset('assets/tab3.svg')),
+          ),
+          /*SvgPicture.asset('assets/tab3.svg')*/
           BottomNavigationBarItem(
               title: Text(""),
               icon: SvgPicture.asset('assets/tab4.svg',
@@ -72,5 +70,18 @@ class _NavigationScreensState extends State<NavigationScreens> {
         child: widgetOptions.elementAt(_currentIndex),
       ),
     );
+  }
+
+  void _showModalSheet() {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(25.0),
+                topLeft: Radius.circular(25.0))),
+        context: context,
+        builder: (builder) {
+          return ArenaBottomSheet();
+        });
   }
 }

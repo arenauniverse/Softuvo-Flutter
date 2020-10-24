@@ -30,7 +30,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
                 height: SizeConfig.blockSizeVertical * 13.9,
                 child: Container(
                     margin: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 6,
+                        top: SizeConfig.blockSizeVertical * 8,
                         bottom: SizeConfig.blockSizeVertical * 2),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +125,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
                   Container(
                     child: Image.asset(
                       'assets/Image.png',
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
+                      width: SizeConfig.blockSizeHorizontal * 120,
                     ),
                     margin: EdgeInsets.only(
                       top: SizeConfig.blockSizeVertical * 2,

@@ -33,6 +33,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: AppTheme.backGroundColor,
       body: Stack(
@@ -87,7 +88,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                             setState(() {
                               status = val;
                             });
-                          /*  if (val) {
+                            /*  if (val) {
                               _showFeedModalSheet();
                             }*/
                           },
@@ -606,7 +607,12 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                   },
                                   child: Container(
                                     child: Column(children: [
-                                      Image.asset('assets/Image.png'),
+                                      Image.asset(
+                                        'assets/Image.png',
+                                        fit: BoxFit.fitWidth,
+                                        width: SizeConfig.blockSizeHorizontal *
+                                            120,
+                                      ),
                                       SizedBox(
                                           height:
                                               SizeConfig.blockSizeVertical * 2),
