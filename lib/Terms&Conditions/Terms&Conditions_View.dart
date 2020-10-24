@@ -169,17 +169,23 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
                         fontSize: 18),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 7,
-                      top: SizeConfig.blockSizeVertical * 3,
-                      bottom: SizeConfig.blockSizeVertical * 5),
-                  child: Text(
-                    Strings.termsConditions,
-                    style:
-                        TextStyle(fontFamily: AppTheme.appFont, fontSize: 14),
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: SizeConfig.blockSizeHorizontal * 7,
+                            top: SizeConfig.blockSizeVertical * 3,
+                            bottom: SizeConfig.blockSizeVertical * 5),
+                        child: Text(
+                          Strings.termsConditions,
+                          style:
+                          TextStyle(fontFamily: AppTheme.appFont, fontSize: 14),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                )
               ],
             ),
           ),
