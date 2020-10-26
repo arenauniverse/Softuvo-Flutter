@@ -9,7 +9,6 @@ import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-
 import '../Repos.dart';
 import '../SizeConfig.dart';
 import '../theme.dart';
@@ -75,16 +74,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     margin:
                         EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
                     child: GetDivider()),
-                /* SizedBox(
-                  height: SizeConfig.blockSizeVertical * 3,
-                ),
-                Text(
-                  'Recuperar contraseña',
-                  style: TextStyle(
-                      fontFamily: AppTheme.appFont,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24),
-                ),*/
                 SizedBox(
                   height: SizeConfig.blockSizeVertical * 2,
                 ),

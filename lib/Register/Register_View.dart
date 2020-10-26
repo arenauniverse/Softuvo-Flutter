@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/DatePicker.dart';
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
@@ -64,10 +63,24 @@ class _RegisterViewState extends State<RegisterView> {
     return Form(
       key: _formKey,
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppTheme.whiteColor,
+          elevation: 0.0,
+          title: Text(""),
+          leading: Container(
+              margin: EdgeInsets.only(
+                  top: SizeConfig.blockSizeVertical * 2.0,
+                  left: SizeConfig.blockSizeHorizontal * 8,
+                  right: SizeConfig.blockSizeHorizontal * 8),
+              padding: EdgeInsets.all(2),
+              child: Icon(
+                Icons.arrow_back_ios,
+                size: 28,
+              )),
+        ),
         resizeToAvoidBottomInset: true,
         body: Container(
           margin: EdgeInsets.only(
-              top: SizeConfig.blockSizeVertical * 8.0,
               left: SizeConfig.blockSizeHorizontal * 8,
               right: SizeConfig.blockSizeHorizontal * 8),
           child: SingleChildScrollView(
@@ -75,23 +88,6 @@ class _RegisterViewState extends State<RegisterView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                      Controllers.registerEmail.clear;
-                      Controllers.name.clear;
-                      Controllers.registerPassword.clear;
-                      Controllers.repeatPassword.clear;
-                      _dropdownMenuItems.clear();
-                      // Get.back();
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(2),
-                      child: SvgPicture.asset(
-                        'assets/backArrow.svg',
-                        width: 12,
-                      ),
-                    )),
                 Container(
                   margin:
                       EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
@@ -132,66 +128,78 @@ class _RegisterViewState extends State<RegisterView> {
                 SizedBox(
                   height: SizeConfig.blockSizeVertical * 2,
                 ),
-                TextFormField(
-                  inputFormatters: <TextInputFormatter>[
-                    LengthLimitingTextInputFormatter(12),
-                  ],
-                  controller: Controllers.name,
-                  cursorColor: Colors.black,
-                  validator: (value) {
-                    if (value == null || value == "") {
-                      return "Enter Valid Nombre y Apellido";
-                    }
-                  },
-                  onFieldSubmitted: (v) {},
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 2,
-                          left: SizeConfig.blockSizeVertical * 1),
-                      labelText: Strings.name,
-                      labelStyle: TextStyle(
-                          fontFamily: AppTheme.appFont,
-                          fontSize: 15.0,
-                          color: AppTheme.blackColor)),
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.next,
-                ),
-                TextFormField(
-                  controller: Controllers.registerEmail,
-                  cursorColor: AppTheme.blackColor,
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 2,
-                          left: SizeConfig.blockSizeVertical * 1),
-                      labelText: Strings.Email,
-                      labelStyle: TextStyle(
-                          fontSize: 15.0,
-                          fontFamily: AppTheme.appFont,
-                          color: AppTheme.blackColor)),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  validator: (value) {
-                    if (value == null || value == "") {
-                      return "Enter Valid Email";
-                    }
-                  },
-                ),
-                Theme(
-                  data: ThemeData(primarySwatch: Colors.grey),
-                  child: DatePicker(
-                    "DATE OF BIRTH",
-                    (dateTime) {
-                      setDateTime = dateTime;
-                      Controllers.dob.text =
-                          DateFormat("dd-MM-yyyy").format(setDateTime);
-                      dateTimeFormat =
-                          DateFormat("dd/MM/yyyy").format(setDateTime);
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+                  child: TextFormField(
+                    inputFormatters: <TextInputFormatter>[
+                      LengthLimitingTextInputFormatter(12),
+                    ],
+                    controller: Controllers.name,
+                    cursorColor: Colors.black,
+                    validator: (value) {
+                      if (value == null || value == "") {
+                        return "Enter Valid Nombre y Apellido";
+                      }
                     },
-                    initialDate: setDateTime,
-                    controller: Controllers.dob,
-                    lastDate: DateTime.now(),
+                    onFieldSubmitted: (v) {},
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 2,
+                            bottom: SizeConfig.blockSizeVertical * 2,
+                            left: SizeConfig.blockSizeVertical * 1),
+                        labelText: Strings.name,
+                        labelStyle: TextStyle(
+                            fontFamily: AppTheme.appFont,
+                            fontSize: 15.0,
+                            color: AppTheme.blackColor)),
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                  ),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+                  child: TextFormField(
+                    controller: Controllers.registerEmail,
+                    cursorColor: AppTheme.blackColor,
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 2,
+                            bottom: SizeConfig.blockSizeVertical * 2,
+                            left: SizeConfig.blockSizeVertical * 1),
+                        labelText: Strings.Email,
+                        labelStyle: TextStyle(
+                            fontSize: 15.0,
+                            fontFamily: AppTheme.appFont,
+                            color: AppTheme.blackColor)),
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value == null || value == "") {
+                        return "Enter Valid Email";
+                      }
+                    },
+                  ),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+                  child: Theme(
+                    data: ThemeData(primarySwatch: Colors.grey),
+                    child: DatePicker(
+                      "DATE OF BIRTH",
+                      (dateTime) {
+                        setDateTime = dateTime;
+                        Controllers.dob.text =
+                            DateFormat("dd-MM-yyyy").format(setDateTime);
+                        dateTimeFormat =
+                            DateFormat("dd/MM/yyyy").format(setDateTime);
+                      },
+                      initialDate: setDateTime,
+                      controller: Controllers.dob,
+                      lastDate: DateTime.now(),
+                    ),
                   ),
                 ),
 /*                TextFormField(
@@ -224,35 +232,39 @@ class _RegisterViewState extends State<RegisterView> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                 )*/
-                DropdownButtonFormField(
-                    icon: Container(
-                      padding: EdgeInsets.only(right: 10),
-                      child: Icon(
-                        Icons.keyboard_arrow_down_sharp,
-                        color: AppTheme.blackColor,
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+                  child: DropdownButtonFormField(
+                      icon: Container(
+                        padding: EdgeInsets.only(right: 10),
+                        child: Icon(
+                          Icons.keyboard_arrow_down_sharp,
+                          color: AppTheme.blackColor,
+                        ),
                       ),
-                    ),
-                    validator: (value) {
-                      if (value == null || value == "") {
-                        return "Select Pais";
-                      }
-                    },
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(
-                            top: SizeConfig.blockSizeVertical * 2,
-                            bottom: SizeConfig.blockSizeVertical * 2,
-                            left: SizeConfig.blockSizeVertical * 1),
-                        labelText: Strings.parents,
-                        labelStyle: TextStyle(
-                            fontSize: 15.0,
-                            fontFamily: AppTheme.appFont,
-                            color: AppTheme.blackColor)),
-                    items: _dropdownMenuItems,
-                    onChanged: (value) {
-                      setState(() {
-                        _selectedItem = value;
-                      });
-                    }),
+                      validator: (value) {
+                        if (value == null || value == "") {
+                          return "Select Pais";
+                        }
+                      },
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical * 2,
+                              bottom: SizeConfig.blockSizeVertical * 2,
+                              left: SizeConfig.blockSizeVertical * 1),
+                          labelText: Strings.parents,
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              fontFamily: AppTheme.appFont,
+                              color: AppTheme.blackColor)),
+                      items: _dropdownMenuItems,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedItem = value;
+                        });
+                      }),
+                ),
 /*                AbsorbPointer(
                   child: TextFormField(
                     controller: Controllers.parent,
@@ -281,75 +293,83 @@ class _RegisterViewState extends State<RegisterView> {
                     textInputAction: TextInputAction.next,
                   ),
                 )*/
-                TextFormField(
-                  obscureText: passwordVisible,
-                  controller: Controllers.registerPassword,
-                  validator: (value) {
-                    if (value == null || value == "") {
-                      return "Enter contraseña";
-                    }
-                  },
-                  cursorColor: AppTheme.blackColor,
-                  decoration: InputDecoration(
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          setState(() {
-                            passwordVisible = !passwordVisible;
-                          });
-                        },
-                        child: Icon(
-                          passwordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: AppTheme.blackColor,
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+                  child: TextFormField(
+                    obscureText: passwordVisible,
+                    controller: Controllers.registerPassword,
+                    validator: (value) {
+                      if (value == null || value == "") {
+                        return "Enter contraseña";
+                      }
+                    },
+                    cursorColor: AppTheme.blackColor,
+                    decoration: InputDecoration(
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              passwordVisible = !passwordVisible;
+                            });
+                          },
+                          child: Icon(
+                            passwordVisible
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: AppTheme.blackColor,
+                          ),
                         ),
-                      ),
-                      contentPadding: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 1,
-                          left: SizeConfig.blockSizeVertical * 1),
-                      labelText: Strings.password,
-                      labelStyle: TextStyle(
-                          fontSize: 15.0,
-                          fontFamily: AppTheme.appFont,
-                          color: AppTheme.blackColor)),
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.next,
+                        contentPadding: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 2,
+                            bottom: SizeConfig.blockSizeVertical * 1,
+                            left: SizeConfig.blockSizeVertical * 1),
+                        labelText: Strings.password,
+                        labelStyle: TextStyle(
+                            fontSize: 15.0,
+                            fontFamily: AppTheme.appFont,
+                            color: AppTheme.blackColor)),
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                  ),
                 ),
-                TextFormField(
-                  obscureText: repeatPasswordVisible,
-                  controller: Controllers.repeatPassword,
-                  validator: (value) {
-                    if (value == null || value == "") {
-                      return "Enter contraseña";
-                    }
-                  },
-                  cursorColor: AppTheme.blackColor,
-                  decoration: InputDecoration(
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          setState(() {
-                            repeatPasswordVisible = !repeatPasswordVisible;
-                          });
-                        },
-                        child: Icon(
-                          repeatPasswordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: AppTheme.blackColor,
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
+                  child: TextFormField(
+                    obscureText: repeatPasswordVisible,
+                    controller: Controllers.repeatPassword,
+                    validator: (value) {
+                      if (value == null || value == "") {
+                        return "Enter contraseña";
+                      }
+                    },
+                    cursorColor: AppTheme.blackColor,
+                    decoration: InputDecoration(
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              repeatPasswordVisible = !repeatPasswordVisible;
+                            });
+                          },
+                          child: Icon(
+                            repeatPasswordVisible
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: AppTheme.blackColor,
+                          ),
                         ),
-                      ),
-                      contentPadding: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 2,
-                          left: SizeConfig.blockSizeVertical * 1),
-                      labelText: Strings.repeatPassword,
-                      labelStyle: TextStyle(
-                          fontSize: 15.0,
-                          fontFamily: AppTheme.appFont,
-                          color: AppTheme.blackColor)),
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
+                        contentPadding: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 2,
+                            bottom: SizeConfig.blockSizeVertical * 2,
+                            left: SizeConfig.blockSizeVertical * 1),
+                        labelText: Strings.repeatPassword,
+                        labelStyle: TextStyle(
+                            fontSize: 15.0,
+                            fontFamily: AppTheme.appFont,
+                            color: AppTheme.blackColor)),
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(

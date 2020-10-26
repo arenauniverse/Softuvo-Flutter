@@ -5,6 +5,7 @@ import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -23,145 +24,133 @@ class _UserDahboardViewState extends State<UserDahboardView> {
     super.initState();
   }
 
-  void showAlert(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              content: Text("hi"),
-            ));
-  }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: AppTheme.backGroundColor,
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.white,
-            height: SizeConfig.blockSizeVertical * 23,
-            width: SizeConfig.blockSizeHorizontal * 100,
-            child: Column(
-              children: [
-                Container(
-                    margin: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 8,
-                        bottom: SizeConfig.blockSizeVertical * 2),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: SizeConfig.blockSizeHorizontal * 3,
-                            top: SizeConfig.blockSizeVertical * 0.5,
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              _showModalSheet();
-                            },
-                            child: SvgPicture.asset('assets/ArenaLogin.svg'),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: SizeConfig.blockSizeVertical * 0.5,
-                            left: SizeConfig.blockSizeHorizontal * 30,
-                          ),
-                          child: Text(
-                            "Live",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
-                        FlutterSwitch(
-                          activeColor: AppTheme.blueColor,
-                          inactiveColor: AppTheme.toggleColor,
-                          width: 50.0,
-                          height: 28.0,
-                          toggleSize: 18.0,
-                          value: status,
-                          borderRadius: 20.0,
-                          padding: 5.0,
-                          onToggle: (val) {
-                            setState(() {
-                              status = val;
-                            });
-                            /*  if (val) {
-                              _showFeedModalSheet();
-                            }*/
-                          },
-                        ),
-                        SizedBox(width: SizeConfig.blockSizeHorizontal * 5),
-                        Container(
-                          child: CircleAvatar(
-                            radius: 16,
-                            backgroundColor: AppTheme.greyColor,
-                            child: SvgPicture.asset(
-                                'assets/searchIcon.svg'), /*Icon(
-                              Icons.search_rounded,
-                              color: AppTheme.blackColor,
-                            ),*/
-                          ),
-                        )
-                      ],
-                    )),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 2,
-                      right: SizeConfig.blockSizeHorizontal * 2),
-                  child: Container(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/Barcelona.svg',
-                            width: 50,
-                          ),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Manchester.svg', width: 50),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Escudo.svg', width: 50),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Barcelona.svg', width: 50),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Manchester.svg', width: 50),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Escudo.svg', width: 50),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Manchester.svg', width: 50),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          SvgPicture.asset('assets/Escudo.svg', width: 50),
-                        ],
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: SizeConfig.blockSizeVertical * 6,
+            pinned: true,
+            backgroundColor: AppTheme.whiteColor,
+            title: Container(
+                margin: EdgeInsets.only(
+                    top: SizeConfig.blockSizeVertical * 6,
+                    bottom: SizeConfig.blockSizeVertical * 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 3,
+                        top: SizeConfig.blockSizeVertical * 1.9,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          _showModalSheet();
+                        },
+                        child: SvgPicture.asset('assets/ArenaLogin.svg'),
                       ),
                     ),
-                  ),
-                )
-              ],
-            ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2,
+                        left: SizeConfig.blockSizeHorizontal * 20,
+                      ),
+                      child: Text(
+                        "Live",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
+                    Transform.scale(
+                      scale: 1.3,
+                      child: Switch(
+                        value: status,
+                        onChanged: (val) {
+                          setState(() {
+                            status = val;
+                          });
+                        },
+                        dragStartBehavior: DragStartBehavior.down,
+                      ),
+                    ),
+                    SizedBox(width: SizeConfig.blockSizeHorizontal * 1),
+                    Container(
+                        margin: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 1.2,
+                        ),
+                        child: CircleAvatar(
+                          radius: 16,
+                          backgroundColor: AppTheme.greyColor,
+                          child: SvgPicture.asset('assets/search.svg'),
+                        ) /* CircleAvatar(
+                            radius: 16,
+                             backgroundColor: AppTheme.greyColor,
+                        child: SvgPicture.asset(
+                            'assets/searchIcon.svg'),  Icon(
+                        Icons.search_rounded,
+                        color: AppTheme.blackColor,
+                      ),
+                          ),*/
+                        )
+                  ],
+                )),
           ),
-          Container(
-            margin: EdgeInsets.only(
-              top: SizeConfig.blockSizeVertical * 22,
-            ),
-            child: ListView(
-              children: [
+          SliverList(
+            delegate: SliverChildListDelegate(
+              <Widget>[
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Container(
+                    color: AppTheme.whiteColor,
+                    padding: EdgeInsets.only(
+                        top: SizeConfig.blockSizeVertical * 2,
+                        bottom: SizeConfig.blockSizeVertical * 2),
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/Barcelona.svg',
+                        ),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Manchester.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Escudo.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Barcelona.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Manchester.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Escudo.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Manchester.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Escudo.svg'),
+                        SizedBox(
+                          width: 12.0,
+                        ),
+                        SvgPicture.asset('assets/Manchester.svg'),
+                      ],
+                    ),
+                  ),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -172,7 +161,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                             fontWeight: FontWeight.w800, fontSize: 16),
                       ),
                       margin: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 4),
+                          left: SizeConfig.blockSizeHorizontal * 6,
+                          top: SizeConfig.blockSizeVertical * 2),
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -248,7 +238,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   .supervised_user_circle_rounded,
                                               color: AppTheme.greyColor,
                                             ),
-                                            /*  SvgPicture.asset('assets/userIcon.svg'),*/
+                                            SvgPicture.asset(
+                                                'assets/userIcon.svg'),
                                             Text(
                                               "D. Thiem",
                                               style: TextStyle(
@@ -312,7 +303,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   .supervised_user_circle_rounded,
                                               color: AppTheme.greyColor,
                                             ),
-                                            /*  SvgPicture.asset('assets/userIcon.svg'),*/
+                                            SvgPicture.asset(
+                                                'assets/userIcon.svg'),
                                             Text(
                                               "D. Thiem",
                                               style: TextStyle(
@@ -425,7 +417,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   .supervised_user_circle_rounded,
                                               color: AppTheme.greyColor,
                                             ),
-                                            /*  SvgPicture.asset('assets/userIcon.svg'),*/
+                                            SvgPicture.asset(
+                                                'assets/userIcon.svg'),
                                             Text(
                                               "D. Thiem",
                                               style: TextStyle(
@@ -489,7 +482,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   .supervised_user_circle_rounded,
                                               color: AppTheme.greyColor,
                                             ),
-                                            /*  SvgPicture.asset('assets/userIcon.svg'),*/
+                                            SvgPicture.asset(
+                                                'assets/userIcon.svg'),
                                             Text(
                                               "D. Thiem",
                                               style: TextStyle(
@@ -608,7 +602,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                   child: Container(
                                     child: Column(children: [
                                       Image.asset(
-                                        'assets/Image.png',
+                                        'assets/Imagenew.png',
                                         fit: BoxFit.fitWidth,
                                         width: SizeConfig.blockSizeHorizontal *
                                             120,
@@ -704,10 +698,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    /*SvgPicture.asset(
+                                    SvgPicture.asset(
                                       'assets/newsImage.svg',
                                       width: SizeConfig.blockSizeHorizontal * 8,
-                                    ),*/
+                                    ),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -758,10 +752,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
-                                    /*SvgPicture.asset(
+                                    SvgPicture.asset(
                                       'assets/newsImage.svg',
                                       width: SizeConfig.blockSizeHorizontal * 8,
-                                    ),*/
+                                    ),
                                   ],
                                 ),
                                 Container(
@@ -798,10 +792,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
-                                    /*SvgPicture.asset(
+                                    SvgPicture.asset(
                                       'assets/newsImage.svg',
                                       width: SizeConfig.blockSizeHorizontal * 8,
-                                    ),*/
+                                    ),
                                   ],
                                 ),
                                 Container(
@@ -1601,7 +1595,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                       ),
                     ),
                   ],
-                ),
+                )
               ],
             ),
           ),

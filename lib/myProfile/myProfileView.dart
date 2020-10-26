@@ -28,6 +28,7 @@ class _MyProfileViewState extends State<MyProfileView> {
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
           actions: [
+
             GestureDetector(
               child: Container(
                 padding: EdgeInsets.only(
@@ -41,16 +42,17 @@ class _MyProfileViewState extends State<MyProfileView> {
             )
           ],
           leading: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-                //    Get.back();
-              },
-              child:Container(
-                  padding: EdgeInsets.all(2),
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 30.0,
-                  )),),
+            onTap: () {
+              Navigator.pop(context);
+              //    Get.back();
+            },
+            child: Container(
+                padding: EdgeInsets.all(2),
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  size: 30.0,
+                )),
+          ),
           /*Container(
           padding: EdgeInsets.only(
               top: SizeConfig.blockSizeVertical * 3,
@@ -129,7 +131,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 18,
+                height: SizeConfig.blockSizeVertical * 20,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -187,7 +189,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 25,
+                height: SizeConfig.blockSizeVertical * 30,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -216,14 +218,24 @@ class _MyProfileViewState extends State<MyProfileView> {
                       ),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GetDivider(),
-                      SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
                         onTap: () {},
                         child: Row(
                           children: [
                             Text("Dark Mode"),
                             Spacer(),
-                            Container(
+                            Transform.scale(
+                              scale: 1.3,
+                              child: Switch(
+                                value: status,
+                                onChanged: (val) {
+                                  setState(() {
+                                    status = val;
+                                  });
+                                },
+                              ),
+                            )
+                            /*Container(
                               child: FlutterSwitch(
                                 activeColor: AppTheme.blueColor,
                                 inactiveColor: AppTheme.toggleColor,
@@ -239,11 +251,10 @@ class _MyProfileViewState extends State<MyProfileView> {
                                   });
                                 },
                               ),
-                            ),
+                            ),*/
                           ],
                         ),
                       ),
-                      SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GetDivider(),
                       SizedBox(height: SizeConfig.blockSizeVertical * 1),
                       GestureDetector(
@@ -274,7 +285,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: AppTheme.whiteColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 42,
+                height: SizeConfig.blockSizeVertical * 50,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
