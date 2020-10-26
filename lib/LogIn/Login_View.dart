@@ -46,20 +46,19 @@ class _LoginViewState extends State<LoginView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                    Controllers.loginEmail.clear();
-                    Controllers.loginPassword.clear();
-                    // Get.back();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(2),
-                    child: SvgPicture.asset(
-                      'assets/backArrow.svg',
-                      width: 12,
-                    ),
-                  )
-                ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Controllers.loginEmail.clear();
+                      Controllers.loginPassword.clear();
+                      // Get.back();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(2),
+                      child: SvgPicture.asset(
+                        'assets/backArrow.svg',
+                        width: 12,
+                      ),
+                    )),
                 SizedBox(
                   height: SizeConfig.blockSizeVertical * 3,
                 ),
@@ -253,11 +252,9 @@ class _LoginViewState extends State<LoginView> {
               context,
               MaterialPageRoute(builder: (context) => NavigationScreens()),
             );
-              Controllers.loginEmail.clear();
-              Controllers.loginPassword.clear();
-
+            Controllers.loginEmail.clear();
+            Controllers.loginPassword.clear();
           } else {
-            print("dbas" + queryResult.exception.toString());
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
             toast(context: context, msg: queryResult.exception.toString());
           }
