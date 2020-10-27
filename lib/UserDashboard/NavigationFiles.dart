@@ -8,8 +8,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:location/location.dart';
 
-
-
 class NavigationScreens extends StatefulWidget {
   @override
   _NavigationScreensState createState() => _NavigationScreensState();
@@ -32,18 +30,17 @@ class _NavigationScreensState extends State<NavigationScreens> {
     Text('Favourites'),
   ];
 
-
   @override
   void initState() {
     getUserLocation();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-
         backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.shifting,
         onTap: onTabTapped,
@@ -51,7 +48,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
           BottomNavigationBarItem(
               title: Text(""),
               icon: SvgPicture.asset(
-                'assets/tab1.svg',
+                'assets/tab2.svg',
                 color: _currentIndex == 0
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
@@ -136,13 +133,11 @@ class _NavigationScreensState extends State<NavigationScreens> {
 
     coordinates = new Coordinates(myLocation.latitude, myLocation.longitude);
     var addresses =
-    await Geocoder.local.findAddressesFromCoordinates(coordinates);
+        await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
 
     print(
         ' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
     return first;
   }
-
-
 }

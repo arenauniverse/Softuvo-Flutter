@@ -57,7 +57,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                     Container(
                       margin: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeHorizontal * 20,
+                        left: SizeConfig.blockSizeHorizontal * 25,
                       ),
                       child: Text(
                         "Live",
@@ -78,10 +78,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                         dragStartBehavior: DragStartBehavior.down,
                       ),
                     ),
-                    SizedBox(width: SizeConfig.blockSizeHorizontal * 1),
                     Container(
                         margin: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 1.2,
+                          right: SizeConfig.blockSizeHorizontal * 3,
+                          top: SizeConfig.blockSizeVertical * 1,
                         ),
                         child: CircleAvatar(
                           radius: 16,
@@ -106,8 +106,11 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Container(
+                    width: SizeConfig.blockSizeHorizontal * 100,
                     color: AppTheme.whiteColor,
                     padding: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 2,
+                        right: SizeConfig.blockSizeHorizontal * 2,
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2),
                     child: Row(
