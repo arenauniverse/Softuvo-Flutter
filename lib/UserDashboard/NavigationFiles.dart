@@ -41,7 +41,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
     SizeConfig().init(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0x00ffffff), // transparent
+      // transparent
         type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         items: [
