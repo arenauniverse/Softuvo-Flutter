@@ -56,8 +56,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 2,
-                        left: SizeConfig.blockSizeHorizontal * 20,
+                        top: SizeConfig.blockSizeVertical * 1.7,
+                        left: SizeConfig.blockSizeHorizontal * 26,
                       ),
                       child: Text(
                         "Live",
@@ -65,7 +65,6 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                             fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                     ),
-                    SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
                     Transform.scale(
                       scale: 1.3,
                       child: Switch(
@@ -78,25 +77,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                         dragStartBehavior: DragStartBehavior.down,
                       ),
                     ),
-                    SizedBox(width: SizeConfig.blockSizeHorizontal * 1),
                     Container(
                         margin: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 1.2,
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeVertical * 1,
                         ),
                         child: CircleAvatar(
                           radius: 16,
                           backgroundColor: AppTheme.greyColor,
                           child: SvgPicture.asset('assets/search.svg'),
-                        ) /* CircleAvatar(
-                            radius: 16,
-                             backgroundColor: AppTheme.greyColor,
-                        child: SvgPicture.asset(
-                            'assets/searchIcon.svg'),  Icon(
-                        Icons.search_rounded,
-                        color: AppTheme.blackColor,
-                      ),
-                          ),*/
-                        )
+                        ))
                   ],
                 )),
           ),
@@ -108,45 +98,59 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                   child: Container(
                     color: AppTheme.whiteColor,
                     padding: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 6,
+                        right: SizeConfig.blockSizeHorizontal * 6,
                         top: SizeConfig.blockSizeVertical * 2,
                         bottom: SizeConfig.blockSizeVertical * 2),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
+                        Container(
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
+                          child: SvgPicture.asset(
+                            'assets/Barcelona.svg',
+                          ),
                         ),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
+                          child: SvgPicture.asset('assets/Manchester.svg'),
                         ),
-                        SvgPicture.asset('assets/Manchester.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Escudo.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Escudo.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Barcelona.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Barcelona.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Manchester.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Manchester.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Escudo.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Escudo.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Manchester.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Manchester.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Escudo.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Escudo.svg'),
-                        SizedBox(
-                          width: 12.0,
+                        Container(
+                          child: SvgPicture.asset('assets/Manchester.svg'),
+                          margin: EdgeInsets.only(
+                              right: SizeConfig.blockSizeHorizontal * 3),
                         ),
-                        SvgPicture.asset('assets/Manchester.svg'),
                       ],
                     ),
                   ),
@@ -1241,106 +1245,97 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                     shrinkWrap: true,
                                     itemBuilder:
                                         (BuildContext ctxt, int index) {
-                                      return Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons
-                                                      .supervised_user_circle_rounded,
-                                                  color: AppTheme.greyColor,
-                                                  size: 50,
-                                                ),
-                                                SizedBox(
-                                                    width: SizeConfig
-                                                            .blockSizeHorizontal *
-                                                        2),
-                                                Column(
-                                                  children: [
-                                                    Container(
-                                                      width: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          25,
-                                                      child: Text(
-                                                        "Luis Suárez",
-                                                        style: TextStyle(
-                                                            color: AppTheme
-                                                                .blackColor,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 14),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          25,
-                                                      child: Text(
-                                                        "Barcelona FC",
-                                                        style: TextStyle(
-                                                            color: AppTheme
-                                                                .greyColor,
-                                                            fontSize: 14),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SvgPicture.asset(
-                                                    'assets/Check.svg'),
-                                                SizedBox(
-                                                    width: SizeConfig
-                                                            .blockSizeHorizontal *
-                                                        3),
-                                                SvgPicture.asset(
-                                                    'assets/athletic-club-madrid.svg'),
-                                                SizedBox(
-                                                    width: SizeConfig
-                                                            .blockSizeHorizontal *
-                                                        3),
-                                                Column(
-                                                  children: [
-                                                    Container(
-                                                      width: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          20,
-                                                      child: Text(
-                                                        "A. Madrid",
-                                                        style: TextStyle(
-                                                            color: AppTheme
-                                                                .blackColor,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 15),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          20,
-                                                      child: Text(
-                                                        "Prestamo",
-                                                        style: TextStyle(
-                                                            color: AppTheme
-                                                                .greyColor,
-                                                            fontSize: 12),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
+                                      return Container(
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              Icons
+                                                  .supervised_user_circle_rounded,
+                                              color: AppTheme.greyColor,
+                                              size: 50,
                                             ),
-                                            margin: EdgeInsets.only(
-                                                top: SizeConfig
-                                                        .blockSizeVertical *
-                                                    2,
-                                                right: SizeConfig
+                                            SizedBox(
+                                                width: SizeConfig
                                                         .blockSizeHorizontal *
                                                     2),
-                                          ),
-                                        ],
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      25,
+                                                  child: Text(
+                                                    "Luis Suárez",
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 14),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      25,
+                                                  child: Text(
+                                                    "Barcelona FC",
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.greyColor,
+                                                        fontSize: 14),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SvgPicture.asset(
+                                                'assets/Check.svg'),
+                                            SizedBox(
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    3),
+                                            SvgPicture.asset(
+                                                'assets/athletic-club-madrid.svg'),
+                                            SizedBox(
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    3),
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      20,
+                                                  child: Text(
+                                                    "A. Madrid",
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      20,
+                                                  child: Text(
+                                                    "Prestamo",
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.greyColor,
+                                                        fontSize: 12),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        margin: EdgeInsets.only(
+                                            right:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    2),
                                       );
                                     }),
                               ],
