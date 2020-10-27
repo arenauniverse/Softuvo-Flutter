@@ -41,14 +41,14 @@ class _NavigationScreensState extends State<NavigationScreens> {
     SizeConfig().init(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.transparent,
-        type: BottomNavigationBarType.shifting,
+        backgroundColor: Color(0x00ffffff), // transparent
+        type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         items: [
           BottomNavigationBarItem(
               title: Text(""),
               icon: SvgPicture.asset(
-                'assets/tab2.svg',
+                'assets/tab1.svg',
                 color: _currentIndex == 0
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
