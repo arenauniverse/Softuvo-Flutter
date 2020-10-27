@@ -1,12 +1,13 @@
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
-import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
 import 'package:arena_sports_app/theme.dart';
+import 'package:arena_sports_app/theme/DarkThemeProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_switch/flutter_switch.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class MyProfileView extends StatefulWidget {
   @override
@@ -18,17 +19,21 @@ class _MyProfileViewState extends State<MyProfileView> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+    FlutterStatusbarcolor.setStatusBarColor(
+        Colors.white); //this change the status bar color to white
+    FlutterStatusbarcolor.setNavigationBarColor(
+        Colors.green); //this sets the navigation bar color to green
     return Scaffold(
-        backgroundColor: AppTheme.backGroundColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          brightness: Brightness.light,
-          backgroundColor: AppTheme.whiteColor,
+          // brightness: Brightness.light,
+          // backgroundColor: AppTheme.whiteColor,
           title: Text(
             "Mi Perfil",
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
           actions: [
-
             GestureDetector(
               child: Container(
                 padding: EdgeInsets.only(
@@ -44,7 +49,7 @@ class _MyProfileViewState extends State<MyProfileView> {
           leading: GestureDetector(
             onTap: () {
               Navigator.pop(context);
-              //    Get.back();
+// Get.back();
             },
             child: Container(
                 padding: EdgeInsets.all(2),
@@ -53,12 +58,6 @@ class _MyProfileViewState extends State<MyProfileView> {
                   size: 30.0,
                 )),
           ),
-          /*Container(
-          padding: EdgeInsets.only(
-              top: SizeConfig.blockSizeVertical * 3,
-              right: SizeConfig.blockSizeHorizontal * 3),
-          child: SvgPicture.asset('assets/backArrow.svg'),
-        )*/
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -75,7 +74,6 @@ class _MyProfileViewState extends State<MyProfileView> {
                           backgroundColor: AppTheme.greyColor,
                           radius: 50,
                           child: SvgPicture.asset('assets/dummyUser.svg'),
-                          /*backgroundImage: AssetImage('assets/dummyUser.svg'),*/
                         ),
                       ),
                       margin: EdgeInsets.only(
@@ -87,17 +85,16 @@ class _MyProfileViewState extends State<MyProfileView> {
                         margin: EdgeInsets.only(
                             top: SizeConfig.blockSizeVertical * 12),
                         width: SizeConfig.blockSizeHorizontal * 26,
-                        //height: SizeConfig.blockSizeVertical * 25,
                         alignment: Alignment.centerRight,
                         child: CircleAvatar(
                           radius: 15.0,
-                          backgroundColor: AppTheme.whiteColor,
+                          backgroundColor: Theme.of(context).backgroundColor,
                           child: CircleAvatar(
-                            backgroundColor: Colors.black,
+                            backgroundColor: Theme.of(context).indicatorColor,
                             child: Icon(
                               Icons.camera_alt_outlined,
                               size: 14,
-                              color: AppTheme.whiteColor,
+                              color: Theme.of(context).backgroundColor,
                             ),
                             radius: 14.0,
                           ),
@@ -112,9 +109,10 @@ class _MyProfileViewState extends State<MyProfileView> {
                 child: Text(
                   "Fernando Martinez",
                   style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: AppTheme.blackColor),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    /* color: AppTheme.blackColor*/
+                  ),
                 ),
               ),
               Container(
@@ -122,14 +120,16 @@ class _MyProfileViewState extends State<MyProfileView> {
                 child: Text(
                   "@fernando",
                   style: TextStyle(
-                      fontWeight: FontWeight.w600, color: AppTheme.blackColor),
+                    fontWeight: FontWeight
+                        .w600, /*color:Theme.of(context).indicatorColor*/
+                  ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: AppTheme.whiteColor,
+                  color: Theme.of(context).cardColor,
                 ),
                 height: SizeConfig.blockSizeVertical * 20,
                 width: SizeConfig.blockSizeHorizontal * 93,
@@ -153,7 +153,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             ),
                           ],
                         ),
@@ -169,7 +169,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),
@@ -179,15 +179,15 @@ class _MyProfileViewState extends State<MyProfileView> {
                   ),
                 ),
               ),
-              /* SizedBox(
-                height: SizeConfig.blockSizeVertical * 1.5,
-              ),*/
+/* SizedBox(
+height: SizeConfig.blockSizeVertical * 1.5,
+),*/
               Container(
                 margin:
                     EdgeInsets.only(top: SizeConfig.blockSizeVertical * 1.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: AppTheme.whiteColor,
+                  color: Theme.of(context).cardColor,
                 ),
                 height: SizeConfig.blockSizeVertical * 30,
                 width: SizeConfig.blockSizeHorizontal * 93,
@@ -210,7 +210,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             ),
                           ],
                         ),
@@ -231,27 +231,15 @@ class _MyProfileViewState extends State<MyProfileView> {
                                 onChanged: (val) {
                                   setState(() {
                                     status = val;
+                                    themeChange.darkTheme = status;
+                                    /* RevealRoute(
+                                      page: MyProfileView(),
+                                      maxRadius: 800,
+                                      centerAlignment: Alignment.center);*/
                                   });
                                 },
                               ),
                             )
-                            /*Container(
-                              child: FlutterSwitch(
-                                activeColor: AppTheme.blueColor,
-                                inactiveColor: AppTheme.toggleColor,
-                                width: 50.0,
-                                height: 28.0,
-                                toggleSize: 18.0,
-                                value: status,
-                                borderRadius: 20.0,
-                                padding: 5.0,
-                                onToggle: (val) {
-                                  setState(() {
-                                    status = val;
-                                  });
-                                },
-                              ),
-                            ),*/
                           ],
                         ),
                       ),
@@ -266,7 +254,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),
@@ -275,15 +263,12 @@ class _MyProfileViewState extends State<MyProfileView> {
                   ),
                 ),
               ),
-              /*SizedBox(
-                height: SizeConfig.blockSizeVertical * 1.5,
-              ),*/
               Container(
                 margin:
                     EdgeInsets.only(top: SizeConfig.blockSizeVertical * 1.5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: AppTheme.whiteColor,
+                  color: Theme.of(context).cardColor,
                 ),
                 height: SizeConfig.blockSizeVertical * 50,
                 width: SizeConfig.blockSizeHorizontal * 93,
@@ -307,7 +292,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             ),
                           ],
                         ),
@@ -324,7 +309,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),
@@ -347,7 +332,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),
@@ -364,7 +349,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),
@@ -381,7 +366,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),
@@ -398,7 +383,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16,
-                              color: AppTheme.blackColor,
+                              color: Theme.of(context).indicatorColor,
                             )
                           ],
                         ),

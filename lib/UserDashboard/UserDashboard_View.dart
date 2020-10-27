@@ -29,7 +29,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
     SizeConfig().init(context);
     return Scaffold(
         backgroundColor: AppTheme.backGroundColor,
-        body: CustomScrollView(shrinkWrap: true, slivers: [
+        body: CustomScrollView(slivers: [
           SliverAppBar(
             pinned: true,
             floating: true,
@@ -103,70 +103,70 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           'assets/Barcelona.svg',
                         ),
                         SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
+                          width: SizeConfig.blockSizeHorizontal * 3,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Manchester.svg',
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeHorizontal * 3,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Escudo.svg',
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeHorizontal * 3,
                         ),
                         SvgPicture.asset(
                           'assets/Barcelona.svg',
                         ),
                         SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
+                          width: SizeConfig.blockSizeHorizontal * 3,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Manchester.svg',
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeHorizontal * 3,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Escudo.svg',
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeHorizontal * 3,
                         ),
                         SvgPicture.asset(
                           'assets/Barcelona.svg',
                         ),
                         SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
+                          width: SizeConfig.blockSizeHorizontal * 3,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Manchester.svg',
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeHorizontal * 3,
+                        ),
+                        SvgPicture.asset(
+                          'assets/Escudo.svg',
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeHorizontal * 3,
                         ),
                         SvgPicture.asset(
                           'assets/Barcelona.svg',
                         ),
                         SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
+                          width: SizeConfig.blockSizeHorizontal * 3,
                         ),
                         SvgPicture.asset(
-                          'assets/Barcelona.svg',
+                          'assets/Manchester.svg',
                         ),
                         SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
+                          width: SizeConfig.blockSizeHorizontal * 3,
                         ),
                         SvgPicture.asset(
-                          'assets/Barcelona.svg',
-                        ),
-                        SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
-                        ),
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
-                        ),
-                        SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
-                        ),
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
-                        ),
-                        SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
-                        ),
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
-                        ),
-                        SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
-                        ),
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
-                        ),
-                        SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
-                        ),
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
-                        ),
-                        SizedBox(
-                          width: SizeConfig.blockSizeHorizontal * 2,
-                        ),
-                        SvgPicture.asset(
-                          'assets/Barcelona.svg',
+                          'assets/Escudo.svg',
                         ),
                       ],
                     ),
@@ -198,7 +198,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                         child: Row(
                           children: [
                             Container(
-                                height: SizeConfig.blockSizeVertical * 17,
+                                height: SizeConfig.blockSizeVertical * 20,
                                 width: SizeConfig.blockSizeHorizontal * 70,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
@@ -228,14 +228,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   3),
-                                          Image.asset("assets/directIcon.png"),
+                                          Image.asset(
+                                            "assets/directLink.png",
+                                          ),
                                           /* SvgPicture.asset('assets/directIcon.svg'),*/
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   3),
-                                          SvgPicture.asset(
-                                              'assets/notification.svg'),
+                                          Image.asset("assets/notification.png")
                                         ],
                                       ),
                                       margin: EdgeInsets.only(
@@ -372,7 +373,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                               width: SizeConfig.blockSizeHorizontal * 2,
                             ),
                             Container(
-                                height: SizeConfig.blockSizeVertical * 17,
+                                height: SizeConfig.blockSizeVertical * 20,
                                 width: SizeConfig.blockSizeHorizontal * 70,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
@@ -820,203 +821,119 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       bottom:
                                           SizeConfig.blockSizeVertical * 0.5)),
                               Container(
+                                height: SizeConfig.blockSizeVertical * 30,
                                 margin: EdgeInsets.only(
-                                    right: SizeConfig.blockSizeHorizontal * 4,
                                     left: SizeConfig.blockSizeHorizontal * 4,
                                     top: SizeConfig.blockSizeVertical * 0.5,
                                     bottom: SizeConfig.blockSizeVertical * 0.5),
-                                child: SingleChildScrollView(
+                                child: ListView.builder(
+                                  itemCount: 2,
+                                  shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
-                                  child: Container(
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            right:
-                                                SizeConfig.blockSizeHorizontal *
-                                                    3,
-                                          ),
-                                          child: Card(
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(6),
-                                              ),
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      22,
-                                              child: Column(
+                                  itemBuilder: (BuildContext ctxt, int index) {
+                                    return Padding(
+                                      padding: EdgeInsets.only(
+                                        right:
+                                            SizeConfig.blockSizeHorizontal * 3,
+                                      ),
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                        ),
+                                        child: Container(
+                                          height:
+                                              SizeConfig.blockSizeVertical * 30,
+                                          width:
+                                              SizeConfig.blockSizeVertical * 30,
+                                          child: Column(
+                                            children: [
+                                              Stack(
                                                 children: [
-                                                  Stack(
-                                                    children: [
-                                                      Container(
-                                                        width: SizeConfig
-                                                                .blockSizeHorizontal *
-                                                            50,
-                                                        child: Image.asset(
-                                                          'assets/videoImage.png',
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(25),
+                                                        topRight:
+                                                            Radius.circular(25),
                                                       ),
-                                                      Positioned(
-                                                        top: 5.0,
-                                                        left: 80.0,
-                                                        bottom: 5.0,
-                                                        child: GestureDetector(
-                                                          child:
-                                                              SvgPicture.asset(
-                                                            'assets/playIcon.svg',
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                          top: 85.0,
-                                                          left: 13.0,
-                                                          bottom: 5.0,
-                                                          child: Container(
-                                                            child: Text(
-                                                              "05:11",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  color: AppTheme
-                                                                      .whiteColor),
-                                                            ),
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            6),
-                                                                color: Color(
-                                                                        0xFF0E3311)
-                                                                    .withOpacity(
-                                                                        0.5)),
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    3),
-                                                          ))
-                                                    ],
+                                                    ),
+                                                    height: SizeConfig
+                                                            .blockSizeVertical *
+                                                        20,
+                                                    child: Image.asset(
+                                                      'assets/videoImage.png',
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                      left: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          1,
-                                                    ),
-                                                    child: Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: SizeConfig
-                                                                  .blockSizeHorizontal *
-                                                              4,
-                                                          top: SizeConfig
-                                                                  .blockSizeVertical *
-                                                              1),
-                                                      width: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          40,
-                                                      child: Text(
-                                                        "Jugadas principales de PSG y Bayern",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
+                                                  Positioned(
+                                                    top: 5.0,
+                                                    left: 80.0,
+                                                    bottom: 5.0,
+                                                    child: GestureDetector(
+                                                      child: SvgPicture.asset(
+                                                        'assets/playIcon.svg',
                                                       ),
                                                     ),
-                                                  )
+                                                  ),
+                                                  Positioned(
+                                                      top: 85.0,
+                                                      left: 13.0,
+                                                      bottom: 18.0,
+                                                      child: Container(
+                                                        child: Text(
+                                                          "05:11",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color: AppTheme
+                                                                  .whiteColor),
+                                                        ),
+                                                        decoration: BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        6),
+                                                            color: Color(
+                                                                    0xFF0E3311)
+                                                                .withOpacity(
+                                                                    0.5)),
+                                                        padding:
+                                                            EdgeInsets.all(3),
+                                                      ))
                                                 ],
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        Card(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(6),
-                                              color: AppTheme.whiteColor,
-                                            ),
-                                            height:
-                                                SizeConfig.blockSizeVertical *
-                                                    22,
-                                            child: Column(
-                                              children: [
-                                                Stack(
-                                                  children: [
-                                                    Container(
-                                                      width: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          50,
-                                                      child: Image.asset(
-                                                        'assets/videoImage.png',
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                    Positioned(
-                                                      top: 5.0,
-                                                      left: 80.0,
-                                                      bottom: 5.0,
-                                                      child: GestureDetector(
-                                                        child: SvgPicture.asset(
-                                                          'assets/playIcon.svg',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Positioned(
-                                                        top: 85.0,
-                                                        left: 13.0,
-                                                        bottom: 5.0,
-                                                        child: Container(
-                                                          child: Text(
-                                                            "05:11",
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                color: AppTheme
-                                                                    .whiteColor),
-                                                          ),
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          6),
-                                                              color: Color(
-                                                                      0xFF0E3311)
-                                                                  .withOpacity(
-                                                                      0.5)),
-                                                          padding:
-                                                              EdgeInsets.all(3),
-                                                        ))
-                                                  ],
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  left: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      1,
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                    left: SizeConfig
-                                                            .blockSizeHorizontal *
-                                                        1,
+                                                child: Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: SizeConfig
+                                                              .blockSizeHorizontal *
+                                                          4,
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    "Jugadas principales de PSG y Bayern",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                                   ),
-                                                  child: Container(
-                                                    width: SizeConfig
-                                                            .blockSizeHorizontal *
-                                                        40,
-                                                    margin:
-                                                        EdgeInsets.only(top: 5),
-                                                    child: Text(
-                                                      "Jugadas principales de PSG y Bayern",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ],
@@ -1156,10 +1073,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           margin: EdgeInsets.only(
                                             right:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    2,
+                                                    5,
                                             left:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    2,
+                                                    5,
                                             bottom:
                                                 SizeConfig.blockSizeVertical *
                                                     2,
@@ -1229,27 +1146,22 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       color: AppTheme.greyColor,
                                       size: 50,
                                     ),
-                                    SizedBox(
-                                        width:
-                                            SizeConfig.blockSizeHorizontal * 2),
                                     Column(
                                       children: [
                                         Container(
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  25,
                                           child: Text(
                                             "Luis Suárez",
                                             style: TextStyle(
-                                                color: AppTheme.blackColor,
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.w700,
                                                 fontSize: 14),
                                           ),
                                         ),
                                         Container(
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  25,
+                                          margin: EdgeInsets.only(
+                                            left:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    1,
+                                          ),
                                           child: Text(
                                             "Barcelona FC",
                                             style: TextStyle(
@@ -1260,25 +1172,22 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       ],
                                     ),
                                     SizedBox(
-                                        width:
-                                            SizeConfig.blockSizeHorizontal * 4),
+                                        width: SizeConfig.blockSizeHorizontal *
+                                            1.3),
                                     Center(
                                         child: SvgPicture.asset(
                                             'assets/Check.svg')),
                                     SizedBox(
-                                        width:
-                                            SizeConfig.blockSizeHorizontal * 3),
+                                        width: SizeConfig.blockSizeHorizontal *
+                                            1.3),
                                     SvgPicture.asset(
                                         'assets/athletic-club-madrid.svg'),
                                     SizedBox(
-                                        width:
-                                            SizeConfig.blockSizeHorizontal * 3),
+                                        width: SizeConfig.blockSizeHorizontal *
+                                            1.3),
                                     Column(
                                       children: [
                                         Container(
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  20,
                                           child: Text(
                                             "A. Madrid",
                                             style: TextStyle(
@@ -1436,10 +1345,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           margin: EdgeInsets.only(
                                             right:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    2,
+                                                    5,
                                             left:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    2,
+                                                    5,
                                             bottom:
                                                 SizeConfig.blockSizeVertical *
                                                     2,

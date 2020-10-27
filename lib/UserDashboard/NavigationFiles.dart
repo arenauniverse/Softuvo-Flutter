@@ -41,7 +41,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
     SizeConfig().init(context);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-      // transparent
+        // transparent
         type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         items: [
