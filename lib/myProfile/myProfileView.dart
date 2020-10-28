@@ -334,7 +334,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Terms_Conditions_View()),
+                                builder: (context) => TermsConditionsView()),
                           );
                         },
                         child: Row(
