@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 
 class MyProfileView extends StatefulWidget {
   @override
@@ -16,7 +17,17 @@ class MyProfileView extends StatefulWidget {
 }
 
 class _MyProfileViewState extends State<MyProfileView> {
-  bool status = false;
+ //
+  bool status=false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SharedPreferenceData().getSelectedThemeMode().then((value)
+    {
+        status =value;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -28,8 +39,6 @@ class _MyProfileViewState extends State<MyProfileView> {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          // brightness: Brightness.light,
-          // backgroundColor: AppTheme.whiteColor,
           title: Text(
             Strings.myProfile,
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
