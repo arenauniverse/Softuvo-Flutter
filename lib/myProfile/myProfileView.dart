@@ -1,4 +1,3 @@
-import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
@@ -25,7 +24,9 @@ class _MyProfileViewState extends State<MyProfileView> {
     super.initState();
     SharedPreferenceData().getSelectedThemeMode().then((value)
     {
+      setState(() {
         status =value;
+      });
     });
   }
   @override
@@ -40,7 +41,7 @@ class _MyProfileViewState extends State<MyProfileView> {
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           title: Text(
-            Strings.myProfile,
+            "Mi Perfil",
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
           ),
           actions: [
@@ -49,7 +50,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                 padding: EdgeInsets.only(
                     top: SizeConfig.blockSizeVertical * 3,
                     right: SizeConfig.blockSizeHorizontal * 3),
-                child: Text(Strings.Getout,
+                child: Text("Salir",
                     style: TextStyle(
                         color: AppTheme.blueColor,
                         fontWeight: FontWeight.w600)),
@@ -117,7 +118,7 @@ class _MyProfileViewState extends State<MyProfileView> {
               Container(
                 margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
                 child: Text(
-                  Strings.dummyName,
+                  "Fernando Martinez",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -128,7 +129,7 @@ class _MyProfileViewState extends State<MyProfileView> {
               Container(
                 margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 1),
                 child: Text(
-                  Strings.dummyEmail,
+                  "@fernando",
                   style: TextStyle(
                     fontWeight: FontWeight
                         .w600, /*color:Theme.of(context).indicatorColor*/
@@ -150,7 +151,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(Strings.Profile,
+                      Text("PERFIL",
                           style: TextStyle(
                               fontWeight: FontWeight.w800, fontSize: 15.0)),
                       SizedBox(height: SizeConfig.blockSizeVertical * 2.5),
@@ -158,7 +159,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.myInformation),
+                            Text("Mi informacion"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -174,7 +175,7 @@ class _MyProfileViewState extends State<MyProfileView> {
                       GestureDetector(
                         child: Row(
                           children: [
-                            Text(Strings.password),
+                            Text("Contraseña"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -208,14 +209,14 @@ height: SizeConfig.blockSizeVertical * 1.5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(Strings.general,
+                      Text("GENERAL",
                           style: TextStyle(
                               fontWeight: FontWeight.w800, fontSize: 15.0)),
                       SizedBox(height: SizeConfig.blockSizeVertical * 2.5),
                       GestureDetector(
                         child: Row(
                           children: [
-                            Text(Strings.notification),
+                            Text("Notificaciones"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -232,17 +233,17 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.darkMode),
+                            Text("Dark Mode"),
                             Spacer(),
                             Transform.scale(
                               scale: 1.3,
                               child: Switch(
-                                activeColor: AppTheme.blueColor,
                                 value: status,
                                 onChanged: (val) {
                                   setState(() {
                                     status = val;
                                     themeChange.darkTheme = status;
+                                    SharedPreferenceData().saveSelectedThemeMode(status);
                                     /* RevealRoute(
                                       page: MyProfileView(),
                                       maxRadius: 800,
@@ -260,7 +261,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.myApp),
+                            Text("My App"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -290,7 +291,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(Strings.Legal,
+                      Text("LEGAL",
                           style: TextStyle(
                               fontWeight: FontWeight.w800, fontSize: 15.0)),
                       SizedBox(height: SizeConfig.blockSizeVertical * 2.5),
@@ -298,7 +299,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.privacySettings),
+                            Text("Ajustes de privacidad"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -315,7 +316,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.PrivacyPolicy),
+                            Text("Política de privacidad"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -338,7 +339,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         },
                         child: Row(
                           children: [
-                            Text(Strings.termsCond),
+                            Text("Terminos y condiciones"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -355,7 +356,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.Licenses),
+                            Text("Licencias"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -372,7 +373,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.Notice),
+                            Text("Aviso"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
@@ -389,7 +390,7 @@ height: SizeConfig.blockSizeVertical * 1.5,
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text(Strings.Support),
+                            Text("Soporte"),
                             Spacer(),
                             Icon(
                               Icons.arrow_forward_ios,
