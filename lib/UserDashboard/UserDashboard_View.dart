@@ -10,6 +10,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class UserDahboardView extends StatefulWidget {
   @override
@@ -826,150 +827,142 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           SizeConfig.blockSizeVertical * 0.5)),
                               Container(
                                 height: SizeConfig.blockSizeVertical * 30,
+                                width: SizeConfig.blockSizeVertical * 40,
                                 margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 4,
                                     top: SizeConfig.blockSizeVertical * 0.5,
                                     bottom: SizeConfig.blockSizeVertical * 0.5),
-                                child: ListView.builder(
+                                child: Swiper(
+                                  viewportFraction: 0.8,
+                                  scale: 0.8,
                                   itemCount: 2,
-                                  shrinkWrap: true,
                                   scrollDirection: Axis.horizontal,
                                   itemBuilder: (BuildContext ctxt, int index) {
-                                    return Padding(
-                                      padding: EdgeInsets.only(
-                                        right:
-                                            SizeConfig.blockSizeHorizontal * 3,
+                                    return Card(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(18),
                                       ),
-                                      child: Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(18),
-                                        ),
-                                        child: Container(
-                                          /* height:
-                                              SizeConfig.blockSizeVertical * 30,*/
-                                          width:
-                                              SizeConfig.blockSizeVertical * 30,
-                                          child: Column(
-                                            children: [
-                                              Stack(
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    25))),
-                                                    width: SizeConfig
-                                                            .blockSizeVertical *
-                                                        30,
-                                                    child: Image.asset(
-                                                      'assets/videoImage.png',
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                      child: Container(
+                                        /* height:
+                                            SizeConfig.blockSizeVertical * 30,*/
+                                        width:
+                                            SizeConfig.blockSizeVertical * 30,
+                                        child: Column(
+                                          children: [
+                                            Stack(
+                                              children: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  25))),
+                                                  width: SizeConfig
+                                                          .blockSizeVertical *
+                                                      30,
+                                                  child: Image.asset(
+                                                    'assets/videoImage.png',
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                  Positioned(
-                                                    top: 5.0,
-                                                    left: SizeConfig
-                                                            .blockSizeVertical *
-                                                        13.2,
-                                                    bottom: 5.0,
-                                                    child: GestureDetector(
-                                                      child: SvgPicture.asset(
-                                                        'assets/playIcon.svg',
-                                                        width: SizeConfig
-                                                                .blockSizeVertical *
-                                                            5,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Positioned(
-                                                      top: SizeConfig
-                                                              .blockSizeVertical *
-                                                          12,
-                                                      left: SizeConfig
-                                                              .blockSizeVertical *
-                                                          2,
-                                                      bottom: 18.0,
-                                                      child: Container(
-                                                        child: Text(
-                                                          Strings.textTime,
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color: AppTheme
-                                                                  .whiteColor),
-                                                        ),
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        6),
-                                                            color: Color(
-                                                                    0xFF0E3311)
-                                                                .withOpacity(
-                                                                    0.5)),
-                                                        padding:
-                                                            EdgeInsets.all(3),
-                                                      )),
-/*
-                                                  Positioned(
-                                                    child: Container(
+                                                ),
+                                                Positioned(
+                                                  top: 5.0,
+                                                  left: SizeConfig
+                                                          .blockSizeVertical *
+                                                      12.5,
+                                                  bottom: 5.0,
+                                                  child: GestureDetector(
+                                                    child: SvgPicture.asset(
+                                                      'assets/playIcon.svg',
                                                       width: SizeConfig
                                                               .blockSizeVertical *
-                                                          40,
-                                                      child: Slider(
-                                                        mouseCursor:
-                                                            MouseCursor.defer,
-                                                        activeColor: AppTheme
-                                                            .borderColor,
-                                                        inactiveColor: Color(
-                                                                0xFF0E3311)
-                                                            .withOpacity(0.5),
-                                                        onChanged: (v) {
-                                                          */
-/*  final Position = v * _duration.inMilliseconds;
-                                                        _audioPlayer.seek(Duration(milliseconds: Position.round()));*/ /*
-
-                                                        },
-                                                        value: 2.3,
-                                                        max: 5,
-                                                        min: 1,
-                                                      ),
+                                                          5,
                                                     ),
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        16.7,
-                                                    bottom: 17.0,
-                                                  )
-*/
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                  left: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      1,
-                                                ),
-                                                child: Container(
-                                                  margin: EdgeInsets.only(
-                                                      left: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          4,
-                                                      top: SizeConfig
-                                                              .blockSizeVertical *
-                                                          1),
-                                                  child: Text(
-                                                    Strings.text2,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w600),
                                                   ),
                                                 ),
-                                              )
-                                            ],
-                                          ),
+                                                Positioned(
+                                                    top: SizeConfig
+                                                            .blockSizeVertical *
+                                                        11.8,
+                                                    left: SizeConfig
+                                                            .blockSizeVertical *
+                                                        2,
+                                                    bottom: 18.0,
+                                                    child: Container(
+                                                      child: Text(
+                                                        Strings.textTime,
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: AppTheme
+                                                                .whiteColor),
+                                                      ),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(6),
+                                                          color:
+                                                              Color(0xFF0E3311)
+                                                                  .withOpacity(
+                                                                      0.5)),
+                                                      padding:
+                                                          EdgeInsets.all(3),
+                                                    )),
+/*
+                                                Positioned(
+                                                  child: Container(
+                                                    width: SizeConfig
+                                                            .blockSizeVertical *
+                                                        40,
+                                                    child: Slider(
+                                                      mouseCursor:
+                                                          MouseCursor.defer,
+                                                      activeColor: AppTheme
+                                                          .borderColor,
+                                                      inactiveColor: Color(
+                                                              0xFF0E3311)
+                                                          .withOpacity(0.5),
+                                                      onChanged: (v) {
+                                                        */
+/*  final Position = v * _duration.inMilliseconds;
+                                                      _audioPlayer.seek(Duration(milliseconds: Position.round()));*/ /*
+
+                                                      },
+                                                      value: 2.3,
+                                                      max: 5,
+                                                      min: 1,
+                                                    ),
+                                                  ),
+                                                  top: SizeConfig
+                                                          .blockSizeVertical *
+                                                      16.7,
+                                                  bottom: 17.0,
+                                                )
+*/
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    1,
+                                              ),
+                                              child: Container(
+                                                margin: EdgeInsets.only(
+                                                    left: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        4,
+                                                    top: SizeConfig
+                                                            .blockSizeVertical *
+                                                        1),
+                                                child: Text(
+                                                  Strings.text2,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                            )
+                                          ],
                                         ),
                                       ),
                                     );
@@ -1642,3 +1635,63 @@ class _UserDahboardViewState extends State<UserDahboardView> {
     );
   }
 }
+
+Swiper imageSlider(context) {
+  return new Swiper(
+    autoplay: true,
+    itemBuilder: (BuildContext context, int index) {
+      return new Image.network(
+        "https://images.unsplash.com/photo-1595445364671-15205e6c380c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=764&q=80",
+        fit: BoxFit.fitHeight,
+      );
+    },
+    itemCount: 10,
+    viewportFraction: 0.8,
+    scale: 0.9,
+  );
+}
+
+/*
+class ExampleFraction extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          title: Text("ExampleFraction"),
+        ),
+        body: new Column(
+          children: <Widget>[
+            Expanded(
+                child: new Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    return new Image.asset(
+                      images[index],
+                      fit: BoxFit.fill,
+                    );
+                  },
+                  autoplay: true,
+                  itemCount: images.length,
+                  pagination:
+                  new SwiperPagination(builder: SwiperPagination.fraction),
+                  control: new SwiperControl(),
+                )),
+            Expanded(
+                child: new Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    return new Image.asset(
+                      images[index],
+                      fit: BoxFit.fill,
+                    );
+                  },
+                  autoplay: true,
+                  itemCount: images.length,
+                  scrollDirection: Axis.vertical,
+                  pagination: new SwiperPagination(
+                      alignment: Alignment.centerRight,
+                      builder: SwiperPagination.fraction),
+                ))
+          ],
+        ));
+  }
+}
+*/
