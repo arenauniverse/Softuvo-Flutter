@@ -31,5 +31,12 @@ class SharedPreferenceData {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       return prefs.getBool('themeMode') ?? false ;
     }
-
+  saveRegisteredValue(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('registeredValue',value);
+  }
+  Future<bool> getRegisteredValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('registeredValue') ?? false ;
+  }
 }

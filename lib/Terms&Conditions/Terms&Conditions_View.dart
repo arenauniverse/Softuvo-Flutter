@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
+import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
+import 'package:arena_sports_app/UserDashboard/NavigationFiles.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:flutter/material.dart';
 import '../SizeConfig.dart';
@@ -16,13 +18,12 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 class TermsConditionsView extends StatefulWidget {
   final String userComingFrom;
-  final String name,
+  final TextEditingController name,
       email,
-      birthday,
-      country,
       emailConfirm,
       password,
       passwordConfirm;
+  String country, birthday;
   TermsConditionsView(
       {Key key,
       @required this.userComingFrom,
@@ -204,29 +205,29 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
           MutationOptions(
               documentNode: gql(
             addMutation.register(
-                name: widget.name,
-                email: widget.email,
+                name: widget.name.text,
+                email: widget.email.text,
                 birthday: widget.birthday,
                 country: widget.country,
-                emailConfirm: widget.emailConfirm,
-                keyword: widget.password,
-                keywordConfirm: widget.passwordConfirm),
+                emailConfirm: widget.emailConfirm.text,
+                keyword: widget.password.text,
+                keywordConfirm: widget.passwordConfirm.text),
           )),
         )
             .then((value) {
           queryResult = value;
           if (!queryResult.hasException) {
+            widget.email.clear;
+            widget.name.clear;
+            widget.password.clear;
+            widget.passwordConfirm.clear;
+
             //Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            // toast(msg: Messages.registerSuccess, context: context);
-
+            toast(msg: Messages.registerSuccess, context: context);
+            SharedPreferenceData().saveSelectedThemeMode(true);
             Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => UserDahboardView()),
+                MaterialPageRoute(builder: (context) => NavigationScreens()),
                 (Route<dynamic> route) => false);
-            /*  Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (BuildContext context) => UserDahboardView()));*/
-            /* Navigator.of(context)
-                .popUntil(ModalRoute.withName("RegisterView"));*/
-
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();

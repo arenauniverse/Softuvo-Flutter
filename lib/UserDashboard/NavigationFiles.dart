@@ -1,5 +1,6 @@
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
+import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/UserDashboard/arenaBottomSheet.dart';
 import 'package:arena_sports_app/theme.dart';
@@ -17,6 +18,7 @@ class NavigationScreens extends StatefulWidget {
 class _NavigationScreensState extends State<NavigationScreens> {
   int _currentIndex = 0;
   Coordinates coordinates;
+
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -36,7 +38,6 @@ class _NavigationScreensState extends State<NavigationScreens> {
     getUserLocation();
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

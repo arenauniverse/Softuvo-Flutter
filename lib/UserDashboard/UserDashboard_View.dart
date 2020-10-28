@@ -1,9 +1,11 @@
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
+import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/NewsDetails/NewsDetails_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
+import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -22,7 +24,11 @@ class _UserDahboardViewState extends State<UserDahboardView> {
 
   @override
   void initState() {
-    /*showAlert(context);*/
+   /* SharedPreferenceData().getRegisteredValue().then((value) {
+      setState(() {
+        status = value;
+      });
+    });*/
     super.initState();
   }
 
@@ -33,7 +39,6 @@ class _UserDahboardViewState extends State<UserDahboardView> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: CustomScrollView(slivers: [
           SliverAppBar(
-
             backgroundColor: Theme.of(context).cardColor,
             pinned: true,
             floating: true,
@@ -46,7 +51,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      _showModalSheet();
+                    _showModalSheet();
                     },
                     child: Container(
                       child: SvgPicture.asset('assets/ArenaLogin.svg'),

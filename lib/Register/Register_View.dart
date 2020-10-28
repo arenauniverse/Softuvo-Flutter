@@ -398,20 +398,28 @@ class _RegisterViewState extends State<RegisterView> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              TermsConditionsView(userComingFrom: 'register',name: Controllers.name.text,
-                                                  email: Controllers.registerEmail.text,
+                                              TermsConditionsView(
+                                                  userComingFrom: 'register',
+                                                  name: Controllers.name,
+                                                  email:
+                                                      Controllers.registerEmail,
                                                   birthday: dateTimeFormat,
                                                   country: 'Canada',
-                                                  emailConfirm: Controllers.registerEmail.text,
-                                                  password: Controllers.registerPassword.text,
-                                                  passwordConfirm: Controllers.repeatPassword.text)));
+                                                  emailConfirm:
+                                                      Controllers.registerEmail,
+                                                  password: Controllers
+                                                      .registerPassword,
+                                                  passwordConfirm: Controllers
+                                                      .repeatPassword)));
                                 } else {
                                   toast(
                                       msg: Messages.repeatPasswordNotMatch,
                                       context: context);
                                 }
                               } else {
-                                toast(msg: Messages.shortPassword, context: context);
+                                toast(
+                                    msg: Messages.shortPassword,
+                                    context: context);
                               }
                             } else {
                               toast(msg: Messages.validDob, context: context);
