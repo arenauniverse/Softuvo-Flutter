@@ -53,7 +53,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 0
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
-                width: 25,
+                height: SizeConfig.blockSizeVertical * 3,
               )),
           BottomNavigationBarItem(
               title: Text(""),
@@ -62,17 +62,21 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 1
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
-                width: 35,
+                height: SizeConfig.blockSizeVertical * 3,
               )),
           BottomNavigationBarItem(
             title: Text(""),
             icon: FloatingActionButton(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                onPressed: () {
-                  _showModalSheet();
-                },
-                child: SvgPicture.asset('assets/tab3.svg', width: 30,),),
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              onPressed: () {
+                _showModalSheet();
+              },
+              child: SvgPicture.asset(
+                'assets/tab3.svg',
+                height: SizeConfig.blockSizeVertical * 5,
+              ),
+            ),
           ),
           /*SvgPicture.asset('assets/tab3.svg')*/
           BottomNavigationBarItem(
@@ -82,7 +86,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 3
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
-                width: 25,
+                height: SizeConfig.blockSizeVertical * 3,
               )),
           BottomNavigationBarItem(
               title: Text(""),
@@ -91,7 +95,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 4
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
-                width: 25,
+                height: SizeConfig.blockSizeVertical * 3,
               )),
         ],
       ),

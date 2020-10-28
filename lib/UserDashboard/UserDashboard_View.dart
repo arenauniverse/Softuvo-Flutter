@@ -212,8 +212,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                 child: Row(
                                   children: [
                                     Container(
-                                      width:
-                                          SizeConfig.blockSizeHorizontal * 1.2,
+                                      width: SizeConfig.blockSizeHorizontal * 1,
                                       height: SizeConfig.blockSizeVertical * 9,
                                       margin: EdgeInsets.only(
                                           top:
@@ -249,13 +248,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                 SizedBox(
                                                     width: SizeConfig
                                                             .blockSizeHorizontal *
-                                                        2),
+                                                        3),
                                                 _directLinkBell(),
                                                 /* SvgPicture.asset('assets/directIcon.svg'),*/
                                                 SizedBox(
                                                     width: SizeConfig
                                                             .blockSizeHorizontal *
-                                                        2),
+                                                        3),
                                                 _notificationBell(),
                                               ],
                                             ),
@@ -405,7 +404,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             margin: EdgeInsets.only(
                                                 top: SizeConfig
                                                         .blockSizeVertical *
-                                                    1,
+                                                    0.5,
                                                 bottom: SizeConfig
                                                         .blockSizeVertical *
                                                     2,
@@ -437,7 +436,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                         Container(
                                           width:
                                               SizeConfig.blockSizeHorizontal *
-                                                  1.2,
+                                                  1,
                                           height:
                                               SizeConfig.blockSizeVertical * 9,
                                           margin: EdgeInsets.only(
@@ -476,13 +475,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                     SizedBox(
                                                         width: SizeConfig
                                                                 .blockSizeHorizontal *
-                                                            2),
+                                                            3),
                                                     _directLinkBell(),
                                                     /* SvgPicture.asset('assets/directIcon.svg'),*/
                                                     SizedBox(
                                                         width: SizeConfig
                                                                 .blockSizeHorizontal *
-                                                            2),
+                                                            3),
                                                     _notificationBell(),
                                                   ],
                                                 ),
@@ -638,7 +637,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                 margin: EdgeInsets.only(
                                                     top: SizeConfig
                                                             .blockSizeVertical *
-                                                        1,
+                                                        0.5,
                                                     bottom: SizeConfig
                                                             .blockSizeVertical *
                                                         2,
@@ -1194,7 +1193,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               SizedBox(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
-                                                      3.5),
+                                                      3),
                                               Text(
                                                 Strings.time,
                                                 style: TextStyle(
@@ -1208,13 +1207,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           margin: EdgeInsets.only(
                                             right:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    5,
+                                                    4.7,
                                             left:
                                                 SizeConfig.blockSizeHorizontal *
                                                     5,
                                             bottom:
                                                 SizeConfig.blockSizeVertical *
-                                                    2,
+                                                    1,
                                           ),
                                         ),
                                         Container(
@@ -1274,7 +1273,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               SizedBox(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
-                                                      3),
+                                                      4),
                                               _directLinkBell(),
                                             ],
                                           ),
@@ -1381,13 +1380,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                     ),
                                     SizedBox(
                                         width:
-                                            SizeConfig.blockSizeVertical * 3),
+                                            SizeConfig.blockSizeVertical * 2),
                                     Center(
                                         child: SvgPicture.asset(
-                                            'assets/Check.svg')),
+                                      'assets/Check.svg',
+                                      height:
+                                          SizeConfig.blockSizeHorizontal * 10,
+                                    )),
                                     SizedBox(
                                         width:
-                                            SizeConfig.blockSizeHorizontal * 3),
+                                            SizeConfig.blockSizeHorizontal * 2),
                                     SvgPicture.asset(
                                         'assets/athletic-club-madrid.svg'),
                                     Column(
@@ -1533,7 +1535,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               SizedBox(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
-                                                      3.5),
+                                                      3),
                                               Text(
                                                 Strings.time,
                                                 style: TextStyle(
@@ -1547,13 +1549,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           margin: EdgeInsets.only(
                                             right:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    5,
+                                                    4.7,
                                             left:
                                                 SizeConfig.blockSizeHorizontal *
                                                     5,
                                             bottom:
                                                 SizeConfig.blockSizeVertical *
-                                                    2,
+                                                    1,
                                           ),
                                         ),
                                         Container(
@@ -1613,7 +1615,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               SizedBox(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
-                                                      3),
+                                                      4),
                                               _directLinkBell(),
                                             ],
                                           ),
