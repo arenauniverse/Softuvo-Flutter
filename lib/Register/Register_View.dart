@@ -9,6 +9,7 @@ import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
+import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -393,10 +394,15 @@ class _RegisterViewState extends State<RegisterView> {
                                       8) {
                                 if (Controllers.repeatPassword.text ==
                                     Controllers.registerPassword.text) {
-                                  RegisterUser(
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Terms_Conditions_View()));
+                                  /*RegisterUser(
                                       context: context,
                                       dateTimeFormat: dateTimeFormat,
-                                      queryResult: getResult);
+                                      queryResult: getResult);*/
                                 } else {
                                   toast(
                                       msg: Messages.repeatPasswordNotMatch,
