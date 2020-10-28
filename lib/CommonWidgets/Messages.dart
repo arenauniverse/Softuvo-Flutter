@@ -9,4 +9,10 @@ class Messages {
   static String validPhone = "Enter valid Phone No.";
   static String validateName = "Enter name atleast 6 characters";
   static String fbLoginSuccess = "Logged In Successfully";
+  static String resetPassword = "Password reset link has been set your email, Please check your mail.";
+  static String noConnection = "No Internet Connection";
+  static String validEmail = "Enter Valid Email";
+  static String validFullName = "Enter Valid Nombre y Apellido";
+  static String validPassword = "Enter Valid Contraseña";
+  static  String locationPermissions = "permission denied- please enable it from app settings";
 }

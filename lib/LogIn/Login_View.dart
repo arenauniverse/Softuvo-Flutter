@@ -4,7 +4,7 @@ import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/ForgetPassword/ForgetPasswordView.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
@@ -107,7 +107,7 @@ class _LoginViewState extends State<LoginView> {
                   cursorColor: Colors.black,
                   validator: (value) {
                     if (value == null || value == "") {
-                      return "Enter Valid Email";
+                      return Messages.validEmail;
                     }
                   },
                   onFieldSubmitted: (v) {},
@@ -130,7 +130,7 @@ class _LoginViewState extends State<LoginView> {
                   cursorColor: AppTheme.blackColor,
                   validator: (value) {
                     if (value == null || value == "") {
-                      return "Enter Valid Contraseña";
+                      return Messages.validPassword;
                     }
                   },
                   decoration: InputDecoration(
@@ -261,7 +261,7 @@ class _LoginViewState extends State<LoginView> {
         });
       }
     } on SocketException catch (_) {
-      toast(msg: "No Internet Connection", context: context);
+      toast(msg: Messages.noConnection, context: context);
     }
   }
 }

@@ -5,7 +5,7 @@ import 'package:arena_sports_app/CommonWidgets/SocialLoginMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
 import 'package:arena_sports_app/Register/Register_View.dart';
@@ -29,6 +29,11 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+        color: Theme.of(context).cardColor,
+      ),
       height: SizeConfig.blockSizeVertical * 79,
       width: SizeConfig.blockSizeHorizontal,
       child: SingleChildScrollView(
@@ -85,9 +90,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
             Text(
               Strings.listingText,
               style: TextStyle(
-                  fontFamily: AppTheme.appFont,
-                  color: AppTheme.blackColor,
-                  fontWeight: FontWeight.w600),
+                  fontFamily: AppTheme.appFont, fontWeight: FontWeight.w600),
             ),
             Padding(
               padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 3),
@@ -158,7 +161,6 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                   Text("O",
                       style: TextStyle(
                           fontFamily: AppTheme.appFont,
-                          color: AppTheme.blackColor,
                           fontWeight: FontWeight.w500)),
                   Container(
                     margin: EdgeInsets.symmetric(
@@ -181,7 +183,6 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       ),
                       child: Text(Strings.registerButtonText,
                           style: TextStyle(
-                              color: AppTheme.whiteColor,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppTheme.appFont)),
                     ),
@@ -232,7 +233,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
         });
       }
     } on SocketException catch (_) {
-      toast(msg: "No Internet Connection", context: context);
+      toast(msg: Messages.noConnection, context: context);
     }
   }
 
@@ -270,7 +271,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
         });
       }
     } on SocketException catch (_) {
-      toast(msg: "No Internet Connection", context: context);
+      toast(msg: Messages.noConnection, context: context);
     }
   }
 }

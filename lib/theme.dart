@@ -11,7 +11,9 @@ class AppTheme {
   static final borderColor = Color(0xFFEB5757);
   static final toggleColor = Color(0xFFC1C2C4);
   static final greenColor = Color(0XFF27AE60);
+  static final scaffoldColor = Color(0XFfF8F8FA);
   static final bottomSheetBackgroundColor = Color(0XFFF8F8FA);
+  static final lightgrey = Color(0XFFBDBDBD);
   // Fonts
   static final String appFont = "SFUIText";
 }

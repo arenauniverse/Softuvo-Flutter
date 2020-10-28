@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/NewsDetails/NewsDetails_View.dart';
@@ -7,8 +8,8 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
 class UserDahboardView extends StatefulWidget {
   @override
@@ -28,36 +29,41 @@ class _UserDahboardViewState extends State<UserDahboardView> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-        backgroundColor: AppTheme.backGroundColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: CustomScrollView(slivers: [
           SliverAppBar(
+            backgroundColor: Theme.of(context).cardColor,
             pinned: true,
             floating: true,
-            backgroundColor: AppTheme.whiteColor,
             title: Container(
-              color: AppTheme.whiteColor,
               padding: EdgeInsets.only(
                 left: SizeConfig.blockSizeHorizontal * 2,
                 right: SizeConfig.blockSizeHorizontal * 2,
               ),
               child: Row(
                 children: [
-                  Container(
-                    child: SvgPicture.asset('assets/ArenaLogin.svg'),
-                    margin: EdgeInsets.only(),
+                  GestureDetector(
+                    onTap: () {
+                      _showModalSheet();
+                    },
+                    child: Container(
+                      child: SvgPicture.asset('assets/ArenaLogin.svg'),
+                      margin: EdgeInsets.only(),
+                    ),
                   ),
                   Spacer(),
                   Text(
-                    "Live",
+                    Strings.live,
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 2,
+                      left: SizeConfig.blockSizeHorizontal * 1.5,
                     ),
                     child: Transform.scale(
                       scale: 1.4,
                       child: Switch(
+                        activeColor: AppTheme.blueColor,
                         value: status,
                         onChanged: (val) {
                           setState(() {
@@ -70,7 +76,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 2,
+                      left: SizeConfig.blockSizeHorizontal * 3.5,
                     ),
                     child: CircleAvatar(
                       radius: 16,
@@ -86,11 +92,11 @@ class _UserDahboardViewState extends State<UserDahboardView> {
               delegate: SliverChildListDelegate(
             <Widget>[
               Container(
+                color: Theme.of(context).cardColor,
                 height: SizeConfig.blockSizeVertical * 8,
                 margin: EdgeInsets.only(
                   top: SizeConfig.blockSizeVertical * 0.01,
                 ),
-                color: AppTheme.whiteColor,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Container(
@@ -178,7 +184,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                 children: [
                   Container(
                     child: Text(
-                      "EN VIVO",
+                      Strings.Live,
                       style:
                           TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                     ),
@@ -198,11 +204,11 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                         child: Row(
                           children: [
                             Container(
-                                height: SizeConfig.blockSizeVertical * 20,
+                                height: SizeConfig.blockSizeVertical * 16.5,
                                 width: SizeConfig.blockSizeHorizontal * 70,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
+                                  color: Theme.of(context).cardColor,
                                 ),
                                 child: Column(
                                   children: [
@@ -214,13 +220,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                 left: SizeConfig
                                                         .blockSizeHorizontal *
                                                     4),
-                                            child: Text("US OPEN",
+                                            child: Text(Strings.US_OPEN,
                                                 style: TextStyle(
                                                     color: AppTheme.greyColor)),
                                           ),
                                           Spacer(),
                                           Text(
-                                            "62’",
+                                            Strings.numbers,
                                             style: TextStyle(
                                                 color: AppTheme.borderColor),
                                           ),
@@ -228,22 +234,20 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   3),
-                                          Image.asset(
-                                            "assets/directLink.png",
-                                          ),
+                                          _directLinkBell(),
                                           /* SvgPicture.asset('assets/directIcon.svg'),*/
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   3),
-                                          Image.asset("assets/notification.png")
+                                          _notificationBell(),
                                         ],
                                       ),
                                       margin: EdgeInsets.only(
                                           top: SizeConfig.blockSizeVertical * 2,
                                           right:
                                               SizeConfig.blockSizeHorizontal *
-                                                  4),
+                                                  2.6),
                                     ),
                                     Container(
                                       child: Row(
@@ -252,16 +256,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             Icons
                                                 .supervised_user_circle_rounded,
                                             color: AppTheme.greyColor,
-                                            size: 40,
+                                            size: SizeConfig.blockSizeVertical *
+                                                3,
                                           ),
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   1),
                                           Text(
-                                            "D. Thiem",
+                                            Strings.playerName,
                                             style: TextStyle(
-                                                color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16),
                                           ),
@@ -273,7 +277,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   4),
                                           Text(
-                                            "2",
+                                            Strings.scores,
                                             style: TextStyle(
                                                 color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.w600),
@@ -283,14 +287,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   3),
                                           Container(
-                                            padding: EdgeInsets.all(4.0),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 5.0),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(6),
+                                                  BorderRadius.circular(4),
                                               color: AppTheme.greyColor,
                                             ),
                                             child: Text(
-                                              "2",
+                                              Strings.scores,
                                               style: TextStyle(
                                                   color: AppTheme.blackColor,
                                                   fontWeight: FontWeight.w600),
@@ -304,7 +309,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               4,
                                           right:
                                               SizeConfig.blockSizeHorizontal *
-                                                  4),
+                                                  3),
                                     ),
                                     Container(
                                       child: Row(
@@ -313,16 +318,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             Icons
                                                 .supervised_user_circle_rounded,
                                             color: AppTheme.greyColor,
-                                            size: 40,
+                                            size: SizeConfig.blockSizeVertical *
+                                                3,
                                           ),
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   1),
                                           Text(
-                                            "D. Thiem",
+                                            Strings.playerName,
                                             style: TextStyle(
-                                                color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16),
                                           ),
@@ -334,7 +339,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   4),
                                           Text(
-                                            "2",
+                                            Strings.scores,
                                             style: TextStyle(
                                                 color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.w600),
@@ -344,14 +349,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   3),
                                           Container(
-                                            padding: EdgeInsets.all(4.0),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 5.0),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(6),
+                                                  BorderRadius.circular(4),
                                               color: AppTheme.greyColor,
                                             ),
                                             child: Text(
-                                              "2",
+                                              Strings.scores,
                                               style: TextStyle(
                                                   color: AppTheme.blackColor,
                                                   fontWeight: FontWeight.w600),
@@ -365,7 +371,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               4,
                                           right:
                                               SizeConfig.blockSizeHorizontal *
-                                                  4),
+                                                  3),
                                     )
                                   ],
                                 )),
@@ -373,11 +379,11 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                               width: SizeConfig.blockSizeHorizontal * 2,
                             ),
                             Container(
-                                height: SizeConfig.blockSizeVertical * 20,
+                                height: SizeConfig.blockSizeVertical * 16.5,
                                 width: SizeConfig.blockSizeHorizontal * 70,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
+                                  color: Theme.of(context).cardColor,
                                 ),
                                 child: Column(
                                   children: [
@@ -389,13 +395,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                 left: SizeConfig
                                                         .blockSizeHorizontal *
                                                     4),
-                                            child: Text("US OPEN",
+                                            child: Text(Strings.US_OPEN,
                                                 style: TextStyle(
                                                     color: AppTheme.greyColor)),
                                           ),
                                           Spacer(),
                                           Text(
-                                            "62’",
+                                            Strings.numbers,
                                             style: TextStyle(
                                                 color: AppTheme.borderColor),
                                           ),
@@ -403,20 +409,19 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   3),
-                                          SvgPicture.asset('assets/square.svg'),
+                                          _directLinkBell(),
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   3),
-                                          SvgPicture.asset(
-                                              'assets/notification.svg'),
+                                          _notificationBell(),
                                         ],
                                       ),
                                       margin: EdgeInsets.only(
                                           top: SizeConfig.blockSizeVertical * 2,
                                           right:
                                               SizeConfig.blockSizeHorizontal *
-                                                  4),
+                                                  2.6),
                                     ),
                                     Container(
                                       child: Row(
@@ -425,16 +430,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             Icons
                                                 .supervised_user_circle_rounded,
                                             color: AppTheme.greyColor,
-                                            size: 40,
+                                            size: SizeConfig.blockSizeVertical *
+                                                3,
                                           ),
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   1),
                                           Text(
-                                            "D. Thiem",
+                                            Strings.playerName,
                                             style: TextStyle(
-                                                color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16),
                                           ),
@@ -446,7 +451,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   4),
                                           Text(
-                                            "2",
+                                            Strings.scores,
                                             style: TextStyle(
                                                 color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.w600),
@@ -456,14 +461,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   3),
                                           Container(
-                                            padding: EdgeInsets.all(4.0),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 5.0),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(6),
+                                                  BorderRadius.circular(4),
                                               color: AppTheme.greyColor,
                                             ),
                                             child: Text(
-                                              "2",
+                                              Strings.scores,
                                               style: TextStyle(
                                                   color: AppTheme.blackColor,
                                                   fontWeight: FontWeight.w600),
@@ -477,7 +483,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               4,
                                           right:
                                               SizeConfig.blockSizeHorizontal *
-                                                  4),
+                                                  3),
                                     ),
                                     Container(
                                       child: Row(
@@ -486,16 +492,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                             Icons
                                                 .supervised_user_circle_rounded,
                                             color: AppTheme.greyColor,
-                                            size: 40,
+                                            size: SizeConfig.blockSizeVertical *
+                                                3,
                                           ),
                                           SizedBox(
                                               width: SizeConfig
                                                       .blockSizeHorizontal *
                                                   1),
                                           Text(
-                                            "D. Thiem",
+                                            Strings.playerName,
                                             style: TextStyle(
-                                                color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16),
                                           ),
@@ -507,7 +513,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   4),
                                           Text(
-                                            "2",
+                                            Strings.scores,
                                             style: TextStyle(
                                                 color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.w600),
@@ -517,14 +523,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                       .blockSizeHorizontal *
                                                   3),
                                           Container(
-                                            padding: EdgeInsets.all(4.0),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 5.0),
                                             decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(6),
+                                                  BorderRadius.circular(4),
                                               color: AppTheme.greyColor,
                                             ),
                                             child: Text(
-                                              "2",
+                                              Strings.scores,
                                               style: TextStyle(
                                                   color: AppTheme.blackColor,
                                                   fontWeight: FontWeight.w600),
@@ -538,7 +545,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               4,
                                           right:
                                               SizeConfig.blockSizeHorizontal *
-                                                  4),
+                                                  3),
                                     )
                                   ],
                                 ))
@@ -566,14 +573,14 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "NOTICIAS",
+                                      Strings.news,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 16),
                                     ),
                                     GestureDetector(
                                       child: Text(
-                                        "Ver todos",
+                                        Strings.see_all,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
@@ -618,8 +625,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   4,
                                           left: SizeConfig.blockSizeHorizontal *
                                               4),
-                                      child: Text(
-                                          "Messi entrena con el grupo del \ Barcelona por primera vez bajo el mando de Koeman",
+                                      child: Text(Strings.aboutPlayer,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                           )),
@@ -662,7 +668,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Koeman le comunica a Sergio  Busquets su ",
+                                          Strings.text,
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -701,7 +707,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Koeman le comunica a Sergio  Busquets su ",
+                                          Strings.text,
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -729,16 +735,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                         right:
                                             SizeConfig.blockSizeHorizontal * 3),
                                     child: Text(
-                                      "11.08",
+                                      Strings.textTime,
                                       style:
                                           TextStyle(color: AppTheme.greyColor),
                                     ),
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Pirlo confirmó que no tendrá en cuenta a Higuaín en Juventus",
+                                      Strings.text1,
                                       style: TextStyle(
-                                          color: AppTheme.blackColor,
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
@@ -765,16 +770,15 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       left: SizeConfig.blockSizeHorizontal * 5,
                                     ),
                                     child: Text(
-                                      "11.08",
+                                      Strings.textTime,
                                       style:
                                           TextStyle(color: AppTheme.greyColor),
                                     ),
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Pirlo confirmó que no tendrá en cuenta a Higuaín en Juventus",
+                                      Strings.text1,
                                       style: TextStyle(
-                                          color: AppTheme.blackColor,
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
@@ -794,14 +798,14 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "VIDEOS",
+                                      Strings.videos,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 16),
                                     ),
                                     GestureDetector(
                                       child: Text(
-                                        "Ver todos",
+                                        Strings.see_all,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
@@ -842,8 +846,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                               BorderRadius.circular(18),
                                         ),
                                         child: Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 30,
+                                          /* height:
+                                              SizeConfig.blockSizeVertical * 30,*/
                                           width:
                                               SizeConfig.blockSizeVertical * 30,
                                           child: Column(
@@ -852,17 +856,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                 children: [
                                                   Container(
                                                     decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topLeft:
-                                                            Radius.circular(25),
-                                                        topRight:
-                                                            Radius.circular(25),
-                                                      ),
-                                                    ),
-                                                    height: SizeConfig
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    25))),
+                                                    width: SizeConfig
                                                             .blockSizeVertical *
-                                                        20,
+                                                        30,
                                                     child: Image.asset(
                                                       'assets/videoImage.png',
                                                       fit: BoxFit.cover,
@@ -870,21 +870,30 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   ),
                                                   Positioned(
                                                     top: 5.0,
-                                                    left: 80.0,
+                                                    left: SizeConfig
+                                                            .blockSizeVertical *
+                                                        13.2,
                                                     bottom: 5.0,
                                                     child: GestureDetector(
                                                       child: SvgPicture.asset(
                                                         'assets/playIcon.svg',
+                                                        width: SizeConfig
+                                                                .blockSizeVertical *
+                                                            5,
                                                       ),
                                                     ),
                                                   ),
                                                   Positioned(
-                                                      top: 85.0,
-                                                      left: 13.0,
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          12,
+                                                      left: SizeConfig
+                                                              .blockSizeVertical *
+                                                          2,
                                                       bottom: 18.0,
                                                       child: Container(
                                                         child: Text(
-                                                          "05:11",
+                                                          Strings.textTime,
                                                           style: TextStyle(
                                                               fontWeight:
                                                                   FontWeight
@@ -903,7 +912,38 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                                     0.5)),
                                                         padding:
                                                             EdgeInsets.all(3),
-                                                      ))
+                                                      )),
+/*
+                                                  Positioned(
+                                                    child: Container(
+                                                      width: SizeConfig
+                                                              .blockSizeVertical *
+                                                          40,
+                                                      child: Slider(
+                                                        mouseCursor:
+                                                            MouseCursor.defer,
+                                                        activeColor: AppTheme
+                                                            .borderColor,
+                                                        inactiveColor: Color(
+                                                                0xFF0E3311)
+                                                            .withOpacity(0.5),
+                                                        onChanged: (v) {
+                                                          */
+/*  final Position = v * _duration.inMilliseconds;
+                                                        _audioPlayer.seek(Duration(milliseconds: Position.round()));*/ /*
+
+                                                        },
+                                                        value: 2.3,
+                                                        max: 5,
+                                                        min: 1,
+                                                      ),
+                                                    ),
+                                                    top: SizeConfig
+                                                            .blockSizeVertical *
+                                                        16.7,
+                                                    bottom: 17.0,
+                                                  )
+*/
                                                 ],
                                               ),
                                               Padding(
@@ -921,7 +961,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                               .blockSizeVertical *
                                                           1),
                                                   child: Text(
-                                                    "Jugadas principales de PSG y Bayern",
+                                                    Strings.text2,
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w600),
@@ -944,8 +984,9 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 2),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: AppTheme.whiteColor),
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
                         ),
                         Container(
                           child: Column(
@@ -960,14 +1001,14 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Partidos",
+                                      Strings.matches1,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 16),
                                     ),
                                     GestureDetector(
                                       child: Text(
-                                        "Ver todos",
+                                        Strings.see_all,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
@@ -991,7 +1032,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                   left: SizeConfig.blockSizeHorizontal * 4,
                                 ),
                                 child: Text(
-                                  "UEFA Champions League",
+                                  Strings.UEFA_Champions_League,
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: AppTheme.greyColor,
@@ -1000,7 +1041,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                               ),
                               ListView.builder(
                                   physics: ClampingScrollPhysics(),
-                                  itemCount: 2,
+                                  itemCount: 1,
                                   shrinkWrap: true,
                                   itemBuilder: (BuildContext ctxt, int index) {
                                     return Column(
@@ -1011,20 +1052,88 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           child: Row(
                                             children: [
                                               SvgPicture.asset(
-                                                  'assets/Borusia Dourmunt.svg'),
+                                                'assets/Borusia Dourmunt.svg',
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    6,
+                                              ),
                                               SizedBox(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
                                                       2),
                                               Container(
+                                                child: Text(
+                                                  Strings.Borussia_Dortmund,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                              Spacer(),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      4.5),
+                                              Text(
+                                                Strings.time,
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Spacer(),
+                                              _notificationBell(),
+                                            ],
+                                          ),
+                                          margin: EdgeInsets.only(
+                                            right:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    5,
+                                            left:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    5,
+                                            bottom:
+                                                SizeConfig.blockSizeVertical *
+                                                    2,
+                                          ),
+                                        ),
+                                        Container(
+                                          child: Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/chelsea.svg',
                                                 width: SizeConfig
                                                         .blockSizeHorizontal *
-                                                    30,
+                                                    6.5,
+                                              ),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              Container(
                                                 child: Text(
-                                                  "Borussia Dortmund",
+                                                  Strings.Chelsea,
                                                   style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 14),
@@ -1056,9 +1165,9 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                           .blockSizeHorizontal *
                                                       3),
                                               Text(
-                                                "21:00",
+                                                Strings.Direct_TV,
                                                 style: TextStyle(
-                                                    color: AppTheme.blackColor,
+                                                    color: AppTheme.lightgrey,
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
@@ -1066,8 +1175,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
                                                       3),
-                                              SvgPicture.asset(
-                                                  'assets/notification.svg'),
+                                              _directLinkBell(),
                                             ],
                                           ),
                                           margin: EdgeInsets.only(
@@ -1081,7 +1189,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                 SizeConfig.blockSizeVertical *
                                                     2,
                                           ),
-                                        ),
+                                        )
                                       ],
                                     );
                                   }),
@@ -1093,8 +1201,9 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 2),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: AppTheme.whiteColor),
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
                         ),
                         Container(
                           child: Column(
@@ -1109,14 +1218,14 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Traspasos",
+                                      Strings.transfers,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 16),
                                     ),
                                     GestureDetector(
                                       child: Text(
-                                        "Ver todos",
+                                        Strings.see_all,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
@@ -1150,7 +1259,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       children: [
                                         Container(
                                           child: Text(
-                                            "Luis Suárez",
+                                            Strings.name1,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 14),
@@ -1160,10 +1269,10 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           margin: EdgeInsets.only(
                                             left:
                                                 SizeConfig.blockSizeHorizontal *
-                                                    1,
+                                                    1.5,
                                           ),
                                           child: Text(
-                                            "Barcelona FC",
+                                            Strings.teamName,
                                             style: TextStyle(
                                                 color: AppTheme.greyColor,
                                                 fontSize: 14),
@@ -1172,36 +1281,33 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       ],
                                     ),
                                     SizedBox(
-                                        width: SizeConfig.blockSizeHorizontal *
-                                            1.3),
+                                        width:
+                                            SizeConfig.blockSizeVertical * 2),
                                     Center(
                                         child: SvgPicture.asset(
                                             'assets/Check.svg')),
                                     SizedBox(
-                                        width: SizeConfig.blockSizeHorizontal *
-                                            1.3),
+                                        width:
+                                            SizeConfig.blockSizeHorizontal * 2),
                                     SvgPicture.asset(
                                         'assets/athletic-club-madrid.svg'),
-                                    SizedBox(
-                                        width: SizeConfig.blockSizeHorizontal *
-                                            1.3),
                                     Column(
                                       children: [
                                         Container(
+                                          margin: EdgeInsets.only(
+                                              left:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1.5),
                                           child: Text(
-                                            "A. Madrid",
+                                            Strings.name2,
                                             style: TextStyle(
-                                                color: AppTheme.blackColor,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 15),
                                           ),
                                         ),
                                         Container(
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  20,
                                           child: Text(
-                                            "Prestamo",
+                                            Strings.name3,
                                             style: TextStyle(
                                                 color: AppTheme.greyColor,
                                                 fontSize: 12),
@@ -1220,8 +1326,9 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 2),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: AppTheme.whiteColor),
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
                         ),
                         Container(
                           child: Column(
@@ -1236,14 +1343,14 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Partidos",
+                                      Strings.matches1,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w800,
                                           fontSize: 16),
                                     ),
                                     GestureDetector(
                                       child: Text(
-                                        "Ver todos",
+                                        Strings.see_all,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,
@@ -1262,16 +1369,16 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           SizeConfig.blockSizeHorizontal * 4)),
                               Container(
                                 child: Text(
-                                  "UEFA Champions League",
+                                  Strings.UEFA_Champions_League,
                                   style: TextStyle(
                                       fontSize: 16, color: AppTheme.greyColor),
                                 ),
                                 margin: EdgeInsets.only(
-                                  left: SizeConfig.blockSizeHorizontal * 2,
+                                  left: SizeConfig.blockSizeHorizontal * 4,
                                 ),
                               ),
                               ListView.builder(
-                                  itemCount: 2,
+                                  itemCount: 1,
                                   shrinkWrap: true,
                                   physics: ClampingScrollPhysics(),
                                   itemBuilder: (BuildContext ctxt, int index) {
@@ -1283,17 +1390,18 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                           child: Row(
                                             children: [
                                               SvgPicture.asset(
-                                                  'assets/valencia.svg'),
+                                                'assets/valencia.svg',
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    6,
+                                              ),
                                               SizedBox(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
                                                       2),
                                               Container(
-                                                width: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    30,
                                                 child: Text(
-                                                  "Borussia Dortmund",
+                                                  Strings.Borussia_Dortmund,
                                                   style: TextStyle(
                                                       color:
                                                           AppTheme.blackColor,
@@ -1328,7 +1436,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                           .blockSizeHorizontal *
                                                       3),
                                               Text(
-                                                "21:00",
+                                                Strings.time,
                                                 style: TextStyle(
                                                     color: AppTheme.blackColor,
                                                     fontWeight:
@@ -1338,8 +1446,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
                                                       3),
-                                              SvgPicture.asset(
-                                                  'assets/notification.svg'),
+                                              _notificationBell(),
                                             ],
                                           ),
                                           margin: EdgeInsets.only(
@@ -1354,6 +1461,79 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                     2,
                                           ),
                                         ),
+                                        Container(
+                                          child: Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                'assets/chelsea.svg',
+                                                width: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    6.5,
+                                              ),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              Container(
+                                                child: Text(
+                                                  Strings.Chelsea,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 14),
+                                                ),
+                                              ),
+                                              Spacer(),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      2),
+                                              SvgPicture.asset(
+                                                  'assets/circleIcon.svg'),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      3),
+                                              Text(
+                                                Strings.Direct_TV,
+                                                style: TextStyle(
+                                                    color: AppTheme.lightgrey,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              SizedBox(
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      3),
+                                              _directLinkBell(),
+                                            ],
+                                          ),
+                                          margin: EdgeInsets.only(
+                                            right:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    5,
+                                            left:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    5,
+                                            bottom:
+                                                SizeConfig.blockSizeVertical *
+                                                    2,
+                                          ),
+                                        )
                                       ],
                                     );
                                   }),
@@ -1365,8 +1545,9 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeVertical * 2),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: AppTheme.whiteColor),
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
                         )
                       ],
                     ),
@@ -1406,14 +1587,14 @@ class _UserDahboardViewState extends State<UserDahboardView> {
             width: 5.0,
           ),
           Text(
-            "ESPN",
+            Strings.Espn,
             style: TextStyle(fontWeight: FontWeight.w500),
           ),
           SizedBox(
             width: 5.0,
           ),
           Text(
-            "58 min",
+            Strings.time2,
             style: TextStyle(color: AppTheme.greyColor),
           ),
         ],
@@ -1445,5 +1626,19 @@ class _UserDahboardViewState extends State<UserDahboardView> {
         builder: (builder) {
           return FeedHomeView();
         });
+  }
+
+  Widget _notificationBell() {
+    return Image.asset(
+      'assets/notificationBell.png',
+      width: 25,
+    );
+  }
+
+  Widget _directLinkBell() {
+    return Image.asset(
+      'assets/directLinkIcon.png',
+      width: 23,
+    );
   }
 }

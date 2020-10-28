@@ -1,3 +1,4 @@
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/UserDashboard/arenaBottomSheet.dart';
@@ -124,7 +125,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
         print(error);
       }
       if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
-        error = 'permission denied- please enable it from app settings';
+        error = Messages.locationPermissions;
         print(error);
       }
       myLocation = null;

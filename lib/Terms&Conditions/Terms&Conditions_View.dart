@@ -1,6 +1,6 @@
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
 

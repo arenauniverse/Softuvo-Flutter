@@ -3,7 +3,7 @@ import 'package:arena_sports_app/CommonWidgets/DatePicker.dart';
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
 import 'package:arena_sports_app/LogIn/Login_View.dart';
@@ -105,7 +105,7 @@ class _RegisterViewState extends State<RegisterView> {
                 Row(
                   children: [
                     Text(
-                      "Ya tienes cuenta? ",
+                      Strings.alreadyAccount,
                       style: TextStyle(fontWeight: FontWeight.w500),
                     ),
                     GestureDetector(
@@ -139,7 +139,7 @@ class _RegisterViewState extends State<RegisterView> {
                     cursorColor: Colors.black,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "Enter Valid Nombre y Apellido";
+                        return Messages.validFullName;
                       }
                     },
                     onFieldSubmitted: (v) {},
@@ -177,7 +177,7 @@ class _RegisterViewState extends State<RegisterView> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "Enter Valid Email";
+                        return Messages.validEmail;
                       }
                     },
                   ),
@@ -188,7 +188,7 @@ class _RegisterViewState extends State<RegisterView> {
                   child: Theme(
                     data: ThemeData(primarySwatch: Colors.grey),
                     child: DatePicker(
-                      "DATE OF BIRTH",
+                      Strings.date_of_birth,
                       (dateTime) {
                         setDateTime = dateTime;
                         Controllers.dob.text =
@@ -245,7 +245,7 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                       validator: (value) {
                         if (value == null || value == "") {
-                          return "Select Pais";
+                          return Strings.selectCountry;
                         }
                       },
                       decoration: InputDecoration(
@@ -301,7 +301,7 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: Controllers.registerPassword,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "Enter contraseña";
+                        return Messages.validPassword;
                       }
                     },
                     cursorColor: AppTheme.blackColor,
@@ -340,7 +340,7 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: Controllers.repeatPassword,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "Enter contraseña";
+                        return Messages.validPassword;
                       }
                     },
                     cursorColor: AppTheme.blackColor,
@@ -482,7 +482,7 @@ class _RegisterViewState extends State<RegisterView> {
         });
       }
     } on SocketException catch (_) {
-      toast(msg: "No Internet Connection", context: context);
+      toast(msg: Messages.noConnection, context: context);
     }
   }
 }

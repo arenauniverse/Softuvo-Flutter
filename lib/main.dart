@@ -9,10 +9,10 @@ import 'Splash/SplashView.dart';
 import 'UserDashboard/NavigationFiles.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  /* SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.black, // navigation bar color
     statusBarColor: Colors.white, // status bar color
-  ));
+  ));*/
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -31,11 +31,16 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     getCurrentAppTheme();
+     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.black, // navigation bar color
+    statusBarColor: Colors.white, // status bar color
+  ));
   }
 
   void getCurrentAppTheme() async {
     themeChangeProvider.darkTheme =
         await themeChangeProvider.darkThemePreference.getTheme();
+
   }
 
   @override

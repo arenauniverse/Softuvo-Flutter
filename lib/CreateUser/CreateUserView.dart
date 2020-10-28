@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:arena_sports_app/CommonWidgets/DatePicker.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +107,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                         cursorColor: Colors.black,
                         validator: (value) {
                           if (value == null || value == "") {
-                            return "Enter Valid Nombre y Apellido";
+                            return Messages.validFullName;
                           }
                         },
                         onFieldSubmitted: (v) {},
@@ -127,7 +127,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                       TextFormField(
                         validator: (value) {
                           if (value == null || value == "") {
-                            return "Enter Valid Email";
+                            return Messages.validEmail;
                           }
                         },
                         controller: Controllers.registerEmail,
@@ -148,7 +148,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                       Theme(
                         data: ThemeData(primarySwatch: Colors.grey),
                         child: DatePicker(
-                          "DATE OF BIRTH",
+                          Strings.date_of_birth,
                           (dateTime) {
                             setDateTime = dateTime;
                             Controllers.createUserDob.text =
@@ -191,7 +191,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                         cursorColor: AppTheme.blackColor,
                         validator: (value) {
                           if (value == null || value == "") {
-                            return "Enter Valid Contraseña";
+                            return Messages.validPassword;
                           }
                         },
                         onFieldSubmitted: (v) {},

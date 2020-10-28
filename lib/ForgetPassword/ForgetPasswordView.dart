@@ -4,7 +4,7 @@ import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
-import 'package:arena_sports_app/CommonWidgets/errorMessages.dart';
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -61,7 +61,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       margin: EdgeInsets.only(
                           left: SizeConfig.blockSizeHorizontal * 10),
                       child: Text(
-                        "Recuperar contraseña",
+                        Strings.Recover_password,
                         style: TextStyle(
                             fontFamily: AppTheme.appFont,
                             fontWeight: FontWeight.w600,
@@ -85,7 +85,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                     cursorColor: Colors.black,
                     validator: (value) {
                       if (value == null || value == "") {
-                        return "Enter Valid Email";
+                        return Messages.validEmail;
                       }
                     },
                     onFieldSubmitted: (v) {},
@@ -94,7 +94,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                             top: SizeConfig.blockSizeVertical * 2,
                             bottom: SizeConfig.blockSizeVertical * 2,
                             left: SizeConfig.blockSizeVertical * 1),
-                        labelText: "Email",
+                        labelText: Strings.Email,
                         labelStyle: TextStyle(
                             fontFamily: AppTheme.appFont,
                             fontSize: 15.0,
@@ -133,7 +133,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
-                      child: Text("Recuperar",
+                      child: Text(Strings.Recover,
                           style: TextStyle(
                               color: AppTheme.whiteColor,
                               fontWeight: FontWeight.w500,
@@ -168,10 +168,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           queryResult = value;
           if (!queryResult.hasException) {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            toast(
-                msg:
-                    "Password reset link has been set your email, Please check your mail.",
-                context: context);
+            toast(msg: Messages.resetPassword, context: context);
             Navigator.pop(context);
             Controllers.forgetPassEmail.clear();
           } else {
@@ -181,7 +178,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
         });
       }
     } on SocketException catch (_) {
-      toast(msg: "No Internet Connection", context: context);
+      toast(msg: Messages.noConnection, context: context);
     }
   }
 }

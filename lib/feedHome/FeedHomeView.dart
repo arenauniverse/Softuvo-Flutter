@@ -1,4 +1,5 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -31,13 +32,13 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Partidos",
+                      Strings.matches,
                       style:
                           TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
                     ),
                     GestureDetector(
                       child: Text(
-                        "Ver todos",
+                        Strings.see_all,
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
@@ -53,7 +54,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                   left: SizeConfig.blockSizeHorizontal * 2,
                 ),
                 child: Text(
-                  "UEFA Champions League",
+                  Strings.UEFA_Champions_League,
                   style: TextStyle(fontSize: 16, color: AppTheme.greyColor),
                 ),
               ),
@@ -77,7 +78,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                               Container(
                                 width: SizeConfig.blockSizeHorizontal * 30,
                                 child: Text(
-                                  "Barcelona",
+                                  Strings.barcelona,
                                   style: TextStyle(
                                       color: AppTheme.blackColor,
                                       fontWeight: FontWeight.bold,
@@ -92,7 +93,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                                   color: AppTheme.greyColor,
                                 ),
                                 child: Text(
-                                  "2",
+                                  Strings.scores,
                                   style: TextStyle(
                                       color: AppTheme.blackColor,
                                       fontWeight: FontWeight.w600),
@@ -101,7 +102,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                               SizedBox(
                                   width: SizeConfig.blockSizeHorizontal * 2),
                               Text(
-                                "62’",
+                                Strings.numbers,
                                 style: TextStyle(color: AppTheme.borderColor),
                               ),
                               Spacer(),
@@ -121,7 +122,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                               Container(
                                 width: SizeConfig.blockSizeHorizontal * 30,
                                 child: Text(
-                                  "Borussia Dortmund",
+                                  Strings.Borussia_Dortmund,
                                   style: TextStyle(
                                       color: AppTheme.blackColor,
                                       fontWeight: FontWeight.bold,
@@ -143,7 +144,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                               SizedBox(
                                   width: SizeConfig.blockSizeHorizontal * 3),
                               Text(
-                                "21:00",
+                                Strings.time,
                                 style: TextStyle(
                                     color: AppTheme.blackColor,
                                     fontWeight: FontWeight.w600),
@@ -165,7 +166,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                               Container(
                                 width: SizeConfig.blockSizeHorizontal * 30,
                                 child: Text(
-                                  "Atalanta",
+                                  Strings.Atalanta,
                                   style: TextStyle(
                                       color: AppTheme.blackColor,
                                       fontWeight: FontWeight.bold,
@@ -181,7 +182,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                                   color: AppTheme.greyColor,
                                 ),
                                 child: Text(
-                                  "2",
+                                  Strings.scores,
                                   style: TextStyle(
                                       color: AppTheme.blackColor,
                                       fontWeight: FontWeight.w600),
@@ -190,7 +191,7 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                               SizedBox(
                                   width: SizeConfig.blockSizeHorizontal * 2),
                               Text(
-                                "Terminado",
+                                Strings.Finished,
                                 style: TextStyle(
                                   color: AppTheme.greenColor,
                                 ),

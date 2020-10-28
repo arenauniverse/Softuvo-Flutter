@@ -1,4 +1,5 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
+import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
     SizeConfig().init(context);
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.bottomSheetBackgroundColor,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
       ),
@@ -66,13 +67,13 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                 right: SizeConfig.blockSizeHorizontal * 4),
             child: Row(
               children: [
-                Text("Mi Perfil",
+                Text(Strings.myProfile,
                     style:
                         TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
                 Spacer(),
                 GestureDetector(
                   child: Text(
-                    "Configurar",
+                    Strings.Setup,
                     style: TextStyle(
                         color: AppTheme.blueColor,
                         fontWeight: FontWeight.w500,
@@ -98,7 +99,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                   right: SizeConfig.blockSizeHorizontal * 4),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: AppTheme.whiteColor,
+                color: Theme.of(context).cardColor,
               ),
               child: Row(
                 children: [
@@ -120,7 +121,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                   ),
                   Container(
                     child: Text(
-                      "Fernando Martinez \n\n12/01/1954",
+                      Strings.playerDetails,
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                     margin: EdgeInsets.only(
