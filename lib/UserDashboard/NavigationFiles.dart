@@ -53,6 +53,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 0
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
+                width: 25,
               )),
           BottomNavigationBarItem(
               title: Text(""),
@@ -61,6 +62,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 1
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
+                width: 35,
               )),
           BottomNavigationBarItem(
             title: Text(""),
@@ -70,7 +72,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 onPressed: () {
                   _showModalSheet();
                 },
-                child: SvgPicture.asset('assets/tab3.svg')),
+                child: SvgPicture.asset('assets/tab3.svg', width: 30,),),
           ),
           /*SvgPicture.asset('assets/tab3.svg')*/
           BottomNavigationBarItem(
@@ -80,6 +82,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 3
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
+                width: 25,
               )),
           BottomNavigationBarItem(
               title: Text(""),
@@ -88,6 +91,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 color: _currentIndex == 4
                     ? AppTheme.blackColor
                     : AppTheme.greyColor,
+                width: 25,
               )),
         ],
       ),

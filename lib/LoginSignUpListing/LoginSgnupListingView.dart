@@ -178,12 +178,13 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                         );
                       },
 
-                      color: AppTheme.blackColor,
+                      color: Theme.of(context).accentColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
                       child: Text(Strings.registerButtonText,
-                          style: TextStyle(color: Colors.white,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColorDark,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppTheme.appFont)),
                     ),
