@@ -14,12 +14,26 @@ import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-
-
 class TermsConditionsView extends StatefulWidget {
   final String userComingFrom;
-  final String name, email,birthday, country, emailConfirm, password, passwordConfirm;
-  TermsConditionsView({Key key, @required this.userComingFrom, this.name, this.email, this.birthday, this.country, this.emailConfirm,this.password, this.passwordConfirm  }) : super(key: key);
+  final String name,
+      email,
+      birthday,
+      country,
+      emailConfirm,
+      password,
+      passwordConfirm;
+  TermsConditionsView(
+      {Key key,
+      @required this.userComingFrom,
+      this.name,
+      this.email,
+      this.birthday,
+      this.country,
+      this.emailConfirm,
+      this.password,
+      this.passwordConfirm})
+      : super(key: key);
   @override
   _TermsConditionsViewState createState() => _TermsConditionsViewState();
 }
@@ -51,8 +65,7 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
               onTap: () {
                 Navigator.pop(context);
               },
-            )
-            ),
+            )),
         elevation: 0,
         backgroundColor: Colors.white,
         title: Container(
@@ -105,83 +118,82 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
               ],
             ),
           ),
-          widget.userComingFrom=='register' ?Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: SizeConfig.blockSizeVertical * 3,
+          widget.userComingFrom == 'register'
+              ? Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: SizeConfig.blockSizeVertical * 3,
+                          ),
+                          child: FlatButton(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: SizeConfig.blockSizeHorizontal * 12,
+                                vertical: SizeConfig.blockSizeVertical * 2),
+                            onPressed: () {
+                              FocusScope.of(context).unfocus();
+                              Navigator.pop(context);
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                            ),
+                            child: Text(Strings.termsReject,
+                                style: TextStyle(
+                                    color: AppTheme.blackColor,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: AppTheme.appFont)),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: SizeConfig.blockSizeVertical * 3,
+                          ),
+                          child: RaisedButton(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: SizeConfig.blockSizeHorizontal * 12,
+                                vertical: SizeConfig.blockSizeVertical * 2),
+                            onPressed: () {
+                              QueryResult getResult;
+                              FocusScope.of(context).unfocus();
+                              RegisterUser(
+                                  context: context, queryResult: getResult);
+                            },
+                            color: AppTheme.blackColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                            ),
+                            child: Text(Strings.termsAccept,
+                                style: TextStyle(
+                                    color: AppTheme.whiteColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: AppTheme.appFont)),
+                          ),
+                        )
+                      ],
                     ),
-                    child: FlatButton(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 12,
-                          vertical: SizeConfig.blockSizeVertical * 2),
-                      onPressed: () {
-                        FocusScope.of(context).unfocus();
-                        Navigator.pop(context);
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                      ),
-                      child: Text(Strings.termsReject,
-                          style: TextStyle(
-                              color: AppTheme.blackColor,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: AppTheme.appFont)),
-                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border(
+                          top: BorderSide(
+                            //                    <--- top side
+                            color: AppTheme.toggleColor,
+                            width: 5.0,
+                          ),
+                        )),
+                    height: SizeConfig.blockSizeVertical * 15,
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: SizeConfig.blockSizeVertical * 3,
-                    ),
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 12,
-                          vertical: SizeConfig.blockSizeVertical * 2),
-                      onPressed: () {
-                        QueryResult getResult;
-                        FocusScope.of(context).unfocus();
-                        RegisterUser(
-                            context: context,
-                            queryResult: getResult);
-                      },
-                      color: AppTheme.blackColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                      ),
-                      child: Text(Strings.termsAccept,
-                          style: TextStyle(
-                              color: AppTheme.whiteColor,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: AppTheme.appFont)),
-                    ),
-                  )
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                    top: BorderSide(
-                      //                    <--- top side
-                      color: AppTheme.toggleColor,
-                      width: 5.0,
-                    ),
-                  )),
-              height: SizeConfig.blockSizeVertical * 15,
-            ),
-          ):SizedBox(),
+                )
+              : SizedBox(),
         ],
       ),
     );
   }
 
-  Future RegisterUser(
-      {BuildContext context,
-        QueryResult queryResult}) async {
+  Future RegisterUser({BuildContext context, QueryResult queryResult}) async {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
@@ -191,22 +203,29 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
             .mutate(
           MutationOptions(
               documentNode: gql(
-                addMutation.register(
-                  name: widget.name,
-                  email: widget.email,
-                  birthday: widget.birthday,
-                  country: widget.country,
-                  emailConfirm: widget.emailConfirm,
-                  keyword: widget.password,
-                  keywordConfirm: widget.passwordConfirm),
-              )),
-        ).then((value) {
+            addMutation.register(
+                name: widget.name,
+                email: widget.email,
+                birthday: widget.birthday,
+                country: widget.country,
+                emailConfirm: widget.emailConfirm,
+                keyword: widget.password,
+                keywordConfirm: widget.passwordConfirm),
+          )),
+        )
+            .then((value) {
           queryResult = value;
           if (!queryResult.hasException) {
             //Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            toast(msg: Messages.registerSuccess, context: context);
-            Navigator.of(context)
-                .popUntil(ModalRoute.withName("RegisterView"));
+            // toast(msg: Messages.registerSuccess, context: context);
+
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => UserDahboardView()),
+                (Route<dynamic> route) => false);
+            /*  Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (BuildContext context) => UserDahboardView()));*/
+            /* Navigator.of(context)
+                .popUntil(ModalRoute.withName("RegisterView"));*/
 
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
@@ -219,6 +238,4 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
       toast(msg: Messages.noConnection, context: context);
     }
   }
-
-
 }

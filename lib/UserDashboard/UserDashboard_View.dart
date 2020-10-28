@@ -33,6 +33,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: CustomScrollView(slivers: [
           SliverAppBar(
+
             backgroundColor: Theme.of(context).cardColor,
             pinned: true,
             floating: true,

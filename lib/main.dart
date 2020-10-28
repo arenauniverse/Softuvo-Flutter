@@ -9,10 +9,10 @@ import 'Splash/SplashView.dart';
 import 'UserDashboard/NavigationFiles.dart';
 
 void main() {
-  /* SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.black, // navigation bar color
     statusBarColor: Colors.white, // status bar color
-  ));*/
+  ));
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
