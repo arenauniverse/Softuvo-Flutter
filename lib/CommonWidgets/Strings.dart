@@ -74,13 +74,14 @@ class Strings {
   static String playerDetails = "Fernando Martinez \n\n12/01/1954";
   static String live = "Live";
   static String Live = "LIVE";
+  static String enVivo = "EN VIVO";
   static String US_OPEN = "US OPEN";
   static String playerName = "D. Thiem";
   static String news = "NOTICIAS";
   static String aboutPlayer =
       "Messi entrena con el grupo del \ Barcelona por primera vez bajo el mando de Koeman";
   static String text = "Koeman le comunica a Sergio  Busquets su";
-  static String textTime = "11.08";
+  static String textTime = "11:08";
   static String text1 =
       "Pirlo confirmó que no tendrá en cuenta a Higuaín en Juventus";
   static String videos = "VIDEOS";
