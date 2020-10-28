@@ -177,6 +177,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                               builder: (context) => RegisterView()),
                         );
                       },
+
                       color: Theme.of(context).accentColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),

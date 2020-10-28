@@ -1,18 +1,32 @@
+import 'dart:io';
+
+import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/CommonWidgets/Messages.dart';
-import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
+import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
+import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:flutter/material.dart';
-
 import '../SizeConfig.dart';
 import '../theme.dart';
+import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
+import 'package:arena_sports_app/Repos.dart';
+import 'package:arena_sports_app/SizeConfig.dart';
+import 'package:arena_sports_app/theme.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
-class Terms_Conditions_View extends StatefulWidget {
+
+
+class TermsConditionsView extends StatefulWidget {
+  final String userComingFrom;
+  final String name, email,birthday, country, emailConfirm, password, passwordConfirm;
+  TermsConditionsView({Key key, @required this.userComingFrom, this.name, this.email, this.birthday, this.country, this.emailConfirm,this.password, this.passwordConfirm  }) : super(key: key);
   @override
-  _Terms_Conditions_ViewState createState() => _Terms_Conditions_ViewState();
+  _TermsConditionsViewState createState() => _TermsConditionsViewState();
 }
 
-class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
+class _TermsConditionsViewState extends State<TermsConditionsView> {
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -37,10 +51,7 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
               onTap: () {
                 Navigator.pop(context);
               },
-            ) /*Icon(
-            Icons.arrow_back_ios,
-            size: 30.0,
-          ),*/
+            )
             ),
         elevation: 0,
         backgroundColor: Colors.white,
@@ -94,7 +105,7 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
               ],
             ),
           ),
-          Align(
+          widget.userComingFrom=='register' ?Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               child: Row(
@@ -112,24 +123,6 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
                       onPressed: () {
                         FocusScope.of(context).unfocus();
                         Navigator.pop(context);
-                        /*         if (_formKey.currentState.validate()) {
-                          if (validateEmail(
-                            Controllers.loginEmail.text,
-                          )) {
-                            if (Controllers.loginPassword.text.length >= 8) {
-                              toast(
-                                  context: context,
-                                  msg: ErrorMessages.loginSuccess);
-                            } else {
-                              toast(
-                                  context: context,
-                                  msg: ErrorMessages.shortPassword);
-                            }
-                          } else {
-                            toast(
-                                context: context, msg: ErrorMessages.wrongEmail);
-                          }
-                        }*/
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
@@ -150,25 +143,11 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
                           horizontal: SizeConfig.blockSizeHorizontal * 12,
                           vertical: SizeConfig.blockSizeVertical * 2),
                       onPressed: () {
+                        QueryResult getResult;
                         FocusScope.of(context).unfocus();
-                        /*         if (_formKey.currentState.validate()) {
-                          if (validateEmail(
-                            Controllers.loginEmail.text,
-                          )) {
-                            if (Controllers.loginPassword.text.length >= 8) {
-                              toast(
-                                  context: context,
-                                  msg: ErrorMessages.loginSuccess);
-                            } else {
-                              toast(
-                                  context: context,
-                                  msg: ErrorMessages.shortPassword);
-                            }
-                          } else {
-                            toast(
-                                context: context, msg: ErrorMessages.wrongEmail);
-                          }
-                        }*/
+                        RegisterUser(
+                            context: context,
+                            queryResult: getResult);
                       },
                       color: AppTheme.blackColor,
                       shape: RoundedRectangleBorder(
@@ -194,9 +173,52 @@ class _Terms_Conditions_ViewState extends State<Terms_Conditions_View> {
                   )),
               height: SizeConfig.blockSizeVertical * 15,
             ),
-          ),
+          ):SizedBox(),
         ],
       ),
     );
   }
+
+  Future RegisterUser(
+      {BuildContext context,
+        QueryResult queryResult}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Dialogs.showLoadingDialog(context, _addLoader);
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client
+            .mutate(
+          MutationOptions(
+              documentNode: gql(
+                addMutation.register(
+                  name: widget.name,
+                  email: widget.email,
+                  birthday: widget.birthday,
+                  country: widget.country,
+                  emailConfirm: widget.emailConfirm,
+                  keyword: widget.password,
+                  keywordConfirm: widget.passwordConfirm),
+              )),
+        ).then((value) {
+          queryResult = value;
+          if (!queryResult.hasException) {
+            //Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(msg: Messages.registerSuccess, context: context);
+            Navigator.of(context)
+                .popUntil(ModalRoute.withName("RegisterView"));
+
+          } else {
+            var errorMessage = queryResult.exception.toString().split(':');
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(context: context, msg: errorMessage[2]);
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: Messages.noConnection, context: context);
+    }
+  }
+
+
 }

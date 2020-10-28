@@ -398,20 +398,20 @@ class _RegisterViewState extends State<RegisterView> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              Terms_Conditions_View()));
-                                  /*RegisterUser(
-                                      context: context,
-                                      dateTimeFormat: dateTimeFormat,
-                                      queryResult: getResult);*/
+                                              TermsConditionsView(userComingFrom: 'register',name: Controllers.name.text,
+                                                  email: Controllers.registerEmail.text,
+                                                  birthday: dateTimeFormat,
+                                                  country: 'Canada',
+                                                  emailConfirm: Controllers.registerEmail.text,
+                                                  password: Controllers.registerPassword.text,
+                                                  passwordConfirm: Controllers.repeatPassword.text)));
                                 } else {
                                   toast(
                                       msg: Messages.repeatPasswordNotMatch,
                                       context: context);
                                 }
                               } else {
-                                toast(
-                                    msg: Messages.shortPassword,
-                                    context: context);
+                                toast(msg: Messages.shortPassword, context: context);
                               }
                             } else {
                               toast(msg: Messages.validDob, context: context);
