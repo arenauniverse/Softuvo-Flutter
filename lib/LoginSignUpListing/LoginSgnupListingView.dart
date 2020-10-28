@@ -214,7 +214,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                 .then((value) {
               queryResult = value;
               if (!queryResult.hasException) {
-                SharedPreferenceData().savefbToken(data: value.data);
+                SharedPreferenceData().saveFbToken(data: value.data);
                 Navigator.of(_addLoader.currentContext, rootNavigator: true)
                     .pop();
                 toast(context: context, msg: Messages.fbLoginSuccess);
