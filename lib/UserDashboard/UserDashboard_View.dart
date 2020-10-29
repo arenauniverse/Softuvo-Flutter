@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
@@ -5,7 +7,6 @@ import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/NewsDetails/NewsDetails_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
-import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -13,22 +14,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-class UserDahboardView extends StatefulWidget {
+class UserDashboardView extends StatefulWidget {
   @override
-  _UserDahboardViewState createState() => _UserDahboardViewState();
+  _UserDashboardViewState createState() => _UserDashboardViewState();
 }
 
-class _UserDahboardViewState extends State<UserDahboardView> {
+class _UserDashboardViewState extends State<UserDashboardView> {
   bool status = false;
+  bool isFirstRun = true;
+  GlobalKey _arenaKey = GlobalObjectKey("arena");
+  GlobalKey _loginKey = GlobalObjectKey("login");
+  List<TargetFocus> targets = List();
+  TutorialCoachMark tutorialCoachMark;
 
   @override
   void initState() {
-   /* SharedPreferenceData().getRegisteredValue().then((value) {
+    SharedPreferenceData().getFirstRun().then((value)
+    {
       setState(() {
-        status = value;
+        isFirstRun =value;
+        if(isFirstRun)
+          initCoachMarker();
       });
-    });*/
+    });
     super.initState();
   }
 
@@ -1743,4 +1753,102 @@ class _UserDahboardViewState extends State<UserDahboardView> {
       width: 20,
     );
   }
+
+  void showTutorial() {
+    tutorialCoachMark = TutorialCoachMark(context,
+        targets: targets,
+        colorShadow: Colors.black,
+        textSkip: "SKIP",
+        paddingFocus: 10,
+        opacityShadow: 0.8, onFinish: () {
+          print("finish");
+        }, onClickTarget: (target) {
+          SharedPreferenceData().saveFirstRun(false);
+        }, onClickSkip: () {
+          SharedPreferenceData().saveFirstRun(false);
+          print("skip");
+        })
+      ..show();
+  }
+
+  void _afterLayout(_) {
+    Future.delayed(Duration(milliseconds: 100), () {
+      showTutorial();
+    });
+  }
+
+  void initCoachMarker() {
+    targets.add(
+        TargetFocus(
+            identify: "Target 1",
+            keyTarget: _arenaKey,
+            contents: [
+              ContentTarget(
+                  align: AlignContent.top,
+                  child: Container(
+                    child:Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "My Arena",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 20.0
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                            style: TextStyle(
+                                color: Colors.white
+                            ),),
+                        )
+                      ],
+                    ),
+                  )
+              )
+            ]
+        )
+    );
+
+    targets.add(TargetFocus(
+        identify: "Target 2",
+        keyTarget: _loginKey,
+        contents: [
+          ContentTarget(
+              align: AlignContent.right,
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "Title lorem ipsum",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20.0
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                        style: TextStyle(
+                            color: Colors.white
+                        ),),
+                    )
+                  ],
+                ),
+              )
+          )
+        ]
+    ));
+    WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+  }
+
+
 }
+

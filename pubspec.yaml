@@ -36,6 +36,7 @@ dependencies:
   provider:
   flutter_statusbarcolor:
   flutter_swiper: ^1.1.6
+  tutorial_coach_mark:
   flutter:
     sdk: flutter
 

@@ -18,7 +18,8 @@ class NavigationScreens extends StatefulWidget {
 class _NavigationScreensState extends State<NavigationScreens> {
   int _currentIndex = 0;
   Coordinates coordinates;
-
+  GlobalKey _arenaKey = GlobalObjectKey("arena");
+  bool firstRun = true;
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -26,7 +27,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
   }
 
   final widgetOptions = [
-    UserDahboardView(),
+    UserDashboardView(),
     Text('Add new screen'),
     ArenaBottomSheet(),
     Text('Add new screen'),
@@ -51,11 +52,10 @@ class _NavigationScreensState extends State<NavigationScreens> {
               title: Text(""),
               icon: SvgPicture.asset(
                 'assets/tab1.svg',
-                color: _currentIndex == 0
-                    ? AppTheme.blackColor
-                    : AppTheme.greyColor,
+                color: _currentIndex == 0 ? AppTheme.blackColor : AppTheme.greyColor,
                 height: SizeConfig.blockSizeVertical * 3,
-              )),
+              )
+          ),
           BottomNavigationBarItem(
               title: Text(""),
               icon: SvgPicture.asset(
@@ -68,9 +68,13 @@ class _NavigationScreensState extends State<NavigationScreens> {
           BottomNavigationBarItem(
             title: Text(""),
             icon: FloatingActionButton(
+              key: _arenaKey,
               elevation: 0,
               backgroundColor: Colors.transparent,
               onPressed: () {
+                if(firstRun)
+                  showCoachMark();
+                  else
                 _showModalSheet();
               },
               child: SvgPicture.asset(
@@ -103,6 +107,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
       backgroundColor: AppTheme.backGroundColor,
       body: Center(
         child: widgetOptions.elementAt(_currentIndex),
+
       ),
     );
   }
@@ -149,5 +154,9 @@ class _NavigationScreensState extends State<NavigationScreens> {
     print(
         ' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
     return first;
+  }
+
+  void showCoachMark() {
+
   }
 }

@@ -31,6 +31,14 @@ class SharedPreferenceData {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       return prefs.getBool('themeMode') ?? false ;
     }
+    saveFirstRun(bool value) async {
+       SharedPreferences prefs = await SharedPreferences.getInstance();
+       prefs.setBool('firstRun',value);
+     }
+  Future<bool> getFirstRun() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('firstRun') ?? true ;
+  }
   saveRegisteredValue(bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('registeredValue',value);
@@ -39,4 +47,5 @@ class SharedPreferenceData {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool('registeredValue') ?? false ;
   }
+
 }
