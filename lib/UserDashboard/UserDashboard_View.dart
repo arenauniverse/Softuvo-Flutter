@@ -24,11 +24,11 @@ class _UserDahboardViewState extends State<UserDahboardView> {
 
   @override
   void initState() {
-   /* SharedPreferenceData().getRegisteredValue().then((value) {
+    SharedPreferenceData().getRegisteredValue().then((value) {
       setState(() {
         status = value;
       });
-    });*/
+    });
     super.initState();
   }
 
@@ -51,7 +51,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                    _showModalSheet();
+                      status == true
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MyProfileView()))
+                          : _showModalSheet();
                     },
                     child: Container(
                       child: SvgPicture.asset('assets/ArenaLogin.svg'),

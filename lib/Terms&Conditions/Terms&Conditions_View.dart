@@ -217,21 +217,19 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
             .then((value) {
           queryResult = value;
           if (!queryResult.hasException) {
+            toast(msg: Messages.registerSuccess, context: context);
+            SharedPreferenceData().saveRegisteredValue(true);
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => NavigationScreens()),
+                (Route<dynamic> route) => false);
             widget.email.clear;
             widget.name.clear;
             widget.password.clear;
             widget.passwordConfirm.clear;
-
-            //Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            toast(msg: Messages.registerSuccess, context: context);
-            SharedPreferenceData().saveSelectedThemeMode(true);
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => NavigationScreens()),
-                (Route<dynamic> route) => false);
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            toast(context: context, msg: errorMessage[2]);
+            toast(context: context, msg: queryResult.exception.toString());
           }
         });
       }

@@ -96,4 +96,8 @@ class Strings {
   static String name3 = "Prestamo";
   static String Espn = "ESPN";
   static String time2 = "58 min";
+  static String Myclubs = "Mis clubes";
+  static String Myfavourites = "Mis favoritos";
+  static String Arsenal = "Arsenal";
+  static String BocaJuniors = "Boca Juniors";
 }

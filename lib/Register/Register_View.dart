@@ -483,6 +483,7 @@ class _RegisterViewState extends State<RegisterView> {
               context,
               MaterialPageRoute(builder: (context) => CreateUserView()),
             );
+
             Controllers.registerEmail.clear;
             Controllers.name.clear;
             Controllers.registerPassword.clear;
