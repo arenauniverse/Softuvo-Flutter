@@ -28,13 +28,8 @@ class _NavigationScreensState extends State<NavigationScreens> {
   }
 
   final widgetOptions = [
-<<<<<<< HEAD
     UserDashboardView(),
-    Text('Add new screen'),
-=======
-    UserDahboardView(),
     ResultsView(),
->>>>>>> 7d93d7392895b0a2ff22a4f820e05a24073ee4c3
     ArenaBottomSheet(),
     Text('Add new screen'),
     Text('Favourites'),
