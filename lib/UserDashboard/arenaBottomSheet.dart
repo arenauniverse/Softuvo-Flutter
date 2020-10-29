@@ -22,7 +22,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
       ),
-      height: SizeConfig.blockSizeVertical * 90,
+      height: SizeConfig.blockSizeVertical * 85,
       width: SizeConfig.blockSizeHorizontal * 100,
       child: SingleChildScrollView(
         child: Column(
@@ -178,8 +178,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             Text(Strings.Arsenal)
                           ],
                         ),
-                        height: SizeConfig.blockSizeVertical * 15,
-                        width: SizeConfig.blockSizeVertical * 15),
+                        height: SizeConfig.blockSizeVertical * 13,
+                        width: SizeConfig.blockSizeVertical * 13),
                     Container(
                         margin: EdgeInsets.only(
                             right: SizeConfig.blockSizeHorizontal * 5),
@@ -202,8 +202,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             Text(Strings.barcelona)
                           ],
                         ),
-                        height: SizeConfig.blockSizeVertical * 15,
-                        width: SizeConfig.blockSizeVertical * 15),
+                        height: SizeConfig.blockSizeVertical * 13,
+                        width: SizeConfig.blockSizeVertical * 13),
                     Container(
                         decoration: BoxDecoration(
                             boxShadow: [
@@ -224,8 +224,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             Text(Strings.BocaJuniors)
                           ],
                         ),
-                        height: SizeConfig.blockSizeVertical * 15,
-                        width: SizeConfig.blockSizeVertical * 15),
+                        height: SizeConfig.blockSizeVertical * 13,
+                        width: SizeConfig.blockSizeVertical * 13),
                   ],
                 ),
               ),
@@ -293,8 +293,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             Text(Strings.Arsenal)
                           ],
                         ),
-                        height: SizeConfig.blockSizeVertical * 15,
-                        width: SizeConfig.blockSizeVertical * 15),
+                        height: SizeConfig.blockSizeVertical * 13,
+                        width: SizeConfig.blockSizeVertical * 13),
                     Container(
                         margin: EdgeInsets.only(
                             right: SizeConfig.blockSizeHorizontal * 5),
@@ -317,8 +317,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             Text(Strings.barcelona)
                           ],
                         ),
-                        height: SizeConfig.blockSizeVertical * 15,
-                        width: SizeConfig.blockSizeVertical * 15),
+                        height: SizeConfig.blockSizeVertical * 13,
+                        width: SizeConfig.blockSizeVertical * 13),
                     Container(
                         decoration: BoxDecoration(
                             boxShadow: [
@@ -339,8 +339,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             Text(Strings.BocaJuniors)
                           ],
                         ),
-                        height: SizeConfig.blockSizeVertical * 15,
-                        width: SizeConfig.blockSizeVertical * 15),
+                        height: SizeConfig.blockSizeVertical * 13,
+                        width: SizeConfig.blockSizeVertical * 13),
                   ],
                 ),
               ),

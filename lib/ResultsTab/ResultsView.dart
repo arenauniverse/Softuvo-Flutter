@@ -162,8 +162,8 @@ class _ResultsViewState extends State<ResultsView> {
               children: [
                 Container(
                     margin: EdgeInsets.only(
-                        left: SizeConfig.blockSizeHorizontal * 8,
-                        right: SizeConfig.blockSizeHorizontal * 8,
+                        left: SizeConfig.blockSizeHorizontal * 6,
+                        right: SizeConfig.blockSizeHorizontal * 6,
                         top: SizeConfig.blockSizeVertical * 2),
                     child: Row(
                       children: [
@@ -227,9 +227,8 @@ class _ResultsViewState extends State<ResultsView> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: SizeConfig.blockSizeHorizontal * 1,
+                                      width: SizeConfig.blockSizeHorizontal * 0.8,
                                       height: SizeConfig.blockSizeVertical * 7,
-
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(6),
@@ -257,7 +256,7 @@ class _ResultsViewState extends State<ResultsView> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 14),
+                                                        fontSize: 15),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -328,7 +327,7 @@ class _ResultsViewState extends State<ResultsView> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 14),
+                                                        fontSize: 15),
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -408,7 +407,7 @@ class _ResultsViewState extends State<ResultsView> {
                                           Strings.Atalanta,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
@@ -464,7 +463,7 @@ class _ResultsViewState extends State<ResultsView> {
                                           Strings.Atalanta,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
@@ -527,7 +526,7 @@ class _ResultsViewState extends State<ResultsView> {
                                           Strings.manshester,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
@@ -583,13 +582,13 @@ class _ResultsViewState extends State<ResultsView> {
                                           Strings.Lyon,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
                                           width:
                                               SizeConfig.blockSizeHorizontal *
-                                                  33),
+                                                  34),
                                       Container(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 6.0, vertical: 3.0),
@@ -694,7 +693,7 @@ class _ResultsViewState extends State<ResultsView> {
                                           Strings.barcelona,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
@@ -753,7 +752,7 @@ class _ResultsViewState extends State<ResultsView> {
                                           Strings.realMadrid,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
@@ -833,7 +832,7 @@ class _ResultsViewState extends State<ResultsView> {
                                           "D. Medvedev",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
@@ -855,7 +854,6 @@ class _ResultsViewState extends State<ResultsView> {
                                     bottom: SizeConfig.blockSizeVertical * 1,
                                   ),
                                 ),
-
                                 Container(
                                   child: Row(
                                     children: [
@@ -873,13 +871,13 @@ class _ResultsViewState extends State<ResultsView> {
                                           "F. Tiafoe",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 14),
+                                              fontSize: 15),
                                         ),
                                       ),
                                       SizedBox(
                                           width:
                                               SizeConfig.blockSizeHorizontal *
-                                                  33),
+                                                  34),
                                       Text(
                                         Strings.Espn,
                                         style: TextStyle(
@@ -905,11 +903,11 @@ class _ResultsViewState extends State<ResultsView> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: SizeConfig.blockSizeHorizontal * 1,
+                                      width: SizeConfig.blockSizeHorizontal * 0.8,
                                       height: SizeConfig.blockSizeVertical * 7,
                                       decoration: BoxDecoration(
                                           borderRadius:
-                                          BorderRadius.circular(6),
+                                              BorderRadius.circular(6),
                                           color: AppTheme.greenColor),
                                     ),
                                     Expanded(
@@ -920,73 +918,90 @@ class _ResultsViewState extends State<ResultsView> {
                                               children: [
                                                 Image.asset(
                                                   'assets/Player.png',
-                                                  width:
-                                                  SizeConfig.blockSizeHorizontal * 6,
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         2),
                                                 Container(
                                                   child: Text(
                                                     "D. Thiem",
                                                     style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 14),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         13),
-                                                SvgPicture.asset('assets/circleIcon.svg'),
+                                                SvgPicture.asset(
+                                                    'assets/circleIcon.svg'),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         4),
                                                 Text(
                                                   Strings.scores,
                                                   style: TextStyle(
-                                                      color: AppTheme.blackColor,
-                                                      fontWeight: FontWeight.w600),
+                                                      color:
+                                                          AppTheme.blackColor,
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         3),
                                                 Container(
                                                   padding: EdgeInsets.symmetric(
-                                                      horizontal: 6.0, vertical: 3.0),
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
-                                                    BorderRadius.circular(4),
+                                                        BorderRadius.circular(
+                                                            4),
                                                     color: AppTheme.greyColor,
                                                   ),
                                                   child: Text(
                                                     Strings.scores,
                                                     style: TextStyle(
-                                                        color: AppTheme.blackColor,
-                                                        fontWeight: FontWeight.w600),
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         3),
                                                 Text(
                                                   Strings.numbers,
                                                   style: TextStyle(
-                                                      color: AppTheme.borderColor,
-                                                      fontWeight: FontWeight.w600),
+                                                      color:
+                                                          AppTheme.borderColor,
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
                                                 Spacer(),
                                                 notificationBell(),
                                               ],
                                             ),
                                             margin: EdgeInsets.only(
-                                              right: SizeConfig.blockSizeHorizontal * 3.5,
-                                              left: SizeConfig.blockSizeHorizontal * 4,
-                                              bottom: SizeConfig.blockSizeVertical * 1,
+                                              right: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  3.5,
+                                              left: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              bottom:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
                                             ),
                                           ),
                                           Container(
@@ -994,66 +1009,80 @@ class _ResultsViewState extends State<ResultsView> {
                                               children: [
                                                 Image.asset(
                                                   'assets/Player.png',
-                                                  width:
-                                                  SizeConfig.blockSizeHorizontal * 6,
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         2),
                                                 Container(
                                                   child: Text(
                                                     "D. Medvedev",
                                                     style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        fontSize: 14),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         12),
                                                 Text(
                                                   Strings.sixscores,
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600),
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         3),
                                                 Container(
                                                   padding: EdgeInsets.symmetric(
-                                                      horizontal: 6.0, vertical: 3.0),
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
                                                   decoration: BoxDecoration(
                                                     borderRadius:
-                                                    BorderRadius.circular(4),
+                                                        BorderRadius.circular(
+                                                            4),
                                                     color: AppTheme.greyColor,
                                                   ),
                                                   child: Text(
                                                     Strings.scores,
                                                     style: TextStyle(
-                                                        color: AppTheme.blackColor,
-                                                        fontWeight: FontWeight.w600),
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                                   ),
                                                 ),
                                                 SizedBox(
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal *
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
                                                         3),
                                                 Text(
                                                   Strings.Espn,
                                                   style: TextStyle(
-                                                      color: AppTheme.lightgrey),
+                                                      color:
+                                                          AppTheme.lightgrey),
                                                 ),
                                                 Spacer(),
                                                 directLinkBell(),
                                               ],
                                             ),
                                             margin: EdgeInsets.only(
-                                              right: SizeConfig.blockSizeHorizontal * 3.5,
-                                              left: SizeConfig.blockSizeHorizontal * 4,
-                                              bottom: SizeConfig.blockSizeVertical * 1,
+                                              right: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  3.5,
+                                              left: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              bottom:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
                                             ),
                                           )
                                         ],
@@ -1083,143 +1112,167 @@ class _ResultsViewState extends State<ResultsView> {
                                   ),
                                 ),
                                 Row(
-                                   children: [
-                                     Container(
-                                       width: SizeConfig.blockSizeHorizontal * 1,
-                                       height: SizeConfig.blockSizeVertical * 7,
-
-                                       decoration: BoxDecoration(
-                                           borderRadius:
-                                           BorderRadius.circular(6),
-                                           color: AppTheme.greenColor),
-                                     ),
-                                     Expanded(
-                                       child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/Manchester.svg',
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal * 6,
-                                                  ),
-                                                  SizedBox(
-                                                      width:
-                                                      SizeConfig.blockSizeHorizontal *
-                                                          2),
-                                                  Container(
-                                                    child: Text(
-                                                      "Toronto Raptors",
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight.bold,
-                                                          fontSize: 14),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                      width:
-                                                      SizeConfig.blockSizeHorizontal *
-                                                          11),
-                                                  Container(
-                                                    padding: EdgeInsets.symmetric(
-                                                        horizontal: 6.0, vertical: 3.0),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                      BorderRadius.circular(4),
-                                                      color: AppTheme.greyColor,
-                                                    ),
-                                                    child: Text(
-                                                      Strings.scores,
-                                                      style: TextStyle(
-                                                          color: AppTheme.blackColor,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                      width:
-                                                      SizeConfig.blockSizeHorizontal *
-                                                          3),
-                                                  Text(
-                                                    "03’ 1 PT",
+                                  children: [
+                                    Container(
+                                      width: SizeConfig.blockSizeHorizontal * 0.8,
+                                      height: SizeConfig.blockSizeVertical * 7,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(6),
+                                          color: AppTheme.greenColor),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/Manchester.svg',
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
+                                                ),
+                                                SizedBox(
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        2),
+                                                Container(
+                                                  child: Text(
+                                                    "Toronto Raptors",
                                                     style: TextStyle(
-                                                        color: AppTheme.borderColor,
-                                                        fontWeight: FontWeight.w600),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
                                                   ),
-                                                  Spacer(),
-                                                  notificationBell(),
-                                                ],
-                                              ),
-                                              margin: EdgeInsets.only(
-                                                right: SizeConfig.blockSizeHorizontal * 3.5,
-                                                left: SizeConfig.blockSizeHorizontal * 4,
-                                                bottom: SizeConfig.blockSizeVertical * 1,
-                                              ),
+                                                ),
+                                                SizedBox(
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        10),
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    Strings.scores,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        3),
+                                                Text(
+                                                  "03’ 1 PT",
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppTheme.borderColor,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                                Spacer(),
+                                                notificationBell(),
+                                              ],
                                             ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/Manchester.svg',
-                                                    width:
-                                                    SizeConfig.blockSizeHorizontal * 6,
-                                                  ),
-                                                  SizedBox(
-                                                      width:
-                                                      SizeConfig.blockSizeHorizontal *
-                                                          2),
-                                                  Container(
-                                                    child: Text(
-                                                      "Boston Celtics",
-                                                      style: TextStyle(
-                                                          fontWeight: FontWeight.bold,
-                                                          fontSize: 14),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                      width:
-                                                      SizeConfig.blockSizeHorizontal *
-                                                          13),
-                                                  Container(
-                                                    padding: EdgeInsets.symmetric(
-                                                        horizontal: 6.0, vertical: 3.0),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                      BorderRadius.circular(4),
-                                                      color: AppTheme.greyColor,
-                                                    ),
-                                                    child: Text(
-                                                      Strings.scores,
-                                                      style: TextStyle(
-                                                          color: AppTheme.blackColor,
-                                                          fontWeight: FontWeight.w600),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                      width:
-                                                      SizeConfig.blockSizeHorizontal *
-                                                          3),
-                                                  Text(
-                                                    Strings.Espn,
+                                            margin: EdgeInsets.only(
+                                              right: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  3.5,
+                                              left: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              bottom:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
+                                            ),
+                                          ),
+                                          Container(
+                                            child: Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/Manchester.svg',
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
+                                                ),
+                                                SizedBox(
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        2),
+                                                Container(
+                                                  child: Text(
+                                                    "Boston Celtics",
                                                     style: TextStyle(
-                                                        color: AppTheme.lightgrey),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
                                                   ),
-                                                  Spacer(),
-                                                  directLinkBell(),
-                                                ],
-                                              ),
-                                              margin: EdgeInsets.only(
-                                                right: SizeConfig.blockSizeHorizontal * 3.5,
-                                                left: SizeConfig.blockSizeHorizontal * 4,
-                                                bottom: SizeConfig.blockSizeVertical * 1,
-                                              ),
-                                            )
-                                          ],
-                                       ),
-                                     )
-                                   ],
+                                                ),
+                                                SizedBox(
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        13),
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    Strings.scores,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        3),
+                                                Text(
+                                                  Strings.Espn,
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppTheme.lightgrey),
+                                                ),
+                                                Spacer(),
+                                                directLinkBell(),
+                                              ],
+                                            ),
+                                            margin: EdgeInsets.only(
+                                              right: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  3.5,
+                                              left: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              bottom:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 )
-
-
                               ],
                             );
                           }),

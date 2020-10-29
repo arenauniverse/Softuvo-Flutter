@@ -225,7 +225,8 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                 child: Row(
                                   children: [
                                     Container(
-                                      width: SizeConfig.blockSizeHorizontal * 1,
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 0.8,
                                       height: SizeConfig.blockSizeVertical * 9,
                                       margin: EdgeInsets.only(
                                           top:
@@ -449,7 +450,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                         Container(
                                           width:
                                               SizeConfig.blockSizeHorizontal *
-                                                  1,
+                                                  0.8,
                                           height:
                                               SizeConfig.blockSizeVertical * 9,
                                           margin: EdgeInsets.only(
