@@ -199,7 +199,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.Arsenal)
+                            Text(Strings.barcelona)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 15,
@@ -221,7 +221,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.Arsenal)
+                            Text(Strings.BocaJuniors)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 15,
@@ -314,7 +314,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.Arsenal)
+                            Text(Strings.barcelona)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 15,
@@ -336,7 +336,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.Arsenal)
+                            Text(Strings.BocaJuniors)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 15,

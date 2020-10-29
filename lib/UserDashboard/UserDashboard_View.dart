@@ -1,4 +1,5 @@
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
@@ -261,13 +262,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                     width: SizeConfig
                                                             .blockSizeHorizontal *
                                                         3),
-                                                _directLinkBell(),
+                                                directLinkBell(),
                                                 /* SvgPicture.asset('assets/directIcon.svg'),*/
                                                 SizedBox(
                                                     width: SizeConfig
                                                             .blockSizeHorizontal *
                                                         3),
-                                                _notificationBell(),
+                                                notificationBell(),
                                               ],
                                             ),
                                             margin: EdgeInsets.only(
@@ -488,13 +489,13 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                         width: SizeConfig
                                                                 .blockSizeHorizontal *
                                                             3),
-                                                    _directLinkBell(),
+                                                    directLinkBell(),
                                                     /* SvgPicture.asset('assets/directIcon.svg'),*/
                                                     SizedBox(
                                                         width: SizeConfig
                                                                 .blockSizeHorizontal *
                                                             3),
-                                                    _notificationBell(),
+                                                    notificationBell(),
                                                   ],
                                                 ),
                                                 margin: EdgeInsets.only(
@@ -1213,7 +1214,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                         FontWeight.w600),
                                               ),
                                               Spacer(),
-                                              _notificationBell(),
+                                              notificationBell(),
                                             ],
                                           ),
                                           margin: EdgeInsets.only(
@@ -1286,7 +1287,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
                                                       4),
-                                              _directLinkBell(),
+                                              directLinkBell(),
                                             ],
                                           ),
                                           margin: EdgeInsets.only(
@@ -1555,7 +1556,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                         FontWeight.w600),
                                               ),
                                               Spacer(),
-                                              _notificationBell(),
+                                              notificationBell(),
                                             ],
                                           ),
                                           margin: EdgeInsets.only(
@@ -1628,7 +1629,7 @@ class _UserDahboardViewState extends State<UserDahboardView> {
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
                                                       4),
-                                              _directLinkBell(),
+                                              directLinkBell(),
                                             ],
                                           ),
                                           margin: EdgeInsets.only(
@@ -1734,19 +1735,5 @@ class _UserDahboardViewState extends State<UserDahboardView> {
         builder: (builder) {
           return FeedHomeView();
         });
-  }
-
-  Widget _notificationBell() {
-    return Image.asset(
-      'assets/bell 2.png',
-      width: 25,
-    );
-  }
-
-  Widget _directLinkBell() {
-    return Image.asset(
-      'assets/Page 1.png',
-      width: 20,
-    );
   }
 }

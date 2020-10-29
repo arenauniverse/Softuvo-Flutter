@@ -16,19 +16,19 @@ class MyProfileView extends StatefulWidget {
 }
 
 class _MyProfileViewState extends State<MyProfileView> {
- //
-  bool status=false;
+  //
+  bool status = false;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    SharedPreferenceData().getSelectedThemeMode().then((value)
-    {
+    SharedPreferenceData().getSelectedThemeMode().then((value) {
       setState(() {
-        status =value;
+        status = value;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -238,12 +238,14 @@ height: SizeConfig.blockSizeVertical * 1.5,
                             Transform.scale(
                               scale: 1.3,
                               child: Switch(
+                                activeColor: AppTheme.blueColor,
                                 value: status,
                                 onChanged: (val) {
                                   setState(() {
                                     status = val;
                                     themeChange.darkTheme = status;
-                                    SharedPreferenceData().saveSelectedThemeMode(status);
+                                    SharedPreferenceData()
+                                        .saveSelectedThemeMode(status);
                                     /* RevealRoute(
                                       page: MyProfileView(),
                                       maxRadius: 800,

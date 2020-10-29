@@ -40,3 +40,19 @@ class ButtonsWidget extends StatelessWidget {
     );
   }
 }
+
+
+
+Widget notificationBell() {
+  return Image.asset(
+    'assets/bell 2.png',
+    width: 25,
+  );
+}
+
+Widget directLinkBell() {
+  return Image.asset(
+    'assets/Page 1.png',
+    width: 20,
+  );
+}

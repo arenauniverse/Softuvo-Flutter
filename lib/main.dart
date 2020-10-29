@@ -9,13 +9,6 @@ import 'Splash/SplashView.dart';
 import 'UserDashboard/NavigationFiles.dart';
 
 void main() {
-   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Colors.black, // navigation bar color
-    statusBarColor: Colors.white, // status bar color
-  ));
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
   runApp(MyApp());
 }
 
@@ -29,6 +22,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.white, // navigation bar color
+      statusBarColor: Colors.black,
+      // status bar color
+    ));
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.initState();
     getCurrentAppTheme();
   }
@@ -36,7 +38,6 @@ class _MyAppState extends State<MyApp> {
   void getCurrentAppTheme() async {
     themeChangeProvider.darkTheme =
         await themeChangeProvider.darkThemePreference.getTheme();
-
   }
 
   @override
