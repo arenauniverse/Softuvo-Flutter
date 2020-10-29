@@ -3,7 +3,6 @@ import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../SizeConfig.dart';
 import '../theme.dart';
 
