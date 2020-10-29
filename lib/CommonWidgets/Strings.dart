@@ -38,10 +38,12 @@ class Strings {
   static String UEFA_Champions_League = "UEFA Champions League";
   static String barcelona = "Barcelona";
   static String scores = "2";
+  static String sixscores = "6";
   static String numbers = "62’";
   static String Borussia_Dortmund = "Borussia Dortmund";
   static String time = "21:00";
   static String Atalanta = "Atalanta";
+  static String Lyon = "Lyon";
   static String Finished = "Terminado";
   static String Recover_password = "Recuperar contraseña";
   static String Recover = "Recover";
@@ -88,6 +90,7 @@ class Strings {
   static String text2 = "Jugadas principales de PSG y Bayern";
   static String matches1 = "PARTIDOS";
   static String Chelsea = "Chelsea";
+  static String Bayern_Munich = "Bayern Munich";
   static String Direct_TV = "Direct TV";
   static String transfers = "TRASPASOS";
   static String name1 = "Luis Suáre";
@@ -96,4 +99,20 @@ class Strings {
   static String name3 = "Prestamo";
   static String Espn = "ESPN";
   static String time2 = "58 min";
+  static String Myclubs = "Mis clubes";
+  static String Myfavourites = "Mis favoritos";
+  static String Arsenal = "Arsenal";
+  static String BocaJuniors = "Boca Juniors";
+  static String Results = "Resultados";
+  static String everybody = "Todos";
+  static String football = "Futbol";
+  static String Tennis = "Tennis";
+  static String Basketball = "Basquet";
+  static String Today = "HOY";
+  static String manshester = "Man. City";
+  static String matchDate = "MARTES 14 AGOSTO";
+  static String spanishLeague = "La Liga Española";
+  static String realMadrid = "Real Madrid";
+  static String NBA_Playoff = "NBA Playoff";
+  static String threeScores = "03’ 1 PT";
 }
