@@ -60,7 +60,6 @@ class _MyProfileViewState extends State<MyProfileView> {
           leading: GestureDetector(
             onTap: () {
               Navigator.pop(context);
-// Get.back();
             },
             child: Container(
                 padding: EdgeInsets.all(2),
@@ -142,7 +141,6 @@ class _MyProfileViewState extends State<MyProfileView> {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Theme.of(context).cardColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 20,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -200,7 +198,6 @@ height: SizeConfig.blockSizeVertical * 1.5,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Theme.of(context).cardColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 30,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -284,7 +281,6 @@ height: SizeConfig.blockSizeVertical * 1.5,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Theme.of(context).cardColor,
                 ),
-                height: SizeConfig.blockSizeVertical * 50,
                 width: SizeConfig.blockSizeHorizontal * 93,
                 child: Padding(
                   padding: EdgeInsets.symmetric(

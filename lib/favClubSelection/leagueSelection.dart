@@ -11,6 +11,7 @@ class LeagueSelection extends StatefulWidget {
 }
 
 class _LeagueSelectionState extends State<LeagueSelection> {
+  TextStyle style = TextStyle(fontWeight: FontWeight.w500);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,16 +162,14 @@ class _LeagueSelectionState extends State<LeagueSelection> {
               ),
             ),
             Container(
-              height : SizeConfig.blockSizeVertical * 80,
-              padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.blockSizeHorizontal * 5),
+              height: SizeConfig.blockSizeVertical * 100,
               child: GridView.count(
                 crossAxisCount: 3,
                 children: List.generate(12, (index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: SizeConfig.blockSizeVertical * 1,
-                        horizontal: SizeConfig.blockSizeHorizontal * 2),
+                      margin: EdgeInsets.symmetric(
+                          vertical: SizeConfig.blockSizeVertical * 1,
+                          horizontal: SizeConfig.blockSizeHorizontal * 2),
                       decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -187,7 +186,10 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset("assets/UEFA.png"),
-                          Text(Strings.Arsenal)
+                          Text(
+                            Strings.Arsenal,
+                            style: style,
+                          )
                         ],
                       ),
                       height: SizeConfig.blockSizeVertical * 13,
