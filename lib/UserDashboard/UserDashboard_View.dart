@@ -1021,7 +1021,7 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                         onTap:(){
                                                           Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>VideoPlayerView(videoUrl:"http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4")));
 
-                                                       },
+                                                        },
                                                         child: SvgPicture.asset(
                                                           'assets/playIcon.svg',
                                                           width: SizeConfig

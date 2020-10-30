@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
+
 class VideoPlayerView extends StatefulWidget {
   final String videoUrl;
   VideoPlayerView({Key key, this.videoUrl}) : super(key: key);
@@ -15,8 +16,7 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
   void initState() {
     super.initState();
     flickManager = FlickManager(
-      videoPlayerController:
-      VideoPlayerController.network(widget.videoUrl),
+      videoPlayerController: VideoPlayerController.network(widget.videoUrl),
     );
   }
 
@@ -29,14 +29,10 @@ class _VideoPlayerViewState extends State<VideoPlayerView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FlickVideoPlayer(
-          flickManager: flickManager
-      ),
+      child: FlickVideoPlayer(flickManager: flickManager),
     );
   }
 }
-
-
 
 /*
 class VideoPlayerView extends StatefulWidget {
