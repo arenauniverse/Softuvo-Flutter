@@ -117,4 +117,5 @@ class Strings {
   static String threeScores = "03’ 1 PT";
   static String selectLeagues = "Seleccioná tus ligas";
   static String skip = "Omitir";
+  static String next = "Siguiente";
 }

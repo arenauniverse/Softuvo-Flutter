@@ -154,6 +154,4 @@ class _NavigationScreensState extends State<NavigationScreens> {
         ' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
     return first;
   }
-
-  void showCoachMark() {}
 }
