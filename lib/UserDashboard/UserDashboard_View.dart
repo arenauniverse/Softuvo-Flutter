@@ -108,7 +108,6 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                   ),
                   GestureDetector(
                           onTap: () {
-                            Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>VideoPlayerView()));
                           },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -1012,6 +1011,10 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                           10.8,
                                                       bottom: 5.0,
                                                       child: GestureDetector(
+                                                        onTap:(){
+                                                          Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>VideoPlayerView(videoUrl:"http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4")));
+
+                                                        },
                                                         child: SvgPicture.asset(
                                                           'assets/playIcon.svg',
                                                           width: SizeConfig
@@ -1854,7 +1857,6 @@ class _UserDashboardViewState extends State<UserDashboardView> {
     ));
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
   }
-
 
 }
 
