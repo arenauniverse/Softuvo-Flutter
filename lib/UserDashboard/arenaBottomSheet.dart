@@ -1,5 +1,6 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/favClubSelection/leagueSelection.dart';
 import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class ArenaBottomSheet extends StatefulWidget {
 }
 
 class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
+  TextStyle style = TextStyle(fontWeight: FontWeight.w500);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -175,7 +177,10 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.Arsenal)
+                            Text(
+                              Strings.Arsenal,
+                              style: style,
+                            )
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 13,
@@ -199,7 +204,10 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.barcelona)
+                            Text(
+                              Strings.barcelona,
+                              style: style,
+                            )
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 13,
@@ -221,7 +229,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.BocaJuniors)
+                            Text(Strings.BocaJuniors, style: style)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 13,
@@ -255,7 +263,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  MyProfileView()));
+                                  LeagueSelection()));
                     },
                   ),
                 ],
@@ -290,7 +298,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.Arsenal)
+                            Text(Strings.Arsenal, style: style)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 13,
@@ -314,7 +322,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.barcelona)
+                            Text(Strings.barcelona, style: style)
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 13,
@@ -336,7 +344,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset("assets/UEFA.png"),
-                            Text(Strings.BocaJuniors)
+                            Text(Strings.BocaJuniors, style: style),
                           ],
                         ),
                         height: SizeConfig.blockSizeVertical * 13,

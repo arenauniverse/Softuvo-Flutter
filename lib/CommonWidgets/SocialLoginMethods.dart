@@ -40,7 +40,7 @@ class SocialLogin {
     var results;
     await _googleSignIn.signIn().then((GoogleSignInAccount acc) async {
       await acc.authentication.then((GoogleSignInAuthentication auth) async {
-        results = UserResults(googleProfile: acc, googleToken: auth.accessToken);
+        results = UserResults(googleProfile: acc, googleToken: auth.idToken);
         print("res" + results.toString());
       });
     });

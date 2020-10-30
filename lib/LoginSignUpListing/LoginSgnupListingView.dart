@@ -177,14 +177,13 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                               builder: (context) => RegisterView()),
                         );
                       },
-
                       color: Theme.of(context).accentColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
                       child: Text(Strings.registerButtonText,
                           style: TextStyle(
-                            color: Theme.of(context).primaryColorDark,
+                              color: Theme.of(context).primaryColorDark,
                               fontWeight: FontWeight.w500,
                               fontFamily: AppTheme.appFont)),
                     ),
@@ -246,7 +245,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
         Dialogs.showLoadingDialog(context, _addLoader);
         SocialLogin().googleLogin().then((value) async {
           if (value != null) {
-            SharedPreferenceData().saveGoogleDetails(data: value.googleProfile);
+            //  SharedPreferenceData().saveGoogleDetails(data: value.googleProfile);
             GraphQLClient _client = graphQLConfiguration.clientToQuery();
             QueryResult result = await _client
                 .mutate(

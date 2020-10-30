@@ -54,10 +54,11 @@ class _NavigationScreensState extends State<NavigationScreens> {
               title: Text(""),
               icon: SvgPicture.asset(
                 'assets/tab1.svg',
-                color: _currentIndex == 0 ? AppTheme.blackColor : AppTheme.greyColor,
+                color: _currentIndex == 0
+                    ? AppTheme.blackColor
+                    : AppTheme.greyColor,
                 height: SizeConfig.blockSizeVertical * 3,
-              )
-          ),
+              )),
           BottomNavigationBarItem(
               title: Text(""),
               icon: SvgPicture.asset(
@@ -74,9 +75,6 @@ class _NavigationScreensState extends State<NavigationScreens> {
               elevation: 0,
               backgroundColor: Colors.transparent,
               onPressed: () {
-                if(firstRun)
-                  showCoachMark();
-                  else
                 _showModalSheet();
               },
               child: SvgPicture.asset(
@@ -109,7 +107,6 @@ class _NavigationScreensState extends State<NavigationScreens> {
       backgroundColor: AppTheme.backGroundColor,
       body: Center(
         child: widgetOptions.elementAt(_currentIndex),
-
       ),
     );
   }
@@ -158,7 +155,5 @@ class _NavigationScreensState extends State<NavigationScreens> {
     return first;
   }
 
-  void showCoachMark() {
-
-  }
+  void showCoachMark() {}
 }
