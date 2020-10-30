@@ -115,4 +115,6 @@ class Strings {
   static String realMadrid = "Real Madrid";
   static String NBA_Playoff = "NBA Playoff";
   static String threeScores = "03’ 1 PT";
+  static String selectLeagues = "Seleccioná tus ligas";
+  static String skip = "Omitir";
 }

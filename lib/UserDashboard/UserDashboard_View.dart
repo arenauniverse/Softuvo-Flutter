@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
@@ -26,6 +25,7 @@ class UserDashboardView extends StatefulWidget {
 
 class _UserDashboardViewState extends State<UserDashboardView> {
   bool status = false;
+  bool isRegisterd = false;
   bool isFirstRun = true;
   GlobalKey _arenaKey = GlobalObjectKey("arena");
   GlobalKey _loginKey = GlobalObjectKey("login");
@@ -34,18 +34,16 @@ class _UserDashboardViewState extends State<UserDashboardView> {
 
   @override
   void initState() {
-    SharedPreferenceData().getFirstRun().then((value)
-    {
+    SharedPreferenceData().getFirstRun().then((value) {
       setState(() {
-       // isFirstRun =value;
-        if(value)
-          initCoachMarker();
+        // isFirstRun =value;
+        if (value) initCoachMarker();
       });
     });
 
     SharedPreferenceData().getRegisteredValue().then((value) {
       setState(() {
-        status = value;
+        isRegisterd = value;
       });
     });
     super.initState();
@@ -70,17 +68,16 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      status == true
+                      /*  isRegisterd == true
                           ? Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  MyProfileView()))
-                          : _showModalSheet();
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MyProfileView()))
+                          :*/ _showModalSheet();
                     },
                     child: Container(
                       child: SvgPicture.asset('assets/ArenaLogin.svg'),
-                      margin: EdgeInsets.only(),
                     ),
                   ),
                   Spacer(),
@@ -106,18 +103,14 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                       ),
                     ),
                   ),
-                  GestureDetector(
-                          onTap: () {
-                          },
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        left: SizeConfig.blockSizeHorizontal * 3.5,
-                      ),
-                      child: CircleAvatar(
-                        radius: 16,
-                        backgroundColor: AppTheme.greyColor,
-                        child: SvgPicture.asset('assets/search.svg'),
-                      ),
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 3.5,
+                    ),
+                    child: CircleAvatar(
+                      radius: 16,
+                      backgroundColor: AppTheme.greyColor,
+                      child: SvgPicture.asset('assets/search.svg'),
                     ),
                   )
                 ],
@@ -1014,7 +1007,7 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                         onTap:(){
                                                           Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>VideoPlayerView(videoUrl:"http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4")));
 
-                                                        },
+                                                       },
                                                         child: SvgPicture.asset(
                                                           'assets/playIcon.svg',
                                                           width: SizeConfig
@@ -1093,7 +1086,10 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                     margin: EdgeInsets.only(
                                                         left: SizeConfig
                                                             .blockSizeHorizontal *
-                                                            4,
+                                                            3,
+                                                        right: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                            3,
                                                         top: SizeConfig
                                                             .blockSizeVertical *
                                                             1),
@@ -1787,76 +1783,62 @@ class _UserDashboardViewState extends State<UserDashboardView> {
   }
 
   void initCoachMarker() {
-    targets.add(
-        TargetFocus(
-            identify: "Target 1",
-            keyTarget: _arenaKey,
-            contents: [
-              ContentTarget(
-                  align: AlignContent.top,
-                  child: Container(
-                    child:Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "My Arena",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 20.0
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                            style: TextStyle(
-                                color: Colors.white
-                            ),),
-                        )
-                      ],
-                    ),
-                  )
-              )
-            ]
-        )
-    );
-
-    targets.add(TargetFocus(
-        identify: "Target 2",
-        keyTarget: _loginKey,
-        contents: [
-          ContentTarget(
-              align: AlignContent.right,
-              child: Container(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Title lorem ipsum",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 20.0
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                        style: TextStyle(
-                            color: Colors.white
-                        ),),
-                    )
-                  ],
+    targets
+        .add(TargetFocus(identify: "Target 1", keyTarget: _arenaKey, contents: [
+      ContentTarget(
+          align: AlignContent.top,
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "My Arena",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20.0),
                 ),
-              )
-          )
-        ]
-    ));
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ))
+    ]));
+
+    targets
+        .add(TargetFocus(identify: "Target 2", keyTarget: _loginKey, contents: [
+      ContentTarget(
+          align: AlignContent.right,
+          child: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Title lorem ipsum",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20.0),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ))
+    ]));
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
   }
-
 }
-

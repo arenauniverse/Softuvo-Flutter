@@ -41,8 +41,7 @@ class QueryMutation {
   String googleLogin({String token}) {
     return """mutation {
                 signUp(
-                  mechanism: GOOGLE
-                  mechanismToken: "$token"
+                  mechanism: GOOGLE              
                  ){
                   authorization
                  }
