@@ -1,4 +1,6 @@
 class Messages {
+  static String underDevelopment = "Under Development";
+
   static String wrongEmail = "Please enter valid Email";
   static String shortPassword = "Password shoud be minimum 8 characters";
   static String loginSuccess = "Login Successfully";
