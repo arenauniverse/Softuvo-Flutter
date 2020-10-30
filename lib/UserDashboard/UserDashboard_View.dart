@@ -8,6 +8,7 @@ import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/NewsDetails/NewsDetails_View.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
+import 'package:arena_sports_app/feedHome/VideoPlayerView.dart';
 import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -105,14 +106,19 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 3.5,
-                    ),
-                    child: CircleAvatar(
-                      radius: 16,
-                      backgroundColor: AppTheme.greyColor,
-                      child: SvgPicture.asset('assets/search.svg'),
+                  GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>VideoPlayerView()));
+                          },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 3.5,
+                      ),
+                      child: CircleAvatar(
+                        radius: 16,
+                        backgroundColor: AppTheme.greyColor,
+                        child: SvgPicture.asset('assets/search.svg'),
+                      ),
                     ),
                   )
                 ],

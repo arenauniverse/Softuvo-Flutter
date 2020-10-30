@@ -74,9 +74,6 @@ class _NavigationScreensState extends State<NavigationScreens> {
               elevation: 0,
               backgroundColor: Colors.transparent,
               onPressed: () {
-                if(firstRun)
-                  showCoachMark();
-                  else
                 _showModalSheet();
               },
               child: SvgPicture.asset(
@@ -158,7 +155,4 @@ class _NavigationScreensState extends State<NavigationScreens> {
     return first;
   }
 
-  void showCoachMark() {
-
-  }
 }
