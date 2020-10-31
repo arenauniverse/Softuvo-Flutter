@@ -358,9 +358,9 @@ class _FlutterSliderState extends State<FlutterSlider>
 //      animationFinish = Offset(-0.52, 0);
 //    }
 
-    _leftHandlerScaleAnimationController = AnimationController(duration: widget.handlerAnimation.duration,vsync: this);
+    _leftHandlerScaleAnimationController = AnimationController(duration: widget.handlerAnimation.duration,value: this);
     _rightHandlerScaleAnimationController = AnimationController(
-        duration: widget.handlerAnimation.duration, vsync: this);
+        duration: widget.handlerAnimation.duration, value: this);
     _leftHandlerScaleAnimation =
         Tween(begin: 1.0, end: widget.handlerAnimation.scale).animate(
             CurvedAnimation(
@@ -398,14 +398,14 @@ class _FlutterSliderState extends State<FlutterSlider>
     Offset animationFinish = Offset(0, -0.92);
 
     _leftTooltipAnimationController =
-        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+        AnimationController(duration: Duration(milliseconds: 200), value: this);
     _leftTooltipAnimation =
         Tween<Offset>(begin: animationStart, end: animationFinish).animate(
             CurvedAnimation(
                 parent: _leftTooltipAnimationController,
                 curve: Curves.fastOutSlowIn));
     _rightTooltipAnimationController =
-        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+        AnimationController(duration: Duration(milliseconds: 200), value: this);
     _rightTooltipAnimation =
         Tween<Offset>(begin: animationStart, end: animationFinish).animate(
             CurvedAnimation(
