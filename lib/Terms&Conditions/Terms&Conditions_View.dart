@@ -8,6 +8,7 @@ import 'package:arena_sports_app/CreateUser/CreateUserView.dart';
 import 'package:arena_sports_app/UserDashboard/NavigationFiles.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../SizeConfig.dart';
 import '../theme.dart';
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
@@ -44,7 +45,8 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
 
   @override
   void initState() {
-   // launchURL("https://arenauniverse.ar/privacy/");
+    // launchURL("https://arenauniverse.ar/privacy/");
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
   @override
@@ -63,7 +65,7 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
             margin: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 7),
             child: GestureDetector(
               child: Container(
-                  padding: EdgeInsets.all(2),
+                  padding: EdgeInsets.all(1),
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 30.0,
@@ -108,15 +110,28 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
                   child: Column(
                     children: [
                       Container(
+
                         margin: EdgeInsets.only(
                             left: SizeConfig.blockSizeHorizontal * 7,
                             top: SizeConfig.blockSizeVertical * 3,
                             bottom: SizeConfig.blockSizeVertical * 5),
-                        child: Text(
+                        child: WebView(
+                          initialUrl: 'https://arenauniverse.ar/privacy/',
+                          javascriptMode: JavascriptMode.unrestricted,
+                          onPageStarted: (String url) {
+                            print('Page started loading: $url');
+                          },
+                          onPageFinished: (String url) {
+                            print('Page finished loading: $url');
+                          },
+                          gestureNavigationEnabled: true,
+                        ),
+
+                        /*Text(
                           Strings.termsConditions,
                           style: TextStyle(
                               fontFamily: AppTheme.appFont, fontSize: 14),
-                        ),
+                        ),*/
                       ),
                     ],
                   ),
