@@ -118,4 +118,7 @@ class Strings {
   static String selectLeagues = "Seleccioná tus ligas";
   static String skip = "Omitir";
   static String next = "Siguiente";
+  static String selectSport = "Selecciona un deporte";
+
+
 }

@@ -1,4 +1,3 @@
-
 import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:arena_sports_app/theme/DarkThemeProvider.dart';
@@ -23,17 +22,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.white, // navigation bar color
-      statusBarColor: Colors.black,
-      // status bar color
-    ));
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
     super.initState();
     getCurrentAppTheme();
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.black, // navigation bar color
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+
+        ));
   }
 
   void getCurrentAppTheme() async {

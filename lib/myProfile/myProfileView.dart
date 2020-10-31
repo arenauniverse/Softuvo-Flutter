@@ -5,6 +5,7 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:arena_sports_app/theme/DarkThemeProvider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
@@ -25,18 +26,16 @@ class _MyProfileViewState extends State<MyProfileView> {
     SharedPreferenceData().getSelectedThemeMode().then((value) {
       setState(() {
         status = value;
+
       });
     });
+
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     final themeChange = Provider.of<DarkThemeProvider>(context);
-    FlutterStatusbarcolor.setStatusBarColor(
-        Colors.white); //this change the status bar color to white
-    FlutterStatusbarcolor.setNavigationBarColor(
-        Colors.green); //this sets the navigation bar color to green
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(

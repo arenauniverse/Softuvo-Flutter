@@ -10,10 +10,10 @@ import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/News/NewsDetails_View.dart';
 import 'package:arena_sports_app/News/NewsView.dart';
+
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/feedHome/VideoPlayerView.dart';
-import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -79,7 +79,8 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                               MaterialPageRoute(
                                   builder: (BuildContext context) =>
                                       MyProfileView()))
-                          :*/ _showModalSheet();
+                          :*/
+                      _showModalSheet();
                     },
                     child: Container(
                       child: SvgPicture.asset('assets/ArenaLogin.svg'),
@@ -102,7 +103,9 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                         onChanged: (val) {
                           setState(() {
                             status = val;
-                            toast(msg: Messages.underDevelopment, context: context);
+                            toast(
+                                msg: Messages.underDevelopment,
+                                context: context);
                           });
                         },
                         dragStartBehavior: DragStartBehavior.down,
@@ -110,7 +113,7 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       toast(msg: Messages.underDevelopment, context: context);
                     },
                     child: Container(
@@ -733,8 +736,8 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                 color: AppTheme.blueColor),
                                           ),
                                           onTap: () {
-                                           //Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>NewsView()));
-                                           Navigator.push(context, SlideRightRoute(page: NewsView()));
+                                            Navigator.push(context,
+                                                SlideRightRoute(page: NewsView()));
                                           },
                                         )
                                       ],
@@ -1005,59 +1008,79 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                                   25))),
                                                       width: SizeConfig
                                                           .blockSizeVertical *
-                                                          35,
+                                                          30,
                                                       child: Image.asset(
                                                         'assets/videoImage.png',
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
-                                                    Positioned(
-                                                      top: 5.0,
-                                                      left: SizeConfig
-                                                          .blockSizeVertical *
-                                                          10.8,
-                                                      bottom: 5.0,
-                                                      child: GestureDetector(
-                                                        onTap:(){
-                                                          Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) =>VideoPlayerView(videoUrl:"http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4")));
-
-                                                        },
-                                                        child: SvgPicture.asset(
-                                                          'assets/playIcon.svg',
-                                                          width: SizeConfig
-                                                              .blockSizeVertical *
-                                                              5,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Positioned(
-                                                        top: SizeConfig
-                                                            .blockSizeVertical *
-                                                            10,
-                                                        left: SizeConfig
-                                                            .blockSizeVertical *
-                                                            2,
-                                                        bottom: 18.0,
-                                                        child: Container(
-                                                          child: Text(
-                                                            Strings.textTime,
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                FontWeight.w600,
-                                                                color: AppTheme
-                                                                    .whiteColor),
+                                                    Column(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                          Alignment.center,
+                                                          child: Container(
+                                                            margin: EdgeInsets.only(
+                                                                top: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                    5.5),
+                                                            child: GestureDetector(
+                                                              onTap: () {
+                                                                Navigator.push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder: (BuildContext
+                                                                        context) =>
+                                                                            VideoPlayerView(
+                                                                                videoUrl:
+                                                                                "http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4")));
+                                                              },
+                                                              child:
+                                                              SvgPicture.asset(
+                                                                'assets/playIcon.svg',
+                                                                width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                    5,
+                                                              ),
+                                                            ),
                                                           ),
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(6),
-                                                              color:
-                                                              Color(0xFF0E3311)
-                                                                  .withOpacity(
-                                                                  0.5)),
-                                                          padding:
-                                                          EdgeInsets.all(3),
-                                                        )),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                          Alignment.bottomLeft,
+                                                          child: Container(
+                                                            margin: EdgeInsets.only(
+                                                              left: SizeConfig
+                                                                  .blockSizeVertical *
+                                                                  2,
+                                                            ),
+                                                            child: Text(
+                                                              Strings.textTime,
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                                  color: AppTheme
+                                                                      .whiteColor),
+                                                            ),
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    6),
+                                                                color: Color(
+                                                                    0xFF0E3311)
+                                                                    .withOpacity(
+                                                                    0.5)),
+                                                            padding:
+                                                            EdgeInsets.all(3),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+
 /*
                                                 Positioned(
                                                   child: Container(
@@ -1703,7 +1726,6 @@ class _UserDashboardViewState extends State<UserDashboardView> {
               )),
         ]));
   }
-
 
   void _showModalSheet() {
     showModalBottomSheet(
