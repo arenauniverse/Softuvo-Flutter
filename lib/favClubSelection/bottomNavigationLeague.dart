@@ -120,8 +120,6 @@ class _OnBoardState extends State<OnBoard> {
                     Container(
                       height: SizeConfig.blockSizeVertical * 6,
                       margin: EdgeInsets.only(
-                          left: SizeConfig.blockSizeVertical * 3,
-                          right: SizeConfig.blockSizeVertical * 3,
                           top: SizeConfig.blockSizeHorizontal * 3),
                       child: ListView.builder(
                         itemCount: 10,

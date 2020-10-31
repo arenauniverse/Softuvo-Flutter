@@ -41,7 +41,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                     ),
                     margin: EdgeInsets.only(
                         right: SizeConfig.blockSizeHorizontal * 4,
-                        top: SizeConfig.blockSizeVertical * 3)),
+                        top: SizeConfig.blockSizeVertical * 2)),
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -183,8 +183,8 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 3),
-                      height: SizeConfig.blockSizeVertical * 70,
+                          horizontal: SizeConfig.blockSizeHorizontal * 3,
+                         ),
                       child: GridView.count(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,

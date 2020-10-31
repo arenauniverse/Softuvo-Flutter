@@ -1,5 +1,7 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
+import 'package:arena_sports_app/constants/AppColors.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,6 +16,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Container(
         margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2.3),
@@ -30,7 +33,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
             ),
             actions: [
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -43,7 +46,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                     ),
                     margin: EdgeInsets.only(
                         right: SizeConfig.blockSizeHorizontal * 4,
-                        top: SizeConfig.blockSizeVertical * 3)),
+                        top: SizeConfig.blockSizeVertical * 2)),
               )
             ],
           ),
@@ -53,139 +56,65 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                 Column(
                   children: [
                     Container(
+                      padding: EdgeInsets.fromLTRB(0.0, 8.0, 0.0, 8.0),
                       margin: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 2,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                                margin: EdgeInsets.only(
-                                  left: SizeConfig.blockSizeHorizontal * 3,
+                          right: SizeConfig.blockSizeHorizontal * 5,
+                          left: SizeConfig.blockSizeHorizontal * 5,
+                          top: SizeConfig.blockSizeVertical * 1),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(0.5),
+                          child: TextField(
+                            controller: Controllers.searchTeam,
+                            maxLines: 1,
+                            decoration: InputDecoration(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 0.0),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 18.0, right: 18.0),
+                                  child: Icon(
+                                    Icons.search,
+                                    color: AppTheme.toggleColor,
+                                  ),
                                 ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    color: AppTheme.blueColor,
-                                    borderRadius: BorderRadius.circular(8.0)),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/todosIcon.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(
-                                      Strings.everybody,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppTheme.whiteColor),
-                                    )
-                                  ],
-                                )),
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 3.5,
-                                ),
-                                margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 1,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/football.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.football,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                )),
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 3.5,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/tennis.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.Tennis,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                )),
-                            Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 1,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 2,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/basquet.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.Basketball,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                ))
-                          ],
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: "Buscar otros equipos",
+                                hintStyle:
+                                    TextStyle(color: AppTheme.toggleColor),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.black,
+                                        width: 0.0,
+                                        style: BorderStyle.none),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(50.0)))),
+                            onChanged: (val) {},
+                          ),
                         ),
                       ),
+                      decoration: BoxDecoration(
+                        color: AppTheme.whiteColor,
+                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 2.0,
+                            spreadRadius: 0.0,
+                            offset: Offset(
+                                0.3, 0.3), // shadow direction: bottom right
+                          )
+                        ],
+                      ),
+                      height: SizeConfig.blockSizeVertical * 6,
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 3),
-                      height: SizeConfig.blockSizeVertical * 70,
+                        horizontal: SizeConfig.blockSizeHorizontal * 3,
+                      ),
                       child: GridView.count(
-                        physics: ClampingScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
                         children: List.generate(12, (index) {

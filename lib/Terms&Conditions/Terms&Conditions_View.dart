@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
@@ -44,7 +43,7 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
 
   @override
   void initState() {
-   // launchURL("https://arenauniverse.ar/privacy/");
+    // launchURL("https://arenauniverse.ar/privacy/");
   }
 
   @override

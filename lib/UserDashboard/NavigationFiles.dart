@@ -35,7 +35,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
     ResultsView(),
     ArenaBottomSheet(),
     Text('Add new screen'),
-    //   Text('Favourites'),
+       Text('Favourites'),
   ];
 
   @override
@@ -96,7 +96,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                     : AppTheme.greyColor,
                 height: SizeConfig.blockSizeVertical * 3,
               )),
-/*          BottomNavigationBarItem(
+          BottomNavigationBarItem(
             title: Text(""),
             icon: FloatingActionButton(
               key: _selectSport,
@@ -110,7 +110,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 height: SizeConfig.blockSizeVertical * 3,
               ),
             ),
-          )*/
+          )
         ],
       ),
       backgroundColor: AppTheme.backGroundColor,
