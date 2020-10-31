@@ -110,7 +110,7 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
                   child: Column(
                     children: [
                       Container(
-                        height: 200,
+
                         margin: EdgeInsets.only(
                             left: SizeConfig.blockSizeHorizontal * 7,
                             top: SizeConfig.blockSizeVertical * 3,
