@@ -2,6 +2,7 @@ import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/ResultsTab/ResultsView.dart';
+import 'package:arena_sports_app/SelectSportsBottomSheet/SelectSportsBottomSheet.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/UserDashboard/arenaBottomSheet.dart';
 import 'package:arena_sports_app/theme.dart';
@@ -20,6 +21,8 @@ class _NavigationScreensState extends State<NavigationScreens> {
   int _currentIndex = 0;
   Coordinates coordinates;
   GlobalKey _arenaKey = GlobalObjectKey("arena");
+  GlobalKey _selectSport = GlobalObjectKey("selectSport");
+
   bool firstRun = true;
   void onTabTapped(int index) {
     setState(() {
@@ -32,7 +35,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
     ResultsView(),
     ArenaBottomSheet(),
     Text('Add new screen'),
-    Text('Favourites'),
+    //   Text('Favourites'),
   ];
 
   @override
@@ -93,15 +96,21 @@ class _NavigationScreensState extends State<NavigationScreens> {
                     : AppTheme.greyColor,
                 height: SizeConfig.blockSizeVertical * 3,
               )),
-          BottomNavigationBarItem(
-              title: Text(""),
-              icon: SvgPicture.asset(
+/*          BottomNavigationBarItem(
+            title: Text(""),
+            icon: FloatingActionButton(
+              key: _selectSport,
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              onPressed: () {
+                _showSportSheet();
+              },
+              child: SvgPicture.asset(
                 'assets/tab5.svg',
-                color: _currentIndex == 4
-                    ? AppTheme.blackColor
-                    : AppTheme.greyColor,
                 height: SizeConfig.blockSizeVertical * 3,
-              )),
+              ),
+            ),
+          )*/
         ],
       ),
       backgroundColor: AppTheme.backGroundColor,
@@ -121,6 +130,19 @@ class _NavigationScreensState extends State<NavigationScreens> {
         context: context,
         builder: (builder) {
           return ArenaBottomSheet();
+        });
+  }
+
+  void _showSportSheet() {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(25.0),
+                topLeft: Radius.circular(25.0))),
+        context: context,
+        builder: (builder) {
+          return SelectSportsBottomSheet();
         });
   }
 

@@ -11,14 +11,15 @@ class LeagueSelection extends StatefulWidget {
 }
 
 class _LeagueSelectionState extends State<LeagueSelection> {
-  TextStyle style = TextStyle(fontWeight: FontWeight.w500);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Container(
+        color: Colors.black,
         margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2.3),
-        child: CustomScrollView(slivers: [
+        child: Text(
+            "cucfiudv") /*CustomScrollView(slivers: [
           SliverAppBar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             automaticallyImplyLeading: false,
@@ -43,7 +44,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                       top: SizeConfig.blockSizeVertical * 2.3))
             ],
           ),
-          SliverList(
+*/ /*          SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
                 Stack(
@@ -245,7 +246,6 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         ],
                       ),
                     ),
-/*
                     Container(
                       margin: EdgeInsets.symmetric(
                         vertical: SizeConfig.blockSizeVertical * 75,
@@ -286,8 +286,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                               ),
                             ),
 
-*/
-/*
+*/ /**/ /*
                             ListView.builder(
                               itemBuilder: (BuildContext context, int i) {
                                 return Container(
@@ -306,8 +305,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                               shrinkWrap: true,
                               itemCount: 8,
                             )
-*/ /*
-
+*/ /**/ /*
                           ],
                         ),
                         color: AppTheme.whiteColor,
@@ -323,13 +321,13 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                           )),
                       height: SizeConfig.blockSizeVertical * 15,
                     )
-*/
                   ],
                 )
               ],
             ),
-          ),
-        ]),
+          )*/ /*
+        ])*/
+        ,
       ),
     );
   }
