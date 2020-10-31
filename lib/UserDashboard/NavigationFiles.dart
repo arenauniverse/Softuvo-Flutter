@@ -35,7 +35,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
     ResultsView(),
     ArenaBottomSheet(),
     Text('Add new screen'),
-       Text('Favourites'),
+    Text('Favourites'),
   ];
 
   @override
