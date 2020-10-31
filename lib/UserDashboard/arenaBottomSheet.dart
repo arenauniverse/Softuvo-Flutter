@@ -26,8 +26,16 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
       ),
       child: Column(
-
         children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              margin: EdgeInsets.only(
+                  top: SizeConfig.blockSizeVertical * 2,
+                  right: SizeConfig.blockSizeVertical * 2),
+              child: SvgPicture.asset('assets/Indicator.svg'),
+            ),
+          ),
           Align(
             alignment: Alignment.topRight,
             child: GestureDetector(
@@ -36,7 +44,6 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
               },
               child: Container(
                 margin: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 2,
                     right: SizeConfig.blockSizeVertical * 2),
                 child: SvgPicture.asset('assets/crossIcon.svg'),
               ),
