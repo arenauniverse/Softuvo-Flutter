@@ -1,6 +1,7 @@
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 bool validateEmail(String value) {
   Pattern pattern =
@@ -26,4 +27,13 @@ void toast({context, msg}) {
       duration: Toast.LENGTH_LONG,
       gravity: Toast.BOTTOM,
       backgroundColor: Colors.grey.shade800);
+}
+
+launchURL(String siteUrl) async {
+  String url = siteUrl;
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }

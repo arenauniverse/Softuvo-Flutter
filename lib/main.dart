@@ -34,7 +34,6 @@ class _MyAppState extends State<MyApp> {
         systemNavigationBarColor: Colors.black, // navigation bar color
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.dark,
-
         ));
   }
 

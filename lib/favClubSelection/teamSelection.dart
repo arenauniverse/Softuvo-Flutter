@@ -1,16 +1,15 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
-import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LeagueSelection extends StatefulWidget {
+class FavTeamSelection extends StatefulWidget {
   @override
-  _LeagueSelectionState createState() => _LeagueSelectionState();
+  _FavTeamSelectionState createState() => _FavTeamSelectionState();
 }
 
-class _LeagueSelectionState extends State<LeagueSelection> {
+class _FavTeamSelectionState extends State<FavTeamSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500);
   @override
   Widget build(BuildContext context) {
@@ -26,11 +25,14 @@ class _LeagueSelectionState extends State<LeagueSelection> {
             floating: true,
             centerTitle: true,
             title: Text(
-              Strings.selectTeam,
+              Strings.selectPlayer,
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
             ),
             actions: [
               GestureDetector(
+                onTap: (){
+                  Navigator.pop(context);
+                },
                 child: Container(
                     child: Text(
                       Strings.skip,
@@ -42,10 +44,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                     margin: EdgeInsets.only(
                         right: SizeConfig.blockSizeHorizontal * 4,
                         top: SizeConfig.blockSizeVertical * 3)),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
+              )
             ],
           ),
           SliverList(
@@ -186,7 +185,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                           horizontal: SizeConfig.blockSizeHorizontal * 3),
                       height: SizeConfig.blockSizeVertical * 70,
                       child: GridView.count(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: ClampingScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
                         children: List.generate(12, (index) {

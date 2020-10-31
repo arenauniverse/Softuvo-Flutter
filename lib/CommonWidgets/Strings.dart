@@ -116,9 +116,10 @@ class Strings {
   static String NBA_Playoff = "NBA Playoff";
   static String threeScores = "03’ 1 PT";
   static String selectLeagues = "Seleccioná tus ligas";
+  static String selectTeam = "Seleccioná tus equipos";
+  static String selectPlayer = "Seleccioná tus jugadores";
   static String skip = "Omitir";
   static String next = "Siguiente";
   static String selectSport = "Selecciona un deporte";
-
-
+  static String back = "Anterior";
 }

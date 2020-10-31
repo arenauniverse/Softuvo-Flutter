@@ -35,7 +35,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
     ResultsView(),
     ArenaBottomSheet(),
     Text('Add new screen'),
-    Text('Favourites'),
+    //   Text('Favourites'),
   ];
 
   @override
@@ -109,6 +109,9 @@ class _NavigationScreensState extends State<NavigationScreens> {
 
 
          /* BottomNavigationBarItem(
+=======
+/*          BottomNavigationBarItem(
+>>>>>>> 4811f2c03ac20d424aa7e569834700c85010e30f
             title: Text(""),
             icon: FloatingActionButton(
               key: _selectSport,
@@ -122,8 +125,11 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 height: SizeConfig.blockSizeVertical * 3,
               ),
             ),
+<<<<<<< HEAD
           ),*/
 
+=======
+          )*/
         ],
       ),
       backgroundColor: AppTheme.backGroundColor,
@@ -145,6 +151,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
           return ArenaBottomSheet();
         });
   }
+
   void _showSportSheet() {
     showModalBottomSheet(
         isScrollControlled: true,
@@ -157,6 +164,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
           return SelectSportsBottomSheet();
         });
   }
+
   getUserLocation() async {
     //call this async method from whereever you need
     var currentLocation;
