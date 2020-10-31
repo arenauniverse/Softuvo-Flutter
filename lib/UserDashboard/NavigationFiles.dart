@@ -97,21 +97,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 height: SizeConfig.blockSizeVertical * 3,
               )),
 
-          BottomNavigationBarItem(
-              title: Text(""),
-              icon: SvgPicture.asset(
-                'assets/tab5.svg',
-                color: _currentIndex == 4
-                    ? AppTheme.blackColor
-                    : AppTheme.greyColor,
-                height: SizeConfig.blockSizeVertical * 3,
-              )),
-
-
-         /* BottomNavigationBarItem(
-=======
-/*          BottomNavigationBarItem(
->>>>>>> 4811f2c03ac20d424aa7e569834700c85010e30f
+           BottomNavigationBarItem(
             title: Text(""),
             icon: FloatingActionButton(
               key: _selectSport,
@@ -125,11 +111,9 @@ class _NavigationScreensState extends State<NavigationScreens> {
                 height: SizeConfig.blockSizeVertical * 3,
               ),
             ),
-<<<<<<< HEAD
-          ),*/
+          ),
 
-=======
-          )*/
+
         ],
       ),
       backgroundColor: AppTheme.backGroundColor,

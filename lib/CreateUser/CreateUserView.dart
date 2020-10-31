@@ -160,32 +160,6 @@ class _CreateUserViewState extends State<CreateUserView> {
                         ),
                       ),
 
-/*                      TextFormField(
-                        controller: Controllers.createUserDob,
-                        cursorColor: AppTheme.blackColor,
-                        validator: (value) {
-                          if (value == null || value == "") {
-                            return "Enter Valid Nacimiento";
-                          }
-                        },
-                        onFieldSubmitted: (v) {},
-                        decoration: InputDecoration(
-                            suffixIcon: Icon(
-                              Icons.date_range_outlined,
-                              color: AppTheme.blackColor,
-                            ),
-                            contentPadding: EdgeInsets.only(
-                                top: SizeConfig.blockSizeVertical * 2,
-                                bottom: SizeConfig.blockSizeVertical * 2,
-                                left: SizeConfig.blockSizeVertical * 1),
-                            labelText: Strings.dob,
-                            labelStyle: TextStyle(
-                                fontSize: 15.0,
-                                fontFamily: AppTheme.appFont,
-                                color: AppTheme.blackColor)),
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.next,
-                      )*/
                       TextFormField(
                         controller: Controllers.createUserPhone,
                         cursorColor: AppTheme.blackColor,
@@ -263,6 +237,21 @@ class _CreateUserViewState extends State<CreateUserView> {
         ),
       ),
     );
+  }
+
+  void createUser(){
+    /*editCurrentUser(
+        username: String
+        firstName: String
+    lastName: String
+    email: String
+    dateOfBirth: String
+    country: String
+    avatarURL: String
+    latitude: Float
+        longitude: Float
+        status: String
+    ): [Person]!*/
   }
 }
 
