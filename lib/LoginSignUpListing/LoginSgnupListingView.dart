@@ -265,7 +265,9 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                 var errorMessage = queryResult.exception.toString().split(':');
                 Navigator.of(_addLoader.currentContext, rootNavigator: true)
                     .pop();
-                toast(context: context, msg: errorMessage[2]);
+                print(
+                    "errorMessage : " + "" + queryResult.exception.toString());
+                toast(context: context, msg: queryResult.exception.toString());
               }
             });
           }

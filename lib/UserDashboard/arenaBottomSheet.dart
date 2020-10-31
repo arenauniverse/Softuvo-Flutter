@@ -1,6 +1,7 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
+import 'package:arena_sports_app/favClubSelection/bottomNavigationLeague.dart';
 import 'package:arena_sports_app/favClubSelection/leagueSelection.dart';
 import 'package:arena_sports_app/favClubSelection/teamSelection.dart';
 import 'package:arena_sports_app/myProfile/myProfileView.dart';
@@ -77,7 +78,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             style: TextStyle(
                                 color: AppTheme.blueColor,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 16),
+                                fontSize: 14),
                           ),
                           onTap: () {
                             Navigator.pop(context);
@@ -147,7 +148,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             style: TextStyle(
                                 color: AppTheme.blueColor,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 16),
+                                fontSize: 14),
                           ),
                           onTap: () {
                             Navigator.pop(context);
@@ -268,16 +269,15 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                             style: TextStyle(
                                 color: AppTheme.blueColor,
                                 fontWeight: FontWeight.w500,
-                                fontSize: 16),
+                                fontSize: 14),
                           ),
                           onTap: () {
-                            print("vhfv");
                             Navigator.pop(context);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        LeagueSelection()));
+                                        OnBoard()));
                           },
                         ),
                       ],

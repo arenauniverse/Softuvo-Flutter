@@ -43,6 +43,11 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
 
   @override
+  void initState() {
+   // launchURL("https://arenauniverse.ar/privacy/");
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
