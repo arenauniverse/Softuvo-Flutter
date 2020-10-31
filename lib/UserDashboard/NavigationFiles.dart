@@ -1,6 +1,5 @@
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
-import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/ResultsTab/ResultsView.dart';
 import 'package:arena_sports_app/SelectSportsBottomSheet/SelectSportsBottomSheet.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
@@ -96,13 +95,20 @@ class _NavigationScreensState extends State<NavigationScreens> {
                     : AppTheme.greyColor,
                 height: SizeConfig.blockSizeVertical * 3,
               )),
+          /*BottomNavigationBarItem(
+              title: Text(""),
+              icon: SvgPicture.asset(
+                'assets/tab5.svg',
+                color: _currentIndex == 4
+                    ? AppTheme.blackColor
+                    : AppTheme.greyColor,
+                height: SizeConfig.blockSizeVertical * 3,
+              )),*/
+
           BottomNavigationBarItem(
             title: Text(""),
-            icon: FloatingActionButton(
-              key: _selectSport,
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              onPressed: () {
+            icon: GestureDetector(
+              onTap: () {
                 _showSportSheet();
               },
               child: SvgPicture.asset(

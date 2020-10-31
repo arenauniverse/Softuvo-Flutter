@@ -10,7 +10,6 @@ import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/News/NewsDetails_View.dart';
 import 'package:arena_sports_app/News/NewsView.dart';
-
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/feedHome/VideoPlayerView.dart';
@@ -986,7 +985,7 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                     horizontal:
                                         SizeConfig.blockSizeHorizontal * 4),
                                 child: Swiper(
-                                  viewportFraction: 0.65,
+                                  viewportFraction: 0.6,
                                   scale: 0.8,
                                   itemCount: 2,
                                   scrollDirection: Axis.horizontal,
@@ -996,6 +995,7 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                         borderRadius: BorderRadius.circular(18),
                                       ),
                                       child: Container(
+                                        height: 50,
                                         child: Column(
                                           children: [
                                             Stack(
@@ -1006,13 +1006,13 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                                           BorderRadius.all(
                                                               Radius.circular(
                                                                   25))),
-                                                  width: SizeConfig
-                                                          .blockSizeVertical *
-                                                      30,
                                                   child: Image.asset(
                                                     'assets/videoImage.png',
                                                     fit: BoxFit.cover,
                                                   ),
+                                                  width: SizeConfig
+                                                          .blockSizeVertical *
+                                                      25,
                                                 ),
                                                 Column(
                                                   mainAxisAlignment:
