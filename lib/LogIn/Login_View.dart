@@ -31,6 +31,8 @@ class _LoginViewState extends State<LoginView> {
   bool passwordVisible = true;
   bool _autoValidate = false;
   bool isFilled = false;
+  var emailFocus = FocusNode();
+  var passwordFocus = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -107,6 +109,7 @@ class _LoginViewState extends State<LoginView> {
                   onChanged: (v) {
                     FilledValues();
                   },
+                  focusNode: emailFocus,
                   controller: Controllers.loginEmail,
                   cursorColor: Colors.black,
                   validator: (value) {
@@ -114,7 +117,9 @@ class _LoginViewState extends State<LoginView> {
                       return Messages.validEmail;
                     }
                   },
-                  onFieldSubmitted: (v) {},
+                  onFieldSubmitted: (v) {
+                    FocusScope.of(context).requestFocus(emailFocus);
+                  },
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 2,
@@ -129,6 +134,7 @@ class _LoginViewState extends State<LoginView> {
                   textInputAction: TextInputAction.next,
                 ),
                 TextFormField(
+                  focusNode: passwordFocus,
                   obscureText: passwordVisible,
                   controller: Controllers.loginPassword,
                   cursorColor: AppTheme.blackColor,
@@ -142,6 +148,10 @@ class _LoginViewState extends State<LoginView> {
                   ],
                   onChanged: (v) {
                     FilledValues();
+                  },
+                  onFieldSubmitted: (v) {
+                    emailFocus.unfocus();
+                    FocusScope.of(context).requestFocus(passwordFocus);
                   },
                   decoration: InputDecoration(
                       suffixIcon: InkWell(
@@ -199,7 +209,7 @@ class _LoginViewState extends State<LoginView> {
                         }
                       }
                     },
-                    color: AppTheme.blackColor,
+                      color: isFilled ? AppTheme.blackColor : AppTheme.toggleColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(25.0),
                     ),

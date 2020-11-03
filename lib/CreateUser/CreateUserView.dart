@@ -37,6 +37,9 @@ class _CreateUserViewState extends State<CreateUserView> {
   var setDateTime;
   Map<String, dynamic> getDetails;
   bool isFilled = false;
+  var nameFocus = FocusNode();
+  var emailFocus = FocusNode();
+  var phone = FocusNode();
   @override
   void initState() {
 /*    SharedPreferenceData().getRegisterDetails().then((value) {
@@ -153,6 +156,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                   child: Column(
                     children: [
                       TextFormField(
+                        focusNode: nameFocus,
                         controller: Controllers.createUserName,
                         cursorColor: Colors.black,
                         validator: (value) {
@@ -166,7 +170,9 @@ class _CreateUserViewState extends State<CreateUserView> {
                         onChanged: (v) {
                           FilledValues();
                         },
-                        onFieldSubmitted: (v) {},
+                        onFieldSubmitted: (v) {
+                          FocusScope.of(context).requestFocus(nameFocus);
+                        },
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 top: SizeConfig.blockSizeVertical * 2,
@@ -181,6 +187,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                         textInputAction: TextInputAction.next,
                       ),
                       TextFormField(
+                        focusNode: emailFocus,
                         validator: (value) {
                           if (value == null || value == "") {
                             return Messages.validEmail;
@@ -191,6 +198,10 @@ class _CreateUserViewState extends State<CreateUserView> {
                         ],
                         onChanged: (v) {
                           FilledValues();
+                        },
+                        onFieldSubmitted: (v){
+                          nameFocus.unfocus();
+                          FocusScope.of(context).requestFocus(emailFocus);
                         },
                         controller: Controllers.createUserEmail,
                         cursorColor: AppTheme.blackColor,
@@ -229,6 +240,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                             return Messages.validPhone;
                           }
                         },
+                        focusNode: phone,
                         inputFormatters: <TextInputFormatter>[
                           LengthLimitingTextInputFormatter(12),
                           FilteringTextInputFormatter.digitsOnly
@@ -236,7 +248,10 @@ class _CreateUserViewState extends State<CreateUserView> {
                         onChanged: (v) {
                           FilledValues();
                         },
-                        onFieldSubmitted: (v) {},
+                        onFieldSubmitted: (v) {
+                          emailFocus.unfocus();
+                          FocusScope.of(context).requestFocus(phone);
+                        },
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 top: SizeConfig.blockSizeVertical * 2,

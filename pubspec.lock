@@ -85,6 +85,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  country_code_picker:
+    dependency: "direct main"
+    description:
+      name: country_code_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.6.2"
+  country_list_pick:
+    dependency: "direct main"
+    description:
+      name: country_list_pick
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1+2"
   crypto:
     dependency: transitive
     description:
@@ -331,6 +345,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.7"
+  modal_bottom_sheet:
+    dependency: transitive
+    description:
+      name: modal_bottom_sheet
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1-dev"
   nested:
     dependency: transitive
     description:

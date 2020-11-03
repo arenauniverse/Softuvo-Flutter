@@ -11,9 +11,10 @@ import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
 import 'package:arena_sports_app/theme.dart';
+import 'package:country_code_picker/country_code.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -41,6 +42,7 @@ class _RegisterViewState extends State<RegisterView> {
   var repeatPasswordFocus = FocusNode();
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
+  String countrycode;
 
   /* focus.unfocus();
   FocusScope.of(context).requestFocus(cvvFocusNode);*/
@@ -63,6 +65,13 @@ class _RegisterViewState extends State<RegisterView> {
       );
     }
     return items;
+  }
+
+  void _onCountryChange(CountryCode countryCodeq) {
+    print("New Country selected: " + countryCodeq.toString());
+    setState(() {
+      countrycode = countryCodeq.name;
+    });
   }
 
   @override
@@ -139,6 +148,7 @@ class _RegisterViewState extends State<RegisterView> {
                   margin:
                       EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
                   child: TextFormField(
+                    focusNode: nameFocus,
                     inputFormatters: <TextInputFormatter>[
                       LengthLimitingTextInputFormatter(12),
                     ],
@@ -183,6 +193,7 @@ class _RegisterViewState extends State<RegisterView> {
                     onChanged: (v) {
                       FilledValues();
                     },
+                    focusNode: emailFocus,
                     controller: Controllers.registerEmail,
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
@@ -255,37 +266,22 @@ class _RegisterViewState extends State<RegisterView> {
                   textInputAction: TextInputAction.next,
                 )*/
                 Container(
-                  margin:
-                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
-                  child: DropdownButtonFormField(
-                      icon: Container(
-                        padding: EdgeInsets.only(right: 10),
-                        child: Icon(
-                          Icons.keyboard_arrow_down_sharp,
-                          color: AppTheme.blackColor,
-                        ),
-                      ),
-                      validator: (value) {
-                        if (value == null || value == "") {
-                          return Strings.selectCountry;
-                        }
-                      },
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(
-                              top: SizeConfig.blockSizeVertical * 2,
-                              bottom: SizeConfig.blockSizeVertical * 2,
-                              left: SizeConfig.blockSizeVertical * 1),
-                          labelText: Strings.parents,
-                          labelStyle: TextStyle(
-                              fontSize: 15.0,
-                              fontFamily: AppTheme.appFont,
-                              color: AppTheme.blackColor)),
-                      items: _dropdownMenuItems,
-                      onChanged: (value) {
-                        setState(() {
-                          _selectedItem = value;
-                        });
-                      }),
+                  decoration: new BoxDecoration(),
+                  child: CountryCodePicker(
+                    showFlag: false,
+                    onChanged: _onCountryChange,
+                    // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                    initialSelection: 'US',
+                    // optional. Shows only country name and flag
+                    showCountryOnly: true,
+                    // optional. Shows only country name and flag when popup is closed.
+                    showOnlyCountryWhenClosed: false,
+                    // optional. aligns the flag and the Text left
+                    alignLeft: false,
+                    /* onInit: (c) {
+                                        print("code" + c.flagUri);
+                                      },*/
+                  ),
                 ),
 /*                AbsorbPointer(
                   child: TextFormField(
@@ -326,6 +322,7 @@ class _RegisterViewState extends State<RegisterView> {
                         return Messages.validPassword;
                       }
                     },
+                    focusNode: passwordFocus,
                     inputFormatters: <TextInputFormatter>[
                       LengthLimitingTextInputFormatter(20),
                     ],
@@ -375,6 +372,7 @@ class _RegisterViewState extends State<RegisterView> {
                         return Messages.validPassword;
                       }
                     },
+                    focusNode: repeatPasswordFocus,
                     inputFormatters: <TextInputFormatter>[
                       LengthLimitingTextInputFormatter(20),
                     ],
@@ -477,7 +475,8 @@ class _RegisterViewState extends State<RegisterView> {
                         }
                       } else {}
                     },
-                    color: AppTheme.blackColor,
+                    color:
+                        isFilled ? AppTheme.blackColor : AppTheme.toggleColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(25.0),
                     ),
