@@ -1,27 +1,68 @@
+import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 import 'package:arena_sports_app/CommonWidgets/DatePicker.dart';
+import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
+import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
+import 'package:arena_sports_app/Repos.dart';
+import 'package:arena_sports_app/UserDashboard/NavigationFiles.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-
 import '../SizeConfig.dart';
 
+var galleryFile;
+bool isimagechosen = false;
+PickedFile _image;
+
 class CreateUserView extends StatefulWidget {
+  final String name, email, dob;
+  const CreateUserView({Key key, this.name, this.email, this.dob})
+      : super(key: key);
   @override
   _CreateUserViewState createState() => _CreateUserViewState();
 }
 
 class _CreateUserViewState extends State<CreateUserView> {
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
   var setDateTime;
+  Map<String, dynamic> getDetails;
+  bool isFilled = false;
+  @override
+  void initState() {
+/*    SharedPreferenceData().getRegisterDetails().then((value) {
+      setState(() {
+        getDetails = value;
+      });
+    });*/
+    Controllers.createUserName..text = widget.name;
+    Controllers.createUserEmail..text = widget.email;
+    Controllers.createUserDob..text = widget.dob;
+  }
+
+  void FilledValues() {
+    if (Controllers.createUserName.text.isNotEmpty &&
+        Controllers.createUserEmail.text.isNotEmpty &&
+        Controllers.createUserDob.text.isNotEmpty &&
+        Controllers.createUserPhone.text.isNotEmpty) {
+      setState(() {
+        isFilled = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Form(
       key: _formKey,
       child: Scaffold(
@@ -34,39 +75,41 @@ class _CreateUserViewState extends State<CreateUserView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 7,
-                          right: SizeConfig.blockSizeHorizontal * 7),
-                      child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                            // Get.back();
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(2),
-                            child: SvgPicture.asset(
-                              'assets/backArrow.svg',
-                              width: 12,
-                            ),
-                          )),
-                    ),
-                    Center(
-                      child: Container(
+                Container(
+                  child: Row(
+                    children: [
+                      Container(
                         margin: EdgeInsets.only(
-                            left: SizeConfig.blockSizeHorizontal * 15),
-                        child: Text(
-                          Strings.createUser,
-                          style: TextStyle(
-                              fontFamily: AppTheme.appFont,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18),
-                        ),
+                            left: SizeConfig.blockSizeHorizontal * 7,
+                            right: SizeConfig.blockSizeHorizontal * 7),
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                              // Get.back();
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(2),
+                              child: SvgPicture.asset(
+                                'assets/backArrow.svg',
+                                width: 12,
+                              ),
+                            )),
                       ),
-                    )
-                  ],
+                      Center(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: SizeConfig.blockSizeHorizontal * 15),
+                          child: Text(
+                            Strings.createUser,
+                            style: TextStyle(
+                                fontFamily: AppTheme.appFont,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   margin:
@@ -76,24 +119,31 @@ class _CreateUserViewState extends State<CreateUserView> {
                     color: AppTheme.blackColor,
                   ),
                 ),
-                Center(
-                  child: Container(
-                    child:
-                        CircularBorder() /*ClipRect(
-                      clipBehavior: Clip.hardEdge,
-                      child: CircleAvatar(
-                        radius: 50.0,
-                        child: Icon(
-                          Icons.camera_alt_outlined,
-                          color: AppTheme.whiteColor,
+                SingleChildScrollView(
+                  physics: ClampingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          child:
+                              CircularBorder() /*ClipRect(
+                            clipBehavior: Clip.hardEdge,
+                            child: CircleAvatar(
+                              radius: 50.0,
+                              child: Icon(
+                                Icons.camera_alt_outlined,
+                                color: AppTheme.whiteColor,
+                              ),
+                              backgroundColor: AppTheme.blackColor,
+                            ),
+                          )*/
+                          ,
+                          margin: EdgeInsets.only(
+                            top: SizeConfig.blockSizeVertical * 1,
+                          ),
                         ),
-                        backgroundColor: AppTheme.blackColor,
                       ),
-                    )*/
-                    ,
-                    margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 1,
-                    ),
+                    ],
                   ),
                 ),
                 Container(
@@ -109,6 +159,12 @@ class _CreateUserViewState extends State<CreateUserView> {
                           if (value == null || value == "") {
                             return Messages.validFullName;
                           }
+                        },
+                        inputFormatters: <TextInputFormatter>[
+                          LengthLimitingTextInputFormatter(12),
+                        ],
+                        onChanged: (v) {
+                          FilledValues();
                         },
                         onFieldSubmitted: (v) {},
                         decoration: InputDecoration(
@@ -130,7 +186,13 @@ class _CreateUserViewState extends State<CreateUserView> {
                             return Messages.validEmail;
                           }
                         },
-                        controller: Controllers.registerEmail,
+                        inputFormatters: <TextInputFormatter>[
+                          LengthLimitingTextInputFormatter(35),
+                        ],
+                        onChanged: (v) {
+                          FilledValues();
+                        },
+                        controller: Controllers.createUserEmail,
                         cursorColor: AppTheme.blackColor,
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
@@ -159,14 +221,20 @@ class _CreateUserViewState extends State<CreateUserView> {
                           lastDate: DateTime.now(),
                         ),
                       ),
-
                       TextFormField(
                         controller: Controllers.createUserPhone,
                         cursorColor: AppTheme.blackColor,
                         validator: (value) {
                           if (value == null || value == "") {
-                            return Messages.validPassword;
+                            return Messages.validPhone;
                           }
+                        },
+                        inputFormatters: <TextInputFormatter>[
+                          LengthLimitingTextInputFormatter(12),
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        onChanged: (v) {
+                          FilledValues();
                         },
                         onFieldSubmitted: (v) {},
                         decoration: InputDecoration(
@@ -179,7 +247,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                                 fontSize: 15.0,
                                 fontFamily: AppTheme.appFont,
                                 color: AppTheme.blackColor)),
-                        keyboardType: TextInputType.text,
+                        keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
                       )
                     ],
@@ -195,6 +263,7 @@ class _CreateUserViewState extends State<CreateUserView> {
                           horizontal: SizeConfig.blockSizeHorizontal * 34,
                           vertical: SizeConfig.blockSizeVertical * 2),
                       onPressed: () {
+                        QueryResult getResult;
                         if (_formKey.currentState.validate()) {
                           if (Controllers.createUserName.text.isNotEmpty) {
                             if (validateEmail(
@@ -202,9 +271,8 @@ class _CreateUserViewState extends State<CreateUserView> {
                               if (Controllers.createUserDob.text.isNotEmpty) {
                                 if (validateMobile(
                                     Controllers.createUserPhone.text)) {
-                                  toast(
-                                      msg: Messages.createUserSuccess,
-                                      context: context);
+                                  createUser(
+                                      context: context, queryResult: getResult);
                                 } else {
                                   toast(
                                       msg: Messages.validPhone,
@@ -219,7 +287,8 @@ class _CreateUserViewState extends State<CreateUserView> {
                           }
                         }
                       },
-                      color: AppTheme.blackColor,
+                      color:
+                          isFilled ? AppTheme.blackColor : AppTheme.toggleColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
@@ -239,23 +308,51 @@ class _CreateUserViewState extends State<CreateUserView> {
     );
   }
 
-  void createUser(){
-    /*editCurrentUser(
-        username: String
-        firstName: String
-    lastName: String
-    email: String
-    dateOfBirth: String
-    country: String
-    avatarURL: String
-    latitude: Float
-        longitude: Float
-        status: String
-    ): [Person]!*/
+  Future createUser({BuildContext context, QueryResult queryResult}) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        Dialogs.showLoadingDialog(context, _addLoader);
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client
+            .mutate(
+          MutationOptions(
+              documentNode: gql(
+            addMutation.createUser(
+                country: 'canada',
+                email: widget.email,
+                dob: widget.dob,
+                fName: widget.name,
+                id: "50",
+                imageUrl: galleryFile,
+                lName: widget.name,
+                status: 'confirm',
+                userName: widget.name),
+          )),
+        )
+            .then((value) {
+          queryResult = value;
+          if (!queryResult.hasException) {
+            toast(msg: Messages.createUserSuccess, context: context);
+            SharedPreferenceData()
+                .saveCreateUserDetails(data: value.data['signUp']);
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => NavigationScreens()),
+                (Route<dynamic> route) => false);
+          } else {
+            var errorMessage = queryResult.exception.toString().split(':');
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            toast(context: context, msg: queryResult.exception.toString());
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: Messages.noConnection, context: context);
+    }
   }
 }
 
-class CircularBorder extends StatelessWidget {
+class CircularBorder extends StatefulWidget {
   final Color color;
   final double size;
   final double width;
@@ -270,27 +367,49 @@ class CircularBorder extends StatelessWidget {
       : super(key: key);
 
   @override
+  _CircularBorderState createState() => _CircularBorderState();
+}
+
+class _CircularBorderState extends State<CircularBorder> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: size,
-      width: size,
+      height: widget.size,
+      width: widget.size,
       alignment: Alignment.center,
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          icon == null ? Container() : icon,
+          widget.icon == null ? Container() : widget.icon,
           CustomPaint(
             child: CircleAvatar(
               radius: 64,
               backgroundColor: Colors.white,
               child: CircleAvatar(
                 radius: 61,
-                backgroundColor: Colors.black,
-                child: Icon(
-                  Icons.camera_alt_outlined,
-                  color: AppTheme.whiteColor,
-                  size: 40,
+                backgroundColor:
+                    isimagechosen ? Colors.transparent : Colors.black,
+                /*     backgroundImage: isimagechosen
+                    ? PickedFile(galleryFile)
+                    : CachedNetworkImageProvider(
+                        "https://www.google.com/search?q=IMAGES&sxsrf=ALeKk02z88RL5riozHMKXA1Lx2piJC9EIw:1604379497114&tbm=isch&source=iu&ictx=1&fir=PDxUM2uh-Nz6cM%252CLlgDpz1LoiuznM%252C_&vet=1&usg=AI4_-kSNly43fM4Q4nawZzRHtyy3Nz1lOg&sa=X&ved=2ahUKEwiIoYqwy-XsAhUj5nMBHb6dBbYQ9QF6BAgEEF4#imgrc=PDxUM2uh-Nz6cM"),*/
+                child: InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            contentPadding: EdgeInsets.zero,
+                            content: setupAlertDialoadContainer(context),
+                          );
+                        });
+                  },
+                  child: Icon(
+                    Icons.camera_alt_outlined,
+                    color: AppTheme.whiteColor,
+                    size: 40,
+                  ),
                 ),
               ),
             ),
@@ -302,6 +421,138 @@ class CircularBorder extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget setupAlertDialoadContainer(BuildContext context) {
+    return Container(
+        height: 240.0, // Change as per your requirement
+        width: 80.0, // Change as per your requirement
+        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+          Container(
+            height: 45,
+            padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 4.0),
+            color: Colors.black,
+            child: Center(
+              child: Text(
+                "Select Picture",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18),
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 20),
+            child: Material(
+              color: Colors.black,
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(const Radius.circular(50.0)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: InkWell(
+                  onTap: () async {
+                    /*    count = 1;
+                    Navigator.of(context).pop();
+                    done = await widget.onClickCallback();
+                    setState(() {});*/
+                    Navigator.of(context).pop();
+                    isimagechosen = true;
+                    chooseCameraFile();
+                  },
+                  child: Container(
+                    width: 100,
+                    child: Text(
+                      "CAMERA",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 20),
+            child: Material(
+              color: Colors.black,
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(const Radius.circular(50.0)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: InkWell(
+                  onTap: () async {
+                    /* count = 2;
+                    Navigator.of(context).pop();
+                    done = await widget.onClickCallback();
+                    setState(() {});*/
+                    Navigator.of(context).pop();
+                    isimagechosen = true;
+                    chooseImageFile();
+                  },
+                  child: Container(
+                    width: 100,
+                    child: Text(
+                      "GALLERY",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            margin: EdgeInsets.only(top: 20),
+            child: Material(
+              color: Colors.black,
+              elevation: 2,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(const Radius.circular(40.0)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: InkWell(
+                  onTap: () async {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                      width: 100,
+                      child: Text(
+                        "CANCEL",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      )),
+                ),
+              ),
+            ),
+          ),
+        ]));
+  }
+
+  Future<PickedFile> chooseCameraFile() async {
+    await ImagePicker().getImage(source: ImageSource.camera).then((image) {
+      setState(() {
+        galleryFile = image;
+      });
+    });
+    return galleryFile;
+  }
+
+  Future<PickedFile> chooseImageFile() async {
+    await ImagePicker().getImage(source: ImageSource.gallery).then((image) {
+      setState(() {
+        galleryFile = image;
+      });
+    });
+    return galleryFile;
   }
 }
 

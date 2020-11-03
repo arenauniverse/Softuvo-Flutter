@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import "package:flutter/material.dart";
@@ -41,7 +42,8 @@ class QueryMutation {
   String googleLogin({String token}) {
     return """mutation {
                 signUp(
-                  mechanism: GOOGLE              
+                  mechanism: GOOGLE   
+                  mechanismToken: "$token"           
                  ){
                   authorization
                  }
@@ -66,6 +68,40 @@ class QueryMutation {
   emailConfirm: "$emailConfirm"
   keyword: "$keyword"
   keywordConfirm: "$keywordConfirm"
+  ) {
+  authorization
+  person {
+  _id
+  email
+  }
+  }
+}""";
+  }
+
+  String createUser(
+      {String id,
+      userName,
+      fName,
+      lName,
+      email,
+      dob,
+      country,
+      imageUrl,
+      status,
+      }) {
+    return """mutation {
+  editPeople(
+  idPerson: "$id"
+  username: "$userName"
+  firstName: "$fName"
+  lastName: "$lName"
+  email: "$email"
+  dateOfBirth: "$dob"
+  country: "$country"
+  avatarURL: "$imageUrl"
+  latitude: "30.7090847"
+  longitude: "76.6951651"
+  status: "$status"
   ) {
   authorization
   person {

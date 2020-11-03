@@ -227,7 +227,8 @@ class _ResultsViewState extends State<ResultsView> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: SizeConfig.blockSizeHorizontal * 0.8,
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 0.8,
                                       height: SizeConfig.blockSizeVertical * 7,
                                       decoration: BoxDecoration(
                                           borderRadius:
@@ -903,7 +904,8 @@ class _ResultsViewState extends State<ResultsView> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: SizeConfig.blockSizeHorizontal * 0.8,
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 0.8,
                                       height: SizeConfig.blockSizeVertical * 7,
                                       decoration: BoxDecoration(
                                           borderRadius:
@@ -1114,7 +1116,8 @@ class _ResultsViewState extends State<ResultsView> {
                                 Row(
                                   children: [
                                     Container(
-                                      width: SizeConfig.blockSizeHorizontal * 0.8,
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 0.8,
                                       height: SizeConfig.blockSizeVertical * 7,
                                       decoration: BoxDecoration(
                                           borderRadius:

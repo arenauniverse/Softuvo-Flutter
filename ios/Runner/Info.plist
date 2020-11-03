@@ -22,6 +22,30 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb3881527871918567</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>3881527871918567</string>
+    <key>FacebookDisplayName</key>
+    <string>Arena Sport</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Application will access your current location to show you nearby games.</string>
+   	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Application will access your current location to show you nearby games.</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -29,8 +53,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

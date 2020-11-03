@@ -109,7 +109,9 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
                   child: Column(
                     children: [
                       Container(
-                        height: widget.userComingFrom == 'register' ? SizeConfig.blockSizeHorizontal * 60 : SizeConfig.blockSizeHorizontal * 80,
+                        height: widget.userComingFrom == 'register'
+                            ? SizeConfig.blockSizeVertical * 60
+                            : SizeConfig.blockSizeVertical * 80,
                         margin: EdgeInsets.only(
                             top: SizeConfig.blockSizeVertical * 3,
                             bottom: SizeConfig.blockSizeVertical * 5),
@@ -241,13 +243,16 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
           if (!queryResult.hasException) {
             toast(msg: Messages.registerSuccess, context: context);
             SharedPreferenceData().saveRegisteredValue(true);
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => NavigationScreens()),
-                (Route<dynamic> route) => false);
-            widget.email.clear;
-            widget.name.clear;
-            widget.password.clear;
-            widget.passwordConfirm.clear;
+            SharedPreferenceData()
+                .saveRegisterDetails(data: value.data['signUp']);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => CreateUserView(
+                          name: widget.name.text,
+                          dob: widget.birthday,
+                          email: widget.email.text,
+                        )));
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();

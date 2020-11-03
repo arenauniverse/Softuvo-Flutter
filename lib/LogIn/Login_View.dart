@@ -30,6 +30,7 @@ class _LoginViewState extends State<LoginView> {
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
   bool passwordVisible = true;
   bool _autoValidate = false;
+  bool isFilled = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -101,8 +102,11 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 TextFormField(
                   inputFormatters: [
-                    LengthLimitingTextInputFormatter(30),
+                    LengthLimitingTextInputFormatter(35),
                   ],
+                  onChanged: (v) {
+                    FilledValues();
+                  },
                   controller: Controllers.loginEmail,
                   cursorColor: Colors.black,
                   validator: (value) {
@@ -132,6 +136,12 @@ class _LoginViewState extends State<LoginView> {
                     if (value == null || value == "") {
                       return Messages.validPassword;
                     }
+                  },
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(20),
+                  ],
+                  onChanged: (v) {
+                    FilledValues();
                   },
                   decoration: InputDecoration(
                       suffixIcon: InkWell(
@@ -225,6 +235,15 @@ class _LoginViewState extends State<LoginView> {
         ),
       ),
     );
+  }
+
+  void FilledValues() {
+    if (Controllers.loginPassword.text.isNotEmpty &&
+        Controllers.loginEmail.text.isNotEmpty) {
+      setState(() {
+        isFilled = true;
+      });
+    }
   }
 
   Future LoginUser({BuildContext context, QueryResult queryResult}) async {

@@ -28,16 +28,22 @@ class _RegisterViewState extends State<RegisterView> {
   var setDateTime, dateTimeFormat;
   bool passwordVisible = true;
   bool repeatPasswordVisible = true;
+  bool isFilled = false;
   List<ListItem> _dropdownItems = [
     ListItem(1, "First Value"),
     ListItem(2, "Second Item"),
     ListItem(3, "Third Item"),
     ListItem(4, "Fourth Item")
   ];
-
+  var nameFocus = FocusNode();
+  var emailFocus = FocusNode();
+  var passwordFocus = FocusNode();
+  var repeatPasswordFocus = FocusNode();
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
 
+  /* focus.unfocus();
+  FocusScope.of(context).requestFocus(cvvFocusNode);*/
   void initState() {
     super.initState();
     Controllers.dob.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
@@ -68,7 +74,7 @@ class _RegisterViewState extends State<RegisterView> {
           backgroundColor: AppTheme.whiteColor,
           elevation: 0.0,
           title: Text(""),
-          leading: Container(
+          /*     leading: Container(
               margin: EdgeInsets.only(
                   top: SizeConfig.blockSizeVertical * 2.0,
                   left: SizeConfig.blockSizeHorizontal * 8,
@@ -77,7 +83,7 @@ class _RegisterViewState extends State<RegisterView> {
               child: Icon(
                 Icons.arrow_back_ios,
                 size: 28,
-              )),
+              )),*/
         ),
         resizeToAvoidBottomInset: true,
         body: Container(
@@ -138,12 +144,17 @@ class _RegisterViewState extends State<RegisterView> {
                     ],
                     controller: Controllers.name,
                     cursorColor: Colors.black,
+                    onChanged: (v) {
+                      FilledValues();
+                    },
                     validator: (value) {
                       if (value == null || value == "") {
                         return Messages.validFullName;
                       }
                     },
-                    onFieldSubmitted: (v) {},
+                    onFieldSubmitted: (v) {
+                      FocusScope.of(context).requestFocus(nameFocus);
+                    },
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
                             top: SizeConfig.blockSizeVertical * 2,
@@ -162,6 +173,16 @@ class _RegisterViewState extends State<RegisterView> {
                   margin:
                       EdgeInsets.only(bottom: SizeConfig.blockSizeVertical * 1),
                   child: TextFormField(
+                    onFieldSubmitted: (v) {
+                      nameFocus.unfocus();
+                      FocusScope.of(context).requestFocus(emailFocus);
+                    },
+                    inputFormatters: <TextInputFormatter>[
+                      LengthLimitingTextInputFormatter(30),
+                    ],
+                    onChanged: (v) {
+                      FilledValues();
+                    },
                     controller: Controllers.registerEmail,
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
@@ -305,6 +326,16 @@ class _RegisterViewState extends State<RegisterView> {
                         return Messages.validPassword;
                       }
                     },
+                    inputFormatters: <TextInputFormatter>[
+                      LengthLimitingTextInputFormatter(20),
+                    ],
+                    onChanged: (v) {
+                      FilledValues();
+                    },
+                    onFieldSubmitted: (v) {
+                      emailFocus.unfocus();
+                      FocusScope.of(context).requestFocus(passwordFocus);
+                    },
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
                         suffixIcon: InkWell(
@@ -343,6 +374,16 @@ class _RegisterViewState extends State<RegisterView> {
                       if (value == null || value == "") {
                         return Messages.validPassword;
                       }
+                    },
+                    inputFormatters: <TextInputFormatter>[
+                      LengthLimitingTextInputFormatter(20),
+                    ],
+                    onChanged: (v) {
+                      FilledValues();
+                    },
+                    onFieldSubmitted: (v) {
+                      passwordFocus.unfocus();
+                      FocusScope.of(context).requestFocus(repeatPasswordFocus);
                     },
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
@@ -394,6 +435,10 @@ class _RegisterViewState extends State<RegisterView> {
                                       8) {
                                 if (Controllers.repeatPassword.text ==
                                     Controllers.registerPassword.text) {
+                                  /*   RegisterUser(
+                                      context: context,
+                                      queryResult: getResult,
+                                      dateTimeFormat: dateTimeFormat);*/
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -476,6 +521,7 @@ class _RegisterViewState extends State<RegisterView> {
         )
             .then((value) {
           queryResult = value;
+          print("data" + queryResult.data.toString());
           if (!queryResult.hasException) {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
             toast(msg: Messages.registerSuccess, context: context);
@@ -498,6 +544,17 @@ class _RegisterViewState extends State<RegisterView> {
       }
     } on SocketException catch (_) {
       toast(msg: Messages.noConnection, context: context);
+    }
+  }
+
+  void FilledValues() {
+    if (Controllers.registerEmail.text.isNotEmpty &&
+        Controllers.repeatPassword.text.isNotEmpty &&
+        Controllers.name.text.isNotEmpty &&
+        Controllers.registerPassword.text.isNotEmpty) {
+      setState(() {
+        isFilled = true;
+      });
     }
   }
 }
