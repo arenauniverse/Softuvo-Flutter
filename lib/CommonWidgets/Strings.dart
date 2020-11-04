@@ -102,6 +102,7 @@ class Strings {
   static String Myclubs = "Mis clubes";
   static String Myfavourites = "Mis favoritos";
   static String Arsenal = "Arsenal";
+  static String playerNaME = "Leonel Messi";
   static String BocaJuniors = "Boca Juniors";
   static String Results = "Resultados";
   static String everybody = "Todos";
@@ -122,4 +123,6 @@ class Strings {
   static String next = "Siguiente";
   static String selectSport = "Selecciona un deporte";
   static String back = "Anterior";
+  static String ArgentinaLeague = "Argentina";
+  static String findPlayers = "Buscar otros jugadores";
 }

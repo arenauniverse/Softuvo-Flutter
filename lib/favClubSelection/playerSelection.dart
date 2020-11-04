@@ -1,7 +1,9 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
+import 'package:arena_sports_app/favClubSelection/leagueSelection.dart';
 import 'package:arena_sports_app/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,7 +13,23 @@ class FavPlayerselection extends StatefulWidget {
 }
 
 class _FavPlayerselectionState extends State<FavPlayerselection> {
-  TextStyle style = TextStyle(fontWeight: FontWeight.w500);
+  TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
+  List<ListViewModel> listViewData = [];
+  @override
+  void initState() {
+    for (int i = 0; i < 12; i++) {
+      listViewData.add(ListViewModel(
+          title: Strings.playerNaME,
+          isSelected: false,
+          image: Image.asset(
+            "assets/messi.png",
+            height: SizeConfig.blockSizeVertical * 6,
+          ),
+          type: "player"));
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +85,7 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                             maxLines: 1,
                             decoration: InputDecoration(
                                 contentPadding:
-                                const EdgeInsets.symmetric(vertical: 0.0),
+                                    const EdgeInsets.symmetric(vertical: 0.0),
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.only(
                                       left: 18.0, right: 18.0),
@@ -78,9 +96,9 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                                 ),
                                 fillColor: Colors.white,
                                 filled: true,
-                                hintText: "Buscar otros equipos",
+                                hintText: Strings.findPlayers,
                                 hintStyle:
-                                TextStyle(color: AppTheme.toggleColor),
+                                    TextStyle(color: AppTheme.toggleColor),
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Colors.black,
@@ -115,39 +133,76 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
-                        children: List.generate(12, (index) {
-                          return Container(
-                              margin: EdgeInsets.symmetric(
-                                  vertical: SizeConfig.blockSizeVertical * 1.5,
-                                  horizontal:
-                                  SizeConfig.blockSizeHorizontal * 2.5),
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      blurRadius: 3.0,
-                                      spreadRadius: 0.0,
-                                      offset: Offset(0.5,
-                                          0.5), // shadow direction: bottom right
+                        children: List.generate(listViewData.length, (index) {
+                          return GestureDetector(
+                            onTap: () {
+                              // isSelected = true;
+                              if (listViewData.elementAt(index).isSelected ==
+                                  false) {
+                                setState(() {
+                                  listViewData.elementAt(index).isSelected =
+                                      true;
+                                  if (listViewData
+                                      .elementAt(index)
+                                      .isSelected) {
+                                    favList.add(listViewData.elementAt(index));
+                                  }
+                                });
+                              } else {
+                                setState(() {
+                                  listViewData.elementAt(index).isSelected =
+                                      false;
+                                });
+                              }
+                            },
+                            child: Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 1.5,
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 2.5),
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(0.5,
+                                            0.5), // shadow direction: bottom right
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Theme.of(context).cardColor),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Visibility(
+                                      child: Align(
+                                        child: Container(
+                                          child: SvgPicture.asset(
+                                              'assets/Check1.svg'),
+                                          margin: EdgeInsets.only(right: 6.0),
+                                        ),
+                                        alignment: Alignment.topRight,
+                                      ),
+                                      visible: listViewData
+                                          .elementAt(index)
+                                          .isSelected,
+                                    ),
+                                    listViewData[index].image,
+                                    Container(
+                                      child: Text(
+                                        listViewData[index].title,
+                                        style: style,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      width: SizeConfig.blockSizeVertical * 8,
                                     )
                                   ],
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Theme.of(context).cardColor),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    "assets/UEFA.png",
-                                    height: SizeConfig.blockSizeVertical * 6,
-                                  ),
-                                  Text(
-                                    Strings.Arsenal,
-                                    style: style,
-                                  )
-                                ],
-                              ),
-                              height: SizeConfig.blockSizeVertical * 8,
-                              width: SizeConfig.blockSizeVertical * 8);
+                                ),
+                                height: SizeConfig.blockSizeVertical * 8,
+                                width: SizeConfig.blockSizeVertical * 8),
+                          );
                         }),
                       ),
                     )

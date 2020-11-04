@@ -211,7 +211,6 @@ class _NavigationScreensState extends State<NavigationScreens> {
   }
 
   getUserLocation() async {
-    //call this async method from whereever you need
     var currentLocation;
     LocationData myLocation;
     String error;
@@ -237,8 +236,6 @@ class _NavigationScreensState extends State<NavigationScreens> {
     var addresses =
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
     var first = addresses.first;
-    print(
-        ' ${first.locality}, ${first.adminArea},${first.subLocality}, ${first.subAdminArea},${first.addressLine}, ${first.featureName},${first.thoroughfare}, ${first.subThoroughfare}');
     return first;
   }
 }

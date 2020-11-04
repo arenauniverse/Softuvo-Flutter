@@ -2,6 +2,7 @@ import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/constants/AppColors.dart';
+import 'package:arena_sports_app/favClubSelection/leagueSelection.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +13,23 @@ class FavTeamSelection extends StatefulWidget {
 }
 
 class _FavTeamSelectionState extends State<FavTeamSelection> {
-  TextStyle style = TextStyle(fontWeight: FontWeight.w500);
+  TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
+  List<ListViewModel> listViewData = [];
+  @override
+  void initState() {
+    for (int i = 0; i < 12; i++) {
+      listViewData.add(ListViewModel(
+          title: Strings.Arsenal,
+          isSelected: false,
+          image: Image.asset(
+            "assets/UEFA.png",
+            height: SizeConfig.blockSizeVertical * 6,
+          ),
+          type: "team"));
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,39 +134,72 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
-                        children: List.generate(12, (index) {
-                          return Container(
-                              margin: EdgeInsets.symmetric(
-                                  vertical: SizeConfig.blockSizeVertical * 1.5,
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 2.5),
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      blurRadius: 3.0,
-                                      spreadRadius: 0.0,
-                                      offset: Offset(0.5,
-                                          0.5), // shadow direction: bottom right
+                        children: List.generate(listViewData.length, (index) {
+                          return GestureDetector(
+                            onTap: () {
+                              // isSelected = true;
+                              if (listViewData.elementAt(index).isSelected ==
+                                  false) {
+                                setState(() {
+                                  listViewData.elementAt(index).isSelected =
+                                      true;
+                                  if (listViewData
+                                      .elementAt(index)
+                                      .isSelected) {
+                                    favList.add(listViewData.elementAt(index));
+                                  }
+                                });
+                              } else {
+                                setState(() {
+                                  listViewData.elementAt(index).isSelected =
+                                      false;
+                                });
+                              }
+                            },
+                            child: Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 1.5,
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 2.5),
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(0.5,
+                                            0.5), // shadow direction: bottom right
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Theme.of(context).cardColor),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Visibility(
+                                      child: Align(
+                                        child: Container(
+                                          child: SvgPicture.asset(
+                                              'assets/Check1.svg'),
+                                          margin: EdgeInsets.only(right: 6.0),
+                                        ),
+                                        alignment: Alignment.topRight,
+                                      ),
+                                      visible: listViewData
+                                          .elementAt(index)
+                                          .isSelected,
+                                    ),
+                                    listViewData[index].image,
+                                    Text(
+                                      listViewData[index].title,
+                                      style: style,
                                     )
                                   ],
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Theme.of(context).cardColor),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    "assets/UEFA.png",
-                                    height: SizeConfig.blockSizeVertical * 6,
-                                  ),
-                                  Text(
-                                    Strings.Arsenal,
-                                    style: style,
-                                  )
-                                ],
-                              ),
-                              height: SizeConfig.blockSizeVertical * 8,
-                              width: SizeConfig.blockSizeVertical * 8);
+                                ),
+                                height: SizeConfig.blockSizeVertical * 8,
+                                width: SizeConfig.blockSizeVertical * 8),
+                          );
                         }),
                       ),
                     )

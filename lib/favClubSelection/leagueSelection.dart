@@ -5,15 +5,34 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+List favList = [];
+
 class LeagueSelection extends StatefulWidget {
   @override
   _LeagueSelectionState createState() => _LeagueSelectionState();
 }
 
 class _LeagueSelectionState extends State<LeagueSelection> {
-  TextStyle style = TextStyle(fontWeight: FontWeight.w500);
-  bool isSelected = false;
-  int selectedCount = 0;
+  TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
+  ScrollController scrollController = ScrollController();
+  List<ListViewModel> listViewData = [];
+
+  @override
+  void initState() {
+    for (int i = 0; i < 12; i++) {
+      listViewData.add(ListViewModel(
+        title: Strings.ArgentinaLeague,
+        isSelected: false,
+        image: Image.asset(
+          "assets/league.png",
+          height: SizeConfig.blockSizeVertical * 6,
+        ),
+        type: "league"
+      ));
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +74,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
               <Widget>[
                 Column(
                   children: [
-                    Container(
+/*                    Container(
                       margin: EdgeInsets.only(
                         top: SizeConfig.blockSizeVertical * 2,
                       ),
@@ -182,23 +201,37 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                           ],
                         ),
                       ),
-                    ),
+                    )*/
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: SizeConfig.blockSizeHorizontal * 3,
                       ),
                       child: GridView.count(
-                        controller: ,
+                        controller: scrollController,
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
-                        children: List.generate(12, (index) {
+                        children: List.generate(listViewData.length, (index) {
                           return GestureDetector(
                             onTap: () {
-                              setState(() {
-                                isSelected = true;
-                              });
-                              print("index" + index.toString());
+                              // isSelected = true;
+                              if (listViewData.elementAt(index).isSelected ==
+                                  false) {
+                                setState(() {
+                                  listViewData.elementAt(index).isSelected =
+                                      true;
+                                  if (listViewData
+                                      .elementAt(index)
+                                      .isSelected) {
+                                    favList.add(listViewData.elementAt(index));
+                                  }
+                                });
+                              } else {
+                                setState(() {
+                                  listViewData.elementAt(index).isSelected =
+                                      false;
+                                });
+                              }
                             },
                             child: Container(
                                 margin: EdgeInsets.symmetric(
@@ -230,14 +263,13 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                         ),
                                         alignment: Alignment.topRight,
                                       ),
-                                      visible: isSelected,
+                                      visible: listViewData
+                                          .elementAt(index)
+                                          .isSelected,
                                     ),
-                                    Image.asset(
-                                      "assets/UEFA.png",
-                                      height: SizeConfig.blockSizeVertical * 6,
-                                    ),
+                                    listViewData[index].image,
                                     Text(
-                                      Strings.Arsenal,
+                                      listViewData[index].title,
                                       style: style,
                                     )
                                   ],
@@ -257,4 +289,17 @@ class _LeagueSelectionState extends State<LeagueSelection> {
       ),
     );
   }
+}
+
+class ListViewModel {
+  final String title;
+  final Image image;
+  bool isSelected;
+  final String type;
+  ListViewModel({
+    this.type,
+    this.title,
+    this.isSelected,
+    this.image,
+  });
 }

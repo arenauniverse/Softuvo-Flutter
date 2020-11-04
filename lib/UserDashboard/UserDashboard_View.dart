@@ -899,10 +899,10 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
-                                  SvgPicture.asset(
+                                  /*SvgPicture.asset(
                                     'assets/newsImage.svg',
                                     width: SizeConfig.blockSizeHorizontal * 8,
-                                  ),
+                                  ),*/
                                 ],
                               ),
                               Container(
@@ -934,10 +934,10 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
-                                  SvgPicture.asset(
+                                  /* SvgPicture.asset(
                                     'assets/newsImage.svg',
                                     width: SizeConfig.blockSizeHorizontal * 8,
-                                  ),
+                                  ),*/
                                 ],
                               ),
                               Container(
