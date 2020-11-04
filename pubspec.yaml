@@ -44,6 +44,7 @@ dependencies:
   webview_flutter: ^1.0.5
   image_picker: ^0.6.7+12
   flutter_country_picker: ^0.1.6
+  flutter_animation_progress_bar: ^1.0.5
   flutter:
     sdk: flutter
 

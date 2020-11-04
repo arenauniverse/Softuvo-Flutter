@@ -5,9 +5,13 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'bottomNavigationLeague.dart';
+
 List favList = [];
 
 class LeagueSelection extends StatefulWidget {
+  LeagueSelection({ Key key }) : super(key: key);
+
   @override
   _LeagueSelectionState createState() => _LeagueSelectionState();
 }
@@ -16,19 +20,19 @@ class _LeagueSelectionState extends State<LeagueSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
   ScrollController scrollController = ScrollController();
   List<ListViewModel> listViewData = [];
+  var myCustomForm =  OnBoard();
 
   @override
   void initState() {
     for (int i = 0; i < 12; i++) {
       listViewData.add(ListViewModel(
-        title: Strings.ArgentinaLeague,
-        isSelected: false,
-        image: Image.asset(
-          "assets/league.png",
-          height: SizeConfig.blockSizeVertical * 6,
-        ),
-        type: "league"
-      ));
+          title: Strings.ArgentinaLeague,
+          isSelected: false,
+          image: Image.asset(
+            "assets/league.png",
+            height: SizeConfig.blockSizeVertical * 6,
+          ),
+          type: "league"));
     }
     super.initState();
   }
@@ -214,22 +218,21 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         children: List.generate(listViewData.length, (index) {
                           return GestureDetector(
                             onTap: () {
-                              // isSelected = true;
-                              if (listViewData.elementAt(index).isSelected ==
-                                  false) {
+                              if (listViewData.elementAt(index).isSelected == false) {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected =
-                                      true;
-                                  if (listViewData
-                                      .elementAt(index)
-                                      .isSelected) {
-                                    favList.add(listViewData.elementAt(index));
-                                  }
+                                  listViewData.elementAt(index).isSelected = true;
+                                  //if (listViewData.elementAt(index).isSelected) {
+                                  var selectedData = listViewData.elementAt(index);
+                                    favList.add(selectedData);
+                                //  OnBoard().createState().build(context);
+                                //  }
                                 });
                               } else {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected =
-                                      false;
+                                  listViewData.elementAt(index).isSelected = false;
+                                  //if (listViewData.elementAt(index).isSelected = false) {
+                                    favList.removeAt(index);
+                                //  }
                                 });
                               }
                             },
