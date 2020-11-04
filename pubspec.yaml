@@ -43,8 +43,7 @@ dependencies:
   sign_in_with_apple: ^2.5.4
   webview_flutter: ^1.0.5
   image_picker: ^0.6.7+12
-  country_code_picker: ^1.6.2
-  country_list_pick:
+  flutter_country_picker: ^0.1.6
   flutter:
     sdk: flutter
 

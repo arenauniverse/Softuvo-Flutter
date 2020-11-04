@@ -12,6 +12,8 @@ class LeagueSelection extends StatefulWidget {
 
 class _LeagueSelectionState extends State<LeagueSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500);
+  bool isSelected = false;
+  int selectedCount = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,45 +185,66 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 3,
-                         ),
+                        horizontal: SizeConfig.blockSizeHorizontal * 3,
+                      ),
                       child: GridView.count(
+                        controller: ,
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
                         children: List.generate(12, (index) {
-                          return Container(
-                              margin: EdgeInsets.symmetric(
-                                  vertical: SizeConfig.blockSizeVertical * 1.5,
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 2.5),
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      blurRadius: 3.0,
-                                      spreadRadius: 0.0,
-                                      offset: Offset(0.5,
-                                          0.5), // shadow direction: bottom right
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isSelected = true;
+                              });
+                              print("index" + index.toString());
+                            },
+                            child: Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 1.5,
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 2.5),
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        blurRadius: 3.0,
+                                        spreadRadius: 0.0,
+                                        offset: Offset(0.5,
+                                            0.5), // shadow direction: bottom right
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Theme.of(context).cardColor),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Visibility(
+                                      child: Align(
+                                        child: Container(
+                                          child: SvgPicture.asset(
+                                              'assets/Check1.svg'),
+                                          margin: EdgeInsets.only(right: 6.0),
+                                        ),
+                                        alignment: Alignment.topRight,
+                                      ),
+                                      visible: isSelected,
+                                    ),
+                                    Image.asset(
+                                      "assets/UEFA.png",
+                                      height: SizeConfig.blockSizeVertical * 6,
+                                    ),
+                                    Text(
+                                      Strings.Arsenal,
+                                      style: style,
                                     )
                                   ],
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Theme.of(context).cardColor),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    "assets/UEFA.png",
-                                    height: SizeConfig.blockSizeVertical * 6,
-                                  ),
-                                  Text(
-                                    Strings.Arsenal,
-                                    style: style,
-                                  )
-                                ],
-                              ),
-                              height: SizeConfig.blockSizeVertical * 8,
-                              width: SizeConfig.blockSizeVertical * 8);
+                                ),
+                                height: SizeConfig.blockSizeVertical * 8,
+                                width: SizeConfig.blockSizeVertical * 8),
+                          );
                         }),
                       ),
                     )

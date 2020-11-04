@@ -19,13 +19,7 @@ class _OnBoardState extends State<OnBoard> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
   bool getBack = false;
-  List<Widget> _buildPageIndicator() {
-    List<Widget> list = [];
-    for (int i = 0; i < _numPages; i++) {
-      list.add(i == _currentPage ? indicator(true) : indicator(false));
-    }
-    return list;
-  }
+
 
   @override
   Widget build(BuildContext context) {

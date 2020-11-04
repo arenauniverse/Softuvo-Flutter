@@ -11,10 +11,9 @@ import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
 import 'package:arena_sports_app/theme.dart';
-import 'package:country_code_picker/country_code.dart';
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_country_picker/flutter_country_picker.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -30,28 +29,19 @@ class _RegisterViewState extends State<RegisterView> {
   bool passwordVisible = true;
   bool repeatPasswordVisible = true;
   bool isFilled = false;
-  List<ListItem> _dropdownItems = [
-    ListItem(1, "First Value"),
-    ListItem(2, "Second Item"),
-    ListItem(3, "Third Item"),
-    ListItem(4, "Fourth Item")
-  ];
   var nameFocus = FocusNode();
   var emailFocus = FocusNode();
   var passwordFocus = FocusNode();
   var repeatPasswordFocus = FocusNode();
-  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
-  String countrycode;
-
+  Country _selected;
   /* focus.unfocus();
   FocusScope.of(context).requestFocus(cvvFocusNode);*/
   void initState() {
     super.initState();
+    _selected = Country.US;
     Controllers.dob.text = DateFormat("dd-MM-yyyy").format(DateTime.now());
     dateTimeFormat = DateFormat("dd/MM/yyyy").format(DateTime.now());
-    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
-    _selectedItem = _dropdownMenuItems[0].value;
   }
 
   List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
@@ -65,13 +55,6 @@ class _RegisterViewState extends State<RegisterView> {
       );
     }
     return items;
-  }
-
-  void _onCountryChange(CountryCode countryCodeq) {
-    print("New Country selected: " + countryCodeq.toString());
-    setState(() {
-      countrycode = countryCodeq.name;
-    });
   }
 
   @override
@@ -266,21 +249,31 @@ class _RegisterViewState extends State<RegisterView> {
                   textInputAction: TextInputAction.next,
                 )*/
                 Container(
-                  decoration: new BoxDecoration(),
-                  child: CountryCodePicker(
-                    showFlag: false,
-                    onChanged: _onCountryChange,
-                    // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-                    initialSelection: 'US',
-                    // optional. Shows only country name and flag
-                    showCountryOnly: true,
-                    // optional. Shows only country name and flag when popup is closed.
-                    showOnlyCountryWhenClosed: false,
-                    // optional. aligns the flag and the Text left
-                    alignLeft: false,
-                    /* onInit: (c) {
-                                        print("code" + c.flagUri);
-                                      },*/
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 2,
+                      right: SizeConfig.blockSizeHorizontal * 2),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                    color: AppTheme.greyColor,
+                    width: 1,
+                  ))),
+                  height: SizeConfig.blockSizeVertical * 5,
+                  width: SizeConfig.blockSizeVertical * 100,
+                  margin: EdgeInsets.only(
+                      top: SizeConfig.blockSizeVertical * 5,
+                      bottom: SizeConfig.blockSizeVertical * 2),
+                  child: CountryPicker(
+                    showCurrency: false,
+                    showDialingCode: false,
+                    showName: true,
+                    showFlag: true,
+                    onChanged: (Country country) {
+                      setState(() {
+                        _selected = country;
+                      });
+                    },
+                    selectedCountry: _selected,
                   ),
                 ),
 /*                AbsorbPointer(
@@ -447,7 +440,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                   email:
                                                       Controllers.registerEmail,
                                                   birthday: dateTimeFormat,
-                                                  country: 'Canada',
+                                                  country: _selected.name,
                                                   emailConfirm:
                                                       Controllers.registerEmail,
                                                   password: Controllers
@@ -512,7 +505,7 @@ class _RegisterViewState extends State<RegisterView> {
                 name: Controllers.name.text,
                 email: Controllers.registerEmail.text,
                 birthday: dateTimeFormat,
-                country: 'Canada',
+                country: _selected.name,
                 emailConfirm: Controllers.registerEmail.text,
                 keyword: Controllers.registerPassword.text,
                 keywordConfirm: Controllers.repeatPassword.text),
@@ -520,7 +513,6 @@ class _RegisterViewState extends State<RegisterView> {
         )
             .then((value) {
           queryResult = value;
-          print("data" + queryResult.data.toString());
           if (!queryResult.hasException) {
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
             toast(msg: Messages.registerSuccess, context: context);
@@ -533,7 +525,6 @@ class _RegisterViewState extends State<RegisterView> {
             Controllers.name.clear;
             Controllers.registerPassword.clear;
             Controllers.repeatPassword.clear;
-            _dropdownMenuItems.clear();
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
             Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();

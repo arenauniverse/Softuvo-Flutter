@@ -53,14 +53,19 @@ class SharedPreferenceData {
     return prefs.getBool('registeredValue') ?? false;
   }
 
+  /* saveRegisterDetails({Map<String, dynamic> data}) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('registerUserData', json.encode(data));
+  }
+*/
   saveRegisterDetails({Map<String, dynamic> data}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('registerUserData', json.encode(data));
   }
 
-  Future<Map<String, dynamic>> getRegisterDetails() async {
+  Future getRegisterDetails() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.getString('registerUserData')?? "";
+    return prefs.get('registerUserData');
   }
 
   saveCreateUserDetails({Map<String, dynamic> data}) async {

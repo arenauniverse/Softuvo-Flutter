@@ -24,8 +24,8 @@ bool isimagechosen = false;
 PickedFile _image;
 
 class CreateUserView extends StatefulWidget {
-  final String name, email, dob;
-  const CreateUserView({Key key, this.name, this.email, this.dob})
+  final String name, email, dob, country;
+  const CreateUserView({Key key, this.name, this.email, this.dob, this.country})
       : super(key: key);
   @override
   _CreateUserViewState createState() => _CreateUserViewState();
@@ -35,18 +35,18 @@ class _CreateUserViewState extends State<CreateUserView> {
   final _formKey = GlobalKey<FormState>();
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
   var setDateTime;
-  Map<String, dynamic> getDetails;
+  var getDetails;
   bool isFilled = false;
   var nameFocus = FocusNode();
   var emailFocus = FocusNode();
   var phone = FocusNode();
   @override
   void initState() {
-/*    SharedPreferenceData().getRegisterDetails().then((value) {
+    SharedPreferenceData().getRegisterDetails().then((value) {
       setState(() {
         getDetails = value;
       });
-    });*/
+    });
     Controllers.createUserName..text = widget.name;
     Controllers.createUserEmail..text = widget.email;
     Controllers.createUserDob..text = widget.dob;
@@ -146,173 +146,182 @@ class _CreateUserViewState extends State<CreateUserView> {
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 8,
-                      right: SizeConfig.blockSizeHorizontal * 8),
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        focusNode: nameFocus,
-                        controller: Controllers.createUserName,
-                        cursorColor: Colors.black,
-                        validator: (value) {
-                          if (value == null || value == "") {
-                            return Messages.validFullName;
-                          }
-                        },
-                        inputFormatters: <TextInputFormatter>[
-                          LengthLimitingTextInputFormatter(12),
-                        ],
-                        onChanged: (v) {
-                          FilledValues();
-                        },
-                        onFieldSubmitted: (v) {
-                          FocusScope.of(context).requestFocus(nameFocus);
-                        },
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                top: SizeConfig.blockSizeVertical * 2,
-                                bottom: SizeConfig.blockSizeVertical * 2,
-                                left: SizeConfig.blockSizeVertical * 1),
-                            labelText: Strings.name,
-                            labelStyle: TextStyle(
-                                fontFamily: AppTheme.appFont,
-                                fontSize: 15.0,
-                                color: AppTheme.blackColor)),
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      TextFormField(
-                        focusNode: emailFocus,
-                        validator: (value) {
-                          if (value == null || value == "") {
-                            return Messages.validEmail;
-                          }
-                        },
-                        inputFormatters: <TextInputFormatter>[
-                          LengthLimitingTextInputFormatter(35),
-                        ],
-                        onChanged: (v) {
-                          FilledValues();
-                        },
-                        onFieldSubmitted: (v){
-                          nameFocus.unfocus();
-                          FocusScope.of(context).requestFocus(emailFocus);
-                        },
-                        controller: Controllers.createUserEmail,
-                        cursorColor: AppTheme.blackColor,
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                top: SizeConfig.blockSizeVertical * 2,
-                                bottom: SizeConfig.blockSizeVertical * 2,
-                                left: SizeConfig.blockSizeVertical * 1),
-                            labelText: Strings.Email,
-                            labelStyle: TextStyle(
-                                fontSize: 15.0,
-                                fontFamily: AppTheme.appFont,
-                                color: AppTheme.blackColor)),
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                      ),
-                      Theme(
-                        data: ThemeData(primarySwatch: Colors.grey),
-                        child: DatePicker(
-                          Strings.date_of_birth,
-                          (dateTime) {
-                            setDateTime = dateTime;
-                            Controllers.createUserDob.text =
-                                DateFormat("dd-MM-yyyy").format(setDateTime);
-                          },
-                          controller: Controllers.createUserDob,
-                          initialDate: setDateTime,
-                          lastDate: DateTime.now(),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: SizeConfig.blockSizeHorizontal * 8,
+                            right: SizeConfig.blockSizeHorizontal * 8),
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              focusNode: nameFocus,
+                              controller: Controllers.createUserName,
+                              cursorColor: Colors.black,
+                              validator: (value) {
+                                if (value == null || value == "") {
+                                  return Messages.validFullName;
+                                }
+                              },
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(12),
+                              ],
+                              onChanged: (v) {
+                                FilledValues();
+                              },
+                              onFieldSubmitted: (v) {
+                                FocusScope.of(context).requestFocus(nameFocus);
+                              },
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical * 2,
+                                      bottom: SizeConfig.blockSizeVertical * 2,
+                                      left: SizeConfig.blockSizeVertical * 1),
+                                  labelText: Strings.name,
+                                  labelStyle: TextStyle(
+                                      fontFamily: AppTheme.appFont,
+                                      fontSize: 15.0,
+                                      color: AppTheme.blackColor)),
+                              keyboardType: TextInputType.text,
+                              textInputAction: TextInputAction.next,
+                            ),
+                            TextFormField(
+                              focusNode: emailFocus,
+                              validator: (value) {
+                                if (value == null || value == "") {
+                                  return Messages.validEmail;
+                                }
+                              },
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(35),
+                              ],
+                              onChanged: (v) {
+                                FilledValues();
+                              },
+                              onFieldSubmitted: (v) {
+                                nameFocus.unfocus();
+                                FocusScope.of(context).requestFocus(emailFocus);
+                              },
+                              controller: Controllers.createUserEmail,
+                              cursorColor: AppTheme.blackColor,
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical * 2,
+                                      bottom: SizeConfig.blockSizeVertical * 2,
+                                      left: SizeConfig.blockSizeVertical * 1),
+                                  labelText: Strings.Email,
+                                  labelStyle: TextStyle(
+                                      fontSize: 15.0,
+                                      fontFamily: AppTheme.appFont,
+                                      color: AppTheme.blackColor)),
+                              keyboardType: TextInputType.emailAddress,
+                              textInputAction: TextInputAction.next,
+                            ),
+                            Theme(
+                              data: ThemeData(primarySwatch: Colors.grey),
+                              child: DatePicker(
+                                Strings.date_of_birth,
+                                (dateTime) {
+                                  setDateTime = dateTime;
+                                  Controllers.createUserDob.text =
+                                      DateFormat("dd-MM-yyyy")
+                                          .format(setDateTime);
+                                },
+                                controller: Controllers.createUserDob,
+                                initialDate: setDateTime,
+                                lastDate: DateTime.now(),
+                              ),
+                            ),
+                            TextFormField(
+                              controller: Controllers.createUserPhone,
+                              cursorColor: AppTheme.blackColor,
+                              validator: (value) {
+                                if (value == null || value == "") {
+                                  return Messages.validPhone;
+                                }
+                              },
+                              focusNode: phone,
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(12),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              onChanged: (v) {
+                                FilledValues();
+                              },
+                              onFieldSubmitted: (v) {
+                                emailFocus.unfocus();
+                                FocusScope.of(context).requestFocus(phone);
+                              },
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(
+                                      top: SizeConfig.blockSizeVertical * 2,
+                                      bottom: SizeConfig.blockSizeVertical * 2,
+                                      left: SizeConfig.blockSizeVertical * 1),
+                                  labelText: Strings.phone,
+                                  labelStyle: TextStyle(
+                                      fontSize: 15.0,
+                                      fontFamily: AppTheme.appFont,
+                                      color: AppTheme.blackColor)),
+                              keyboardType: TextInputType.number,
+                              textInputAction: TextInputAction.next,
+                            )
+                          ],
                         ),
                       ),
-                      TextFormField(
-                        controller: Controllers.createUserPhone,
-                        cursorColor: AppTheme.blackColor,
-                        validator: (value) {
-                          if (value == null || value == "") {
-                            return Messages.validPhone;
-                          }
-                        },
-                        focusNode: phone,
-                        inputFormatters: <TextInputFormatter>[
-                          LengthLimitingTextInputFormatter(12),
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                        onChanged: (v) {
-                          FilledValues();
-                        },
-                        onFieldSubmitted: (v) {
-                          emailFocus.unfocus();
-                          FocusScope.of(context).requestFocus(phone);
-                        },
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                top: SizeConfig.blockSizeVertical * 2,
-                                bottom: SizeConfig.blockSizeVertical * 2,
-                                left: SizeConfig.blockSizeVertical * 1),
-                            labelText: Strings.phone,
-                            labelStyle: TextStyle(
-                                fontSize: 15.0,
-                                fontFamily: AppTheme.appFont,
-                                color: AppTheme.blackColor)),
-                        keyboardType: TextInputType.number,
-                        textInputAction: TextInputAction.next,
+                      Center(
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: SizeConfig.blockSizeVertical * 4,
+                          ),
+                          child: RaisedButton(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: SizeConfig.blockSizeHorizontal * 34,
+                                vertical: SizeConfig.blockSizeVertical * 2),
+                            onPressed: () {
+                              QueryResult getResult;
+                              if (_formKey.currentState.validate()) {
+                                if (Controllers
+                                    .createUserName.text.isNotEmpty) {
+                                  if (validateEmail(
+                                      Controllers.createUserEmail.text)) {
+                                    if (Controllers
+                                        .createUserDob.text.isNotEmpty) {
+                                      if (validateMobile(
+                                          Controllers.createUserPhone.text)) {
+                                        createUser(
+                                            context: context,
+                                            queryResult: getResult);
+                                      } else {
+                                        toast(
+                                            msg: Messages.validPhone,
+                                            context: context);
+                                      }
+                                    } else {
+                                      toast(
+                                          msg: Messages.validDob,
+                                          context: context);
+                                    }
+                                  } else {
+                                    toast(
+                                        msg: Messages.wrongEmail,
+                                        context: context);
+                                  }
+                                }
+                              }
+                            },
+                            color: isFilled
+                                ? AppTheme.blackColor
+                                : AppTheme.toggleColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(25.0),
+                            ),
+                            child: Text(Strings.save,
+                                style: TextStyle(
+                                    color: AppTheme.whiteColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: AppTheme.appFont)),
+                          ),
+                        ),
                       )
                     ],
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: SizeConfig.blockSizeVertical * 4,
-                    ),
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 34,
-                          vertical: SizeConfig.blockSizeVertical * 2),
-                      onPressed: () {
-                        QueryResult getResult;
-                        if (_formKey.currentState.validate()) {
-                          if (Controllers.createUserName.text.isNotEmpty) {
-                            if (validateEmail(
-                                Controllers.createUserEmail.text)) {
-                              if (Controllers.createUserDob.text.isNotEmpty) {
-                                if (validateMobile(
-                                    Controllers.createUserPhone.text)) {
-                                  createUser(
-                                      context: context, queryResult: getResult);
-                                } else {
-                                  toast(
-                                      msg: Messages.validPhone,
-                                      context: context);
-                                }
-                              } else {
-                                toast(msg: Messages.validDob, context: context);
-                              }
-                            } else {
-                              toast(msg: Messages.wrongEmail, context: context);
-                            }
-                          }
-                        }
-                      },
-                      color:
-                          isFilled ? AppTheme.blackColor : AppTheme.toggleColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                      ),
-                      child: Text(Strings.save,
-                          style: TextStyle(
-                              color: AppTheme.whiteColor,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: AppTheme.appFont)),
-                    ),
                   ),
                 ),
               ],
@@ -334,14 +343,16 @@ class _CreateUserViewState extends State<CreateUserView> {
           MutationOptions(
               documentNode: gql(
             addMutation.createUser(
-                country: 'canada',
+                country: widget.country,
                 email: widget.email,
                 dob: widget.dob,
                 fName: widget.name,
-                id: "50",
+                id: getDetails['_id'],
                 imageUrl: galleryFile,
                 lName: widget.name,
                 status: 'confirm',
+                lang: getLang,
+                lat: getLat,
                 userName: widget.name),
           )),
         )

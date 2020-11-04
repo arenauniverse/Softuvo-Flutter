@@ -88,6 +88,7 @@ class QueryMutation {
       country,
       imageUrl,
       status,
+        Float lat, Float lang
       }) {
     return """mutation {
   editPeople(
@@ -99,8 +100,8 @@ class QueryMutation {
   dateOfBirth: "$dob"
   country: "$country"
   avatarURL: "$imageUrl"
-  latitude: "30.7090847"
-  longitude: "76.6951651"
+  latitude: "$lat"
+  longitude: "$lang"
   status: "$status"
   ) {
   authorization

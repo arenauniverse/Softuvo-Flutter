@@ -244,7 +244,8 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
             toast(msg: Messages.registerSuccess, context: context);
             SharedPreferenceData().saveRegisteredValue(true);
             SharedPreferenceData()
-                .saveRegisterDetails(data: value.data['signUp']);
+                .saveRegisterDetails(data: value.data['signUp']['person']);
+            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -252,6 +253,7 @@ class _TermsConditionsViewState extends State<TermsConditionsView> {
                           name: widget.name.text,
                           dob: widget.birthday,
                           email: widget.email.text,
+                          country: widget.country,
                         )));
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
