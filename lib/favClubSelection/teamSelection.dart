@@ -51,6 +51,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
             actions: [
               GestureDetector(
                 onTap: () {
+                  favList.clear();
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -137,22 +138,28 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                         children: List.generate(listViewData.length, (index) {
                           return GestureDetector(
                             onTap: () {
-                              // isSelected = true;
                               if (listViewData.elementAt(index).isSelected ==
                                   false) {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
-                                      true;
-                                  if (listViewData
-                                      .elementAt(index)
-                                      .isSelected) {
-                                    favList.add(listViewData.elementAt(index));
-                                  }
+                                  true;
+                                  //if (listViewData.elementAt(index).isSelected) {
+                                  var selectedData =
+                                  listViewData.elementAt(index);
+                                  favList.add(selectedData);
+                                  //  OnBoard().createState().build(context);
+                                  //  }
                                 });
                               } else {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
-                                      false;
+                                  false;
+                                  //if (listViewData.elementAt(index).isSelected = false) {
+                                  var selectedData =
+                                  listViewData.elementAt(index);
+                                  favList.remove(selectedData);
+                                  //  favList.removeAt(index);
+                                  //  }
                                 });
                               }
                             },

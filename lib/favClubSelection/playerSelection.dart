@@ -50,6 +50,7 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
             actions: [
               GestureDetector(
                 onTap: () {
+                  favList.clear();
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -136,22 +137,28 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                         children: List.generate(listViewData.length, (index) {
                           return GestureDetector(
                             onTap: () {
-                              // isSelected = true;
                               if (listViewData.elementAt(index).isSelected ==
                                   false) {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
                                       true;
-                                  if (listViewData
-                                      .elementAt(index)
-                                      .isSelected) {
-                                    favList.add(listViewData.elementAt(index));
-                                  }
+                                  //if (listViewData.elementAt(index).isSelected) {
+                                  var selectedData =
+                                      listViewData.elementAt(index);
+                                  favList.add(selectedData);
+                                  //  OnBoard().createState().build(context);
+                                  //  }
                                 });
                               } else {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
                                       false;
+                                  //if (listViewData.elementAt(index).isSelected = false) {
+                                  var selectedData =
+                                      listViewData.elementAt(index);
+                                  favList.remove(selectedData);
+                                  //  favList.removeAt(index);
+                                  //  }
                                 });
                               }
                             },

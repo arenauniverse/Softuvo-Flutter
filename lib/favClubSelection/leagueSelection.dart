@@ -10,7 +10,7 @@ import 'bottomNavigationLeague.dart';
 List favList = [];
 
 class LeagueSelection extends StatefulWidget {
-  LeagueSelection({ Key key }) : super(key: key);
+  LeagueSelection({Key key}) : super(key: key);
 
   @override
   _LeagueSelectionState createState() => _LeagueSelectionState();
@@ -20,7 +20,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
   ScrollController scrollController = ScrollController();
   List<ListViewModel> listViewData = [];
-  var myCustomForm =  OnBoard();
+  var myCustomForm = OnBoard();
 
   @override
   void initState() {
@@ -68,6 +68,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         right: SizeConfig.blockSizeHorizontal * 4,
                         top: SizeConfig.blockSizeVertical * 2)),
                 onTap: () {
+                  favList.clear();
                   Navigator.pop(context);
                 },
               ),
@@ -218,21 +219,28 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         children: List.generate(listViewData.length, (index) {
                           return GestureDetector(
                             onTap: () {
-                              if (listViewData.elementAt(index).isSelected == false) {
+                              if (listViewData.elementAt(index).isSelected ==
+                                  false) {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected = true;
+                                  listViewData.elementAt(index).isSelected =
+                                      true;
                                   //if (listViewData.elementAt(index).isSelected) {
-                                  var selectedData = listViewData.elementAt(index);
-                                    favList.add(selectedData);
-                                //  OnBoard().createState().build(context);
-                                //  }
+                                  var selectedData =
+                                      listViewData.elementAt(index);
+                                  favList.add(selectedData);
+                                  //  OnBoard().createState().build(context);
+                                  //  }
                                 });
                               } else {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected = false;
+                                  listViewData.elementAt(index).isSelected =
+                                      false;
                                   //if (listViewData.elementAt(index).isSelected = false) {
-                                    favList.removeAt(index);
-                                //  }
+                                  var selectedData =
+                                      listViewData.elementAt(index);
+                                  favList.remove(selectedData);
+                                  //  favList.removeAt(index);
+                                  //  }
                                 });
                               }
                             },

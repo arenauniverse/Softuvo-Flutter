@@ -14,7 +14,6 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 class OnBoard extends StatefulWidget {
   @override
   _OnBoardState createState() => _OnBoardState();
-
 }
 
 class _OnBoardState extends State<OnBoard> {
@@ -26,7 +25,7 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   void initState() {
-    favList.length;
+    print("fav" + favList.length.toString());
     super.initState();
   }
 
@@ -124,6 +123,7 @@ class _OnBoardState extends State<OnBoard> {
                                       progressvalue = 100;
                                     }
                                   } else {
+                                    favList.clear();
                                     Navigator.pop(context);
                                   }
                                 },
@@ -148,8 +148,7 @@ class _OnBoardState extends State<OnBoard> {
                           margin: EdgeInsets.only(
                               top: SizeConfig.blockSizeHorizontal * 3),
                           child: ListView.builder(
-                          ,
-                          itemCount: favList.length,
+                            itemCount: favList.length,
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext cxt, int i) {
