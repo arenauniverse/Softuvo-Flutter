@@ -1,13 +1,12 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
-import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'bottomNavigationLeague.dart';
 
 List favList = [];
+List<ListViewModel> listViewData = [];
 
 class LeagueSelection extends StatefulWidget {
   LeagueSelection({Key key}) : super(key: key);
@@ -19,7 +18,7 @@ class LeagueSelection extends StatefulWidget {
 class _LeagueSelectionState extends State<LeagueSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
   ScrollController scrollController = ScrollController();
-  List<ListViewModel> listViewData = [];
+
   var myCustomForm = OnBoard();
 
   @override
@@ -224,23 +223,19 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
                                       true;
-                                  //if (listViewData.elementAt(index).isSelected) {
-                                  var selectedData =
-                                      listViewData.elementAt(index);
-                                  favList.add(selectedData);
-                                  //  OnBoard().createState().build(context);
-                                  //  }
+                                  if (listViewData
+                                      .elementAt(index)
+                                      .isSelected) {
+                                    favList.add(listViewData.elementAt(index));
+                                    RestartWidget.restartApp(context);
+                                  }
                                 });
                               } else {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
                                       false;
-                                  //if (listViewData.elementAt(index).isSelected = false) {
-                                  var selectedData =
-                                      listViewData.elementAt(index);
-                                  favList.remove(selectedData);
-                                  //  favList.removeAt(index);
-                                  //  }
+                                  favList.remove(listViewData.elementAt(index));
+                                  RestartWidget.restartApp(context);
                                 });
                               }
                             },

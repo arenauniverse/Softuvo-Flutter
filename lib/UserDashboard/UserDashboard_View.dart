@@ -102,6 +102,13 @@ class _UserDashboardViewState extends State<UserDashboardView> {
                         onChanged: (val) {
                           setState(() {
                             status = val;
+                           /* Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FeedHomeView()));*/
+                            /*    Navigator.push(context,
+                                SlideRightRoute(page: FeedHomeView()));*/
+                            //   _showFeedModalSheet();
                             toast(
                                 msg: Messages.underDevelopment,
                                 context: context);
@@ -1742,7 +1749,6 @@ class _UserDashboardViewState extends State<UserDashboardView> {
 
   void _showFeedModalSheet() {
     showModalBottomSheet(
-        isScrollControlled: true,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(25.0),

@@ -25,7 +25,6 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   void initState() {
-    print("fav" + favList.length.toString());
     super.initState();
   }
 
@@ -62,6 +61,7 @@ class _OnBoardState extends State<OnBoard> {
                 Container(
                   child: SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           child: FAProgressBar(
@@ -139,34 +139,11 @@ class _OnBoardState extends State<OnBoard> {
                                         fontSize: 14),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
-                        Container(
-                          height: SizeConfig.blockSizeVertical * 6,
-                          margin: EdgeInsets.only(
-                              top: SizeConfig.blockSizeHorizontal * 3),
-                          child: ListView.builder(
-                            itemCount: favList.length,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (BuildContext cxt, int i) {
-                              return Container(
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal:
-                                          SizeConfig.blockSizeHorizontal * 1.5),
-                                  child: favList.length == 0 ||
-                                          favList.length == null
-                                      ? SvgPicture.asset(
-                                          "assets/selectTeam.svg",
-                                          height:
-                                              SizeConfig.blockSizeVertical * 8,
-                                        )
-                                      : favList[i].image);
-                            },
-                          ),
-                        )
+                        GetFavCards(),
                       ],
                     ),
                   ),
@@ -201,6 +178,64 @@ class _OnBoardState extends State<OnBoard> {
       decoration: BoxDecoration(
         color: isActive ? Colors.white : Colors.black,
         borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
+    );
+  }
+}
+
+class RestartWidget extends StatefulWidget {
+  RestartWidget({this.child});
+
+  final Widget child;
+
+  static void restartApp(BuildContext context) {
+    context.findAncestorStateOfType<_RestartWidgetState>().restartApp();
+  }
+
+  @override
+  _RestartWidgetState createState() => _RestartWidgetState();
+}
+
+class _RestartWidgetState extends State<RestartWidget> {
+  Key key = UniqueKey();
+
+  void restartApp() {
+    setState(() {
+      key = UniqueKey();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return KeyedSubtree(
+      key: key,
+      child: widget.child,
+    );
+  }
+}
+
+class GetFavCards extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: SizeConfig.blockSizeVertical * 6,
+      margin: EdgeInsets.only(top: SizeConfig.blockSizeHorizontal * 3),
+      child: ListView.builder(
+        itemCount: favList.length,
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext cxt, int i) {
+          return Container(
+              alignment: Alignment.bottomLeft,
+              margin: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.blockSizeHorizontal * 1.5),
+              child: favList.length == 0 || favList.length == null
+                  ? SvgPicture.asset(
+                      "assets/selectTeam.svg",
+                      height: SizeConfig.blockSizeVertical * 8,
+                    )
+                  : favList[i].image);
+        },
       ),
     );
   }

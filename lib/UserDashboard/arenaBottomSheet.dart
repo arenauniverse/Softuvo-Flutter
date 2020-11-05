@@ -303,7 +303,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          OnBoard()));
+                                          RestartWidget(child: OnBoard())));
                             },
                           ),
                         ],

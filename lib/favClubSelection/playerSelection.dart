@@ -146,6 +146,7 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                                   var selectedData =
                                       listViewData.elementAt(index);
                                   favList.add(selectedData);
+
                                   //  OnBoard().createState().build(context);
                                   //  }
                                 });

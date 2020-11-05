@@ -1,4 +1,5 @@
 import 'package:arena_sports_app/Repos.dart';
+import 'package:arena_sports_app/favClubSelection/bottomNavigationLeague.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:arena_sports_app/theme/DarkThemeProvider.dart';
 import 'package:arena_sports_app/theme/Styles.dart';
@@ -8,9 +9,8 @@ import 'package:provider/provider.dart';
 import 'Splash/SplashView.dart';
 import 'UserDashboard/NavigationFiles.dart';
 
-
 void main() {
-  runApp(MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -31,11 +31,11 @@ class _MyAppState extends State<MyApp> {
     getCurrentAppTheme();
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.black, // navigation bar color
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.dark,
-        ));
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.black, // navigation bar color
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+    ));
   }
 
   void getCurrentAppTheme() async {
@@ -57,11 +57,6 @@ class _MyAppState extends State<MyApp> {
     }));
   }
 }
-
-
-
-
-
 
 /*
 void main() {

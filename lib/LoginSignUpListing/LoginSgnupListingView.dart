@@ -32,7 +32,6 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-        color: Theme.of(context).cardColor,
       ),
       height: SizeConfig.blockSizeVertical * 79,
       width: SizeConfig.blockSizeHorizontal,
