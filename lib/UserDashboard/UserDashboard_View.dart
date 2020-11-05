@@ -43,6 +43,7 @@ class _UserDashboardViewState extends State<UserDashboardView>
 
   @override
   void initState() {
+    super.initState();
     SharedPreferenceData().getFirstRun().then((value) {
       setState(() {
         // isFirstRun =value;
@@ -55,12 +56,8 @@ class _UserDashboardViewState extends State<UserDashboardView>
         isRegisterd = value;
       });
     });
-    controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
-
-    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
-        .animate(controller);
-    super.initState();
+    controller = AnimationController(duration: Duration(seconds: 1), vsync: this);
+    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0)).animate(controller);
   }
 
   @override
@@ -112,22 +109,11 @@ class _UserDashboardViewState extends State<UserDashboardView>
                         onChanged: (val) {
                           setState(() {
                             status = val;
-                            if (status) {
-                              switch (controller.status) {
-                                case AnimationStatus.completed:
+                            if (status)
                                   controller.reverse();
-                                  break;
-                                case AnimationStatus.dismissed:
-                                  controller.forward();
-                                  break;
-                                default:
-                              }
-                            }
+                            else
+                            controller.forward();
 
-                            //    _showFeedModalSheet();
-                            // toast(
-                            //     msg: Messages.underDevelopment,
-                            //     context: context);
                           });
                         },
                         dragStartBehavior: DragStartBehavior.down,

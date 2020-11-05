@@ -495,7 +495,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               children: [
                                 SvgPicture.asset('assets/Borusia Dourmunt.svg', width: SizeConfig.blockSizeHorizontal * 6,),
                                 SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
-                                Container(child: Text(Strings.Borussia_Dortmund, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),),
+                                Container(child: Text("Barcelona", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),),
                                 Spacer(),
                                 dropdownIcon(),
                               ],
@@ -550,7 +550,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               left: SizeConfig.blockSizeHorizontal * 4,
                             ),
                             child: Text(
-                              Strings.UEFA_Champions_League,
+                              "La Liga",
                               style: TextStyle(
                                 fontSize: 16,
                                 color: AppTheme.greyColor,
@@ -570,60 +570,29 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                     Container(
                                       child: Row(
                                         children: [
-                                          SvgPicture.asset(
-                                            'assets/Borusia Dourmunt.svg',
-                                            width: SizeConfig
-                                                .blockSizeHorizontal *
-                                                6,
-                                          ),
-                                          SizedBox(
-                                              width: SizeConfig
-                                                  .blockSizeHorizontal *
-                                                  2),
-                                          Container(
-                                            child: Text(
-                                              Strings.Borussia_Dortmund,
-                                              style: TextStyle(
-                                                  fontWeight:
-                                                  FontWeight.bold,
-                                                  fontSize: 14),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                              width: SizeConfig
-                                                  .blockSizeHorizontal *
-                                                  6),
-                                          SvgPicture.asset(
-                                              'assets/circleIcon.svg'),
-                                          SizedBox(
-                                              width: SizeConfig
-                                                  .blockSizeHorizontal *
-                                                  2),
-                                          SvgPicture.asset(
-                                              'assets/circleIcon.svg'),
-                                          SizedBox(
-                                              width: SizeConfig
-                                                  .blockSizeHorizontal *
-                                                  2),
-                                          SvgPicture.asset(
-                                              'assets/circleIcon.svg'),
-                                          SizedBox(
-                                              width: SizeConfig
-                                                  .blockSizeHorizontal *
-                                                  2),
+                                          SvgPicture.asset('assets/Borusia Dourmunt.svg', width: SizeConfig.blockSizeHorizontal * 6,),
+                                          SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
+                                          Container(child: Text("Barcelona", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),),
+                                          SizedBox(width: SizeConfig.blockSizeHorizontal * 6),
+                                          SvgPicture.asset('assets/circleIcon.svg'),
+                                          SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
+                                          SvgPicture.asset('assets/circleIcon.svg'),
+                                          SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
+                                          SvgPicture.asset('assets/circleIcon.svg'),
+                                          SizedBox(width: SizeConfig.blockSizeHorizontal * 2),
                                           SvgPicture.asset(
                                               'assets/circleIcon.svg'),
                                           SizedBox(
                                               width: SizeConfig
                                                   .blockSizeHorizontal *
                                                   3),
+                                          Spacer(),
                                           Text(
                                             Strings.time,
                                             style: TextStyle(
                                                 fontWeight:
                                                 FontWeight.w600),
                                           ),
-                                          Spacer(),
                                           notificationBell(),
                                         ],
                                       ),
