@@ -149,15 +149,20 @@ class _RegisterViewState extends State<RegisterView> {
                       FocusScope.of(context).requestFocus(nameFocus);
                     },
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(
-                            top: SizeConfig.blockSizeVertical * 2,
-                            bottom: SizeConfig.blockSizeVertical * 2,
-                            left: SizeConfig.blockSizeVertical * 1),
-                        labelText: Strings.name,
-                        labelStyle: TextStyle(
-                            fontFamily: AppTheme.appFont,
-                            fontSize: 15.0,
-                            color: AppTheme.blackColor)),
+                      contentPadding: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 2,
+                          bottom: SizeConfig.blockSizeVertical * 2,
+                          left: SizeConfig.blockSizeVertical * 1),
+                      labelText: Strings.name,
+                      labelStyle: TextStyle(
+                          fontFamily: AppTheme.appFont,
+                          fontSize: 15.0,
+                          color: AppTheme.blackColor),
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.grey, width: 1.0),
+                      ),
+                    ),
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                   ),
@@ -180,6 +185,10 @@ class _RegisterViewState extends State<RegisterView> {
                     controller: Controllers.registerEmail,
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.grey, width: 1.0),
+                        ),
                         contentPadding: EdgeInsets.only(
                             top: SizeConfig.blockSizeVertical * 2,
                             bottom: SizeConfig.blockSizeVertical * 2,
@@ -328,6 +337,10 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.grey, width: 1.0),
+                        ),
                         suffixIcon: InkWell(
                           onTap: () {
                             setState(() {
@@ -378,6 +391,10 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                     cursorColor: AppTheme.blackColor,
                     decoration: InputDecoration(
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide:
+                          const BorderSide(color: Colors.grey, width: 1.0),
+                        ),
                         suffixIcon: InkWell(
                           onTap: () {
                             setState(() {

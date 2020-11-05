@@ -55,11 +55,17 @@ class _UserDashboardViewState extends State<UserDashboardView>
       });
     });
     controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
-
+        AnimationController(duration: Duration(milliseconds: 500), vsync: this);
     offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
         .animate(controller);
+    controller.forward();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -112,15 +118,9 @@ class _UserDashboardViewState extends State<UserDashboardView>
                           setState(() {
                             status = val;
                             if (status) {
-                              switch (controller.status) {
-                                case AnimationStatus.completed:
-                                  controller.reverse();
-                                  break;
-                                case AnimationStatus.dismissed:
-                                  controller.forward();
-                                  break;
-                                default:
-                              }
+                              controller.reverse();
+                            } else {
+                              controller.forward();
                             }
 
                             //    _showFeedModalSheet();
@@ -998,19 +998,14 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                         ),
                                         Container(
                                             child: GetDivider(),
-                                            margin: EdgeInsets.only(
-                                                right: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    4,
-                                                left: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    4,
-                                                top: SizeConfig
-                                                        .blockSizeVertical *
-                                                    0.5,
-                                                bottom: SizeConfig
-                                                        .blockSizeVertical *
-                                                    0.5)),
+                                            margin: EdgeInsets.symmetric(
+                                              horizontal: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              vertical:
+                                                  SizeConfig.blockSizeVertical *
+                                                      0.5,
+                                            )),
                                         Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -1966,7 +1961,7 @@ class _UserDashboardViewState extends State<UserDashboardView>
         });
   }
 
-  void _showFeedModalSheet() {
+/*  void _showFeedModalSheet() {
     showModalBottomSheet(
         enableDrag: false,
         shape: RoundedRectangleBorder(
@@ -1977,7 +1972,7 @@ class _UserDashboardViewState extends State<UserDashboardView>
         builder: (builder) {
           return FeedHomeView();
         });
-  }
+  }*/
 
   void showTutorial() {
     tutorialCoachMark = TutorialCoachMark(context,

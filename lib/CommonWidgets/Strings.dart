@@ -89,6 +89,7 @@ class Strings {
   static String videos = "VIDEOS";
   static String text2 = "Jugadas principales de PSG y Bayern";
   static String matches1 = "PARTIDOS";
+  static String liveMatches = "PARTIDOS  EN VIVO";
   static String Chelsea = "Chelsea";
   static String Bayern_Munich = "Bayern Munich";
   static String Direct_TV = "Direct TV";

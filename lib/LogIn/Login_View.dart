@@ -121,6 +121,10 @@ class _LoginViewState extends State<LoginView> {
                     FocusScope.of(context).requestFocus(emailFocus);
                   },
                   decoration: InputDecoration(
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.0),
+                      ),
                       contentPadding: EdgeInsets.only(
                           top: SizeConfig.blockSizeVertical * 2,
                           bottom: SizeConfig.blockSizeVertical * 2,
@@ -154,6 +158,10 @@ class _LoginViewState extends State<LoginView> {
                     FocusScope.of(context).requestFocus(passwordFocus);
                   },
                   decoration: InputDecoration(
+                      focusedBorder: const UnderlineInputBorder(
+                        borderSide:
+                        const BorderSide(color: Colors.grey, width: 1.0),
+                      ),
                       suffixIcon: InkWell(
                         onTap: () {
                           setState(() {

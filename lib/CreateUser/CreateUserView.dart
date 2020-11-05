@@ -171,6 +171,10 @@ class _CreateUserViewState extends State<CreateUserView> {
                                 FocusScope.of(context).requestFocus(nameFocus);
                               },
                               decoration: InputDecoration(
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Colors.grey, width: 1.0),
+                                  ),
                                   contentPadding: EdgeInsets.only(
                                       top: SizeConfig.blockSizeVertical * 2,
                                       bottom: SizeConfig.blockSizeVertical * 2,
@@ -203,6 +207,10 @@ class _CreateUserViewState extends State<CreateUserView> {
                               controller: Controllers.createUserEmail,
                               cursorColor: AppTheme.blackColor,
                               decoration: InputDecoration(
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Colors.grey, width: 1.0),
+                                  ),
                                   contentPadding: EdgeInsets.only(
                                       top: SizeConfig.blockSizeVertical * 2,
                                       bottom: SizeConfig.blockSizeVertical * 2,
@@ -251,6 +259,10 @@ class _CreateUserViewState extends State<CreateUserView> {
                                 FocusScope.of(context).requestFocus(phone);
                               },
                               decoration: InputDecoration(
+                                  focusedBorder: const UnderlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Colors.grey, width: 1.0),
+                                  ),
                                   contentPadding: EdgeInsets.only(
                                       top: SizeConfig.blockSizeVertical * 2,
                                       bottom: SizeConfig.blockSizeVertical * 2,
