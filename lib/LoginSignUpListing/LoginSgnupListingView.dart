@@ -39,33 +39,17 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
         physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  top: SizeConfig.blockSizeVertical * 2,
-                  right: SizeConfig.blockSizeHorizontal * 5),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    child: Stack(
-                      children: [
-                        SvgPicture.asset('assets/closeIcon.svg'),
-                        Positioned(
-                          top: 5.0,
-                          left: 8.0,
-                          bottom: 5.0,
-                          child: GestureDetector(
-                            child: SvgPicture.asset(
-                              'assets/cross.svg',
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.only(
+                      right: SizeConfig.blockSizeVertical * 2,
+                      top: SizeConfig.blockSizeVertical * 2),
+                  child: SvgPicture.asset('assets/crossIcon.svg'),
                 ),
               ),
             ),
@@ -109,9 +93,11 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
-                        horizontal: SizeConfig.blockSizeHorizontal * 10),
+                    margin: EdgeInsets.only(
+                      left: SizeConfig.blockSizeHorizontal * 10,
+                      right: SizeConfig.blockSizeHorizontal * 10,
+                      top: SizeConfig.blockSizeVertical * 2,
+                    ),
                     child: ButtonsWidget(
                       onPress: () {
                         QueryResult queryResult;
@@ -128,8 +114,11 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                   Platform.isAndroid
                       ? SizedBox()
                       : Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: SizeConfig.blockSizeHorizontal * 10),
+                          margin: EdgeInsets.only(
+                            left: SizeConfig.blockSizeHorizontal * 10,
+                            right: SizeConfig.blockSizeHorizontal * 10,
+                            top: SizeConfig.blockSizeVertical * 2,
+                          ),
                           child: ButtonsWidget(
                             onPress: () async {
                               final credential =

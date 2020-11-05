@@ -23,6 +23,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
 
   @override
   void initState() {
+    super.initState();
     for (int i = 0; i < 12; i++) {
       listViewData.add(ListViewModel(
           title: Strings.ArgentinaLeague,
@@ -33,7 +34,6 @@ class _LeagueSelectionState extends State<LeagueSelection> {
           ),
           type: "league"));
     }
-    super.initState();
   }
 
   @override
@@ -215,8 +215,9 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
-                        children: List.generate(listViewData.length, (index) {
-                          return GestureDetector(
+                        children: List.generate(listViewData.length, (index)
+                        {
+                          return InkWell(
                             onTap: () {
                               if (listViewData.elementAt(index).isSelected ==
                                   false) {
