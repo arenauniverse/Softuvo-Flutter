@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
@@ -8,6 +7,7 @@ import 'package:arena_sports_app/ResultsTab/ResultsView.dart';
 import 'package:arena_sports_app/SelectSportsBottomSheet/SelectSportsBottomSheet.dart';
 import 'package:arena_sports_app/UserDashboard/UserDashboard_View.dart';
 import 'package:arena_sports_app/UserDashboard/arenaBottomSheet.dart';
+import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -98,7 +98,7 @@ class _NavigationScreensState extends State<NavigationScreens> {
                     BottomNavigationBarItem(
                       title: Text(""),
                       icon: Container(
-                        height: SizeConfig.blockSizeVertical * 5,
+                        height: SizeConfig.blockSizeVertical * 4,
                         child: FloatingActionButton(
                           key: _arenaKey,
                           elevation: 0,

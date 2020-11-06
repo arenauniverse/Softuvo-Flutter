@@ -10,7 +10,7 @@ import 'Splash/SplashView.dart';
 import 'UserDashboard/NavigationFiles.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
