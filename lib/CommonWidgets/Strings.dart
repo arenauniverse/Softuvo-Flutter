@@ -126,4 +126,6 @@ class Strings {
   static String back = "Anterior";
   static String ArgentinaLeague = "Argentina";
   static String findPlayers = "Buscar otros jugadores";
+  static String socialNetwork = "Redes sociales";
+
 }

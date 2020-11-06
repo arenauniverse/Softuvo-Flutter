@@ -10,6 +10,7 @@ import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
 import 'package:arena_sports_app/News/NewsDetails_View.dart';
 import 'package:arena_sports_app/News/NewsView.dart';
+import 'package:arena_sports_app/Notification/NotificationScreen.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/feedHome/VideoPlayerView.dart';
@@ -42,6 +43,7 @@ class _UserDashboardViewState extends State<UserDashboardView>
 
   @override
   void initState() {
+    super.initState();
     SharedPreferenceData().getFirstRun().then((value) {
       setState(() {
         // isFirstRun =value;
@@ -117,16 +119,11 @@ class _UserDashboardViewState extends State<UserDashboardView>
                         onChanged: (val) {
                           setState(() {
                             status = val;
-                            if (status) {
-                              controller.reverse();
-                            } else {
-                              controller.forward();
-                            }
+                            if (status)
+                                  controller.reverse();
+                            else
+                            controller.forward();
 
-                            //    _showFeedModalSheet();
-                            // toast(
-                            //     msg: Messages.underDevelopment,
-                            //     context: context);
                           });
                         },
                         dragStartBehavior: DragStartBehavior.down,
@@ -135,12 +132,17 @@ class _UserDashboardViewState extends State<UserDashboardView>
                   ),
                   GestureDetector(
                     onTap: () {
-                      toast(msg: Messages.underDevelopment, context: context);
+                      //toast(msg: Messages.underDevelopment, context: context);
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) =>
+                                NotificationScreen()),
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.only(
                         left: SizeConfig.blockSizeHorizontal * 3.5,
                       ),
+
                       child: CircleAvatar(
                         radius: 16,
                         backgroundColor: AppTheme.greyColor,
