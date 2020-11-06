@@ -8,7 +8,7 @@ class Strings {
   static String fbText = 'Ingresar por Facebook';
   static String googleText = 'Ingresar por Google';
   static String appleText = 'Ingresar por Apple';
-  static String emailText = 'Ingresar por Email';
+  static String emailText = 'Ingresar por email';
   static String registerButtonText = 'Registrarse';
   static String loginText = 'Inicio de sesion';
   static String notRegisted = 'No tiene cuenta? ';
@@ -46,7 +46,7 @@ class Strings {
   static String Lyon = "Lyon";
   static String Finished = "Terminado";
   static String Recover_password = "Recuperar contraseña";
-  static String Recover = "Recover";
+  static String Recover = "Recuperar";
   static String myProfile = "Mi Perfil";
   static String Getout = "Salir";
   static String dummyName = "Fernando Martinez";

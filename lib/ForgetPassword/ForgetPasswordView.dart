@@ -21,6 +21,7 @@ class ForgetPasswordView extends StatefulWidget {
 class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   final _formKey = GlobalKey<FormState>();
   final GlobalKey<State> _addLoader = new GlobalKey<State>();
+  bool isFilled = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -88,6 +89,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         return Messages.validEmail;
                       }
                     },
+                    onChanged: (v) {
+                      FilledValues();
+                    },
                     onFieldSubmitted: (v) {},
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
@@ -129,7 +133,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                           }
                         }
                       },
-                      color: AppTheme.blackColor,
+                      color:
+                          isFilled ? AppTheme.blackColor : AppTheme.toggleColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(25.0),
                       ),
@@ -147,6 +152,14 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
         ),
       ),
     );
+  }
+
+  void FilledValues() {
+    if (Controllers.forgetPassEmail.text.isNotEmpty) {
+      setState(() {
+        isFilled = true;
+      });
+    }
   }
 
   Future forgotPassword({BuildContext context, QueryResult queryResult}) async {

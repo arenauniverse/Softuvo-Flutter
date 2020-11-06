@@ -59,7 +59,6 @@ class DatePickerState extends State<DatePicker> {
             child: TextFormField(
               controller: controller,
               cursorColor: AppTheme.blackColor,
-
               //  onFieldSubmitted: (v) {},
               decoration: InputDecoration(
                 suffixIcon: Icon(
@@ -71,14 +70,14 @@ class DatePickerState extends State<DatePicker> {
                             height: 20.0,
                           ),*/
                 contentPadding: EdgeInsets.only(
-                    top: SizeConfig.blockSizeVertical * 5,
+                    top: SizeConfig.blockSizeVertical * 3,
                     bottom: SizeConfig.blockSizeVertical * 2,
                     left: SizeConfig.blockSizeVertical * 1),
-                /* labelText: Strings.dob,
+                 labelText: Strings.dob,
                   labelStyle: TextStyle(
                       fontSize: 15.0,
                       fontFamily: AppTheme.appFont,
-                      color: AppTheme.blackColor)*/
+                      color: AppTheme.blackColor)
               ),
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,

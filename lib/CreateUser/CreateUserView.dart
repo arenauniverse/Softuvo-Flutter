@@ -11,6 +11,7 @@ import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:arena_sports_app/Repos.dart';
 import 'package:arena_sports_app/UserDashboard/NavigationFiles.dart';
 import 'package:arena_sports_app/theme.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,11 +41,12 @@ class _CreateUserViewState extends State<CreateUserView> {
   var nameFocus = FocusNode();
   var emailFocus = FocusNode();
   var phone = FocusNode();
+  int getId;
   @override
   void initState() {
-    SharedPreferenceData().getRegisterDetails().then((value) {
+    SharedPreferenceData().getRegisterId().then((value) {
       setState(() {
-        getDetails = value;
+        getId = value;
       });
     });
     Controllers.createUserName..text = widget.name;
@@ -54,8 +56,8 @@ class _CreateUserViewState extends State<CreateUserView> {
 
   void FilledValues() {
     if (Controllers.createUserName.text.isNotEmpty &&
-        Controllers.createUserEmail.text.isNotEmpty &&
-        Controllers.createUserDob.text.isNotEmpty &&
+            Controllers.createUserEmail.text.isNotEmpty &&
+            Controllers.createUserDob.text.isNotEmpty ||
         Controllers.createUserPhone.text.isNotEmpty) {
       setState(() {
         isFilled = true;
@@ -69,275 +71,317 @@ class _CreateUserViewState extends State<CreateUserView> {
     return Form(
       key: _formKey,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         body: Container(
           margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 8.0,
           ),
-          child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
+          child: Column(
+            children: [
+              Container(
+                child: Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: SizeConfig.blockSizeHorizontal * 7,
+                          right: SizeConfig.blockSizeHorizontal * 7),
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            // Get.back();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            child: SvgPicture.asset(
+                              'assets/backArrow.svg',
+                              width: 12,
+                            ),
+                          )),
+                    ),
+                    Center(
+                      child: Container(
                         margin: EdgeInsets.only(
-                            left: SizeConfig.blockSizeHorizontal * 7,
-                            right: SizeConfig.blockSizeHorizontal * 7),
-                        child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              // Get.back();
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(2),
-                              child: SvgPicture.asset(
-                                'assets/backArrow.svg',
-                                width: 12,
-                              ),
-                            )),
-                      ),
-                      Center(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 15),
-                          child: Text(
-                            Strings.createUser,
-                            style: TextStyle(
-                                fontFamily: AppTheme.appFont,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18),
-                          ),
+                            left: SizeConfig.blockSizeHorizontal * 15),
+                        child: Text(
+                          Strings.createUser,
+                          style: TextStyle(
+                              fontFamily: AppTheme.appFont,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18),
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: SizeConfig.blockSizeVertical * 4),
+                      child: Divider(
+                        thickness: 0.3,
+                        color: AppTheme.blackColor,
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  margin:
-                      EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2),
-                  child: Divider(
-                    thickness: 0.3,
-                    color: AppTheme.blackColor,
-                  ),
-                ),
-                SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: Container(
-                          child:
-                              CircularBorder() /*ClipRect(
-                            clipBehavior: Clip.hardEdge,
-                            child: CircleAvatar(
-                              radius: 50.0,
-                              child: Icon(
-                                Icons.camera_alt_outlined,
-                                color: AppTheme.whiteColor,
+              ),
+              Expanded(
+                child: Container(
+                  width: SizeConfig.blockSizeHorizontal * 100,
+                  height: SizeConfig.blockSizeVertical * 80,
+                  child: SingleChildScrollView(
+                    physics: ClampingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SingleChildScrollView(
+                          physics: ClampingScrollPhysics(),
+                          child: Column(
+                            children: [
+                              Center(
+                                child: Container(
+                                  child:
+                                      CircularBorder() /*ClipRect(
+                                    clipBehavior: Clip.hardEdge,
+                                    child: CircleAvatar(
+                                      radius: 50.0,
+                                      child: Icon(
+                                        Icons.camera_alt_outlined,
+                                        color: AppTheme.whiteColor,
+                                      ),
+                                      backgroundColor: AppTheme.blackColor,
+                                    ),
+                                  )*/
+                                  ,
+                                  margin: EdgeInsets.only(
+                                    top: SizeConfig.blockSizeVertical * 1,
+                                  ),
+                                ),
                               ),
-                              backgroundColor: AppTheme.blackColor,
-                            ),
-                          )*/
-                          ,
-                          margin: EdgeInsets.only(
-                            top: SizeConfig.blockSizeVertical * 1,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: SizeConfig.blockSizeHorizontal * 8,
-                            right: SizeConfig.blockSizeHorizontal * 8),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              focusNode: nameFocus,
-                              controller: Controllers.createUserName,
-                              cursorColor: Colors.black,
-                              validator: (value) {
-                                if (value == null || value == "") {
-                                  return Messages.validFullName;
-                                }
-                              },
-                              inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(12),
-                              ],
-                              onChanged: (v) {
-                                FilledValues();
-                              },
-                              onFieldSubmitted: (v) {
-                                FocusScope.of(context).requestFocus(nameFocus);
-                              },
-                              decoration: InputDecoration(
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Colors.grey, width: 1.0),
-                                  ),
-                                  contentPadding: EdgeInsets.only(
-                                      top: SizeConfig.blockSizeVertical * 2,
-                                      bottom: SizeConfig.blockSizeVertical * 2,
-                                      left: SizeConfig.blockSizeVertical * 1),
-                                  labelText: Strings.name,
-                                  labelStyle: TextStyle(
-                                      fontFamily: AppTheme.appFont,
-                                      fontSize: 15.0,
-                                      color: AppTheme.blackColor)),
-                              keyboardType: TextInputType.text,
-                              textInputAction: TextInputAction.next,
-                            ),
-                            TextFormField(
-                              focusNode: emailFocus,
-                              validator: (value) {
-                                if (value == null || value == "") {
-                                  return Messages.validEmail;
-                                }
-                              },
-                              inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(35),
-                              ],
-                              onChanged: (v) {
-                                FilledValues();
-                              },
-                              onFieldSubmitted: (v) {
-                                nameFocus.unfocus();
-                                FocusScope.of(context).requestFocus(emailFocus);
-                              },
-                              controller: Controllers.createUserEmail,
-                              cursorColor: AppTheme.blackColor,
-                              decoration: InputDecoration(
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Colors.grey, width: 1.0),
-                                  ),
-                                  contentPadding: EdgeInsets.only(
-                                      top: SizeConfig.blockSizeVertical * 2,
-                                      bottom: SizeConfig.blockSizeVertical * 2,
-                                      left: SizeConfig.blockSizeVertical * 1),
-                                  labelText: Strings.Email,
-                                  labelStyle: TextStyle(
-                                      fontSize: 15.0,
-                                      fontFamily: AppTheme.appFont,
-                                      color: AppTheme.blackColor)),
-                              keyboardType: TextInputType.emailAddress,
-                              textInputAction: TextInputAction.next,
-                            ),
-                            Theme(
-                              data: ThemeData(primarySwatch: Colors.grey),
-                              child: DatePicker(
-                                Strings.date_of_birth,
-                                (dateTime) {
-                                  setDateTime = dateTime;
-                                  Controllers.createUserDob.text =
-                                      DateFormat("dd-MM-yyyy")
-                                          .format(setDateTime);
-                                },
-                                controller: Controllers.createUserDob,
-                                initialDate: setDateTime,
-                                lastDate: DateTime.now(),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: SizeConfig.blockSizeHorizontal * 8,
+                                    right: SizeConfig.blockSizeHorizontal * 8),
+                                child: Column(
+                                  children: [
+                                    TextFormField(
+                                      controller: Controllers.createUserName,
+                                      cursorColor: Colors.black,
+                                      validator: (value) {
+                                        if (value == null || value == "") {
+                                          return Messages.validFullName;
+                                        }
+                                      },
+                                      inputFormatters: <TextInputFormatter>[
+                                        LengthLimitingTextInputFormatter(12),
+                                      ],
+                                      onChanged: (v) {
+                                        FilledValues();
+                                      },
+                                      onFieldSubmitted: (v) {
+                                        FocusScope.of(context)
+                                            .requestFocus(nameFocus);
+                                      },
+                                      decoration: InputDecoration(
+                                          focusedBorder:
+                                              const UnderlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          contentPadding: EdgeInsets.only(
+                                              top:
+                                                  SizeConfig.blockSizeVertical *
+                                                      2,
+                                              bottom:
+                                                  SizeConfig.blockSizeVertical *
+                                                      2,
+                                              left:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1),
+                                          labelText: Strings.name,
+                                          labelStyle: TextStyle(
+                                              fontFamily: AppTheme.appFont,
+                                              fontSize: 15.0,
+                                              color: AppTheme.blackColor)),
+                                      keyboardType: TextInputType.text,
+                                      textInputAction: TextInputAction.next,
+                                    ),
+                                    AbsorbPointer(
+                                      child: TextFormField(
+                                        focusNode: nameFocus,
+                                        validator: (value) {
+                                          if (value == null || value == "") {
+                                            return Messages.validEmail;
+                                          }
+                                        },
+                                        inputFormatters: <TextInputFormatter>[
+                                          LengthLimitingTextInputFormatter(35),
+                                        ],
+                                        onChanged: (v) {
+                                          FilledValues();
+                                        },
+                                        onFieldSubmitted: (v) {
+                                          nameFocus.unfocus();
+                                          FocusScope.of(context)
+                                              .requestFocus(emailFocus);
+                                        },
+                                        controller: Controllers.createUserEmail,
+                                        cursorColor: AppTheme.blackColor,
+                                        decoration: InputDecoration(
+                                            focusedBorder:
+                                                const UnderlineInputBorder(
+                                              borderSide: const BorderSide(
+                                                  color: Colors.grey,
+                                                  width: 1.0),
+                                            ),
+                                            contentPadding: EdgeInsets.only(
+                                                top: SizeConfig
+                                                        .blockSizeVertical *
+                                                    2,
+                                                bottom: SizeConfig
+                                                        .blockSizeVertical *
+                                                    2,
+                                                left: SizeConfig
+                                                        .blockSizeVertical *
+                                                    1),
+                                            labelText: Strings.Email,
+                                            labelStyle: TextStyle(
+                                                fontSize: 15.0,
+                                                fontFamily: AppTheme.appFont,
+                                                color: AppTheme.blackColor)),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        textInputAction: TextInputAction.next,
+                                      ),
+                                    ),
+                                    Theme(
+                                      data:
+                                          ThemeData(primarySwatch: Colors.grey),
+                                      child: DatePicker(
+                                        Strings.date_of_birth,
+                                        (dateTime) {
+                                          setDateTime = dateTime;
+                                          Controllers.createUserDob.text =
+                                              DateFormat("dd-MM-yyyy")
+                                                  .format(setDateTime);
+                                        },
+                                        controller: Controllers.createUserDob,
+                                        initialDate: setDateTime,
+                                        lastDate: DateTime.now(),
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      controller: Controllers.createUserPhone,
+                                      cursorColor: AppTheme.blackColor,
+                                      validator: (value) {
+                                        if (value == null || value == "") {
+                                          return Messages.validPhone;
+                                        }
+                                      },
+                                      focusNode: emailFocus,
+                                      inputFormatters: <TextInputFormatter>[
+                                        LengthLimitingTextInputFormatter(12),
+                                        FilteringTextInputFormatter.digitsOnly
+                                      ],
+                                      onChanged: (v) {
+                                        FilledValues();
+                                      },
+                                      onFieldSubmitted: (v) {
+                                        emailFocus.unfocus();
+                                        FocusScope.of(context)
+                                            .requestFocus(phone);
+                                      },
+                                      decoration: InputDecoration(
+                                          focusedBorder:
+                                              const UnderlineInputBorder(
+                                            borderSide: const BorderSide(
+                                                color: Colors.grey, width: 1.0),
+                                          ),
+                                          contentPadding: EdgeInsets.only(
+                                              top:
+                                                  SizeConfig.blockSizeVertical *
+                                                      2,
+                                              bottom:
+                                                  SizeConfig.blockSizeVertical *
+                                                      2,
+                                              left:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1),
+                                          labelText: Strings.phone,
+                                          labelStyle: TextStyle(
+                                              fontSize: 15.0,
+                                              fontFamily: AppTheme.appFont,
+                                              color: AppTheme.blackColor)),
+                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.done,
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            TextFormField(
-                              controller: Controllers.createUserPhone,
-                              cursorColor: AppTheme.blackColor,
-                              validator: (value) {
-                                if (value == null || value == "") {
-                                  return Messages.validPhone;
-                                }
-                              },
-                              focusNode: phone,
-                              inputFormatters: <TextInputFormatter>[
-                                LengthLimitingTextInputFormatter(12),
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
-                              onChanged: (v) {
-                                FilledValues();
-                              },
-                              onFieldSubmitted: (v) {
-                                emailFocus.unfocus();
-                                FocusScope.of(context).requestFocus(phone);
-                              },
-                              decoration: InputDecoration(
-                                  focusedBorder: const UnderlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Colors.grey, width: 1.0),
+                              Center(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(
+                                    vertical: SizeConfig.blockSizeVertical * 4,
                                   ),
-                                  contentPadding: EdgeInsets.only(
-                                      top: SizeConfig.blockSizeVertical * 2,
-                                      bottom: SizeConfig.blockSizeVertical * 2,
-                                      left: SizeConfig.blockSizeVertical * 1),
-                                  labelText: Strings.phone,
-                                  labelStyle: TextStyle(
-                                      fontSize: 15.0,
-                                      fontFamily: AppTheme.appFont,
-                                      color: AppTheme.blackColor)),
-                              keyboardType: TextInputType.number,
-                              textInputAction: TextInputAction.next,
-                            )
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: SizeConfig.blockSizeVertical * 4,
-                          ),
-                          child: RaisedButton(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockSizeHorizontal * 34,
-                                vertical: SizeConfig.blockSizeVertical * 2),
-                            onPressed: () {
-                              QueryResult getResult;
-                              if (_formKey.currentState.validate()) {
-                                if (Controllers
-                                    .createUserName.text.isNotEmpty) {
-                                  if (validateEmail(
-                                      Controllers.createUserEmail.text)) {
-                                    if (Controllers
-                                        .createUserDob.text.isNotEmpty) {
-                                      if (validateMobile(
-                                          Controllers.createUserPhone.text)) {
-                                        createUser(
-                                            context: context,
-                                            queryResult: getResult);
-                                      } else {
-                                        toast(
-                                            msg: Messages.validPhone,
-                                            context: context);
+                                  child: RaisedButton(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            SizeConfig.blockSizeHorizontal * 34,
+                                        vertical:
+                                            SizeConfig.blockSizeVertical * 2),
+                                    onPressed: () {
+                                      QueryResult getResult;
+                                      if (_formKey.currentState.validate()) {
+                                        if (Controllers
+                                            .createUserName.text.isNotEmpty) {
+                                          if (validateEmail(Controllers
+                                              .createUserEmail.text)) {
+                                            if (Controllers.createUserDob.text
+                                                .isNotEmpty) {
+                                              if (validateMobile(Controllers
+                                                  .createUserPhone.text)) {
+                                                createUser(
+                                                    context: context,
+                                                    queryResult: getResult);
+                                              } else {
+                                                toast(
+                                                    msg: Messages.validPhone,
+                                                    context: context);
+                                              }
+                                            } else {
+                                              toast(
+                                                  msg: Messages.validDob,
+                                                  context: context);
+                                            }
+                                          } else {
+                                            toast(
+                                                msg: Messages.wrongEmail,
+                                                context: context);
+                                          }
+                                        }
                                       }
-                                    } else {
-                                      toast(
-                                          msg: Messages.validDob,
-                                          context: context);
-                                    }
-                                  } else {
-                                    toast(
-                                        msg: Messages.wrongEmail,
-                                        context: context);
-                                  }
-                                }
-                              }
-                            },
-                            color: isFilled
-                                ? AppTheme.blackColor
-                                : AppTheme.toggleColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
-                            ),
-                            child: Text(Strings.save,
-                                style: TextStyle(
-                                    color: AppTheme.whiteColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: AppTheme.appFont)),
+                                    },
+                                    color: isFilled
+                                        ? AppTheme.blackColor
+                                        : AppTheme.toggleColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(25.0),
+                                    ),
+                                    child: Text(Strings.save,
+                                        style: TextStyle(
+                                            color: AppTheme.whiteColor,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: AppTheme.appFont)),
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      )
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -357,14 +401,14 @@ class _CreateUserViewState extends State<CreateUserView> {
             addMutation.createUser(
                 country: widget.country,
                 email: widget.email,
-                dob: widget.dob,
+                //  dob: widget.dob,
                 fName: widget.name,
-                id: getDetails['_id'],
-                imageUrl: galleryFile,
+                id: getId,
+                /*imageUrl: galleryFile,*/
                 lName: widget.name,
-                status: 'confirm',
+                /* status: 'confirm',
                 lang: getLang,
-                lat: getLat,
+                lat: getLat,*/
                 userName: widget.name),
           )),
         )
@@ -412,14 +456,12 @@ class _CircularBorderState extends State<CircularBorder> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       height: widget.size,
       width: widget.size,
       alignment: Alignment.center,
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          widget.icon == null ? Container() : widget.icon,
           CustomPaint(
             child: CircleAvatar(
               radius: 64,
@@ -428,6 +470,11 @@ class _CircularBorderState extends State<CircularBorder> {
                 radius: 61,
                 backgroundColor:
                     isimagechosen ? Colors.transparent : Colors.black,
+                backgroundImage: _image != null && _image != ""
+                    ? _image.path != null && _image.path != ""
+                        ? FileImage(File(_image.path))
+                        : CachedNetworkImageProvider("")
+                    : CachedNetworkImageProvider(""),
                 /*     backgroundImage: isimagechosen
                     ? PickedFile(galleryFile)
                     : CachedNetworkImageProvider(
@@ -493,13 +540,15 @@ class _CircularBorderState extends State<CircularBorder> {
                 padding: const EdgeInsets.all(9.0),
                 child: InkWell(
                   onTap: () async {
-                    /*    count = 1;
-                    Navigator.of(context).pop();
-                    done = await widget.onClickCallback();
-                    setState(() {});*/
-                    Navigator.of(context).pop();
-                    isimagechosen = true;
-                    chooseCameraFile();
+                    chooseCameraFile().then((PickedFile file) {
+                      print("file");
+                      if (file != null) {
+                        setState(() {
+                          //   loading = true;
+                        });
+                      }
+                    }).catchError((onError) {});
+                    Navigator.pop(context);
                   },
                   child: Container(
                     width: 100,
@@ -526,13 +575,14 @@ class _CircularBorderState extends State<CircularBorder> {
                 padding: const EdgeInsets.all(9.0),
                 child: InkWell(
                   onTap: () async {
-                    /* count = 2;
-                    Navigator.of(context).pop();
-                    done = await widget.onClickCallback();
-                    setState(() {});*/
-                    Navigator.of(context).pop();
-                    isimagechosen = true;
-                    chooseImageFile();
+                    chooseImageFile().then((PickedFile file) {
+                      if (file != null) {
+                        setState(() {
+                          //  loading = true;
+                        });
+                      }
+                    }).catchError((onError) {});
+                    Navigator.pop(context);
                   },
                   child: Container(
                     width: 100,
@@ -578,19 +628,19 @@ class _CircularBorderState extends State<CircularBorder> {
   Future<PickedFile> chooseCameraFile() async {
     await ImagePicker().getImage(source: ImageSource.camera).then((image) {
       setState(() {
-        galleryFile = image;
+        _image = image;
       });
     });
-    return galleryFile;
+    return _image;
   }
 
   Future<PickedFile> chooseImageFile() async {
     await ImagePicker().getImage(source: ImageSource.gallery).then((image) {
       setState(() {
-        galleryFile = image;
+        _image = image;
       });
     });
-    return galleryFile;
+    return _image;
   }
 }
 

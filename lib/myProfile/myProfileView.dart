@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 
 class MyProfileView extends StatefulWidget {
@@ -26,10 +25,8 @@ class _MyProfileViewState extends State<MyProfileView> {
     SharedPreferenceData().getSelectedThemeMode().then((value) {
       setState(() {
         status = value;
-
       });
     });
-
   }
 
   @override

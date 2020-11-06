@@ -78,9 +78,44 @@ class QueryMutation {
 }""";
   }
 
+//   String createUser(
+//       {String id,
+//       userName,
+//       fName,
+//       lName,
+//       email,
+//       dob,
+//       country,
+//       imageUrl,
+//       status,
+//         Float lat, Float lang
+//       }) {
+//     return """mutation {
+//   editPeople(
+//   idPerson: "$id"
+//   username: "$userName"
+//   firstName: "$fName"
+//   lastName: "$lName"
+//   email: "$email"
+//   dateOfBirth: "$dob"
+//   country: "$country"
+//   avatarURL: "$imageUrl"
+//   latitude: "$lat"
+//   longitude: "$lang"
+//   status: "$status"
+//   ) {
+//   authorization
+//   person {
+//   _id
+//   email
+//   }
+//   }
+// }""";
+//   }
+
   String createUser(
-      {String id,
-      userName,
+      {int id,
+      String userName,
       fName,
       lName,
       email,
@@ -88,27 +123,21 @@ class QueryMutation {
       country,
       imageUrl,
       status,
-        Float lat, Float lang
-      }) {
-    return """mutation {
+      Float lat,
+      Float lang}) {
+    return """ mutation {
   editPeople(
   idPerson: "$id"
   username: "$userName"
   firstName: "$fName"
   lastName: "$lName"
   email: "$email"
-  dateOfBirth: "$dob"
-  country: "$country"
-  avatarURL: "$imageUrl"
-  latitude: "$lat"
-  longitude: "$lang"
-  status: "$status"
   ) {
-  authorization
-  person {
   _id
+  firstName
+  lastName
+  username
   email
-  }
   }
 }""";
   }

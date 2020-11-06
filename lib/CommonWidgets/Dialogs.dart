@@ -2,6 +2,7 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
+
   static Future<void> showLoadingDialog(
       BuildContext context, GlobalKey key) async {
     return showDialog<void>(

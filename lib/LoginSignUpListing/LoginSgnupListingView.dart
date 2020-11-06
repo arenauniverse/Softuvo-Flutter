@@ -33,7 +33,9 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
       ),
-      height: SizeConfig.blockSizeVertical * 79,
+      height: Platform.isAndroid
+          ? SizeConfig.blockSizeVertical * 70
+          : SizeConfig.blockSizeVertical * 75,
       width: SizeConfig.blockSizeHorizontal,
       child: SingleChildScrollView(
         physics: NeverScrollableScrollPhysics(),
@@ -234,7 +236,7 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        Dialogs.showLoadingDialog(context, _addLoader);
+        /* Dialogs.showLoadingDialog(context, _addLoader);*/
         SocialLogin().fbLogin(context: context).then((value) async {
           if (value != null) {
             SharedPreferenceData().saveFbDetails(data: value.profile);
@@ -250,18 +252,19 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
               queryResult = value;
               if (!queryResult.hasException) {
                 SharedPreferenceData().saveFbToken(data: value.data);
-                Navigator.of(_addLoader.currentContext, rootNavigator: true)
-                    .pop();
+                /*    Navigator.of(_addLoader.currentContext, rootNavigator: true)
+                    .pop();*/
                 toast(context: context, msg: Messages.fbLoginSuccess);
+                Navigator.pop(context);
               } else {
-                Navigator.of(_addLoader.currentContext, rootNavigator: true)
-                    .pop();
+                /*   Navigator.of(_addLoader.currentContext, rootNavigator: true)
+                    .pop();*/
                 toast(context: context, msg: queryResult.exception.toString());
               }
             });
           } else {
             var errorMessage = queryResult.exception.toString().split(':');
-            Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            /*  Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();*/
             toast(context: context, msg: errorMessage[2]);
           }
         });

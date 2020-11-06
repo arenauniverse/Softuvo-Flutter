@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:arena_sports_app/CommonWidgets/ChannelWidget.dart';
-import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SlideRightRoute.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
-import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/LoginSignUpListing/LoginSgnupListingView.dart';
@@ -120,10 +118,9 @@ class _UserDashboardViewState extends State<UserDashboardView>
                           setState(() {
                             status = val;
                             if (status)
-                                  controller.reverse();
+                              controller.reverse();
                             else
-                            controller.forward();
-
+                              controller.forward();
                           });
                         },
                         dragStartBehavior: DragStartBehavior.down,
@@ -133,16 +130,16 @@ class _UserDashboardViewState extends State<UserDashboardView>
                   GestureDetector(
                     onTap: () {
                       //toast(msg: Messages.underDevelopment, context: context);
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) =>
-                                NotificationScreen()),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => NotificationScreen()),
                       );
                     },
                     child: Container(
                       margin: EdgeInsets.only(
                         left: SizeConfig.blockSizeHorizontal * 3.5,
                       ),
-
                       child: CircleAvatar(
                         radius: 16,
                         backgroundColor: AppTheme.greyColor,
@@ -1408,6 +1405,9 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                                     .blockSizeHorizontal *
                                                                 2),
                                                         Container(
+                                                          width: SizeConfig
+                                                                  .blockSizeHorizontal *
+                                                              28,
                                                           child: Text(
                                                             Strings
                                                                 .Borussia_Dortmund,
@@ -1421,27 +1421,95 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
-                                                                6),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                                4),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .yellowColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
+                                                        /*  SvgPicture.asset(
+                                                            'assets/circleIcon.svg'),*/
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
                                                                 2),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .borderColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
                                                                 2),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .borderColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
                                                                 2),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .greenColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
+                                                        SizedBox(
+                                                            width: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                2),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .borderColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
@@ -1483,6 +1551,9 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                                     .blockSizeHorizontal *
                                                                 2),
                                                         Container(
+                                                          width: SizeConfig
+                                                                  .blockSizeHorizontal *
+                                                              28,
                                                           child: Text(
                                                             Strings.Chelsea,
                                                             style: TextStyle(
@@ -1493,26 +1564,94 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                           ),
                                                         ),
                                                         Spacer(),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .greenColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
+                                                        /*  SvgPicture.asset(
+                                                            'assets/circleIcon.svg'),*/
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
                                                                 2),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .greenColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
                                                                 2),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .greenColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
                                                                 2),
-                                                        SvgPicture.asset(
-                                                            'assets/circleIcon.svg'),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .borderColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
+                                                        SizedBox(
+                                                            width: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                2),
+                                                        Container(
+                                                            height: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            width: SizeConfig
+                                                                    .blockSizeVertical *
+                                                                1,
+                                                            decoration:
+                                                                new BoxDecoration(
+                                                              color: AppTheme
+                                                                  .greenColor,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            )),
                                                         SizedBox(
                                                             width: SizeConfig
                                                                     .blockSizeHorizontal *
@@ -1540,9 +1679,364 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                       left: SizeConfig
                                                               .blockSizeHorizontal *
                                                           5,
-                                                      bottom: SizeConfig
-                                                              .blockSizeVertical *
-                                                          2,
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                      child: GetDivider(),
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                        horizontal: SizeConfig
+                                                                .blockSizeHorizontal *
+                                                            4,
+                                                      )),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        child: Column(
+                                                          children: [
+                                                            SvgPicture.asset(
+                                                              'assets/Atalanta.svg',
+                                                              width: SizeConfig
+                                                                      .blockSizeHorizontal *
+                                                                  6,
+                                                            ),
+                                                            Container(
+                                                              margin: EdgeInsets.only(
+                                                                  top: SizeConfig
+                                                                          .blockSizeVertical *
+                                                                      1),
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                'assets/paris.svg',
+                                                                width: SizeConfig
+                                                                        .blockSizeHorizontal *
+                                                                    6,
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                        margin: EdgeInsets.only(
+                                                            left: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                5),
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                2),
+                                                        child: Column(
+                                                          children: [
+                                                            Text(
+                                                              Strings.Atalanta,
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 15),
+                                                            ),
+                                                            Container(
+                                                              margin: EdgeInsets.only(
+                                                                  top: SizeConfig
+                                                                          .blockSizeVertical *
+                                                                      1),
+                                                              child: Text(
+                                                                Strings
+                                                                    .Atalanta,
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        15),
+                                                              ),
+                                                            )
+                                                          ],
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                        ),
+                                                      ),
+                                                      Spacer(),
+                                                      Container(
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          6.0,
+                                                                      vertical:
+                                                                          3.0),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4),
+                                                                color: AppTheme
+                                                                    .greyColor,
+                                                              ),
+                                                              child: Text(
+                                                                "1",
+                                                                style: TextStyle(
+                                                                    color: AppTheme
+                                                                        .blackColor,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600),
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              margin: EdgeInsets.only(
+                                                                  top: SizeConfig
+                                                                          .blockSizeVertical *
+                                                                      1),
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          6.0,
+                                                                      vertical:
+                                                                          3.0),
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4),
+                                                                color: AppTheme
+                                                                    .greyColor,
+                                                              ),
+                                                              child: Text(
+                                                                Strings.scores,
+                                                                style: TextStyle(
+                                                                    color: AppTheme
+                                                                        .blackColor,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            right: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                10,
+                                                            left: SizeConfig
+                                                                    .blockSizeHorizontal *
+                                                                3),
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              Strings.Finished,
+                                                              style: TextStyle(
+                                                                  color: AppTheme
+                                                                      .greenColor),
+                                                            ),
+                                                            Container(
+                                                              margin: EdgeInsets.only(
+                                                                  top: SizeConfig
+                                                                          .blockSizeVertical *
+                                                                      1),
+                                                              child: Text(
+                                                                Strings.Espn,
+                                                                style: TextStyle(
+                                                                    color: AppTheme
+                                                                        .lightgrey,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: SizeConfig
+                                                                .blockSizeVertical *
+                                                            3),
+                                                    child: Row(
+                                                      children: [
+                                                        Container(
+                                                          child: Column(
+                                                            children: [
+                                                              SvgPicture.asset(
+                                                                'assets/Manchester.svg',
+                                                                width: SizeConfig
+                                                                        .blockSizeHorizontal *
+                                                                    6,
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets.only(
+                                                                    top: SizeConfig
+                                                                            .blockSizeVertical *
+                                                                        1),
+                                                                child:
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                  'assets/paris.svg',
+                                                                  width: SizeConfig
+                                                                          .blockSizeHorizontal *
+                                                                      6,
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          margin: EdgeInsets.only(
+                                                              left: SizeConfig
+                                                                      .blockSizeHorizontal *
+                                                                  5),
+                                                        ),
+                                                        Container(
+                                                          margin: EdgeInsets.only(
+                                                              left: SizeConfig
+                                                                      .blockSizeHorizontal *
+                                                                  2),
+                                                          child: Column(
+                                                            children: [
+                                                              Text(
+                                                                Strings
+                                                                    .manshester,
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        15),
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets.only(
+                                                                    top: SizeConfig
+                                                                            .blockSizeVertical *
+                                                                        1),
+                                                                child: Text(
+                                                                  Strings.Lyon,
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      fontSize:
+                                                                          15),
+                                                                ),
+                                                              )
+                                                            ],
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                          ),
+                                                        ),
+                                                        Spacer(),
+                                                        Container(
+                                                          child: Column(
+                                                            children: [
+                                                              Container(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            6.0,
+                                                                        vertical:
+                                                                            3.0),
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              4),
+                                                                  color: AppTheme
+                                                                      .greyColor,
+                                                                ),
+                                                                child: Text(
+                                                                  "1",
+                                                                  style: TextStyle(
+                                                                      color: AppTheme
+                                                                          .blackColor,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets.only(
+                                                                    top: SizeConfig
+                                                                            .blockSizeVertical *
+                                                                        1),
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            6.0,
+                                                                        vertical:
+                                                                            3.0),
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              4),
+                                                                  color: AppTheme
+                                                                      .greyColor,
+                                                                ),
+                                                                child: Text(
+                                                                  Strings
+                                                                      .scores,
+                                                                  style: TextStyle(
+                                                                      color: AppTheme
+                                                                          .blackColor,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin: EdgeInsets.only(
+                                                              right: SizeConfig
+                                                                      .blockSizeHorizontal *
+                                                                  10,
+                                                              left: SizeConfig
+                                                                      .blockSizeHorizontal *
+                                                                  3),
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                Strings
+                                                                    .Finished,
+                                                                style: TextStyle(
+                                                                    color: AppTheme
+                                                                        .greenColor),
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets.only(
+                                                                    top: SizeConfig
+                                                                            .blockSizeVertical *
+                                                                        1),
+                                                                child: Text(
+                                                                  Strings.Espn,
+                                                                  style: TextStyle(
+                                                                      color: AppTheme
+                                                                          .lightgrey,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   )
                                                 ],
@@ -1707,6 +2201,7 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                       color: Theme.of(context).cardColor,
                                     ),
                                   ),
+/*
                                   Container(
                                     child: Column(
                                       crossAxisAlignment:
@@ -1938,6 +2433,7 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                       color: Theme.of(context).cardColor,
                                     ),
                                   )
+*/
                                 ],
                               ),
                             )
@@ -1979,10 +2475,15 @@ class _UserDashboardViewState extends State<UserDashboardView>
   void showTutorial() {
     tutorialCoachMark = TutorialCoachMark(context,
         targets: targets,
-        colorShadow: Colors.black,
-        textSkip: "SKIP",
+        alignSkip: Alignment.topCenter,
+        colorShadow: AppTheme.blackColor,
+        textSkip: "Omitir",
+        textStyleSkip: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: AppTheme.whiteColor,
+            fontSize: 18),
         paddingFocus: 10,
-        opacityShadow: 0.8,
+        opacityShadow: 0.7,
         onFinish: () {}, onClickTarget: (target) {
       SharedPreferenceData().saveFirstRun(false);
     }, onClickSkip: () {
@@ -1998,33 +2499,53 @@ class _UserDashboardViewState extends State<UserDashboardView>
   }
 
   void initCoachMarker() {
-    targets
-        .add(TargetFocus(identify: "Target 1", keyTarget: _arenaKey, contents: [
-      ContentTarget(
-          align: AlignContent.top,
-          child: Container(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "My Arena",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 20.0),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    style: TextStyle(color: Colors.white),
+    targets.add(TargetFocus(
+      identify: "Target 1",
+      keyTarget: _arenaKey,
+      contents: [
+        ContentTarget(
+            align: AlignContent.top,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 6.0),
+              child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppTheme.whiteColor,
+                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  height: SizeConfig.blockSizeVertical * 15,
+                  width: SizeConfig.blockSizeVertical * 25,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: SizeConfig.blockSizeHorizontal * 3,
+                            top: SizeConfig.blockSizeVertical * 1),
+                        child: Text(
+                          "My Arena",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.blackColor,
+                              fontSize: 20.0),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: SizeConfig.blockSizeHorizontal * 3,
+                            top: SizeConfig.blockSizeVertical * 1),
+                        child: Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                          style: TextStyle(color: AppTheme.greyColor),
+                        ),
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
-          ))
-    ]));
+                ),
+              ),
+            ))
+      ],
+    ));
 
     targets
         .add(TargetFocus(identify: "Target 2", keyTarget: _loginKey, contents: [
@@ -2057,75 +2578,3 @@ class _UserDashboardViewState extends State<UserDashboardView>
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
   }
 }
-
-/*
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => HomeState();
-}
-
-class HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<Offset> offset;
-
-  @override
-  void initState() {
-    super.initState();
-
-    controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
-
-    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
-        .animate(controller);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Center(
-            child: RaisedButton(
-              child: Text('Show / Hide'),
-              onPressed: () {
-                switch (controller.status) {
-                  case AnimationStatus.completed:
-                    controller.reverse();
-                    break;
-                  case AnimationStatus.dismissed:
-                    controller.forward();
-                    break;
-                  default:
-                }
-              },
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: SlideTransition(
-              position: offset,
-              child: Padding(
-                padding: EdgeInsets.all(50.0),
-                child: CircularProgressIndicator(),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-*/

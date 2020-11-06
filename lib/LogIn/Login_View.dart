@@ -38,21 +38,22 @@ class _LoginViewState extends State<LoginView> {
     return Form(
       key: _formKey,
       child: Scaffold(
-        body: Container(
-          margin: EdgeInsets.only(
-              top: SizeConfig.blockSizeVertical * 8.0,
-              left: SizeConfig.blockSizeHorizontal * 7,
-              right: SizeConfig.blockSizeHorizontal * 7),
-          child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
+        body: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                    top: SizeConfig.blockSizeVertical * 8.0,
+                    left: SizeConfig.blockSizeHorizontal * 6,
+                    right: SizeConfig.blockSizeHorizontal * 6),
+                child: GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
                       Controllers.loginEmail.clear();
                       Controllers.loginPassword.clear();
+                      Navigator.pop(context);
+
                       // Get.back();
                     },
                     child: Container(
@@ -62,24 +63,179 @@ class _LoginViewState extends State<LoginView> {
                         width: 12,
                       ),
                     )),
-                SizedBox(
-                  height: SizeConfig.blockSizeVertical * 3,
-                ),
-                Text(
-                  Strings.loginText,
-                  style: TextStyle(
-                      fontFamily: AppTheme.appFont,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24),
-                ),
-                SizedBox(
-                  height: SizeConfig.blockSizeVertical * 2,
-                ),
-                Row(
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: SizeConfig.blockSizeVertical * 2,
+                    left: SizeConfig.blockSizeHorizontal * 8,
+                    right: SizeConfig.blockSizeHorizontal * 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      Strings.notRegisted,
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      Strings.loginText,
+                      style: TextStyle(
+                          fontFamily: AppTheme.appFont,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: SizeConfig.blockSizeVertical * 2,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          Strings.notRegisted,
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RegisterView()),
+                            );
+                          },
+                          child: Text(
+                            Strings.createUser,
+                            style: TextStyle(
+                                color: AppTheme.blueColor,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: SizeConfig.blockSizeVertical * 2,
+                    ),
+                    TextFormField(
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(35),
+                      ],
+                      onChanged: (v) {
+                        FilledValues();
+                      },
+                      controller: Controllers.loginEmail,
+                      cursorColor: Colors.black,
+                      validator: (value) {
+                        if (value == null || value == "") {
+                          return Messages.validEmail;
+                        }
+                      },
+                      onFieldSubmitted: (v) {
+                        FocusScope.of(context).requestFocus(emailFocus);
+                      },
+                      decoration: InputDecoration(
+                          focusedBorder: const UnderlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.grey, width: 1.0),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical * 2,
+                              bottom: SizeConfig.blockSizeVertical * 2,
+                              left: SizeConfig.blockSizeVertical * 1),
+                          labelText: Strings.Email,
+                          labelStyle: TextStyle(
+                              fontFamily: AppTheme.appFont,
+                              fontSize: 15.0,
+                              color: AppTheme.blackColor)),
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                    ),
+                    TextFormField(
+                      focusNode: emailFocus,
+                      obscureText: passwordVisible,
+                      controller: Controllers.loginPassword,
+                      cursorColor: AppTheme.blackColor,
+                      validator: (value) {
+                        if (value == null || value == "") {
+                          return Messages.validPassword;
+                        }
+                      },
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(20),
+                      ],
+                      onChanged: (v) {
+                        FilledValues();
+                      },
+                      onFieldSubmitted: (v) {
+                        emailFocus.unfocus();
+                        FocusScope.of(context).requestFocus(passwordFocus);
+                      },
+                      decoration: InputDecoration(
+                          focusedBorder: const UnderlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.grey, width: 1.0),
+                          ),
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                            child: Icon(
+                              passwordVisible
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: AppTheme.blackColor,
+                            ),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              top: SizeConfig.blockSizeVertical * 2,
+                              bottom: SizeConfig.blockSizeVertical * 2,
+                              left: SizeConfig.blockSizeVertical * 1),
+                          labelText: Strings.password,
+                          labelStyle: TextStyle(
+                              fontSize: 15.0,
+                              fontFamily: AppTheme.appFont,
+                              color: AppTheme.blackColor)),
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.done,
+                    ),
+                    SizedBox(
+                      height: SizeConfig.blockSizeVertical * 2,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: SizeConfig.blockSizeVertical * 3,
+                      ),
+                      child: RaisedButton(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: SizeConfig.blockSizeHorizontal * 33,
+                            vertical: SizeConfig.blockSizeVertical * 2),
+                        onPressed: () {
+                          QueryResult queryResult;
+                          FocusScope.of(context).unfocus();
+                          if (_formKey.currentState.validate()) {
+                            if (validateEmail(
+                              Controllers.loginEmail.text,
+                            )) {
+                              if (Controllers.loginPassword.text.length >= 8) {
+                                LoginUser(
+                                    context: context, queryResult: queryResult);
+                              } else {
+                                toast(
+                                    context: context,
+                                    msg: Messages.shortPassword);
+                              }
+                            } else {
+                              toast(context: context, msg: Messages.wrongEmail);
+                            }
+                          }
+                        },
+                        color: isFilled
+                            ? AppTheme.blackColor
+                            : AppTheme.toggleColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(25.0),
+                        ),
+                        child: Text(Strings.loginButtonText,
+                            style: TextStyle(
+                                color: AppTheme.whiteColor,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: AppTheme.appFont)),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -87,168 +243,23 @@ class _LoginViewState extends State<LoginView> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterView()),
+                              builder: (context) => ForgetPasswordView()),
                         );
                       },
-                      child: Text(
-                        Strings.createUser,
-                        style: TextStyle(
-                            color: AppTheme.blueColor,
-                            fontWeight: FontWeight.w500),
+                      child: Center(
+                        child: Text(
+                          Strings.registerUser,
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              color: AppTheme.blueColor,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     )
                   ],
                 ),
-                SizedBox(
-                  height: SizeConfig.blockSizeVertical * 2,
-                ),
-                TextFormField(
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(35),
-                  ],
-                  onChanged: (v) {
-                    FilledValues();
-                  },
-                  focusNode: emailFocus,
-                  controller: Controllers.loginEmail,
-                  cursorColor: Colors.black,
-                  validator: (value) {
-                    if (value == null || value == "") {
-                      return Messages.validEmail;
-                    }
-                  },
-                  onFieldSubmitted: (v) {
-                    FocusScope.of(context).requestFocus(emailFocus);
-                  },
-                  decoration: InputDecoration(
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide:
-                        const BorderSide(color: Colors.grey, width: 1.0),
-                      ),
-                      contentPadding: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 2,
-                          left: SizeConfig.blockSizeVertical * 1),
-                      labelText: Strings.Email,
-                      labelStyle: TextStyle(
-                          fontFamily: AppTheme.appFont,
-                          fontSize: 15.0,
-                          color: AppTheme.blackColor)),
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                ),
-                TextFormField(
-                  focusNode: passwordFocus,
-                  obscureText: passwordVisible,
-                  controller: Controllers.loginPassword,
-                  cursorColor: AppTheme.blackColor,
-                  validator: (value) {
-                    if (value == null || value == "") {
-                      return Messages.validPassword;
-                    }
-                  },
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(20),
-                  ],
-                  onChanged: (v) {
-                    FilledValues();
-                  },
-                  onFieldSubmitted: (v) {
-                    emailFocus.unfocus();
-                    FocusScope.of(context).requestFocus(passwordFocus);
-                  },
-                  decoration: InputDecoration(
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide:
-                        const BorderSide(color: Colors.grey, width: 1.0),
-                      ),
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          setState(() {
-                            passwordVisible = !passwordVisible;
-                          });
-                        },
-                        child: Icon(
-                          passwordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
-                          color: AppTheme.blackColor,
-                        ),
-                      ),
-                      contentPadding: EdgeInsets.only(
-                          top: SizeConfig.blockSizeVertical * 2,
-                          bottom: SizeConfig.blockSizeVertical * 2,
-                          left: SizeConfig.blockSizeVertical * 1),
-                      labelText: Strings.password,
-                      labelStyle: TextStyle(
-                          fontSize: 15.0,
-                          fontFamily: AppTheme.appFont,
-                          color: AppTheme.blackColor)),
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.done,
-                ),
-                SizedBox(
-                  height: SizeConfig.blockSizeVertical * 2,
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    vertical: SizeConfig.blockSizeVertical * 3,
-                  ),
-                  child: RaisedButton(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.blockSizeHorizontal * 34,
-                        vertical: SizeConfig.blockSizeVertical * 2),
-                    onPressed: () {
-                      QueryResult queryResult;
-                      FocusScope.of(context).unfocus();
-                      if (_formKey.currentState.validate()) {
-                        if (validateEmail(
-                          Controllers.loginEmail.text,
-                        )) {
-                          if (Controllers.loginPassword.text.length >= 8) {
-                            LoginUser(
-                                context: context, queryResult: queryResult);
-                          } else {
-                            toast(
-                                context: context, msg: Messages.shortPassword);
-                          }
-                        } else {
-                          toast(context: context, msg: Messages.wrongEmail);
-                        }
-                      }
-                    },
-                      color: isFilled ? AppTheme.blackColor : AppTheme.toggleColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(25.0),
-                    ),
-                    child: Text(Strings.loginButtonText,
-                        style: TextStyle(
-                            color: AppTheme.whiteColor,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: AppTheme.appFont)),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    FocusScope.of(context).unfocus();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ForgetPasswordView()),
-                    );
-                  },
-                  child: Center(
-                    child: Text(
-                      Strings.registerUser,
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: AppTheme.blueColor,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),
