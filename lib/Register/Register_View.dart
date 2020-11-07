@@ -668,7 +668,7 @@ class _RegisterViewState extends State<RegisterView> {
                 context,
                 MaterialPageRoute(
                     builder: (BuildContext context) => CreateUserView(
-                      name: Controllers.name.text,
+                          name: Controllers.name.text,
                           dob: dateTimeFormat,
                           email: Controllers.registerEmail.text,
                           country: _selected.name,

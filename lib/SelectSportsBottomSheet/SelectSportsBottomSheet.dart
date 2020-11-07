@@ -41,7 +41,7 @@ class _SelectSportsBottomSheetState extends State<SelectSportsBottomSheet> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Align(
+/*          Align(
             alignment: Alignment.topCenter,
             child: Container(
               margin: EdgeInsets.only(
@@ -50,13 +50,13 @@ class _SelectSportsBottomSheetState extends State<SelectSportsBottomSheet> {
                   left: SizeConfig.blockSizeVertical * 2),
               child: SvgPicture.asset('assets/Indicator.svg'),
             ),
-          ),
+          )*/
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+                  padding: EdgeInsets.only(top:  SizeConfig.blockSizeVertical * 4,left: 16, right: 16),
                   child: Text(
                     Strings.selectSport,
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),

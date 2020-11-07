@@ -34,12 +34,12 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(width: 32.0, height: 0.0),
-              Container(
+              /*Container(
                 margin: EdgeInsets.only(
                   top: SizeConfig.blockSizeVertical * 2,
                 ),
                 child: SvgPicture.asset('assets/Indicator.svg'),
-              ),
+              ),*/
               GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
