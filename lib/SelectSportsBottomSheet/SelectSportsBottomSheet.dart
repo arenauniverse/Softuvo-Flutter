@@ -7,7 +7,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../theme.dart';
 
 class SelectSportsBottomSheet extends StatefulWidget {
@@ -56,7 +55,10 @@ class _SelectSportsBottomSheetState extends State<SelectSportsBottomSheet> {
             children: <Widget>[
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(top:  SizeConfig.blockSizeVertical * 4,left: 16, right: 16),
+                  padding: EdgeInsets.only(
+                      top: SizeConfig.blockSizeVertical * 4,
+                      left: 16,
+                      right: 16),
                   child: Text(
                     Strings.selectSport,
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
@@ -123,7 +125,8 @@ class _SelectSportsBottomSheetState extends State<SelectSportsBottomSheet> {
                                 left: SizeConfig.blockSizeVertical * 2),
                             child: Text(
                               item.sportsName,
-                              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 11),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 11),
                             ),
                           ),
                         ),

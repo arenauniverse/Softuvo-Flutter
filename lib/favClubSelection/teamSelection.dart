@@ -142,10 +142,10 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                                   false) {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
-                                  true;
+                                      true;
                                   //if (listViewData.elementAt(index).isSelected) {
                                   var selectedData =
-                                  listViewData.elementAt(index);
+                                      listViewData.elementAt(index);
                                   favList.add(selectedData);
                                   //  OnBoard().createState().build(context);
                                   //  }
@@ -153,10 +153,10 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                               } else {
                                 setState(() {
                                   listViewData.elementAt(index).isSelected =
-                                  false;
+                                      false;
                                   //if (listViewData.elementAt(index).isSelected = false) {
                                   var selectedData =
-                                  listViewData.elementAt(index);
+                                      listViewData.elementAt(index);
                                   favList.remove(selectedData);
                                   //  favList.removeAt(index);
                                   //  }
