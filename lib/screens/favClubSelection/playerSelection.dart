@@ -1,6 +1,7 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
+import 'package:arena_sports_app/screens/favClubSelection/favModels.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 import 'bottomNavigationLeague.dart';
 import 'leagueSelection.dart';
 
-List<FavPlayerModel> favPlayerData = [];
+List<ListViewModel> favPlayerData = [];
 
 class FavPlayerselection extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
   void initState() {
     if (favPlayerData.length == 0) {
       for (int i = 0; i < 12; i++) {
-        favPlayerData.add(FavPlayerModel(
+        favPlayerData.add(ListViewModel(
             name: Strings.ArgentinaLeague,
             isSelected: false,
             image: Image.asset(
@@ -231,15 +232,4 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
       ),
     );
   }
-}
-
-class FavPlayerModel {
-  final String name;
-  final Image image;
-  bool isSelected;
-  final String type;
-  final String value;
-
-  FavPlayerModel(
-      {this.type, this.name, this.isSelected, this.image, this.value});
 }

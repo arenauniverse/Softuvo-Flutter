@@ -5,9 +5,10 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'bottomNavigationLeague.dart';
+import 'favModels.dart';
 import 'leagueSelection.dart';
 
-List<FavTeamModel> favTeamData = [];
+List<ListViewModel> favTeamData = [];
 
 class FavTeamSelection extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
   void initState() {
     if (favTeamData.length == 0) {
       for (int i = 0; i < 12; i++) {
-        favTeamData.add(FavTeamModel(
+        favTeamData.add(ListViewModel(
             name: Strings.ArgentinaLeague,
             isSelected: false,
             image: Image.asset(
@@ -229,12 +230,3 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
   }
 }
 
-class FavTeamModel {
-  final String name;
-  final Image image;
-  bool isSelected;
-  final String type;
-  final String value;
-
-  FavTeamModel({this.type, this.name, this.isSelected, this.image, this.value});
-}

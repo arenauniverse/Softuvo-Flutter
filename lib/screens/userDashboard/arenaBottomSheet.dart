@@ -13,7 +13,6 @@ class ArenaBottomSheet extends StatefulWidget {
   @override
   _ArenaBottomSheetState createState() => _ArenaBottomSheetState();
 }
-
 class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
   List<SelectClubModel> listViewData = [];
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 12);

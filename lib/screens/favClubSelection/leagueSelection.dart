@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/screens/favClubSelection/favModels.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -250,13 +251,3 @@ class _LeagueSelectionState extends State<LeagueSelection> {
   }
 }
 
-class ListViewModel {
-  final String name;
-  final Image image;
-  bool isSelected;
-  final String type;
-  final String value;
-
-  ListViewModel(
-      {this.type, this.name, this.isSelected, this.image, this.value});
-}
