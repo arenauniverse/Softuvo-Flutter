@@ -1,4 +1,5 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
+import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/screens/terms&Conditions/Terms&Conditions_View.dart';
 import 'package:arena_sports_app/theme.dart';
@@ -227,24 +228,20 @@ height: SizeConfig.blockSizeVertical * 1.5,
                           children: [
                             Text("Dark Mode"),
                             Spacer(),
-                            Transform.scale(
-                              scale: 1.3,
-                              child: Switch(
-                                activeColor: AppTheme.blueColor,
-                                value: status,
-                                onChanged: (val) {
-                                  setState(() {
-                                    status = val;
-                                    themeChange.darkTheme = status;
-                                    SharedPreferenceData()
-                                        .saveSelectedThemeMode(status);
-                                    /* RevealRoute(
+                            toggleButton(
+                              status: status,
+                              onChanged: (val) {
+                                setState(() {
+                                  status = val;
+                                  themeChange.darkTheme = status;
+                                  SharedPreferenceData()
+                                      .saveSelectedThemeMode(status);
+                                  /* RevealRoute(
                                       page: MyProfileView(),
                                       maxRadius: 800,
                                       centerAlignment: Alignment.center);*/
-                                  });
-                                },
-                              ),
+                                });
+                              },
                             )
                           ],
                         ),

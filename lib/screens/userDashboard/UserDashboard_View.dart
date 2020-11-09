@@ -3,9 +3,11 @@ import 'package:arena_sports_app/CommonWidgets/ChannelWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/SlideRightRoute.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/bottomSheet.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/dividerWidget.dart';
 import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
+import 'package:arena_sports_app/screens/notifications/notificationsView.dart';
 import 'package:arena_sports_app/screens/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/screens/feedHome/VideoPlayerView.dart';
 import 'package:arena_sports_app/screens/loginSignUpListing/LoginSgnupListingView.dart';
@@ -86,14 +88,8 @@ class _UserDashboardViewState extends State<UserDashboardView>
                 children: [
                   GestureDetector(
                     onTap: () {
-                      /*  isRegisterd == true
-                          ? Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      MyProfileView()))
-                          :*/
-                      _showModalSheet();
+                      ShowBottomSheet()
+                          .showModalSheet(context, LoginSignUpListingView());
                     },
                     child: Container(
                       child: SvgPicture.asset('assets/ArenaLogin.svg'),
@@ -105,31 +101,24 @@ class _UserDashboardViewState extends State<UserDashboardView>
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
                   Container(
-                    margin: EdgeInsets.only(
-                      left: SizeConfig.blockSizeHorizontal * 1.5,
-                    ),
-                    child: Transform.scale(
-                      scale: 1.4,
-                      child: Switch(
-                        activeColor: AppTheme.blueColor,
-                        value: status,
-                        onChanged: (val) {
-                          setState(() {
-                            status = val;
-                            if (status)
-                              controller.reverse();
-                            else
-                              controller.forward();
-                          });
-                        },
-                        dragStartBehavior: DragStartBehavior.down,
+                      margin: EdgeInsets.only(
+                        left: SizeConfig.blockSizeHorizontal * 1.5,
                       ),
-                    ),
-                  ),
+                      child: toggleButton(
+                          onChanged: (val) {
+                            setState(() {
+                              status = val;
+                              if (status)
+                                controller.reverse();
+                              else
+                                controller.forward();
+                            });
+                          },
+                          status: status)),
                   GestureDetector(
                     onTap: () {
                       //toast(msg: Messages.underDevelopment, context: context);
-                  /*    Navigator.push(
+                      /*    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => NotificationScreen()),
@@ -334,7 +323,18 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                               width: SizeConfig
                                                                       .blockSizeHorizontal *
                                                                   3),
-                                                          notificationBell(),
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              ShowBottomSheet()
+                                                                  .showModalSheet(
+                                                                      context,
+                                                                      NotificationsView());
+                                                            },
+                                                            child: Container(
+                                                              child:
+                                                                  notificationBell(),
+                                                            ),
+                                                          ),
                                                         ],
                                                       ),
                                                       margin: EdgeInsets.only(
@@ -1242,37 +1242,6 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                               )
                                                             ],
                                                           )
-
-/*
-                                                Positioned(
-                                                  child: Container(
-                                                    width: SizeConfig
-                                                            .blockSizeVertical *
-                                                        40,
-                                                    child: Slider(
-                                                      mouseCursor:
-                                                          MouseCursor.defer,
-                                                      activeColor: AppTheme
-                                                          .borderColor,
-                                                      inactiveColor: Color(
-                                                              0xFF0E3311)
-                                                          .withOpacity(0.5),
-                                                      onChanged: (v) {
-                                                        */
-/*  final Position = v * _duration.inMilliseconds;
-                                                      _audioPlayer.seek(Duration(milliseconds: Position.round()));*/ /*
-                                                      },
-                                                      value: 2.3,
-                                                      max: 5,
-                                                      min: 1,
-                                                    ),
-                                                  ),
-                                                  top: SizeConfig
-                                                          .blockSizeVertical *
-                                                      16.7,
-                                                  bottom: 17.0,
-                                                )
-*/
                                                         ],
                                                       ),
                                                       Padding(
@@ -2444,32 +2413,6 @@ class _UserDashboardViewState extends State<UserDashboardView>
           )),
         ]));
   }
-
-  void _showModalSheet() {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(25.0),
-                topLeft: Radius.circular(25.0))),
-        context: context,
-        builder: (builder) {
-          return LoginSignUpListingView();
-        });
-  }
-
-/*  void _showFeedModalSheet() {
-    showModalBottomSheet(
-        enableDrag: false,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(25.0),
-                topLeft: Radius.circular(25.0))),
-        context: context,
-        builder: (builder) {
-          return FeedHomeView();
-        });
-  }*/
 
   void showTutorial() {
     tutorialCoachMark = TutorialCoachMark(context,

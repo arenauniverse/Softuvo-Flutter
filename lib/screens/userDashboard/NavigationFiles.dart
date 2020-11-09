@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
+import 'package:arena_sports_app/CommonWidgets/bottomSheet.dart';
 import 'package:arena_sports_app/screens/resultsTab/ResultsView.dart';
 import 'package:arena_sports_app/screens/selectSportsBottomSheet/SelectSportsBottomSheet.dart';
 import 'package:arena_sports_app/theme.dart';
@@ -100,7 +101,8 @@ class _NavigationScreensState extends State<NavigationScreens> {
                           elevation: 0,
                           backgroundColor: Colors.transparent,
                           onPressed: () {
-                            _showModalSheet();
+                            ShowBottomSheet()
+                                .showModalSheet(context, ArenaBottomSheet());
                           },
                           child: SvgPicture.asset(
                             'assets/tab3.svg',
@@ -159,7 +161,9 @@ class _NavigationScreensState extends State<NavigationScreens> {
                   child: GestureDetector(
                     key: _selectSport,
                     onTap: () {
-                      _showSportSheet();
+                      ShowBottomSheet()
+                          .showModalSheet(context, SelectSportsBottomSheet());
+                      //    _showSportSheet();
                     },
                     child: SvgPicture.asset(
                       'assets/tab5.svg',

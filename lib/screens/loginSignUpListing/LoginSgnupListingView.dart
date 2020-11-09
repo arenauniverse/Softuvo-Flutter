@@ -198,32 +198,13 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       style: TextStyle(
                           fontFamily: AppTheme.appFont,
                           fontWeight: FontWeight.w500)),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
-                        horizontal: SizeConfig.blockSizeHorizontal * 10),
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 28,
-                          vertical: SizeConfig.blockSizeVertical * 1.9),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisterView()),
-                        );
-                      },
-                      color: Theme.of(context).accentColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                      ),
-                      child: Text(Strings.registerButtonText,
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColorDark,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: AppTheme.appFont)),
-                    ),
-                  )
+                  Button(context: context,onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegisterView()),
+                    );
+                  },text: Strings.registerButtonText),
                 ],
               ),
             )
