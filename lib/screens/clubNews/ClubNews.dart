@@ -15,12 +15,12 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../theme.dart';
 
-class NotificationScreen extends StatefulWidget {
+class ClubNewsView extends StatefulWidget {
   @override
-  _NotificationScreenState createState() => _NotificationScreenState();
+  _ClubNewsViewState createState() => _ClubNewsViewState();
 }
 
-class _NotificationScreenState extends State<NotificationScreen> {
+class _ClubNewsViewState extends State<ClubNewsView> {
   TabController _tabController;
   TextStyle styles = TextStyle(fontWeight: FontWeight.w400, fontSize: 15);
   TextStyle boldStyles = TextStyle(fontWeight: FontWeight.w700, fontSize: 15);

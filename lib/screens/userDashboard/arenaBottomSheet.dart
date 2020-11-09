@@ -1,8 +1,8 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/screens/clubNews/ClubNews.dart';
 import 'package:arena_sports_app/screens/favClubSelection/bottomNavigationLeague.dart';
 import 'package:arena_sports_app/screens/myProfile/myProfileView.dart';
-import 'package:arena_sports_app/screens/notification/NotificationScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -193,7 +193,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              NotificationScreen()),
+                                              ClubNewsView()),
                                     );
                                   },
                                   child: Container(

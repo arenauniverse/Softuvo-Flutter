@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
