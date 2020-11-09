@@ -130,11 +130,11 @@ class _UserDashboardViewState extends State<UserDashboardView>
                   GestureDetector(
                     onTap: () {
                       //toast(msg: Messages.underDevelopment, context: context);
-                      Navigator.push(
+                  /*    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => NotificationScreen()),
-                      );
+                      );*/
                     },
                     child: Container(
                       margin: EdgeInsets.only(
