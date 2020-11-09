@@ -1218,417 +1218,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   itemCount: 4,
                                 ),
                               )
-/*
-                              Row(
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "1",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          "2",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          "3",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          "4",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          "5",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                      ],
-                                    ),
-                                      margin:EdgeInsets.only(left:)
-                                  ),
-                                  Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SvgPicture.asset(
-                                          'assets/Barcelona.svg',
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  7,
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/Barcelona.svg',
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  6,
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/Barcelona.svg',
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  6,
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        SvgPicture.asset(
-                                          'assets/Barcelona.svg',
-                                          width:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  6,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                      width:
-                                          SizeConfig.blockSizeHorizontal * 2),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 25,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          Strings.barcelona,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          Strings.barcelona,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          Strings.barcelona,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          Strings.barcelona,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Text(
-                                          Strings.barcelona,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "PJ",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                                height: SizeConfig
-                                                        .blockSizeVertical *
-                                                    2),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          width:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "PG",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "32",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "32",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "12",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "12",
-                                              style: styles,
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          width:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "PE",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          width:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "PP",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            ),
-                                            Container(
-                                              height:
-                                                  SizeConfig.blockSizeVertical *
-                                                      2,
-                                            ),
-                                            Text(
-                                              "6",
-                                              style: styles,
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          width:
-                                              SizeConfig.blockSizeVertical * 2,
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              right: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  4),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "PT",
-                                                style: boldStyles,
-                                              ),
-                                              Container(
-                                                height: SizeConfig
-                                                        .blockSizeVertical *
-                                                    2,
-                                              ),
-                                              Text(
-                                                "24",
-                                                style: boldStyles,
-                                              ),
-                                              Container(
-                                                height: SizeConfig
-                                                        .blockSizeVertical *
-                                                    2,
-                                              ),
-                                              Text(
-                                                "24",
-                                                style: boldStyles,
-                                              ),
-                                              Container(
-                                                height: SizeConfig
-                                                        .blockSizeVertical *
-                                                    2,
-                                              ),
-                                              Text(
-                                                "14",
-                                                style: boldStyles,
-                                              ),
-                                              Container(
-                                                height: SizeConfig
-                                                        .blockSizeVertical *
-                                                    2,
-                                              ),
-                                              Text(
-                                                "14",
-                                                style: boldStyles,
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              )
-*/
                             ],
                           ),
                         ],
@@ -1703,30 +1292,35 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   Expanded(
                                     child: Container(
                                       margin: EdgeInsets.only(
-                                          left:
-                                              SizeConfig.blockSizeHorizontal * 3,
+                                          left: SizeConfig.blockSizeHorizontal *
+                                              3,
                                           right:
-                                              SizeConfig.blockSizeHorizontal * 3),
+                                              SizeConfig.blockSizeHorizontal *
+                                                  3),
                                       child: Column(
                                         children: [
                                           Container(
                                             child: Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Text(
                                                   "Ganados",
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      color: AppTheme.toggleColor,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color:
+                                                          AppTheme.toggleColor,
                                                       fontSize: 15),
                                                 ),
                                                 Spacer(),
                                                 Text(
                                                   "100",
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       fontSize: 15),
                                                 )
                                               ],
@@ -1734,13 +1328,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.symmetric(
-                                                vertical:
-                                                    SizeConfig.blockSizeVertical *
-                                                        1),
+                                                vertical: SizeConfig
+                                                        .blockSizeVertical *
+                                                    1),
                                             height:
-                                                SizeConfig.blockSizeVertical * 1,
+                                                SizeConfig.blockSizeVertical *
+                                                    1,
                                             width:
-                                                SizeConfig.blockSizeVertical * 26,
+                                                SizeConfig.blockSizeVertical *
+                                                    26,
                                             child: FAProgressBar(
                                               currentValue: progressvalue,
                                               progressColor: AppTheme.blueColor,
@@ -1769,16 +1365,19 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           ),
                                           Container(
                                             margin: EdgeInsets.symmetric(
-                                                vertical:
-                                                    SizeConfig.blockSizeVertical *
-                                                        1),
+                                                vertical: SizeConfig
+                                                        .blockSizeVertical *
+                                                    1),
                                             height:
-                                                SizeConfig.blockSizeVertical * 1,
+                                                SizeConfig.blockSizeVertical *
+                                                    1,
                                             width:
-                                                SizeConfig.blockSizeVertical * 26,
+                                                SizeConfig.blockSizeVertical *
+                                                    26,
                                             child: FAProgressBar(
                                               currentValue: progressvalue,
-                                              progressColor: AppTheme.yellowColor,
+                                              progressColor:
+                                                  AppTheme.yellowColor,
                                               backgroundColor: AppTheme
                                                   .bottomSheetBackgroundColor,
                                               size: 4,
@@ -1793,7 +1392,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                     color: AppTheme.toggleColor,
                                                     fontSize: 15),
                                               ),
-                                             Spacer(),
+                                              Spacer(),
                                               Text(
                                                 "7",
                                                 style: TextStyle(
@@ -1804,12 +1403,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           ),
                                           Container(
                                             height:
-                                                SizeConfig.blockSizeVertical * 1,
+                                                SizeConfig.blockSizeVertical *
+                                                    1,
                                             width:
-                                                SizeConfig.blockSizeVertical * 26,
+                                                SizeConfig.blockSizeVertical *
+                                                    26,
                                             child: FAProgressBar(
                                               currentValue: progressvalue,
-                                              progressColor: AppTheme.borderColor,
+                                              progressColor:
+                                                  AppTheme.borderColor,
                                               backgroundColor: AppTheme
                                                   .bottomSheetBackgroundColor,
                                               size: 4,
