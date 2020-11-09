@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/Terms&Conditions/Terms&Conditions_View.dart';
@@ -19,6 +21,8 @@ class OnBoard extends StatefulWidget {
 }
 
 class _OnBoardState extends State<OnBoard> {
+  StreamController<List<dynamic>> controller =
+      StreamController<List<dynamic>>();
   final int _numPages = 3;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
@@ -27,9 +31,6 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   void initState() {
-    setState(() {
-      getFavList.add(favList.length);
-    });
     super.initState();
   }
 
@@ -128,7 +129,7 @@ class _OnBoardState extends State<OnBoard> {
                                       progressvalue = 100;
                                     }
                                   } else {
-                                    getFavList.clear();
+                                    favList.clear();
                                     Navigator.pop(context);
                                   }
                                 },
@@ -234,12 +235,12 @@ class GetFavCards extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               margin: EdgeInsets.symmetric(
                   horizontal: SizeConfig.blockSizeHorizontal * 1.5),
-              child: getFavList.length == 0 || getFavList.length == null
+              child: favList.length == 0 || favList.length == null
                   ? SvgPicture.asset(
                       "assets/selectTeam.svg",
                       height: SizeConfig.blockSizeVertical * 8,
                     )
-                  : getFavList[i].image);
+                  : favList[i].image);
         },
       ),
     );
