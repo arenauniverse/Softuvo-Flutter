@@ -19,7 +19,7 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
   void initState() {
     for (int i = 0; i < 12; i++) {
       listViewData.add(ListViewModel(
-          title: Strings.playerNaME,
+          name: Strings.playerNaME,
           isSelected: false,
           image: Image.asset(
             "assets/messi.png",
@@ -200,7 +200,7 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                                     listViewData[index].image,
                                     Container(
                                       child: Text(
-                                        listViewData[index].title,
+                                        listViewData[index].name,
                                         style: style,
                                         textAlign: TextAlign.center,
                                       ),

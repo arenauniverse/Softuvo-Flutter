@@ -78,6 +78,17 @@ class QueryMutation {
 }""";
   }
 
+  String getLeaguesStats(){
+    return """{
+getLeaguesStats {
+
+name
+value
+}
+}
+    """;
+  }
+
 //   String createUser(
 //       {String id,
 //       userName,
