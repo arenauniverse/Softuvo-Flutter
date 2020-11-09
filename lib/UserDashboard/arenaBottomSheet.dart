@@ -9,7 +9,6 @@ import 'package:arena_sports_app/myProfile/myProfileView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../theme.dart';
 
 class ArenaBottomSheet extends StatefulWidget {

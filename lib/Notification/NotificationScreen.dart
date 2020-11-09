@@ -32,6 +32,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       body: DefaultTabController(
         length: 5,
         child: NestedScrollView(
+          physics: ClampingScrollPhysics(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
@@ -520,6 +521,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.vertical,
+                physics: ClampingScrollPhysics(),
                 child: Column(
                   children: [
                     Container(
@@ -616,7 +618,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           ),
                           ListView.builder(
                               itemCount: 1,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: ClampingScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (BuildContext ctxt, int index) {
                                 return Column(
@@ -951,7 +953,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           child: Column(
                                             children: [
                                               SvgPicture.asset(
-                                                'assets/Manchester.svg',
+                                                'assets/Atalanta.svg',
                                                 width: SizeConfig
                                                         .blockSizeHorizontal *
                                                     6,
@@ -983,7 +985,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                Strings.manshester,
+                                                Strings.Atalanta,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 15),
@@ -994,7 +996,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                             .blockSizeVertical *
                                                         1),
                                                 child: Text(
-                                                  Strings.Lyon,
+                                                  Strings.Atalanta,
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
@@ -1010,7 +1012,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                           margin: EdgeInsets.only(
                                               left: SizeConfig
                                                       .blockSizeHorizontal *
-                                                  21.5),
+                                                  22.5),
                                           child: Column(
                                             children: [
                                               Container(
@@ -1045,7 +1047,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                                   color: AppTheme.greyColor,
                                                 ),
                                                 child: Text(
-                                                  "3",
+                                                  Strings.scores,
                                                   style: TextStyle(
                                                       color:
                                                           AppTheme.blackColor,
