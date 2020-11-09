@@ -19,7 +19,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
   void initState() {
     for (int i = 0; i < 12; i++) {
       listViewData.add(ListViewModel(
-          title: Strings.Arsenal,
+          name: Strings.Arsenal,
           isSelected: false,
           image: Image.asset(
             "assets/UEFA.png",
@@ -199,7 +199,7 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                                     ),
                                     listViewData[index].image,
                                     Text(
-                                      listViewData[index].title,
+                                      listViewData[index].name,
                                       style: style,
                                     )
                                   ],

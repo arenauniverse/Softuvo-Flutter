@@ -1,8 +1,11 @@
+import 'dart:io';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import '../Repos.dart';
 import 'bottomNavigationLeague.dart';
 
 List favList = [];
@@ -18,7 +21,9 @@ class LeagueSelection extends StatefulWidget {
 class _LeagueSelectionState extends State<LeagueSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
   ScrollController scrollController = ScrollController();
+  List<ListViewModel> list = new List();
 
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
   var myCustomForm = OnBoard();
 
   @override
@@ -26,7 +31,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
     super.initState();
     for (int i = 0; i < 12; i++) {
       listViewData.add(ListViewModel(
-          title: Strings.ArgentinaLeague,
+          name: Strings.ArgentinaLeague,
           isSelected: false,
           image: Image.asset(
             "assets/league.png",
@@ -34,6 +39,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
           ),
           type: "league"));
     }
+    //   getLeaguesList();
   }
 
   @override
@@ -78,134 +84,6 @@ class _LeagueSelectionState extends State<LeagueSelection> {
               <Widget>[
                 Column(
                   children: [
-/*                    Container(
-                      margin: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 2,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                                margin: EdgeInsets.only(
-                                  left: SizeConfig.blockSizeHorizontal * 3,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    color: AppTheme.blueColor,
-                                    borderRadius: BorderRadius.circular(8.0)),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/todosIcon.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(
-                                      Strings.everybody,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppTheme.whiteColor),
-                                    )
-                                  ],
-                                )),
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 3.5,
-                                ),
-                                margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 1,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/football.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.football,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                )),
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 3.5,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/tennis.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.Tennis,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                )),
-                            Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 1,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 2,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/basquet.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.Basketball,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                ))
-                          ],
-                        ),
-                      ),
-                    )*/
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: SizeConfig.blockSizeHorizontal * 3,
@@ -273,9 +151,9 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                           .elementAt(index)
                                           .isSelected,
                                     ),
-                                    listViewData[index].image,
+                                    /*list[index].image,*/
                                     Text(
-                                      listViewData[index].title,
+                                      listViewData.elementAt(index).name,
                                       style: style,
                                     )
                                   ],
@@ -295,17 +173,76 @@ class _LeagueSelectionState extends State<LeagueSelection> {
       ),
     );
   }
+
+  getLeaguesList({BuildContext context, QueryResult queryResult}) async {
+    /*try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+    //    Dialogs.showLoadingDialog(context, _addLoader);
+        QueryMutation queryMutation = QueryMutation();
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client.query(
+          QueryOptions(
+            document: queryMutation.getLeaguesStats(),),
+        // ignore: missing_return
+        ).then((value) {
+          queryResult = value;
+          if (!queryResult.hasException) {
+          } else {
+          }
+        });
+      }
+    } on SocketException catch (_) {
+      toast(msg: Messages.noConnection, context: context);
+    }
+  }*/
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        //   Dialogs.showLoadingDialog(context, _addLoader);
+        QueryMutation queryMutation = QueryMutation();
+        GraphQLClient _client = graphQLConfiguration.clientToQuery();
+        QueryResult result = await _client
+            .query(
+          QueryOptions(
+            documentNode: gql(
+              queryMutation.getLeaguesStats(),
+            ),
+          ),
+        )
+            .then((value) {
+          value.data;
+          if (!value.hasException) {
+            //   Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            for (var i = 0; i < value.data.length; i++) {
+              setState(() {
+                list.add(ListViewModel(
+                    name: value.data["getLeaguesStats"][i]["name"],
+                    image: Image.asset("assets/league.png"),
+                    value: value.data["getLeaguesStats"][i]["value"]));
+              });
+            }
+            ;
+          }
+        });
+      } else {
+        var errorMessage = queryResult.exception.toString().split(':');
+        //   Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+        //  toast(context: context, msg: queryResult.exception.toString());
+      }
+    } on SocketException catch (_) {
+      // toast(msg: Messages.noConnection, context: context);
+    }
+  }
 }
 
 class ListViewModel {
-  final String title;
+  final String name;
   final Image image;
   bool isSelected;
   final String type;
-  ListViewModel({
-    this.type,
-    this.title,
-    this.isSelected,
-    this.image,
-  });
+  final String value;
+
+  ListViewModel(
+      {this.type, this.name, this.isSelected, this.image, this.value});
 }

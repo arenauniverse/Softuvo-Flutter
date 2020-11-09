@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:io';
-
 import "package:flutter/material.dart";
 import "package:graphql_flutter/graphql_flutter.dart";
 
@@ -78,6 +75,17 @@ class QueryMutation {
 }""";
   }
 
+  String getLeaguesStats(){
+    return """{
+getLeaguesStats {
+
+name
+value
+}
+}
+    """;
+  }
+
 //   String createUser(
 //       {String id,
 //       userName,
@@ -123,8 +131,8 @@ class QueryMutation {
       country,
       imageUrl,
       status,
-      Float lat,
-      Float lang}) {
+      /*Float lat,
+      Float lang*/}) {
     return """ mutation {
   editPeople(
   idPerson: "$id"

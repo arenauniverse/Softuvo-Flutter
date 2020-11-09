@@ -11,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'leagueSelection.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
+List getFavList = [];
+
 class OnBoard extends StatefulWidget {
   @override
   _OnBoardState createState() => _OnBoardState();
@@ -25,6 +27,9 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   void initState() {
+    setState(() {
+      getFavList.add(favList.length);
+    });
     super.initState();
   }
 
@@ -123,7 +128,7 @@ class _OnBoardState extends State<OnBoard> {
                                       progressvalue = 100;
                                     }
                                   } else {
-                                    favList.clear();
+                                    getFavList.clear();
                                     Navigator.pop(context);
                                   }
                                 },
@@ -229,12 +234,12 @@ class GetFavCards extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               margin: EdgeInsets.symmetric(
                   horizontal: SizeConfig.blockSizeHorizontal * 1.5),
-              child: favList.length == 0 || favList.length == null
+              child: getFavList.length == 0 || getFavList.length == null
                   ? SvgPicture.asset(
                       "assets/selectTeam.svg",
                       height: SizeConfig.blockSizeVertical * 8,
                     )
-                  : favList[i].image);
+                  : getFavList[i].image);
         },
       ),
     );
