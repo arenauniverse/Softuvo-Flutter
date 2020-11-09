@@ -10,7 +10,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'leagueSelection.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
-List getFavList = [];
 
 class OnBoard extends StatefulWidget {
   @override

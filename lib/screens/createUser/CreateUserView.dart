@@ -20,7 +20,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
-var galleryFile;
 bool isimagechosen = false;
 PickedFile _image;
 
