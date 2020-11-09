@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
@@ -10,7 +9,6 @@ import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-
 import '../../Repos.dart';
 import '../../theme.dart';
 

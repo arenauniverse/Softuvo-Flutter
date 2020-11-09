@@ -127,7 +127,6 @@ class _OnBoardState extends State<OnBoard> {
                                     }
                                   } else {
                                     favList.clear();
-                                    listViewData.clear();
                                     Navigator.pop(context);
                                   }
                                 },

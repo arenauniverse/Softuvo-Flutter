@@ -5,8 +5,10 @@ import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'bottomNavigationLeague.dart';
 import 'leagueSelection.dart';
+
+List<FavPlayerModel> favPlayerData = [];
 
 class FavPlayerselection extends StatefulWidget {
   @override
@@ -15,18 +17,20 @@ class FavPlayerselection extends StatefulWidget {
 
 class _FavPlayerselectionState extends State<FavPlayerselection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
-  List<ListViewModel> listViewData = [];
+
   @override
   void initState() {
-    for (int i = 0; i < 12; i++) {
-      listViewData.add(ListViewModel(
-          name: Strings.playerNaME,
-          isSelected: false,
-          image: Image.asset(
-            "assets/messi.png",
-            height: SizeConfig.blockSizeVertical * 6,
-          ),
-          type: "player"));
+    if (favPlayerData.length == 0) {
+      for (int i = 0; i < 12; i++) {
+        favPlayerData.add(FavPlayerModel(
+            name: Strings.ArgentinaLeague,
+            isSelected: false,
+            image: Image.asset(
+              "assets/messi.png",
+              height: SizeConfig.blockSizeVertical * 6,
+            ),
+            type: "league"));
+      }
     }
     super.initState();
   }
@@ -135,32 +139,28 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
-                        children: List.generate(listViewData.length, (index) {
-                          return GestureDetector(
+                        children: List.generate(favPlayerData.length, (index) {
+                          return InkWell(
                             onTap: () {
-                              if (listViewData.elementAt(index).isSelected ==
+                              if (favPlayerData.elementAt(index).isSelected ==
                                   false) {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected =
+                                  favPlayerData.elementAt(index).isSelected =
                                       true;
-                                  //if (listViewData.elementAt(index).isSelected) {
-                                  var selectedData =
-                                      listViewData.elementAt(index);
-                                  favList.add(selectedData);
-
-                                  //  OnBoard().createState().build(context);
-                                  //  }
+                                  if (favPlayerData
+                                      .elementAt(index)
+                                      .isSelected) {
+                                    favList.add(favPlayerData.elementAt(index));
+                                    RestartWidget.restartApp(context);
+                                  }
                                 });
                               } else {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected =
+                                  favPlayerData.elementAt(index).isSelected =
                                       false;
-                                  //if (listViewData.elementAt(index).isSelected = false) {
-                                  var selectedData =
-                                      listViewData.elementAt(index);
-                                  favList.remove(selectedData);
-                                  //  favList.removeAt(index);
-                                  //  }
+                                  favList
+                                      .remove(favPlayerData.elementAt(index));
+                                  RestartWidget.restartApp(context);
                                 });
                               }
                             },
@@ -182,30 +182,37 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
                                     ],
                                     borderRadius: BorderRadius.circular(16),
                                     color: Theme.of(context).cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Stack(
                                   children: [
-                                    Visibility(
-                                      child: Align(
-                                        child: Container(
-                                          child: SvgPicture.asset(
-                                              'assets/Check1.svg'),
-                                          margin: EdgeInsets.only(right: 6.0),
-                                        ),
-                                        alignment: Alignment.topRight,
-                                      ),
-                                      visible: listViewData
-                                          .elementAt(index)
-                                          .isSelected,
-                                    ),
-                                    listViewData[index].image,
                                     Container(
-                                      child: Text(
-                                        listViewData[index].name,
-                                        style: style,
-                                        textAlign: TextAlign.center,
+                                      child: Visibility(
+                                        child: Align(
+                                          child: Container(
+                                            child: SvgPicture.asset(
+                                                'assets/Check1.svg'),
+                                            margin: EdgeInsets.only(right: 6.0),
+                                          ),
+                                          alignment: Alignment.topRight,
+                                        ),
+                                        visible: favPlayerData
+                                            .elementAt(index)
+                                            .isSelected,
                                       ),
-                                      width: SizeConfig.blockSizeVertical * 8,
+                                      margin: EdgeInsets.only(top: 6),
+                                    ),
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          /*list[index].image,*/
+                                          favPlayerData.elementAt(index).image,
+                                          Text(
+                                            favPlayerData.elementAt(index).name,
+                                            style: style,
+                                          ),
+                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -224,4 +231,15 @@ class _FavPlayerselectionState extends State<FavPlayerselection> {
       ),
     );
   }
+}
+
+class FavPlayerModel {
+  final String name;
+  final Image image;
+  bool isSelected;
+  final String type;
+  final String value;
+
+  FavPlayerModel(
+      {this.type, this.name, this.isSelected, this.image, this.value});
 }

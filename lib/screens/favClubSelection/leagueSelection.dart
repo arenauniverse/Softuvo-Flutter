@@ -29,15 +29,17 @@ class _LeagueSelectionState extends State<LeagueSelection> {
   @override
   void initState() {
     super.initState();
-    for (int i = 0; i < 12; i++) {
-      listViewData.add(ListViewModel(
-          name: Strings.ArgentinaLeague,
-          isSelected: false,
-          image: Image.asset(
-            "assets/league.png",
-            height: SizeConfig.blockSizeVertical * 6,
-          ),
-          type: "league"));
+    if (listViewData.length == 0) {
+      for (int i = 0; i < 12; i++) {
+        listViewData.add(ListViewModel(
+            name: Strings.ArgentinaLeague,
+            isSelected: false,
+            image: Image.asset(
+              "assets/league.png",
+              height: SizeConfig.blockSizeVertical * 6,
+            ),
+            type: "league"));
+      }
     }
     //   getLeaguesList();
   }
@@ -74,6 +76,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         top: SizeConfig.blockSizeVertical * 2)),
                 onTap: () {
                   favList.clear();
+                  listViewData.clear();
                   Navigator.pop(context);
                 },
               ),
@@ -105,7 +108,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                       .elementAt(index)
                                       .isSelected) {
                                     favList.add(listViewData.elementAt(index));
-                                    //   RestartWidget.restartApp(context);
+                                    RestartWidget.restartApp(context);
                                   }
                                 });
                               } else {
@@ -113,7 +116,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                   listViewData.elementAt(index).isSelected =
                                       false;
                                   favList.remove(listViewData.elementAt(index));
-                                  //       RestartWidget.restartApp(context);
+                                  RestartWidget.restartApp(context);
                                 });
                               }
                             },
@@ -135,28 +138,38 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                     ],
                                     borderRadius: BorderRadius.circular(16),
                                     color: Theme.of(context).cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Stack(
                                   children: [
-                                    Visibility(
-                                      child: Align(
-                                        child: Container(
-                                          child: SvgPicture.asset(
-                                              'assets/Check1.svg'),
-                                          margin: EdgeInsets.only(right: 6.0),
+                                    Container(
+                                      child: Visibility(
+                                        child: Align(
+                                          child: Container(
+                                            child: SvgPicture.asset(
+                                                'assets/Check1.svg'),
+                                            margin: EdgeInsets.only(right: 6.0),
+                                          ),
+                                          alignment: Alignment.topRight,
                                         ),
-                                        alignment: Alignment.topRight,
+                                        visible: listViewData
+                                            .elementAt(index)
+                                            .isSelected,
                                       ),
-                                      visible: listViewData
-                                          .elementAt(index)
-                                          .isSelected,
+                                      margin: EdgeInsets.only(top: 6),
                                     ),
-                                    /*list[index].image,*/
-                                    listViewData.elementAt(index).image,
-                                    Text(
-                                      listViewData.elementAt(index).name,
-                                      style: style,
-                                    ),
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          /*list[index].image,*/
+                                          listViewData.elementAt(index).image,
+                                          Text(
+                                            listViewData.elementAt(index).name,
+                                            style: style,
+                                          ),
+                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                      ),
+                                    )
                                   ],
                                 ),
                                 height: SizeConfig.blockSizeVertical * 8,

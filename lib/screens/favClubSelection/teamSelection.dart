@@ -1,12 +1,13 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
-import 'package:arena_sports_app/constants/AppColors.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'bottomNavigationLeague.dart';
 import 'leagueSelection.dart';
+
+List<FavTeamModel> favTeamData = [];
 
 class FavTeamSelection extends StatefulWidget {
   @override
@@ -15,18 +16,19 @@ class FavTeamSelection extends StatefulWidget {
 
 class _FavTeamSelectionState extends State<FavTeamSelection> {
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 14);
-  List<ListViewModel> listViewData = [];
   @override
   void initState() {
-    for (int i = 0; i < 12; i++) {
-      listViewData.add(ListViewModel(
-          name: Strings.Arsenal,
-          isSelected: false,
-          image: Image.asset(
-            "assets/UEFA.png",
-            height: SizeConfig.blockSizeVertical * 6,
-          ),
-          type: "team"));
+    if (favTeamData.length == 0) {
+      for (int i = 0; i < 12; i++) {
+        favTeamData.add(FavTeamModel(
+            name: Strings.ArgentinaLeague,
+            isSelected: false,
+            image: Image.asset(
+              "assets/UEFA.png",
+              height: SizeConfig.blockSizeVertical * 6,
+            ),
+            type: "league"));
+      }
     }
     super.initState();
   }
@@ -136,31 +138,25 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         crossAxisCount: 3,
-                        children: List.generate(listViewData.length, (index) {
-                          return GestureDetector(
+                        children: List.generate(favTeamData.length, (index) {
+                          return InkWell(
                             onTap: () {
-                              if (listViewData.elementAt(index).isSelected ==
+                              if (favTeamData.elementAt(index).isSelected ==
                                   false) {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected =
+                                  favTeamData.elementAt(index).isSelected =
                                       true;
-                                  //if (listViewData.elementAt(index).isSelected) {
-                                  var selectedData =
-                                      listViewData.elementAt(index);
-                                  favList.add(selectedData);
-                                  //  OnBoard().createState().build(context);
-                                  //  }
+                                  if (favTeamData.elementAt(index).isSelected) {
+                                    favList.add(favTeamData.elementAt(index));
+                                    RestartWidget.restartApp(context);
+                                  }
                                 });
                               } else {
                                 setState(() {
-                                  listViewData.elementAt(index).isSelected =
+                                  favTeamData.elementAt(index).isSelected =
                                       false;
-                                  //if (listViewData.elementAt(index).isSelected = false) {
-                                  var selectedData =
-                                      listViewData.elementAt(index);
-                                  favList.remove(selectedData);
-                                  //  favList.removeAt(index);
-                                  //  }
+                                  favList.remove(favTeamData.elementAt(index));
+                                  RestartWidget.restartApp(context);
                                 });
                               }
                             },
@@ -182,26 +178,37 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
                                     ],
                                     borderRadius: BorderRadius.circular(16),
                                     color: Theme.of(context).cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Stack(
                                   children: [
-                                    Visibility(
-                                      child: Align(
-                                        child: Container(
-                                          child: SvgPicture.asset(
-                                              'assets/Check1.svg'),
-                                          margin: EdgeInsets.only(right: 6.0),
+                                    Container(
+                                      child: Visibility(
+                                        child: Align(
+                                          child: Container(
+                                            child: SvgPicture.asset(
+                                                'assets/Check1.svg'),
+                                            margin: EdgeInsets.only(right: 6.0),
+                                          ),
+                                          alignment: Alignment.topRight,
                                         ),
-                                        alignment: Alignment.topRight,
+                                        visible: favTeamData
+                                            .elementAt(index)
+                                            .isSelected,
                                       ),
-                                      visible: listViewData
-                                          .elementAt(index)
-                                          .isSelected,
+                                      margin: EdgeInsets.only(top: 6),
                                     ),
-                                    listViewData[index].image,
-                                    Text(
-                                      listViewData[index].name,
-                                      style: style,
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          /*list[index].image,*/
+                                          favTeamData.elementAt(index).image,
+                                          Text(
+                                            favTeamData.elementAt(index).name,
+                                            style: style,
+                                          ),
+                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -220,4 +227,14 @@ class _FavTeamSelectionState extends State<FavTeamSelection> {
       ),
     );
   }
+}
+
+class FavTeamModel {
+  final String name;
+  final Image image;
+  bool isSelected;
+  final String type;
+  final String value;
+
+  FavTeamModel({this.type, this.name, this.isSelected, this.image, this.value});
 }
