@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import 'SizeConfig.dart';
 
 class ShowBottomSheet {
   void showModalSheet(BuildContext context, Widget navigateScreen) {
@@ -12,5 +15,14 @@ class ShowBottomSheet {
         builder: (builder) {
           return navigateScreen;
         });
+  }
+
+  Widget crossIcon(BuildContext context) {
+     return Container(
+       margin: EdgeInsets.only(
+           top: SizeConfig.blockSizeVertical * 2,
+           right: SizeConfig.blockSizeVertical * 2),
+       child: SvgPicture.asset('assets/crossIcon.svg'),
+     );
   }
 }

@@ -136,4 +136,5 @@ class Strings {
   static String data = "Datos";
   static String redCards = "Tarjetas Rojaso";
   static String Transfers = "Traspasos";
+  static String scorers = "Goleadores";
 }

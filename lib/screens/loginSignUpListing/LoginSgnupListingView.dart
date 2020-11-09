@@ -4,6 +4,7 @@ import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/SocialLoginMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/bottomSheet.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
@@ -45,16 +46,10 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
             Align(
               alignment: Alignment.topRight,
               child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  margin: EdgeInsets.only(
-                      right: SizeConfig.blockSizeVertical * 2,
-                      top: SizeConfig.blockSizeVertical * 2),
-                  child: SvgPicture.asset('assets/crossIcon.svg'),
-                ),
-              ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: ShowBottomSheet().crossIcon(context)),
             ),
             Center(
               child: Container(
@@ -198,13 +193,16 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       style: TextStyle(
                           fontFamily: AppTheme.appFont,
                           fontWeight: FontWeight.w500)),
-                  Button(context: context,onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => RegisterView()),
-                    );
-                  },text: Strings.registerButtonText),
+                  Button(
+                      context: context,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterView()),
+                        );
+                      },
+                      text: Strings.registerButtonText),
                 ],
               ),
             )

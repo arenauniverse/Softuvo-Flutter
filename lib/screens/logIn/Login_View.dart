@@ -14,7 +14,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-
 import '../../Repos.dart';
 
 class LoginView extends StatefulWidget {

@@ -22,7 +22,7 @@ class _NotificationsViewState extends State<NotificationsView> {
       fontSize: 15, color: AppTheme.toggleColor, fontWeight: FontWeight.normal);
   TextStyle textStyle = TextStyle(
       fontSize: 15, color: AppTheme.blackColor, fontWeight: FontWeight.w400);
-  List<NotificationModel> listViewData = [];
+
 
   @override
   Widget build(BuildContext context) {

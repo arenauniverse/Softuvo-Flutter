@@ -1,5 +1,6 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/bottomSheet.dart';
 import 'package:arena_sports_app/screens/clubNews/ClubNews.dart';
 import 'package:arena_sports_app/screens/favClubSelection/bottomNavigationLeague.dart';
 import 'package:arena_sports_app/screens/myProfile/myProfileView.dart';
@@ -57,13 +58,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Container(
-                  margin: EdgeInsets.only(
-                      top: SizeConfig.blockSizeVertical * 2,
-                      right: SizeConfig.blockSizeVertical * 2),
-                  child: SvgPicture.asset('assets/crossIcon.svg'),
-                ),
-              ),
+                child:  ShowBottomSheet().crossIcon(context)),
+
             ],
           ),
           Container(
