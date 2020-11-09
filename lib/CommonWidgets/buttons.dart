@@ -1,7 +1,8 @@
-import 'package:arena_sports_app/SizeConfig.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'SizeConfig.dart';
 
 class ButtonsWidget extends StatelessWidget {
   final Function onPress;
