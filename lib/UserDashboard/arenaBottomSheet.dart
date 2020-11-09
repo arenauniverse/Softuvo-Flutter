@@ -17,7 +17,23 @@ class ArenaBottomSheet extends StatefulWidget {
 }
 
 class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
+  List<SelectClubModel> listViewData = [];
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 12);
+
+  @override
+  void initState() {
+    for (int i = 0; i < 12; i++) {
+      listViewData.add(SelectClubModel(
+          title: Strings.barcelona,
+          isSelected: false,
+          image: Image.asset(
+            "assets/Barcelona.png",
+            height: SizeConfig.blockSizeVertical * 6,
+          ),
+          type: "league"));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -167,7 +183,72 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                         ],
                       ),
                     ),
-                    SingleChildScrollView(
+                    Container(
+                      height: SizeConfig.blockSizeVertical * 20,
+                      child: ListView.builder(
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              NotificationScreen()),
+                                    );
+                                  },
+                                  child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          vertical:
+                                              SizeConfig.blockSizeVertical *
+                                                  1.5,
+                                          horizontal:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  2.5),
+                                      decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.grey,
+                                              blurRadius: 3.0,
+                                              spreadRadius: 0.0,
+                                              offset: Offset(0.5,
+                                                  0.5), // shadow direction: bottom right
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          color: Theme.of(context).cardColor),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/Barcelona.png",
+                                            height:
+                                                SizeConfig.blockSizeVertical *
+                                                    7,
+                                          ),
+                                          Text(
+                                            Strings.Arsenal,
+                                            style: style,
+                                          )
+                                        ],
+                                      ),
+                                      height: SizeConfig.blockSizeVertical * 14,
+                                      width: SizeConfig.blockSizeVertical * 14),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        physics: ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 3,
+                      ),
+                    ),
+/*                    SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       physics: ClampingScrollPhysics(),
                       child: Container(
@@ -176,16 +257,15 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                         child: Row(
                           children: [
                             GestureDetector(
-
-                            onTap: () {
-                        //toast(msg: Messages.underDevelopment, context: context);
-                        Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                NotificationScreen()),
-                      );
-                    },
+                              onTap: () {
+                                //toast(msg: Messages.underDevelopment, context: context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          NotificationScreen()),
+                                );
+                              },
                               child: Container(
                                   margin: EdgeInsets.symmetric(
                                       vertical:
@@ -209,7 +289,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                                     children: [
                                       Image.asset(
                                         "assets/Barcelona.png",
-                                        height: SizeConfig.blockSizeVertical * 7,
+                                        height:
+                                            SizeConfig.blockSizeVertical * 7,
                                       ),
                                       Text(
                                         Strings.Arsenal,
@@ -298,7 +379,8 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                                     children: [
                                       Image.asset(
                                         "assets/Barcelona.png",
-                                        height: SizeConfig.blockSizeVertical * 7,
+                                        height:
+                                            SizeConfig.blockSizeVertical * 7,
                                       ),
                                       Text(
                                         Strings.Arsenal,
@@ -312,7 +394,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                           ],
                         ),
                       ),
-                    ),
+                    )*/
                     Container(
                       margin: EdgeInsets.only(
                           left: SizeConfig.blockSizeHorizontal * 4,
@@ -344,115 +426,69 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                         ],
                       ),
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      physics: ClampingScrollPhysics(),
-                      child: Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: SizeConfig.blockSizeHorizontal * 2),
-                        child: Row(
-                          children: [
-                            Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.blockSizeVertical * 1.5,
-                                    horizontal:
-                                        SizeConfig.blockSizeHorizontal * 2.5),
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        blurRadius: 3.0,
-                                        spreadRadius: 0.0,
-                                        offset: Offset(0.5,
-                                            0.5), // shadow direction: bottom right
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Theme.of(context).cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      "assets/Barcelona.png",
-                                      height: SizeConfig.blockSizeVertical * 7,
-                                    ),
-                                    Text(
-                                      Strings.Arsenal,
-                                      style: style,
-                                    )
-                                  ],
+                    Container(
+                      height: SizeConfig.blockSizeVertical * 20,
+                      child: ListView.builder(
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    /*     Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              NotificationScreen()),
+                                    );*/
+                                  },
+                                  child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          vertical:
+                                              SizeConfig.blockSizeVertical *
+                                                  1.5,
+                                          horizontal:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  2.5),
+                                      decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.grey,
+                                              blurRadius: 3.0,
+                                              spreadRadius: 0.0,
+                                              offset: Offset(0.5,
+                                                  0.5), // shadow direction: bottom right
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(16),
+                                          color: Theme.of(context).cardColor),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/Barcelona.png",
+                                            height:
+                                                SizeConfig.blockSizeVertical *
+                                                    7,
+                                          ),
+                                          Text(
+                                            Strings.Arsenal,
+                                            style: style,
+                                          )
+                                        ],
+                                      ),
+                                      height: SizeConfig.blockSizeVertical * 14,
+                                      width: SizeConfig.blockSizeVertical * 14),
                                 ),
-                                height: SizeConfig.blockSizeVertical * 14,
-                                width: SizeConfig.blockSizeVertical * 14),
-                            Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.blockSizeVertical * 1.5,
-                                    horizontal:
-                                        SizeConfig.blockSizeHorizontal * 2.5),
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        blurRadius: 3.0,
-                                        spreadRadius: 0.0,
-                                        offset: Offset(0.5,
-                                            0.5), // shadow direction: bottom right
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Theme.of(context).cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      "assets/Barcelona.png",
-                                      height: SizeConfig.blockSizeVertical * 7,
-                                    ),
-                                    Text(
-                                      Strings.Arsenal,
-                                      style: style,
-                                    )
-                                  ],
-                                ),
-                                height: SizeConfig.blockSizeVertical * 14,
-                                width: SizeConfig.blockSizeVertical * 14),
-                            Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.blockSizeVertical * 1.5,
-                                    horizontal:
-                                        SizeConfig.blockSizeHorizontal * 2.5),
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        blurRadius: 3.0,
-                                        spreadRadius: 0.0,
-                                        offset: Offset(0.5,
-                                            0.5), // shadow direction: bottom right
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(16),
-                                    color: Theme.of(context).cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      "assets/Barcelona.png",
-                                      height: SizeConfig.blockSizeVertical * 7,
-                                    ),
-                                    Text(
-                                      Strings.Arsenal,
-                                      style: style,
-                                    )
-                                  ],
-                                ),
-                                height: SizeConfig.blockSizeVertical * 14,
-                                width: SizeConfig.blockSizeVertical * 14),
-                          ],
-                        ),
+                              ],
+                            ),
+                          );
+                        },
+                        physics: ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 3,
                       ),
                     )
                   ],
@@ -464,4 +500,17 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
       ),
     );
   }
+}
+
+class SelectClubModel {
+  final String title;
+  final Image image;
+  bool isSelected;
+  final String type;
+  SelectClubModel({
+    this.type,
+    this.title,
+    this.isSelected,
+    this.image,
+  });
 }

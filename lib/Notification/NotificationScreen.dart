@@ -1700,135 +1700,125 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                         left:
                                             SizeConfig.blockSizeHorizontal * 3),
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        left:
-                                            SizeConfig.blockSizeHorizontal * 3,
-                                        right:
-                                            SizeConfig.blockSizeHorizontal * 3),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            mainAxisSize: MainAxisSize.min,
+                                  Expanded(
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              SizeConfig.blockSizeHorizontal * 3,
+                                          right:
+                                              SizeConfig.blockSizeHorizontal * 3),
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Text(
+                                                  "Ganados",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      color: AppTheme.toggleColor,
+                                                      fontSize: 15),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "100",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 15),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical:
+                                                    SizeConfig.blockSizeVertical *
+                                                        1),
+                                            height:
+                                                SizeConfig.blockSizeVertical * 1,
+                                            width:
+                                                SizeConfig.blockSizeVertical * 26,
+                                            child: FAProgressBar(
+                                              currentValue: progressvalue,
+                                              progressColor: AppTheme.blueColor,
+                                              backgroundColor: AppTheme
+                                                  .bottomSheetBackgroundColor,
+                                              size: 4,
+                                            ),
+                                          ),
+                                          Row(
                                             children: [
                                               Text(
-                                                "Ganados",
+                                                "Empatados",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
                                                     color: AppTheme.toggleColor,
                                                     fontSize: 15),
                                               ),
-                                              Container(
-                                                width: SizeConfig
-                                                        .blockSizeVertical *
-                                                    15,
-                                              ),
+                                              Spacer(),
                                               Text(
-                                                "100",
+                                                "20",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 15),
-                                              )
+                                              ),
                                             ],
                                           ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              vertical:
-                                                  SizeConfig.blockSizeVertical *
-                                                      1),
-                                          height:
-                                              SizeConfig.blockSizeVertical * 1,
-                                          width:
-                                              SizeConfig.blockSizeVertical * 26,
-                                          child: FAProgressBar(
-                                            currentValue: progressvalue,
-                                            progressColor: AppTheme.blueColor,
-                                            backgroundColor: AppTheme
-                                                .bottomSheetBackgroundColor,
-                                            size: 4,
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical:
+                                                    SizeConfig.blockSizeVertical *
+                                                        1),
+                                            height:
+                                                SizeConfig.blockSizeVertical * 1,
+                                            width:
+                                                SizeConfig.blockSizeVertical * 26,
+                                            child: FAProgressBar(
+                                              currentValue: progressvalue,
+                                              progressColor: AppTheme.yellowColor,
+                                              backgroundColor: AppTheme
+                                                  .bottomSheetBackgroundColor,
+                                              size: 4,
+                                            ),
                                           ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Empatados",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppTheme.toggleColor,
-                                                  fontSize: 15),
-                                            ),
-                                            Container(
-                                              width:
-                                                  SizeConfig.blockSizeVertical *
-                                                      14,
-                                            ),
-                                            Text(
-                                              "20",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15),
-                                            ),
-                                          ],
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.symmetric(
-                                              vertical:
-                                                  SizeConfig.blockSizeVertical *
-                                                      1),
-                                          height:
-                                              SizeConfig.blockSizeVertical * 1,
-                                          width:
-                                              SizeConfig.blockSizeVertical * 26,
-                                          child: FAProgressBar(
-                                            currentValue: progressvalue,
-                                            progressColor: AppTheme.yellowColor,
-                                            backgroundColor: AppTheme
-                                                .bottomSheetBackgroundColor,
-                                            size: 4,
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Perdidos",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    color: AppTheme.toggleColor,
+                                                    fontSize: 15),
+                                              ),
+                                             Spacer(),
+                                              Text(
+                                                "7",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 15),
+                                              ),
+                                            ],
                                           ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Perdidos",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppTheme.toggleColor,
-                                                  fontSize: 15),
+                                          Container(
+                                            height:
+                                                SizeConfig.blockSizeVertical * 1,
+                                            width:
+                                                SizeConfig.blockSizeVertical * 26,
+                                            child: FAProgressBar(
+                                              currentValue: progressvalue,
+                                              progressColor: AppTheme.borderColor,
+                                              backgroundColor: AppTheme
+                                                  .bottomSheetBackgroundColor,
+                                              size: 4,
                                             ),
-                                            Container(
-                                              width:
-                                                  SizeConfig.blockSizeVertical *
-                                                      17,
-                                            ),
-                                            Text(
-                                              "7",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15),
-                                            ),
-                                          ],
-                                        ),
-                                        Container(
-                                          height:
-                                              SizeConfig.blockSizeVertical * 1,
-                                          width:
-                                              SizeConfig.blockSizeVertical * 26,
-                                          child: FAProgressBar(
-                                            currentValue: progressvalue,
-                                            progressColor: AppTheme.borderColor,
-                                            backgroundColor: AppTheme
-                                                .bottomSheetBackgroundColor,
-                                            size: 4,
                                           ),
-                                        ),
-                                      ],
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                        ],
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                      ),
                                     ),
                                   ),
                                 ],
