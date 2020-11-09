@@ -16,7 +16,6 @@ class AppTheme {
   static final lightgrey = Color(0XFFBDBDBD);
   static final yellowColor = Color(0XFFF2C94C);
 
-
   // Fonts
   static final String appFont = "SFUIText";
 }

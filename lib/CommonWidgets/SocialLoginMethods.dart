@@ -1,5 +1,5 @@
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
-import 'package:arena_sports_app/LoginSignUpListing/UserResults.dart';
+import 'package:arena_sports_app/screens/loginSignUpListing/UserResults.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'dart:convert';

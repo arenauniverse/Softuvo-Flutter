@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../SizeConfig.dart';
 import '../theme.dart';
+import 'SizeConfig.dart';
 import 'Strings.dart';
 
 class ChannelWidget extends StatelessWidget {

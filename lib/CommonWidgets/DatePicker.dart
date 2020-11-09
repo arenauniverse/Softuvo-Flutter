@@ -2,8 +2,8 @@ import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../SizeConfig.dart';
 import '../theme.dart';
+import 'SizeConfig.dart';
 import 'Strings.dart';
 
 class DatePicker extends StatefulWidget {
