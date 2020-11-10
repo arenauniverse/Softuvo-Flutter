@@ -53,9 +53,8 @@ class _UserDashboardViewState extends State<UserDashboardView>
         isRegisterd = value;
       });
     });
-    controller =
-        AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    offset = Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
+    controller =  AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+    offset =  Tween<Offset>(begin: Offset.zero, end: Offset(0.0, 1.0))
         .animate(controller);
     controller.forward();
     super.initState();
@@ -1113,7 +1112,9 @@ class _UserDashboardViewState extends State<UserDashboardView>
                                                       color:
                                                           AppTheme.blueColor),
                                                 ),
-                                                onTap: () {},
+                                                onTap: () {
+
+                                                },
                                               )
                                             ],
                                           ),

@@ -16,10 +16,6 @@ class _TrackerState extends State<Tracker> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black, // navigation bar color
-      statusBarColor: Colors.transparent, // status bar color
-    ));
   }
 
   @override
@@ -84,7 +80,7 @@ class _TrackerState extends State<Tracker> {
                                                   )),
                                               Container(
                                                   alignment: Alignment.centerRight,
-                                                  child: Image.asset("assets/images/football_black.png",width: SizeConfig.blockSizeHorizontal*5,height: SizeConfig.blockSizeHorizontal*5,))
+                                                  child: Image.asset('assets/images/football_black.png',width: SizeConfig.blockSizeHorizontal*5,height: SizeConfig.blockSizeHorizontal*5,))
                                             ],),
                                           ),
                                           Container(

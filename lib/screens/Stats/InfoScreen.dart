@@ -17,10 +17,6 @@ class _InfoState extends State<Info> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black, // navigation bar color
-      statusBarColor: Colors.transparent, // status bar color
-    ));
   }
 
   @override
@@ -53,7 +49,7 @@ class _InfoState extends State<Info> {
                     radius: SizeConfig.blockSizeVertical*6,
                     lineWidth: 4.25,
                     percent: 0.32,
-                    center: new Image.asset("assets/images/football.png",width: SizeConfig.blockSizeHorizontal*8,height: SizeConfig.blockSizeHorizontal*7),
+                    center: new Image.asset('assets/images/football.png',width: SizeConfig.blockSizeHorizontal*8,height: SizeConfig.blockSizeHorizontal*7),
                     backgroundColor: Colors.black12,
                     progressColor: Colors.blue,
                   ),
@@ -133,7 +129,7 @@ class _InfoState extends State<Info> {
                       radius: SizeConfig.blockSizeVertical*6,
                       lineWidth: 4.25,
                       percent: 0.62,
-                      center: new Image.asset("assets/images/football.png",width: SizeConfig.blockSizeHorizontal*8,height: SizeConfig.blockSizeHorizontal*7),
+                      center: new Image.asset('assets/images/football.png',width: SizeConfig.blockSizeHorizontal*8,height: SizeConfig.blockSizeHorizontal*7),
                       backgroundColor: Colors.black12,
                       progressColor: Colors.red,
                     ),
@@ -192,7 +188,7 @@ class _InfoState extends State<Info> {
             )),
            Container(
              alignment: Alignment.centerRight,
-                 child: Image.asset("assets/images/football_black.png",width: SizeConfig.blockSizeHorizontal*5,height: SizeConfig.blockSizeHorizontal*5,))
+                 child: Image.asset('assets/images/football_black.png',width: SizeConfig.blockSizeHorizontal*5,height: SizeConfig.blockSizeHorizontal*5,))
                 ],),
               ),
               Container(

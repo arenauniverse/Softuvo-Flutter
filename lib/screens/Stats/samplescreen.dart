@@ -22,10 +22,6 @@ class _SampleState extends State<Sample> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black, // navigation bar color
-      statusBarColor: Colors.transparent, // status bar color
-    ));
     _tabController = TabController(vsync: this, length: 5, initialIndex: 0);
   }
 

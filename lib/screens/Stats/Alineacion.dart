@@ -19,10 +19,6 @@ class _AlineacionState extends State<Alineacion> {
     // TODO: implement initState
     super.initState();
 
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black, // navigation bar color
-      statusBarColor: Colors.transparent, // status bar color
-    ));
   }
 
   @override
