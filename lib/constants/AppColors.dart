@@ -11,4 +11,9 @@ class AppColors {
   static Color statcolor3 = Color(0xfffc8675);
   static Color red = Color(0xffff0000);
   static Color title = Color(0xffc1c2c4);
+  static Color bottomsheet = Color(0xff1E1F20);
+  static Color progresscolor = Color(0xffEB5757);
+
+
+
 }

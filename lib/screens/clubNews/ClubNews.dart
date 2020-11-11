@@ -2371,7 +2371,7 @@ class _ClubNewsViewState extends State<ClubNewsView> {
                             margin: EdgeInsets.symmetric(
                                 horizontal: SizeConfig.blockSizeHorizontal * 4),
                             child: Text(
-                              "USTIMOS 5 PARTIDOS",
+                              "ULTIMOS 5 PARTIDOS",
                               style: TextStyle(
                                   fontWeight: FontWeight.w800, fontSize: 16),
                             ),

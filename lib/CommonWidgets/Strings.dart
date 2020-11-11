@@ -37,6 +37,7 @@ class Strings {
   static String see_all = "Ver todos";
   static String UEFA_Champions_League = "UEFA Champions League";
   static String barcelona = "Barcelona";
+  static String valencia = "Valencia";
   static String scores = "2";
   static String sixscores = "6";
   static String numbers = "62’";
