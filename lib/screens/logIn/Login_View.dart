@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
@@ -15,7 +14,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-
 import '../../Repos.dart';
 
 class LoginView extends StatefulWidget {
@@ -33,10 +31,10 @@ class _LoginViewState extends State<LoginView> {
   var passwordFocus = FocusNode();
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

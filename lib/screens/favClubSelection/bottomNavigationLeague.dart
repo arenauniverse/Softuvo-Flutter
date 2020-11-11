@@ -1,8 +1,8 @@
+import 'dart:async';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
 import 'package:arena_sports_app/screens/favClubSelection/playerSelection.dart';
 import 'package:arena_sports_app/screens/favClubSelection/teamSelection.dart';
-
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,12 +10,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'leagueSelection.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
+
 class OnBoard extends StatefulWidget {
   @override
   _OnBoardState createState() => _OnBoardState();
 }
 
 class _OnBoardState extends State<OnBoard> {
+  StreamController<List<dynamic>> controller =
+      StreamController<List<dynamic>>();
   final int _numPages = 3;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;

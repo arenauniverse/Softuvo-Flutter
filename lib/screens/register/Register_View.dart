@@ -61,11 +61,11 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: Container(
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: Form(
+        key: _formKey,
+        child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -437,27 +437,27 @@ class _RegisterViewState extends State<RegisterView> {
                                                     queryResult: getResult,
                                                   );
 /*                                        Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              TermsConditionsView(
-                                                                  userComingFrom:
-                                                                      'register',
-                                                                  name: Controllers.name,
-                                                                  email: Controllers
-                                                                      .registerEmail,
-                                                                  birthday:
-                                                                      dateTimeFormat,
-                                                                  country: _selected.name,
-                                                                  emailConfirm:
-                                                                      Controllers
-                                                                          .registerEmail,
-                                                                  password: Controllers
-                                                                      .registerPassword,
-                                                                  passwordConfirm:
-                                                                      Controllers
-                                                                          .repeatPassword)));*/
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            TermsConditionsView(
+                                                                userComingFrom:
+                                                                    'register',
+                                                                name: Controllers.name,
+                                                                email: Controllers
+                                                                    .registerEmail,
+                                                                birthday:
+                                                                    dateTimeFormat,
+                                                                country: _selected.name,
+                                                                emailConfirm:
+                                                                    Controllers
+                                                                        .registerEmail,
+                                                                password: Controllers
+                                                                    .registerPassword,
+                                                                passwordConfirm:
+                                                                    Controllers
+                                                                        .repeatPassword)));*/
                                                 } else {
                                                   toast(
                                                       msg: Messages
@@ -506,64 +506,64 @@ class _RegisterViewState extends State<RegisterView> {
                         )
 
 /*                TextFormField(
-                          controller: Controllers.dob,
+                        controller: Controllers.dob,
+                        cursorColor: AppTheme.blackColor,
+                        validator: (value) {
+                          if (value == null || value == "") {
+                            return "Enter Valid Nacimineto";
+                          }
+                        },
+                        //  onFieldSubmitted: (v) {},
+                        decoration: InputDecoration(
+                            suffixIcon: Icon(
+                              Icons.date_range_outlined,
+                              color: AppTheme.blackColor,
+                            ),
+                            */ /*SvgPicture.asset(
+                              'assets/dateTimeIcon.svg',
+                              height: 20.0,
+                            ),*/ /*
+                            contentPadding: EdgeInsets.only(
+                                top: SizeConfig.blockSizeVertical * 2,
+                                bottom: SizeConfig.blockSizeVertical * 2,
+                                left: SizeConfig.blockSizeVertical * 1),
+                            labelText: Strings.dob,
+                            labelStyle: TextStyle(
+                                fontSize: 15.0,
+                                fontFamily: AppTheme.appFont,
+                                color: AppTheme.blackColor)),
+                        keyboardType: TextInputType.text,
+                        textInputAction: TextInputAction.next,
+                      )*/
+
+/*                AbsorbPointer(
+                        child: TextFormField(
+                          controller: Controllers.parent,
                           cursorColor: AppTheme.blackColor,
                           validator: (value) {
                             if (value == null || value == "") {
-                              return "Enter Valid Nacimineto";
+                              return "Select Pais";
                             }
                           },
-                          //  onFieldSubmitted: (v) {},
+                          // onFieldSubmitted: (v) {},
                           decoration: InputDecoration(
                               suffixIcon: Icon(
-                                Icons.date_range_outlined,
+                                Icons.keyboard_arrow_down_sharp,
                                 color: AppTheme.blackColor,
                               ),
-                              */ /*SvgPicture.asset(
-                                'assets/dateTimeIcon.svg',
-                                height: 20.0,
-                              ),*/ /*
                               contentPadding: EdgeInsets.only(
                                   top: SizeConfig.blockSizeVertical * 2,
                                   bottom: SizeConfig.blockSizeVertical * 2,
                                   left: SizeConfig.blockSizeVertical * 1),
-                              labelText: Strings.dob,
+                              labelText: Strings.parents,
                               labelStyle: TextStyle(
                                   fontSize: 15.0,
                                   fontFamily: AppTheme.appFont,
                                   color: AppTheme.blackColor)),
                           keyboardType: TextInputType.text,
                           textInputAction: TextInputAction.next,
-                        )*/
-
-/*                AbsorbPointer(
-                          child: TextFormField(
-                            controller: Controllers.parent,
-                            cursorColor: AppTheme.blackColor,
-                            validator: (value) {
-                              if (value == null || value == "") {
-                                return "Select Pais";
-                              }
-                            },
-                            // onFieldSubmitted: (v) {},
-                            decoration: InputDecoration(
-                                suffixIcon: Icon(
-                                  Icons.keyboard_arrow_down_sharp,
-                                  color: AppTheme.blackColor,
-                                ),
-                                contentPadding: EdgeInsets.only(
-                                    top: SizeConfig.blockSizeVertical * 2,
-                                    bottom: SizeConfig.blockSizeVertical * 2,
-                                    left: SizeConfig.blockSizeVertical * 1),
-                                labelText: Strings.parents,
-                                labelStyle: TextStyle(
-                                    fontSize: 15.0,
-                                    fontFamily: AppTheme.appFont,
-                                    color: AppTheme.blackColor)),
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.next,
-                          ),
-                        )*/
+                        ),
+                      )*/
                       ],
                     ),
                   ),

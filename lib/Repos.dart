@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:io';
-
 import "package:flutter/material.dart";
 import "package:graphql_flutter/graphql_flutter.dart";
 
@@ -134,8 +131,8 @@ value
       country,
       imageUrl,
       status,
-      Float lat,
-      Float lang}) {
+      /*Float lat,
+      Float lang*/}) {
     return """ mutation {
   editPeople(
   idPerson: "$id"

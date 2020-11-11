@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
@@ -10,7 +9,6 @@ import 'package:arena_sports_app/CommonWidgets/textControllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-
 import '../../Repos.dart';
 import '../../theme.dart';
 
@@ -25,10 +23,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   bool isFilled = false;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Scaffold(
-        body: Container(
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: Container(
           margin: EdgeInsets.only(
             top: SizeConfig.blockSizeVertical * 8.0,
             /*  left: SizeConfig.blockSizeHorizontal * 7,

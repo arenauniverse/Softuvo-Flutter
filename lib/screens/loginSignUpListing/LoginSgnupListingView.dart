@@ -4,6 +4,7 @@ import 'package:arena_sports_app/CommonWidgets/Dialogs.dart';
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/SocialLoginMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/bottomSheet.dart';
 import 'package:arena_sports_app/CommonWidgets/buttons.dart';
 import 'package:arena_sports_app/CommonWidgets/cammonMethods.dart';
 import 'package:arena_sports_app/CommonWidgets/Messages.dart';
@@ -45,16 +46,10 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
             Align(
               alignment: Alignment.topRight,
               child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  margin: EdgeInsets.only(
-                      right: SizeConfig.blockSizeVertical * 2,
-                      top: SizeConfig.blockSizeVertical * 2),
-                  child: SvgPicture.asset('assets/crossIcon.svg'),
-                ),
-              ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: ShowBottomSheet().crossIcon(context)),
             ),
             Center(
               child: Container(
@@ -198,32 +193,16 @@ class _LoginSignUpListingViewState extends State<LoginSignUpListingView> {
                       style: TextStyle(
                           fontFamily: AppTheme.appFont,
                           fontWeight: FontWeight.w500)),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
-                        horizontal: SizeConfig.blockSizeHorizontal * 10),
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeHorizontal * 28,
-                          vertical: SizeConfig.blockSizeVertical * 1.9),
-                      onPressed: () {
+                  Button(
+                      context: context,
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => RegisterView()),
                         );
                       },
-                      color: Theme.of(context).accentColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                      ),
-                      child: Text(Strings.registerButtonText,
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColorDark,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: AppTheme.appFont)),
-                    ),
-                  )
+                      text: Strings.registerButtonText),
                 ],
               ),
             )

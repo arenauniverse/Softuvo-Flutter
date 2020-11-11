@@ -1,5 +1,6 @@
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/CommonWidgets/bottomSheet.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -67,15 +68,10 @@ class _SelectSportsBottomSheetState extends State<SelectSportsBottomSheet> {
               Align(
                 alignment: Alignment.topRight,
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(
-                        right: SizeConfig.blockSizeVertical * 2, top: 8),
-                    child: SvgPicture.asset('assets/crossIcon.svg'),
-                  ),
-                ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: ShowBottomSheet().crossIcon(context)),
               ),
             ],
           ),

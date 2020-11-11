@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:arena_sports_app/CommonWidgets/SizeConfig.dart';
 import 'package:arena_sports_app/CommonWidgets/Strings.dart';
+import 'package:arena_sports_app/screens/favClubSelection/favModels.dart';
 import 'package:arena_sports_app/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,28 +24,36 @@ class _LeagueSelectionState extends State<LeagueSelection> {
   ScrollController scrollController = ScrollController();
   List<ListViewModel> list = new List();
 
-   final GlobalKey<State> _addLoader = new GlobalKey<State>();
+  final GlobalKey<State> _addLoader = new GlobalKey<State>();
   var myCustomForm = OnBoard();
 
   @override
   void initState() {
     super.initState();
-    getLeaguesList();
+    if (listViewData.length == 0) {
+      for (int i = 0; i < 12; i++) {
+        listViewData.add(ListViewModel(
+            name: Strings.ArgentinaLeague,
+            isSelected: false,
+            image: Image.asset(
+              "assets/league.png",
+              height: SizeConfig.blockSizeVertical * 6,
+            ),
+            type: "league"));
+      }
+    }
+    //   getLeaguesList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme
-          .of(context)
-          .scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Container(
         margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 2.3),
         child: CustomScrollView(slivers: [
           SliverAppBar(
-            backgroundColor: Theme
-                .of(context)
-                .scaffoldBackgroundColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             automaticallyImplyLeading: false,
             pinned: true,
             floating: true,
@@ -69,6 +77,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         top: SizeConfig.blockSizeVertical * 2)),
                 onTap: () {
                   favList.clear();
+                  listViewData.clear();
                   Navigator.pop(context);
                 },
               ),
@@ -79,134 +88,6 @@ class _LeagueSelectionState extends State<LeagueSelection> {
               <Widget>[
                 Column(
                   children: [
-/*                    Container(
-                      margin: EdgeInsets.only(
-                        top: SizeConfig.blockSizeVertical * 2,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                                margin: EdgeInsets.only(
-                                  left: SizeConfig.blockSizeHorizontal * 3,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    color: AppTheme.blueColor,
-                                    borderRadius: BorderRadius.circular(8.0)),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/todosIcon.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(
-                                      Strings.everybody,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: AppTheme.whiteColor),
-                                    )
-                                  ],
-                                )),
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 3.5,
-                                ),
-                                margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 1,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/football.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.football,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                )),
-                            Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 3.5,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/tennis.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.Tennis,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                )),
-                            Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 1,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 2,
-                                ),
-                                height: SizeConfig.blockSizeVertical * 4.5,
-                                width: SizeConfig.blockSizeVertical * 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: AppTheme.blueColor,
-                                      width: 1.3,
-                                    )),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset('assets/basquet.svg',
-                                        height:
-                                            SizeConfig.blockSizeVertical * 2.5),
-                                    Spacer(),
-                                    Text(Strings.Basketball,
-                                        style: TextStyle(
-                                          color: AppTheme.blueColor,
-                                          fontWeight: FontWeight.w500,
-                                        ))
-                                  ],
-                                ))
-                          ],
-                        ),
-                      ),
-                    )*/
                     Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: SizeConfig.blockSizeHorizontal * 3,
@@ -219,15 +100,11 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                         children: List.generate(listViewData.length, (index) {
                           return InkWell(
                             onTap: () {
-                              if (listViewData
-                                  .elementAt(index)
-                                  .isSelected ==
+                              if (listViewData.elementAt(index).isSelected ==
                                   false) {
                                 setState(() {
-                                  listViewData
-                                      .elementAt(index)
-                                      .isSelected =
-                                  true;
+                                  listViewData.elementAt(index).isSelected =
+                                      true;
                                   if (listViewData
                                       .elementAt(index)
                                       .isSelected) {
@@ -237,10 +114,8 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                 });
                               } else {
                                 setState(() {
-                                  listViewData
-                                      .elementAt(index)
-                                      .isSelected =
-                                  false;
+                                  listViewData.elementAt(index).isSelected =
+                                      false;
                                   favList.remove(listViewData.elementAt(index));
                                   RestartWidget.restartApp(context);
                                 });
@@ -249,9 +124,9 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                             child: Container(
                                 margin: EdgeInsets.symmetric(
                                     vertical:
-                                    SizeConfig.blockSizeVertical * 1.5,
+                                        SizeConfig.blockSizeVertical * 1.5,
                                     horizontal:
-                                    SizeConfig.blockSizeHorizontal * 2.5),
+                                        SizeConfig.blockSizeHorizontal * 2.5),
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -263,29 +138,38 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(16),
-                                    color: Theme
-                                        .of(context)
-                                        .cardColor),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                    color: Theme.of(context).cardColor),
+                                child: Stack(
                                   children: [
-                                    Visibility(
-                                      child: Align(
-                                        child: Container(
-                                          child: SvgPicture.asset(
-                                              'assets/Check1.svg'),
-                                          margin: EdgeInsets.only(right: 6.0),
+                                    Container(
+                                      child: Visibility(
+                                        child: Align(
+                                          child: Container(
+                                            child: SvgPicture.asset(
+                                                'assets/Check1.svg'),
+                                            margin: EdgeInsets.only(right: 6.0),
+                                          ),
+                                          alignment: Alignment.topRight,
                                         ),
-                                        alignment: Alignment.topRight,
+                                        visible: listViewData
+                                            .elementAt(index)
+                                            .isSelected,
                                       ),
-                                      visible: listViewData
-                                          .elementAt(index)
-                                          .isSelected,
+                                      margin: EdgeInsets.only(top: 6),
                                     ),
-                                    /*list[index].image,*/
-                                    Text(
-                                      list[index].name,
-                                      style: style,
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          /*list[index].image,*/
+                                          listViewData.elementAt(index).image,
+                                          Text(
+                                            listViewData.elementAt(index).name,
+                                            style: style,
+                                          ),
+                                        ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                      ),
                                     )
                                   ],
                                 ),
@@ -330,47 +214,40 @@ class _LeagueSelectionState extends State<LeagueSelection> {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-     //   Dialogs.showLoadingDialog(context, _addLoader);
+        //   Dialogs.showLoadingDialog(context, _addLoader);
         QueryMutation queryMutation = QueryMutation();
         GraphQLClient _client = graphQLConfiguration.clientToQuery();
-        QueryResult result = await _client.query(
+        QueryResult result = await _client
+            .query(
           QueryOptions(
             documentNode: gql(
-              queryMutation.getLeaguesStats(),),),).then((value) {
+              queryMutation.getLeaguesStats(),
+            ),
+          ),
+        )
+            .then((value) {
+          value.data;
           if (!value.hasException) {
-         //   Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-            for (var i = 0; i < value.data["getLeaguesStats"].length; i++) {
+            //   Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+            for (var i = 0; i < value.data.length; i++) {
               setState(() {
-                list.add(ListViewModel(name: value.data["getLeaguesStats"][i]["name"], image: Image.asset("assets/league.png"), value: value.data["getLeaguesStats"][i]["value"]));
-            });
-            };
+                list.add(ListViewModel(
+                    name: value.data["getLeaguesStats"][i]["name"],
+                    image: Image.asset("assets/league.png"),
+                    value: value.data["getLeaguesStats"][i]["value"]));
+              });
+            }
+            ;
           }
         });
-      }
-      else {
+      } else {
         var errorMessage = queryResult.exception.toString().split(':');
-     //   Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
-      //  toast(context: context, msg: queryResult.exception.toString());
+        //   Navigator.of(_addLoader.currentContext, rootNavigator: true).pop();
+        //  toast(context: context, msg: queryResult.exception.toString());
       }
-    }
-    on SocketException catch (_) {
-     // toast(msg: Messages.noConnection, context: context);
+    } on SocketException catch (_) {
+      // toast(msg: Messages.noConnection, context: context);
     }
   }
 }
 
-class ListViewModel {
-  final String name;
-  final Image image;
-  bool isSelected;
-  final String type;
-  final String value;
-
-  ListViewModel({
-    this.type,
-    this.name,
-    this.isSelected,
-    this.image,
-    this.value
-  });
-}

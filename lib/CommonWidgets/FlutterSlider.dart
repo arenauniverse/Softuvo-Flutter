@@ -625,9 +625,9 @@ class _FlutterSliderState extends State<FlutterSlider>
           }
 
           return Container(
-            padding: EdgeInsets.only(top: _handlersPadding),
+          //  padding: EdgeInsets.only(top: _handlersPadding),
             key: containerKey,
-            height: _containerHeight - 7,
+            height: _containerHeight - 6,
             width: _containerWidth,
             child: Stack(
               overflow: Overflow.visible,
@@ -824,7 +824,8 @@ class _FlutterSliderState extends State<FlutterSlider>
                   (_touchSize);
 
           if (__middle <= des + (handlerOrTouch + handlerOrTouch / 2) &&
-              (__middle >= des - (handlerOrTouch + handlerOrTouch / 2))) {
+              (__middle >= des - (handlerOrTouch + handlerOrTouch / 2)))
+          {
             _lowerValue = tmpLowerValue;
             __leftHandlerPosition = des;
 

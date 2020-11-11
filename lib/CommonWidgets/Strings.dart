@@ -37,6 +37,7 @@ class Strings {
   static String see_all = "Ver todos";
   static String UEFA_Champions_League = "UEFA Champions League";
   static String barcelona = "Barcelona";
+  static String valencia = "Valencia";
   static String scores = "2";
   static String sixscores = "6";
   static String numbers = "62’";
@@ -127,5 +128,14 @@ class Strings {
   static String ArgentinaLeague = "Argentina";
   static String findPlayers = "Buscar otros jugadores";
   static String socialNetwork = "Redes sociales";
-
+  static String automaticNotifications = "Notificaciones automaticas";
+  static String notificationText =
+      "Selecciona las notificaciones que\nte gustaria recibir de La Liga";
+  static String allEvents = "Todos los eventos";
+  static String goals = "Goles";
+  static String start_endMatch = "Inicio / Fin de partido";
+  static String data = "Datos";
+  static String redCards = "Tarjetas Rojaso";
+  static String Transfers = "Traspasos";
+  static String scorers = "Goleadores";
 }
