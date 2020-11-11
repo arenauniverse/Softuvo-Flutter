@@ -96,21 +96,21 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                   shrinkWrap: true,
                   crossAxisCount: 3,
                   children: List.generate(list.length, (index) {
-                    return InkWell(
+                    return GestureDetector(
                       onTap: () {
                         if (listViewData.elementAt(index).isSelected == false) {
                           setState(() {
                             listViewData.elementAt(index).isSelected = true;
                             if (listViewData.elementAt(index).isSelected) {
                               favList.add(listViewData.elementAt(index));
-                              RestartWidget.restartApp(context);
+                              //    RestartWidget.restartApp(context);
                             }
                           });
                         } else {
                           setState(() {
                             listViewData.elementAt(index).isSelected = false;
                             favList.remove(listViewData.elementAt(index));
-                            RestartWidget.restartApp(context);
+                            //  RestartWidget.restartApp(context);
                           });
                         }
                       },
@@ -124,8 +124,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                 color: Colors.grey,
                                 blurRadius: 3.0,
                                 spreadRadius: 0.0,
-                                offset: Offset(
-                                    0.5, 0.5),
+                                offset: Offset(0.5, 0.5),
                               )
                             ],
                             borderRadius: BorderRadius.circular(16),

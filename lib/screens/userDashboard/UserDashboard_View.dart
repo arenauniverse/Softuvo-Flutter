@@ -10,6 +10,7 @@ import 'package:arena_sports_app/CommonWidgets/sharePreferenceData.dart';
 import 'package:arena_sports_app/screens/feedHome/FeedHomeView.dart';
 import 'package:arena_sports_app/screens/feedHome/VideoPlayerView.dart';
 import 'package:arena_sports_app/screens/loginSignUpListing/LoginSgnupListingView.dart';
+import 'package:arena_sports_app/screens/myProfile/myProfileView.dart';
 import 'package:arena_sports_app/screens/news/NewsDetails_View.dart';
 import 'package:arena_sports_app/screens/news/NewsView.dart';
 import 'package:arena_sports_app/screens/notifications/notificationsView.dart';
@@ -89,8 +90,14 @@ class _UserDashboardViewState extends State<UserDashboardView>
                 children: [
                   GestureDetector(
                     onTap: () {
-                      ShowBottomSheet()
-                          .showModalSheet(context, LoginSignUpListingView());
+                      isRegisterd
+                          ? ShowBottomSheet()
+                              .showModalSheet(context, LoginSignUpListingView())
+                          : Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MyProfileView()));
                     },
                     child: Container(
                       child: SvgPicture.asset('assets/ArenaLogin.svg'),

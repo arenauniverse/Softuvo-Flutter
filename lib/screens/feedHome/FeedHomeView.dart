@@ -186,9 +186,11 @@ class _FeedHomeViewState extends State<FeedHomeView> {
                 }),
           ],
         ),
-        padding: EdgeInsets.all(SizeConfig.blockSizeHorizontal * 2),
+        padding: EdgeInsets.symmetric(
+            vertical: SizeConfig.blockSizeVertical * 2,
+            horizontal: SizeConfig.blockSizeVertical * 1),
         margin: EdgeInsets.symmetric(
-          vertical: SizeConfig.blockSizeVertical * 5,
+          vertical: SizeConfig.blockSizeVertical * 2,
           horizontal: SizeConfig.blockSizeHorizontal * 3,
         ),
         decoration: BoxDecoration(
