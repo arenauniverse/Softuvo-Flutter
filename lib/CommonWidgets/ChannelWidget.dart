@@ -6,10 +6,13 @@ import 'SizeConfig.dart';
 import 'Strings.dart';
 
 class ChannelWidget extends StatelessWidget {
+   final double topMargin;
+
+  const ChannelWidget({Key key, this.topMargin}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 1),
+      margin: EdgeInsets.only(top: topMargin),
       child: Row(
         children: [
           Stack(

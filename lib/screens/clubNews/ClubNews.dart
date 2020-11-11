@@ -12,7 +12,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../theme.dart';
 
 class ClubNewsView extends StatefulWidget {
@@ -219,301 +218,314 @@ class _ClubNewsViewState extends State<ClubNewsView> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                right: SizeConfig.blockSizeHorizontal * 4,
-                                left: SizeConfig.blockSizeHorizontal * 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  Strings.news,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 16),
-                                ),
-                                GestureDetector(
-                                  child: Text(
-                                    Strings.see_all,
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: SizeConfig.blockSizeHorizontal * 4,
+                                  left: SizeConfig.blockSizeHorizontal * 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    Strings.news,
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: AppTheme.blueColor),
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16),
                                   ),
-                                  onTap: () {
-                                    Navigator.push(context,
-                                        SlideRightRoute(page: NewsView()));
-                                  },
-                                )
-                              ],
+                                  GestureDetector(
+                                    child: Text(
+                                      Strings.see_all,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: AppTheme.blueColor),
+                                    ),
+                                    onTap: () {
+                                      Navigator.push(context,
+                                          SlideRightRoute(page: NewsView()));
+                                    },
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          Container(
-                            child: GetDivider(),
-                            margin: EdgeInsets.symmetric(
-                                vertical: SizeConfig.blockSizeVertical * 0.5,
-                                horizontal: SizeConfig.blockSizeHorizontal * 4),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NewsDetailsView()),
-                              );
-                            },
-                            child: Container(
-                              child: Column(children: [
-                                Image.asset(
-                                  'assets/Imagenew.png',
-                                  fit: BoxFit.fitWidth,
-                                  //width: SizeConfig.blockSizeHorizontal * 120,
-                                ),
-                                SizedBox(
-                                    height: SizeConfig.blockSizeVertical * 2),
+                            Container(
+                              child: GetDivider(),
+                              margin: EdgeInsets.symmetric(
+                                  vertical: SizeConfig.blockSizeVertical * 0.5,
+                                  horizontal:
+                                      SizeConfig.blockSizeHorizontal * 4),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewsDetailsView()),
+                                );
+                              },
+                              child: Container(
+                                child: Column(children: [
+                                  Image.asset(
+                                    'assets/Imagenew.png',
+                                    fit: BoxFit.fitWidth,
+                                    //width: SizeConfig.blockSizeHorizontal * 120,
+                                  ),
+                                  SizedBox(
+                                      height: SizeConfig.blockSizeVertical * 2),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        right:
+                                            SizeConfig.blockSizeHorizontal * 4,
+                                        left:
+                                            SizeConfig.blockSizeHorizontal * 4),
+                                    child: Text(Strings.aboutPlayer,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                  )
+                                ]),
+                              ),
+                            ),
+                            Container(
+                              child: ChannelWidget(
+                                topMargin: SizeConfig.blockSizeVertical * 1,
+                              ),
+                              margin: EdgeInsets.only(
+                                  right: SizeConfig.blockSizeHorizontal * 4,
+                                  left: SizeConfig.blockSizeHorizontal * 4),
+                            ),
+                            Container(
+                                child: GetDivider(),
+                                margin: EdgeInsets.only(
+                                  right: SizeConfig.blockSizeHorizontal * 4,
+                                  left: SizeConfig.blockSizeHorizontal * 4,
+                                  top: SizeConfig.blockSizeVertical * 0.5,
+                                  bottom: SizeConfig.blockSizeVertical * 0.5,
+                                )),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
                                 Container(
                                   margin: EdgeInsets.only(
-                                      right: SizeConfig.blockSizeHorizontal * 4,
-                                      left: SizeConfig.blockSizeHorizontal * 4),
-                                  child: Text(Strings.aboutPlayer,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      )),
+                                      left: SizeConfig.blockSizeHorizontal * 4,
+                                      right:
+                                          SizeConfig.blockSizeHorizontal * 3),
+                                  height: 80,
+                                  child: Image.asset(
+                                    'assets/newsImage.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        Strings.text,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      ChannelWidget(
+                                          topMargin:
+                                              SizeConfig.blockSizeVertical * 1),
+                                    ],
+                                  ),
                                 )
-                              ]),
+                              ],
                             ),
-                          ),
-                          Container(
-                            child: ChannelWidget(),
-                            margin: EdgeInsets.only(
-                                right: SizeConfig.blockSizeHorizontal * 4,
-                                left: SizeConfig.blockSizeHorizontal * 4),
-                          ),
-                          Container(
-                              child: GetDivider(),
-                              margin: EdgeInsets.only(
-                                right: SizeConfig.blockSizeHorizontal * 4,
-                                left: SizeConfig.blockSizeHorizontal * 4,
-                                top: SizeConfig.blockSizeVertical * 0.5,
-                                bottom: SizeConfig.blockSizeVertical * 0.5,
-                              )),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
+                            Container(
+                                child: GetDivider(),
                                 margin: EdgeInsets.only(
+                                    right: SizeConfig.blockSizeHorizontal * 4,
                                     left: SizeConfig.blockSizeHorizontal * 4,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                height: 80,
-                                child: Image.asset(
-                                  'assets/newsImage.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      Strings.text,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    ChannelWidget(),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          Container(
-                              child: GetDivider(),
-                              margin: EdgeInsets.only(
-                                  right: SizeConfig.blockSizeHorizontal * 4,
-                                  left: SizeConfig.blockSizeHorizontal * 4,
-                                  top: SizeConfig.blockSizeVertical * 0.5,
-                                  bottom: SizeConfig.blockSizeVertical * 0.5)),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 5,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                child: Text(
-                                  Strings.textTime,
-                                  style: TextStyle(color: AppTheme.greyColor),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  Strings.text1,
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              SvgPicture.asset(
-                                'assets/newsImage.png',
-                                width: SizeConfig.blockSizeHorizontal * 8,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
-                      ),
-                      margin: EdgeInsets.symmetric(
-                          horizontal: SizeConfig.blockSizeVertical * 1.5,
-                          vertical: SizeConfig.blockSizeVertical * 1.5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).cardColor,
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                right: SizeConfig.blockSizeHorizontal * 4,
-                                left: SizeConfig.blockSizeHorizontal * 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    top: SizeConfig.blockSizeVertical * 0.5,
+                                    bottom:
+                                        SizeConfig.blockSizeVertical * 0.5)),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
-                                  Strings.socialNetwork,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 16),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: SizeConfig.blockSizeHorizontal * 5,
+                                      right:
+                                          SizeConfig.blockSizeHorizontal * 3),
+                                  child: Text(
+                                    Strings.textTime,
+                                    style: TextStyle(color: AppTheme.greyColor),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    Strings.text1,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                SvgPicture.asset(
+                                  'assets/newsImage.png',
+                                  width: SizeConfig.blockSizeHorizontal * 8,
                                 ),
                               ],
                             ),
-                          ),
-                          Container(
-                            child: GetDivider(),
-                            margin: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockSizeHorizontal * 4),
-                          ),
-/*                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => NewsDetailsView()),
-                              );
-                            },
-                            child: Container(
-                              child: Column(children: [
-                                SizedBox(
-                                    height: SizeConfig.blockSizeVertical * 2),
-                              ]),
-                            ),
-                          )*/
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 4,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                height: 80,
-                                child: Image.asset(
-                                  'assets/newsImage.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      Strings.text,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          top:
-                                              SizeConfig.blockSizeVertical * 1),
-                                      child: Row(
-                                        children: [
-                                          Image.asset(
-                                            "assets/twitter.png",
-                                            width:
-                                                SizeConfig.blockSizeVertical *
-                                                    4,
-                                          ),
-                                          SizedBox(
-                                            width: 5.0,
-                                          ),
-                                          Text(
-                                            "@barcelona_es",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                                color: AppTheme.blueColor),
-                                          ),
-                                          SizedBox(
-                                            width: 5.0,
-                                          ),
-                                          Text(
-                                            Strings.time2,
-                                            style: TextStyle(
-                                                color: AppTheme.greyColor),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    //   ChannelWidget(),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          Container(
-                              child: GetDivider(),
-                              margin: EdgeInsets.only(
-                                  right: SizeConfig.blockSizeHorizontal * 4,
-                                  left: SizeConfig.blockSizeHorizontal * 4,
-                                  top: SizeConfig.blockSizeVertical * 0.5,
-                                  bottom: SizeConfig.blockSizeVertical * 0.5)),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.blockSizeHorizontal * 5,
-                                    right: SizeConfig.blockSizeHorizontal * 3),
-                                child: Text(
-                                  Strings.textTime,
-                                  style: TextStyle(color: AppTheme.greyColor),
-                                ),
-                              ),
-                              Expanded(
-                                child: Text(
-                                  Strings.text1,
-                                  style: TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              SvgPicture.asset(
-                                'assets/newsImage.png',
-                                width: SizeConfig.blockSizeHorizontal * 8,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
+                          ],
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: SizeConfig.blockSizeVertical * 2,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
                       ),
                       margin: EdgeInsets.symmetric(
                           horizontal: SizeConfig.blockSizeVertical * 1.5,
                           vertical: SizeConfig.blockSizeVertical * 1.5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).cardColor,
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      margin: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.blockSizeVertical * 1.5,
+                          vertical: SizeConfig.blockSizeVertical * 1.5),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: SizeConfig.blockSizeHorizontal * 4,
+                                  left: SizeConfig.blockSizeHorizontal * 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    Strings.socialNetwork,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: GetDivider(),
+                              margin: EdgeInsets.symmetric(
+                                  horizontal:
+                                      SizeConfig.blockSizeHorizontal * 4),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: SizeConfig.blockSizeHorizontal * 4,
+                                      right:
+                                          SizeConfig.blockSizeHorizontal * 3),
+                                  height: 80,
+                                  child: Image.asset(
+                                    'assets/newsImage.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        Strings.text,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            top: SizeConfig.blockSizeVertical *
+                                                1),
+                                        child: Row(
+                                          children: [
+                                            Image.asset(
+                                              "assets/twitter.png",
+                                              width:
+                                                  SizeConfig.blockSizeVertical *
+                                                      4,
+                                            ),
+                                            SizedBox(
+                                              width: 5.0,
+                                            ),
+                                            Text(
+                                              "@barcelona_es",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: AppTheme.blueColor),
+                                            ),
+                                            SizedBox(
+                                              width: 5.0,
+                                            ),
+                                            Text(
+                                              Strings.time2,
+                                              style: TextStyle(
+                                                  color: AppTheme.greyColor),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      //   ChannelWidget(),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                            Container(
+                                child: GetDivider(),
+                                margin: EdgeInsets.only(
+                                    right: SizeConfig.blockSizeHorizontal * 4,
+                                    left: SizeConfig.blockSizeHorizontal * 4,
+                                    top: SizeConfig.blockSizeVertical * 0.5,
+                                    bottom:
+                                        SizeConfig.blockSizeVertical * 0.5)),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: SizeConfig.blockSizeHorizontal * 5,
+                                      right:
+                                          SizeConfig.blockSizeHorizontal * 3),
+                                  child: Text(
+                                    Strings.textTime,
+                                    style: TextStyle(color: AppTheme.greyColor),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    Strings.text1,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                SvgPicture.asset(
+                                  'assets/newsImage.png',
+                                  width: SizeConfig.blockSizeHorizontal * 8,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: SizeConfig.blockSizeVertical * 2,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
                       ),
                     ),
                   ],
@@ -524,790 +536,872 @@ class _ClubNewsViewState extends State<ClubNewsView> {
                 physics: ClampingScrollPhysics(),
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
-                      ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
                       margin: EdgeInsets.symmetric(
                           horizontal: SizeConfig.blockSizeVertical * 1.5,
                           vertical: SizeConfig.blockSizeVertical * 1.5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).cardColor,
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                right: SizeConfig.blockSizeHorizontal * 4,
-                                left: SizeConfig.blockSizeHorizontal * 4),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/league.png",
-                                  height: SizeConfig.blockSizeVertical * 4,
-                                ),
-                                SizedBox(
-                                    width: SizeConfig.blockSizeHorizontal * 2),
-                                Container(
-                                  child: Text(
-                                    "La Liga",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: SizeConfig.blockSizeVertical * 2,
+                          horizontal: SizeConfig.blockSizeVertical * 1,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/league.png",
+                                    height: SizeConfig.blockSizeVertical * 4,
                                   ),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  Icons.keyboard_arrow_down_outlined,
-                                  size: SizeConfig.blockSizeVertical * 3,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockSizeHorizontal * 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  Strings.matches1,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 16),
-                                ),
-                                GestureDetector(
-                                  child: Text(
-                                    Strings.see_all,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: AppTheme.blueColor),
+                                  SizedBox(
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 2),
+                                  Container(
+                                    child: Text(
+                                      "La Liga",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14),
+                                    ),
                                   ),
-                                  onTap: () {},
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
-                              child: GetDivider(),
-                              margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                  vertical:
-                                      SizeConfig.blockSizeVertical * 0.5)),
-                          Container(
-                            margin: EdgeInsets.only(
-                              left: SizeConfig.blockSizeHorizontal * 4,
-                            ),
-                            child: Text(
-                              "La Liga",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: AppTheme.greyColor,
+                                  Spacer(),
+                                  Icon(
+                                    Icons.keyboard_arrow_down_outlined,
+                                    size: SizeConfig.blockSizeVertical * 3,
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          ListView.builder(
-                              itemCount: 1,
-                              physics: ClampingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext ctxt, int index) {
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child: Column(
-                                            children: [
-                                              SvgPicture.asset(
-                                                'assets/Barcelona.svg',
-                                                width: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    6,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: SvgPicture.asset(
-                                                  'assets/Bayern_Munich.svg',
-                                                  width: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      6.5,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  5),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  2),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                Strings.barcelona,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: Text(
-                                                  Strings.Bayern_Munich,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15),
-                                                ),
-                                              )
-                                            ],
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  10),
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 6.0,
-                                                    vertical: 3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: AppTheme.greyColor,
-                                                ),
-                                                child: Text(
-                                                  Strings.scores,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 6.0,
-                                                    vertical: 3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: AppTheme.greyColor,
-                                                ),
-                                                child: Text(
-                                                  Strings.sixscores,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  4),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                Strings.numbers,
-                                                style: TextStyle(
-                                                    color:
-                                                        AppTheme.borderColor),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: Text(
-                                                  Strings.Direct_TV,
-                                                  style: TextStyle(
-                                                      color: AppTheme.lightgrey,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  9),
-                                          child: Column(
-                                            children: [
-                                              notificationBell(),
-                                              Container(
-                                                child: directLinkBell(),
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                        child: GetDivider(),
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal:
-                                                SizeConfig.blockSizeHorizontal *
-                                                    4,
-                                            vertical:
-                                                SizeConfig.blockSizeHorizontal *
-                                                    1)),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child: Column(
-                                            children: [
-                                              SvgPicture.asset(
-                                                'assets/Atalanta.svg',
-                                                width: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    6,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: SvgPicture.asset(
-                                                  'assets/paris.svg',
-                                                  width: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      6,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  5),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  2),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                Strings.Atalanta,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: Text(
-                                                  Strings.Atalanta,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15),
-                                                ),
-                                              )
-                                            ],
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  22.5),
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 6.0,
-                                                    vertical: 3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: AppTheme.greyColor,
-                                                ),
-                                                child: Text(
-                                                  "1",
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 6.0,
-                                                    vertical: 3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: AppTheme.greyColor,
-                                                ),
-                                                child: Text(
-                                                  Strings.scores,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  4),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                Strings.Finished,
-                                                style: TextStyle(
-                                                    color: AppTheme.greenColor),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: Text(
-                                                  Strings.Espn,
-                                                  style: TextStyle(
-                                                      color: AppTheme.lightgrey,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                        child: GetDivider(),
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal:
-                                                SizeConfig.blockSizeHorizontal *
-                                                    4,
-                                            vertical:
-                                                SizeConfig.blockSizeHorizontal *
-                                                    1)),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child: Column(
-                                            children: [
-                                              SvgPicture.asset(
-                                                'assets/Atalanta.svg',
-                                                width: SizeConfig
-                                                        .blockSizeHorizontal *
-                                                    6,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: SvgPicture.asset(
-                                                  'assets/paris.svg',
-                                                  width: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      6,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  5),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  2),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                Strings.Atalanta,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: Text(
-                                                  Strings.Atalanta,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15),
-                                                ),
-                                              )
-                                            ],
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  22.5),
-                                          child: Column(
-                                            children: [
-                                              Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 6.0,
-                                                    vertical: 3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: AppTheme.greyColor,
-                                                ),
-                                                child: Text(
-                                                  "1",
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 6.0,
-                                                    vertical: 3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(4),
-                                                  color: AppTheme.greyColor,
-                                                ),
-                                                child: Text(
-                                                  Strings.scores,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppTheme.blackColor,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: SizeConfig
-                                                      .blockSizeHorizontal *
-                                                  4),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                Strings.Finished,
-                                                style: TextStyle(
-                                                    color: AppTheme.greenColor),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: SizeConfig
-                                                            .blockSizeVertical *
-                                                        1),
-                                                child: Text(
-                                                  Strings.Espn,
-                                                  style: TextStyle(
-                                                      color: AppTheme.lightgrey,
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                );
-                              }),
-                        ],
-                      ),
-                      padding: EdgeInsets.only(
-                          bottom: SizeConfig.blockSizeHorizontal * 2,
-                          top: SizeConfig.blockSizeVertical * 2),
-                      margin: EdgeInsets.only(
-                          right: SizeConfig.blockSizeHorizontal * 3,
-                          left: SizeConfig.blockSizeHorizontal * 3),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).cardColor,
+                          ],
+                        ),
                       ),
                     ),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockSizeHorizontal * 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "CLASSIFICATION",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 16),
-                                ),
-                                GestureDetector(
-                                  child: Text(
-                                    "Ver completa",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: AppTheme.blueColor),
-                                  ),
-                                  onTap: () {},
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
-                              child: GetDivider(),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
                               margin: EdgeInsets.symmetric(
                                   horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                  vertical: SizeConfig.blockSizeVertical * 2)),
-                          Column(
-                            children: [
-                              Row(
+                                      SizeConfig.blockSizeHorizontal * 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                      child: Center(
-                                        child: Text(
-                                          "N",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                      ),
-                                      margin: EdgeInsets.only(
-                                          left: SizeConfig.blockSizeHorizontal *
-                                              2),
-                                      width:
-                                          SizeConfig.blockSizeHorizontal * 8),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 42,
-                                    child: Text(
-                                      "EQUIPO",
-                                      style: boldStyles,
-                                    ),
+                                  Text(
+                                    Strings.matches1,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16),
                                   ),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 8,
+                                  GestureDetector(
                                     child: Text(
-                                      "PJ",
-                                      style: TextStyle(fontSize: 15),
-                                      textAlign: TextAlign.center,
+                                      Strings.see_all,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: AppTheme.blueColor),
                                     ),
-                                  ),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 8,
-                                    child: Text(
-                                      "PG",
-                                      style: TextStyle(fontSize: 15),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 8,
-                                    child: Text(
-                                      "PP",
-                                      style: TextStyle(fontSize: 15),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 8,
-                                    child: Text(
-                                      "PE",
-                                      style: TextStyle(fontSize: 15),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  Container(
-                                    width: SizeConfig.blockSizeHorizontal * 8,
-                                    child: Text(
-                                      "PT",
-                                      style: boldStyles,
-                                      textAlign: TextAlign.center,
-                                    ),
+                                    onTap: () {},
                                   )
                                 ],
                               ),
-                              Container(
-                                height: SizeConfig.blockSizeVertical * 20,
-                                child: ListView.builder(
-                                  padding: EdgeInsets.only(top: 2),
-                                  shrinkWrap: true,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return classification(context);
-                                  },
-                                  itemCount: 4,
+                            ),
+                            Container(
+                                child: GetDivider(),
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 4,
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 0.5)),
+                            Container(
+                              margin: EdgeInsets.only(
+                                left: SizeConfig.blockSizeHorizontal * 4,
+                              ),
+                              child: Text(
+                                "La Liga",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppTheme.greyColor,
                                 ),
-                              )
-                            ],
-                          ),
-                        ],
+                              ),
+                            ),
+                            ListView.builder(
+                                itemCount: 1,
+                                physics: ClampingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext ctxt, int index) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            child: Column(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/Barcelona.svg',
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: SvgPicture.asset(
+                                                    'assets/Bayern_Munich.svg',
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        6.5,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    5),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    2),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  Strings.barcelona,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    Strings.Bayern_Munich,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                )
+                                              ],
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    10),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    Strings.scores,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    Strings.sixscores,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    4),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  Strings.numbers,
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppTheme.borderColor),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    Strings.Direct_TV,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.lightgrey,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    9),
+                                            child: Column(
+                                              children: [
+                                                notificationBell(),
+                                                Container(
+                                                  child: directLinkBell(),
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      Container(
+                                          child: GetDivider(),
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              vertical: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  1)),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            child: Column(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/Atalanta.svg',
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: SvgPicture.asset(
+                                                    'assets/paris.svg',
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        6,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    5),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    2),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  Strings.Atalanta,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    Strings.Atalanta,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                )
+                                              ],
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    22.5),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    "1",
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    Strings.scores,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    4),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  Strings.Finished,
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppTheme.greenColor),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    Strings.Espn,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.lightgrey,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                          child: GetDivider(),
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  4,
+                                              vertical: SizeConfig
+                                                      .blockSizeHorizontal *
+                                                  1)),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            child: Column(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  'assets/Atalanta.svg',
+                                                  width: SizeConfig
+                                                          .blockSizeHorizontal *
+                                                      6,
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: SvgPicture.asset(
+                                                    'assets/paris.svg',
+                                                    width: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        6,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    5),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    2),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  Strings.Atalanta,
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 15),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    Strings.Atalanta,
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                )
+                                              ],
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    22.5),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    "1",
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 6.0,
+                                                      vertical: 3.0),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: AppTheme.greyColor,
+                                                  ),
+                                                  child: Text(
+                                                    Strings.scores,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.blackColor,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    4),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  Strings.Finished,
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppTheme.greenColor),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: SizeConfig
+                                                              .blockSizeVertical *
+                                                          1),
+                                                  child: Text(
+                                                    Strings.Espn,
+                                                    style: TextStyle(
+                                                        color:
+                                                            AppTheme.lightgrey,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  );
+                                }),
+                          ],
+                        ),
+                        padding: EdgeInsets.only(
+                            bottom: SizeConfig.blockSizeHorizontal * 2,
+                            top: SizeConfig.blockSizeVertical * 2),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
                       ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
+                      margin: EdgeInsets.only(
+                          right: SizeConfig.blockSizeHorizontal * 3,
+                          left: SizeConfig.blockSizeHorizontal * 3),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  horizontal:
+                                      SizeConfig.blockSizeHorizontal * 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "CLASSIFICATION",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16),
+                                  ),
+                                  GestureDetector(
+                                    child: Text(
+                                      "Ver completa",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: AppTheme.blueColor),
+                                    ),
+                                    onTap: () {},
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                                child: GetDivider(),
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 4,
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 2)),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                        child: Center(
+                                          child: Text(
+                                            "N",
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                        ),
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    2),
+                                        width:
+                                            SizeConfig.blockSizeHorizontal * 8),
+                                    Container(
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 42,
+                                      child: Text(
+                                        "EQUIPO",
+                                        style: boldStyles,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: SizeConfig.blockSizeHorizontal * 8,
+                                      child: Text(
+                                        "PJ",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: SizeConfig.blockSizeHorizontal * 8,
+                                      child: Text(
+                                        "PG",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: SizeConfig.blockSizeHorizontal * 8,
+                                      child: Text(
+                                        "PP",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: SizeConfig.blockSizeHorizontal * 8,
+                                      child: Text(
+                                        "PE",
+                                        style: TextStyle(fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: SizeConfig.blockSizeHorizontal * 8,
+                                      child: Text(
+                                        "PT",
+                                        style: boldStyles,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Container(
+                                  height: SizeConfig.blockSizeVertical * 20,
+                                  child: ListView.builder(
+                                    padding: EdgeInsets.only(top: 2),
+                                    shrinkWrap: true,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return classification(context);
+                                    },
+                                    itemCount: 4,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: SizeConfig.blockSizeVertical * 2,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
                       ),
                       margin: EdgeInsets.symmetric(
                         vertical: SizeConfig.blockSizeVertical * 1.5,
                         horizontal: SizeConfig.blockSizeHorizontal * 3,
                       ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).cardColor,
-                      ),
                     ),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: SizeConfig.blockSizeHorizontal * 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "ESTADISTICAS",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 16),
-                                ),
-                                GestureDetector(
-                                  child: Text(
-                                    "Ver completa",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16,
-                                        color: AppTheme.blueColor),
-                                  ),
-                                  onTap: () {},
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
-                              child: GetDivider(),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0)),
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
                               margin: EdgeInsets.symmetric(
                                   horizontal:
-                                      SizeConfig.blockSizeHorizontal * 4,
-                                  vertical:
-                                      SizeConfig.blockSizeVertical * 0.5)),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                                      SizeConfig.blockSizeHorizontal * 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "assets/estadistics.png",
-                                          width:
-                                              SizeConfig.blockSizeVertical * 15,
-                                        ),
-                                      ],
-                                    ),
-                                    margin: EdgeInsets.only(
-                                        left:
-                                            SizeConfig.blockSizeHorizontal * 3),
+                                  Text(
+                                    "ESTADISTICAS",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 16),
                                   ),
-                                  Expanded(
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          left: SizeConfig.blockSizeHorizontal *
-                                              3,
-                                          right:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  3),
+                                  GestureDetector(
+                                    child: Text(
+                                      "Ver completa",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: AppTheme.blueColor),
+                                    ),
+                                    onTap: () {},
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                                child: GetDivider(),
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        SizeConfig.blockSizeHorizontal * 4,
+                                    vertical:
+                                        SizeConfig.blockSizeVertical * 0.5)),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
                                       child: Column(
                                         children: [
-                                          Container(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              mainAxisSize: MainAxisSize.min,
+                                          Image.asset(
+                                            "assets/estadistics.png",
+                                            width:
+                                                SizeConfig.blockSizeVertical *
+                                                    15,
+                                          ),
+                                        ],
+                                      ),
+                                      margin: EdgeInsets.only(
+                                          left: SizeConfig.blockSizeHorizontal *
+                                              3),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    3,
+                                            right:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    3),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text(
+                                                    "Ganados",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: AppTheme
+                                                            .toggleColor,
+                                                        fontSize: 15),
+                                                  ),
+                                                  Spacer(),
+                                                  Text(
+                                                    "100",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: SizeConfig
+                                                          .blockSizeVertical *
+                                                      1),
+                                              height:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
+                                              width:
+                                                  SizeConfig.blockSizeVertical *
+                                                      26,
+                                              child: FAProgressBar(
+                                                currentValue: progressvalue,
+                                                progressColor:
+                                                    AppTheme.blueColor,
+                                                backgroundColor: AppTheme
+                                                    .bottomSheetBackgroundColor,
+                                                size: 4,
+                                              ),
+                                            ),
+                                            Row(
                                               children: [
                                                 Text(
-                                                  "Ganados",
+                                                  "Empatados",
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -1317,127 +1411,93 @@ class _ClubNewsViewState extends State<ClubNewsView> {
                                                 ),
                                                 Spacer(),
                                                 Text(
-                                                  "100",
+                                                  "20",
                                                   style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 15),
-                                                )
+                                                ),
                                               ],
                                             ),
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                                vertical: SizeConfig
-                                                        .blockSizeVertical *
-                                                    1),
-                                            height:
-                                                SizeConfig.blockSizeVertical *
-                                                    1,
-                                            width:
-                                                SizeConfig.blockSizeVertical *
-                                                    26,
-                                            child: FAProgressBar(
-                                              currentValue: progressvalue,
-                                              progressColor: AppTheme.blueColor,
-                                              backgroundColor: AppTheme
-                                                  .bottomSheetBackgroundColor,
-                                              size: 4,
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: SizeConfig
+                                                          .blockSizeVertical *
+                                                      1),
+                                              height:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
+                                              width:
+                                                  SizeConfig.blockSizeVertical *
+                                                      26,
+                                              child: FAProgressBar(
+                                                currentValue: progressvalue,
+                                                progressColor:
+                                                    AppTheme.yellowColor,
+                                                backgroundColor: AppTheme
+                                                    .bottomSheetBackgroundColor,
+                                                size: 4,
+                                              ),
                                             ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Empatados",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    color: AppTheme.toggleColor,
-                                                    fontSize: 15),
-                                              ),
-                                              Spacer(),
-                                              Text(
-                                                "20",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 15),
-                                              ),
-                                            ],
-                                          ),
-                                          Container(
-                                            margin: EdgeInsets.symmetric(
-                                                vertical: SizeConfig
-                                                        .blockSizeVertical *
-                                                    1),
-                                            height:
-                                                SizeConfig.blockSizeVertical *
-                                                    1,
-                                            width:
-                                                SizeConfig.blockSizeVertical *
-                                                    26,
-                                            child: FAProgressBar(
-                                              currentValue: progressvalue,
-                                              progressColor:
-                                                  AppTheme.yellowColor,
-                                              backgroundColor: AppTheme
-                                                  .bottomSheetBackgroundColor,
-                                              size: 4,
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "Perdidos",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color:
+                                                          AppTheme.toggleColor,
+                                                      fontSize: 15),
+                                                ),
+                                                Spacer(),
+                                                Text(
+                                                  "7",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 15),
+                                                ),
+                                              ],
                                             ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "Perdidos",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    color: AppTheme.toggleColor,
-                                                    fontSize: 15),
+                                            Container(
+                                              height:
+                                                  SizeConfig.blockSizeVertical *
+                                                      1,
+                                              width:
+                                                  SizeConfig.blockSizeVertical *
+                                                      26,
+                                              child: FAProgressBar(
+                                                currentValue: progressvalue,
+                                                progressColor:
+                                                    AppTheme.borderColor,
+                                                backgroundColor: AppTheme
+                                                    .bottomSheetBackgroundColor,
+                                                size: 4,
                                               ),
-                                              Spacer(),
-                                              Text(
-                                                "7",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 15),
-                                              ),
-                                            ],
-                                          ),
-                                          Container(
-                                            height:
-                                                SizeConfig.blockSizeVertical *
-                                                    1,
-                                            width:
-                                                SizeConfig.blockSizeVertical *
-                                                    26,
-                                            child: FAProgressBar(
-                                              currentValue: progressvalue,
-                                              progressColor:
-                                                  AppTheme.borderColor,
-                                              backgroundColor: AppTheme
-                                                  .bottomSheetBackgroundColor,
-                                              size: 4,
                                             ),
-                                          ),
-                                        ],
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                          ],
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: SizeConfig.blockSizeVertical * 2,
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: SizeConfig.blockSizeVertical * 2,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
                       ),
                       margin: EdgeInsets.symmetric(
                         horizontal: SizeConfig.blockSizeHorizontal * 3,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).cardColor,
                       ),
                     ),
                     Container(

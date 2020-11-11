@@ -24,7 +24,7 @@ class GraphQLConfiguration {
   }
 }
 
-class QueryMutation {
+class MutationRepo {
   String fbLogin({String token}) {
     return """mutation {
                 signUp(
@@ -74,17 +74,6 @@ class QueryMutation {
   }
 }""";
   }
-
-  String getLeaguesStats() {
-    return """{
-getLeaguesStats {
-name
-value
-}
-}
-    """;
-  }
-
 
   String createUser({
     int id,
@@ -148,4 +137,78 @@ email
   }
 }
 
+class QueryRepo {
+  String getLeaguesStats() {
+    return """{
+getLeaguesStats {
+name
+value
+}
+}
+    """;
+  }
 
+  String getCategoriesStats({String leagueStats}) {
+    return """getCategoriesStats(
+league: "$leagueStats"
+){
+  count
+  prev
+  next
+  entities{
+    id
+    name
+    original_id
+  }
+}
+    """;
+  }
+
+  String getChannels() {
+    return """getChannels {
+count
+prev
+next
+  entities{
+    title
+    description
+    id
+    image_url
+    link
+    source_url
+  }
+}
+    """;
+  }
+
+  String getCountriesStats({String leagueStats}) {
+    return """getCountriesStats(
+league: "$leagueStats"
+){
+  count
+  prev
+  next
+  entities{
+    id
+    name
+    original_id
+  }
+}
+    """;
+  }
+
+  String getNews() {
+    return """{
+getNews {
+  count
+  prev
+  next
+  entities{
+  id
+  title
+}
+}
+}
+    """;
+  }
+}

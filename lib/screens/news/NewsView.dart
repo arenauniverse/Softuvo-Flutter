@@ -110,7 +110,7 @@ class _NewsViewState extends State<NewsView> {
                 ),
               ),
               Container(
-                child: ChannelWidget(),
+                child: ChannelWidget(topMargin:SizeConfig.blockSizeVertical * 1 ),
                 margin: EdgeInsets.only(
                     right: SizeConfig.blockSizeHorizontal * 4,
                     left: SizeConfig.blockSizeHorizontal * 4),
@@ -144,7 +144,7 @@ class _NewsViewState extends State<NewsView> {
                           Strings.text,
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        ChannelWidget(),
+                        ChannelWidget(topMargin:SizeConfig.blockSizeVertical * 1 ),
                       ],
                     ),
                   )
@@ -178,7 +178,7 @@ class _NewsViewState extends State<NewsView> {
                           Strings.text,
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        ChannelWidget(),
+                        ChannelWidget(topMargin:SizeConfig.blockSizeVertical * 1 ),
                       ],
                     ),
                   )

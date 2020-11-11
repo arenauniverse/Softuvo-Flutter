@@ -1,6 +1,6 @@
 import 'package:arena_sports_app/Repos.dart';
 
-QueryMutation addMutation = QueryMutation();
+MutationRepo addMutation = MutationRepo();
 
 class Strings {
   static String arena = 'ARENA';

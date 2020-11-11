@@ -180,7 +180,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         Dialogs.showLoadingDialog(context, _addLoader);
-        QueryMutation queryMutation = QueryMutation();
+        QueryRepo queryMutation = QueryRepo();
         GraphQLClient _client = graphQLConfiguration.clientToQuery();
         QueryResult result = await _client
             .query(
