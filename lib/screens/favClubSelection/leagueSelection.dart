@@ -125,7 +125,7 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                                 blurRadius: 3.0,
                                 spreadRadius: 0.0,
                                 offset: Offset(
-                                    0.5, 0.5), // shadow direction: bottom right
+                                    0.5, 0.5),
                               )
                             ],
                             borderRadius: BorderRadius.circular(16),
@@ -150,7 +150,6 @@ class _LeagueSelectionState extends State<LeagueSelection> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                /*list[index].image,*/
                                 listViewData.elementAt(index).image,
                                 Container(
                                   child: Text(
