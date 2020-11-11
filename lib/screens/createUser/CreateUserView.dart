@@ -388,6 +388,7 @@ class _CreateUserViewState extends State<CreateUserView> {
   }
 
   Future createUser({BuildContext context, QueryResult queryResult}) async {
+    print("name" + widget.name.toString());
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
@@ -398,7 +399,7 @@ class _CreateUserViewState extends State<CreateUserView> {
           MutationOptions(
               documentNode: gql(
             addMutation.createUser(
-                country: widget.country,
+                /*country: widget.country,*/
                 email: widget.email,
                 //  dob: widget.dob,
                 fName: widget.name,

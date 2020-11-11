@@ -35,10 +35,8 @@ class _RegisterViewState extends State<RegisterView> {
   var emailFocus = FocusNode();
   var passwordFocus = FocusNode();
   var repeatPasswordFocus = FocusNode();
-  ListItem _selectedItem;
   Country _selected;
-  /* focus.unfocus();
-  FocusScope.of(context).requestFocus(cvvFocusNode);*/
+
   void initState() {
     super.initState();
     _selected = Country.US;

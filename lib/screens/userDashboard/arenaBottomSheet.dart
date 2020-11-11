@@ -14,6 +14,7 @@ class ArenaBottomSheet extends StatefulWidget {
   @override
   _ArenaBottomSheetState createState() => _ArenaBottomSheetState();
 }
+
 class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
   List<SelectClubModel> listViewData = [];
   TextStyle style = TextStyle(fontWeight: FontWeight.w500, fontSize: 12);
@@ -55,11 +56,10 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                 child: SvgPicture.asset('assets/Indicator.svg'),
               ),*/
               GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child:  ShowBottomSheet().crossIcon(context)),
-
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: ShowBottomSheet().crossIcon(context)),
             ],
           ),
           Container(
@@ -188,8 +188,7 @@ class _ArenaBottomSheetState extends State<ArenaBottomSheet> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ClubNewsView()),
+                                          builder: (context) => ClubNewsView()),
                                     );
                                   },
                                   child: Container(
