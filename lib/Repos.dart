@@ -75,10 +75,9 @@ class QueryMutation {
 }""";
   }
 
-  String getLeaguesStats(){
+  String getLeaguesStats() {
     return """{
 getLeaguesStats {
-
 name
 value
 }
@@ -121,18 +120,19 @@ value
 // }""";
 //   }
 
-  String createUser(
-      {int id,
-      String userName,
-      fName,
-      lName,
-      email,
-      dob,
-      country,
-      imageUrl,
-      status,
-      /*Float lat,
-      Float lang*/}) {
+  String createUser({
+    int id,
+    String userName,
+    fName,
+    lName,
+    email,
+    dob,
+    country,
+    imageUrl,
+    status,
+    /*Float lat,
+      Float lang*/
+  }) {
     return """ mutation {
   editPeople(
   idPerson: "$id"
